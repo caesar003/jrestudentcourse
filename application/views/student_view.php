@@ -1148,9 +1148,15 @@
              $('#pin_delete').val(pin);
              $('#delete_student_modal').modal('show');
           });
-          $('#btn_delete_student').on('click', function(){
+         $('#btn_delete_student').on('click', function(){
              var pin = $('#pin_delete').val();
              console.log(pin);
+           // get test
+           // for each test ->meeting number
+           // from that meeting number, whe know the students test tables
+           // remove test tables using array
+           // check if student has fsp
+           // if he has, delete it, if not
              $.ajax({
                 type: "post",
                 url: "<?php echo site_url('student/delete_student');?>",
@@ -1161,17 +1167,35 @@
                     $('#mystudents').DataTable().ajax.reload();
                     $('#myaft').DataTable().ajax.reload();
                     $('#delete_student_modal').modal('hide');
-                    $.ajax({
+                   /* $.ajax({
                        type : "post",
                        url : "<?php echo site_url('student/delete_table');?>",
                        dataType : "json",
                        success : function(data){
-                           console.log('table deleted');
+                         console.log('table deleted');
+                         $.ajax({
+                           type : "post",
+                           url : "<?php echo site_url('student/del_dir_contents');?>",
+                           data : {pin:pin},
+                           success : function(response){
+                             console.log('deleted');
+                             if(response== 'true'){
+                             // it is not implemented yet
+                               $.ajax({
+                                 type : "post",
+                                 data : {pin:pin},
+                                 url : "<?php echo site_url('student/del_dir');?>",
+                               });
+                             } else {
+                               console.log('error');
+                             }
+                           }
+                         }); 
                        }
-                    });
+                    }); */
                 }
              });
-          });
+          }); 
       $('#myaft').DataTable({
           "ajax" : {
             "url" :"<?php echo site_url('student/after_teaching_data')?>",
@@ -1358,7 +1382,7 @@
     <?php else:?>
     <script type="text/javascript">
       $(document).ready(function(){
-        var today = $.format.date(new Date(), "yyyy-MM-dd");        
+        var today = $.format.date(new Date(), "yyyy-MM-dd");
           $('#mystudents').dataTable({
             "ajax" :{
               "url":"<?php echo site_url('student/student_data');?>",
@@ -1446,7 +1470,25 @@
           $('#nsf, #esf').html("");
         });
       $('#save_student_btn').on('click',function(){
-          var bck = 'background-color',clr ='#fbe2e6',a=$('#pn').val(),b=$('#cn').val(),c=$('#nn').val(),d=$('#ad').val(),  e=$('#pb').val(),f=$('#db').val(),g=$('#ph').val(),h=$('#pr').val(),i=$('#pd').val(),j=$('#sd').val(),k=$('#re').val(),l=$('#ta').val(),m=$('#di').val(),n=$('#bg').val(), o=$('#si').val(),p=$('#wp').val(),q=$('#ap').val();
+          var bck = 'background-color',
+              clr ='#fbe2e6',
+              a=$('#pn').val(),
+              b=$('#cn').val(),
+              c=$('#nn').val(),
+              d=$('#ad').val(),
+              e=$('#pb').val(),
+              f=$('#db').val(),
+              g=$('#ph').val(),
+              h=$('#pr').val(),
+              i=$('#pd').val(),
+              j=$('#sd').val(),
+              k=$('#re').val(),
+              l=$('#ta').val(),
+              m=$('#di').val(),
+              n=$('#bg').val(),
+              o=$('#si').val(),
+              p=$('#wp').val(),
+              q=$('#ap').val();
           if (a==''|| b==''||d==''||f=='' ||g==''||h==''||i==''){
             $('#nsf').addClass('alert alert-danger'); $('#nsf').html('Please fill out all required fields'); 
             if (a=='') {$('#pn').css(bck, clr);}if (b=='') {$('#cn').css(bck, clr);}if(d==''){ $('#ad').css(bck, clr);}
@@ -1503,30 +1545,7 @@
                             $('[name="ap"]').val(""); 
                             $('#nsm').modal('hide');
                             $('#mystudents').DataTable().ajax.reload();
-                          }
-                        });
-                        $.ajax({
-                          type : "POST",
-                          url : "<?php echo site_url('student/course_table')?>", dataType : "JSON", data :{pin:a}, 
-                          success: function(data){
-                            console.log('s_'+a+' Created');
-                          }
-                        });
-                        $.ajax({
-                          type : "POST",
-                          url : "<?php echo site_url('student/student_directories')?>",
-                          dataType : "JSON", 
-                          data :{pin:a}, 
-                          success :function(data){
-                            console.log('Directory assets/student/'+a+'created!');
-                          }
-                        });
-                        $.ajax({type : "POST",url : "<?php echo site_url('student/syllabus_table')?>",dataType : "JSON",
-                          data :{pin:a},success: function(data){console.log('syllabus_'+a+' created!');
-                            $.ajax({type : "POST",url : "<?php echo site_url('student/syllabus_insert')?>",dataType : "JSON",
-                              data :{pin:a, program:h},success : function(data){console.log('Data for '+h+' successfully inserted to syllabus_'+a+'!')
-                              }
-                            });
+                            console.log(data);
                           }
                         });
                       }

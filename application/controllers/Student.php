@@ -4,6 +4,7 @@ class Student extends CI_Controller{
     parent::__construct();
     $this->load->model('student_model');
     $this->load->dbforge();
+    $this->load->helper('file');
     if($this->session->userdata('logged_in') !== TRUE){
       redirect('login');
     }
@@ -31,7 +32,11 @@ class Student extends CI_Controller{
     }
   }
   function save(){
-    $data=$this->student_model->save_student();
+    $data['save_student']=$this->student_model->save_student();
+    $data['course_table']=$this->student_model->create_course_table();
+    $data['syllabus_table']=$this->student_model->create_syllabus_table();
+    $data['syllabus_insert']=$this->student_model->insert_into_syllabus();
+    $data['student_directory']=$this->student_model->create_student_directories();
     echo json_encode($data);
   }	
   function course_table(){
@@ -56,12 +61,15 @@ class Student extends CI_Controller{
     echo json_encode($data);
   }
   function delete_student(){
-      $data = $this->student_model->delete_student();
+      $data['student'] = $this->student_model->delete_student();
+      $data['table'] = $this->student_model->delete_student();
+      $data['dir_content'] = $this->student_model->del_dir_contents();
       echo json_encode($data);
   }
-  function delete_table(){
-      $data = $this->student_model->delete_student();
-      echo json_encode($data);
+  
+  function del_dir(){
+    $data = $this->student_model->del_dir();
+    echo json_encode($data);
   }
   /* Final Speaking Performance */
   function set_fsp(){

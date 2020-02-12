@@ -581,6 +581,32 @@ class Student_model extends CI_Model{
       $query = $this->dbforge->drop_table($student_table);
       return $query;
   }
+  function delete_directory(){
+    $pin = $this->input->post('pin');
+    $stdir = "assets/students/".$pin;
+    if(is_dir($stdir)){
+      $files = glob($stdir.'*'.GLOB_MARK);
+      foreach($files as $file){
+        delete_directory($file);
+      }
+      rmdir($stdir);
+    } else if(is_file($stdir)){
+      unlink($stdir);
+    }
+    //return $stdir;
+  }
+  function del_dir_contents(){
+    $pin = $this->input->post('pin');
+    $stdir = "assets/students/".$pin;
+    $query = delete_files($stdir, TRUE);
+    return $query;
+  }
+  function del_dir(){
+    $pin = $this->input->post('pin');
+    $stdir = "assets/students/".$pin;
+    $query = rmdir($stdir);
+    return $query;
+  }
   function set_fsp(){
     $pin = $this->input->post('pin');
     $fsp = 'yes';
