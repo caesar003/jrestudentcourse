@@ -57,20 +57,23 @@
             <?php endif;?>
     </div>
     <div class="container"> 
-      <?php if($this->session->userdata('level') == '21'):?>
+      <?php if($this->session->userdata('level') == '21'): /* admin */?>
+      <!-- SCHEDULE ADMIN -->
       <div class="row">
         <div class="card col-5">
           <div class="card-body">
+            <input type="hidden" name="str" id="str">
             <h5 class="card-title">Note:</h5>
             <p contenteditable="true" class="card-text" id="note"></p>
           </div>
         </div>
         <div class="col-4">
-          <input type="hidden" id="schedule_date" class="form-control" value="<?php echo Date("Y-m-d");?>">
+          <!--input type="hidden" id="schedule_date" class="form-control" value="<?php echo Date("Y-m-d");?>"-->
+          
           <div class="input-group mb-3 schedule-form">
             <div class="input-group-prepend"><span class="input-group-text">Create for:</span>
             </div>
-            <input id="add_schedule_date" name="add_schedule_date" class="form-control" type="date" aria-label="add schedule date" value="<?php echo Date("Y-m-d"); ?>">
+            <input id="schedule_date" name="schedule_date" class="form-control" type="date" aria-label="add schedule date" value="<?php echo Date("Y-m-d"); ?>">
             <div class="input-group-append">
               <button title="Add" id="add_schedule" class="input-group-text btn btn-primary"><i class="fa fa-calendar-plus"></i></button>
             </div>
@@ -81,8 +84,8 @@
           <ul class="list-group" id="schedule_list">
           </ul>
         </div>
-      </div>  
-      <?php else:?>
+      </div>  <!-- END SCHEDULE ADMIN -->
+      <?php else: /* user */?> 
       <div class="container-fluid">
         <div class="row">
           <div class="card col-7">
@@ -97,7 +100,7 @@
                 </div>
                 <input id="schedule_date" name="schedule_date" class="form-control" type="date" aria-label="see schedule" value="<?php echo Date("Y-m-d"); ?>">
                 <div class="input-group-append">
-                <button title="see" id="see_schedule" class="input-group-text btn btn-primary"><i class="fa fa-eye"></i></button>
+                <!--button title="see" id="see_schedule" class="input-group-text btn btn-primary"><i class="fa fa-eye"></i></button-->
               </div>
             </div>
             <div id="sch_r"></div>
@@ -643,7 +646,7 @@
               <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
             </div>
             <div class="modal-body">
-                Are you sure? Once executed, it will permanently gone!            
+                Are you sure? Once executed, it will be permanently gone!            
             </div>
             <div class="modal-footer">
               <input type="hidden" name="id" id="id">
@@ -655,19 +658,14 @@
       </div>
     </form> <!-- END DELETE TEACHER -->
 <?php endif;?>
-  
     <?php include 'inc/scripts.php';?> 
     <?php include 'inc/chat-script.php';?>
     <?php if($this->session->userdata('level') == '21'):?>
     <script>
       $(document).ready(function(){
-        $('#see_schedule').on('click',function(){
-          get_schedule();
-          
-        });
-        get_note();
         get_schedules();
         get_schedule();
+        
         function get_schedules(){
           var d = $('#schedule_date').val();
           $.ajax({
@@ -688,25 +686,8 @@
             }
           });
         }
-        function get_note(d=$('#schedule_date').val()){
-          //var d = $('#schedule_date').val();
-          $.ajax({
-            type : "POST",
-            url : "<?php echo site_url('schedule/get_note') ;?>",
-            dataType : "JSON",
-            data : {d:d},
-            success: function(data){
-              var html = '', i;
-              for(i=0;i<data.length;i++){
-                html += data[i].note;
-              }
-              $('#note').html(html);
-            }
-          });
-        }
         $('#add_schedule').on('click', function(){
-          var d = $('#add_schedule_date').val();
-          
+          var d = $('#schedule_date').val();
           if(d==''){
             $('#nscf').addClass("alert alert-danger");
             $('#nscf').fadeIn('fast');
@@ -762,11 +743,13 @@
             });
           }          
         });
+        
         $('#schedule_list').on('click','.schedule_list_item', function(){
           var d = $(this).data('d');
           get_schedule(d);
           $('#schedule_date').val(d);
         });
+        
         function get_schedule(d = $('#schedule_date').val()){
           var dtf = d + " 00:00:00";
           $.ajax({
@@ -824,10 +807,23 @@
               $('#my_schedule').html(html);
               $('#schedule_header').html(schd_head);
               get_schedules();
-              get_note(d);
+              $.ajax({
+                type : "POST",
+                url : "<?php echo site_url('schedule/get_note') ;?>",
+                dataType : "JSON",
+                data : {d:d},
+                success: function(data){
+                  var html = '', i;
+                  for(i=0;i<data.length;i++){
+                    html += data[i].note;
+                  }
+                  $('#note').html(html);
+                }
+              });
             }
           });
         }
+        
         $('#my_schedule').on('focusin','.edit', function(){
           $(this).addClass('editMode');
           var id= $(this).data('id'),
@@ -854,31 +850,35 @@
             }
           });
         });
+        
         $('#note').on('focusin', function(){
           $(this).addClass('editMode');
           var str = $(this).text(),
               d = $('#schedule_date').val();
-          
-          $(this).on('focusout',function(){
-            $(this).removeClass('editMode');
-            var str2 = $(this).text();
-            if (str != str2){
-              $.ajax({
-                type : "post",
-                url : "<?php echo site_url('schedule/update_note') ;?>",
-                dataType : "Json",
-                data : {d:d, str:str2},
-                success :function(data){
-                  console.log('updated');
-                  get_note(d);
-                }
-              });
-            }
-          });
+          $('#str').val(str);
+          console.log(d);
+        });
+        $('#note').on('focusout',function(){
+          $(this).removeClass('editMode');
+          var str = $('#str').val();
+          var str2 = $(this).text();
+          var d = $('#schedule_date').val();
+          if (str != str2){
+            $.ajax({
+              type : "post",
+              url : "<?php echo site_url('schedule/update_note') ;?>",
+              dataType : "json",
+              data : {d:d, str:str2},
+              success :function(data){
+                get_schedule();
+              }
+            });
+          }
         });
         $('#new_teacher_button').on('click', function(){
           $('#new_teacher_modal').modal('show');
         });
+        
         $('#btn_save_teacher').on('click', function(){
           var name = $('#teacher_name').val(),
               d = $('#schedule_date').val();
@@ -930,15 +930,15 @@
         });
       });
     </script>
-    <?php else:?>
+    <?php else: /* schedule user */?>
     <script>
   $(document).ready(function(){
     show_schedule();
-    get_schedules();
-    get_note();
-    setInterval(function(){show_schedule();get_note(); }, 20000);
-    $('#see_schedule').on('click',function(){
-      var d = $('#schedule_date').val();
+    setInterval(function(){
+      show_schedule();
+    }, 20000);
+    $('#schedule_date').on('change', function(){
+      var d = $(this).val();
       $.ajax({
         type: "POST",
         url : "<?php echo site_url('schedule/date_availability');?>",
@@ -954,42 +954,6 @@
           }
         }
       });
-    });
-    function get_note(){
-      var d = $('#schedule_date').val();
-      $.ajax({
-        type : "POST",
-        url : "<?php echo site_url('schedule/get_note') ;?>",
-        dataType : "JSON",
-        data : {d:d},
-        success: function(data){
-          var html = '', i;
-          for(i=0;i<data.length;i++){
-            html += data[i].note;
-          }
-          $('#note').html(html);
-        }
-      });
-    }
-    function get_schedules(){
-      $.ajax({
-        type : "ajax",
-        url : "<?php echo site_url('schedule/get_schedules');?>",
-        dataType : "JSON",
-        success : function(data){
-          var html = '',
-              i;
-          for(i=0;i<data.length;i++){
-            html += '<li class="list-group-item"><a class="schedule_list_item" href="javascript:void(0);" data-d="'+data[i].table_name+'">'+data[i].table_name+'</a></li>'
-          }
-          $('#schedule_list').html(html);
-        }
-      });
-    }
-    $('#schedule_list').on('click','.schedule_list_item', function(){
-      var d = $(this).data('d');
-      show_schedule(d);
-      $('#schedule_date').val(d);
     });
     function show_schedule(d = $('#schedule_date').val()){
       var dtf = d + " 00:00:00";
@@ -1118,6 +1082,19 @@
           }
           $('#my_schedule').html(html);
           $('#schedule_header').html(schd_head);
+          $.ajax({
+            type : "POST",
+            url : "<?php echo site_url('schedule/get_note') ;?>",
+            dataType : "JSON",
+            data : {d:d},
+            success: function(data){
+              var html = '', i;
+              for(i=0;i<data.length;i++){
+                html += data[i].note;
+              }
+              $('#note').html(html);
+            }
+          });
         }
       });
     }
