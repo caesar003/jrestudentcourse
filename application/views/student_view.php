@@ -1244,8 +1244,26 @@
           $('#nsf, #esf').removeClass("alert alert-danger");
           $('#nsf, #esf').html("");
         });
-      $('#save_student_btn').on('click',function(){
-          var bck = 'background-color',clr ='#fbe2e6',a=$('#pn').val(),b=$('#cn').val(),c=$('#nn').val(),d=$('#ad').val(),  e=$('#pb').val(),f=$('#db').val(),g=$('#ph').val(),h=$('#pr').val(),i=$('#pd').val(),j=$('#sd').val(),k=$('#re').val(),l=$('#ta').val(),m=$('#di').val(),n=$('#bg').val(), o=$('#si').val(),p=$('#wp').val(),q=$('#ap').val();
+        $('#save_student_btn').on('click',function(){
+          var bck = 'background-color',
+              clr ='#fbe2e6',
+              a=$('#pn').val(),
+              b=$('#cn').val(),
+              c=$('#nn').val(),
+              d=$('#ad').val(),
+              e=$('#pb').val(),
+              f=$('#db').val(),
+              g=$('#ph').val(),
+              h=$('#pr').val(),
+              i=$('#pd').val(),
+              j=$('#sd').val(),
+              k=$('#re').val(),
+              l=$('#ta').val(),
+              m=$('#di').val(),
+              n=$('#bg').val(),
+              o=$('#si').val(),
+              p=$('#wp').val(),
+              q=$('#ap').val();
           if (a==''|| b==''||d==''||f=='' ||g==''||h==''||i==''){
             $('#nsf').addClass('alert alert-danger'); $('#nsf').html('Please fill out all required fields'); 
             if (a=='') {$('#pn').css(bck, clr);}if (b=='') {$('#cn').css(bck, clr);}if(d==''){ $('#ad').css(bck, clr);}
@@ -1302,30 +1320,7 @@
                             $('[name="ap"]').val(""); 
                             $('#nsm').modal('hide');
                             $('#mystudents').DataTable().ajax.reload();
-                          }
-                        });
-                        $.ajax({
-                          type : "POST",
-                          url : "<?php echo site_url('student/course_table')?>", dataType : "JSON", data :{pin:a}, 
-                          success: function(data){
-                            console.log('s_'+a+' Created');
-                          }
-                        });
-                        $.ajax({
-                          type : "POST",
-                          url : "<?php echo site_url('student/student_directories')?>",
-                          dataType : "JSON", 
-                          data :{pin:a}, 
-                          success :function(data){
-                            console.log('Directory assets/student/'+a+'created!');
-                          }
-                        });
-                        $.ajax({type : "POST",url : "<?php echo site_url('student/syllabus_table')?>",dataType : "JSON",
-                          data :{pin:a},success: function(data){console.log('syllabus_'+a+' created!');
-                            $.ajax({type : "POST",url : "<?php echo site_url('student/syllabus_insert')?>",dataType : "JSON",
-                              data :{pin:a, program:h},success : function(data){console.log('Data for '+h+' successfully inserted to syllabus_'+a+'!')
-                              }
-                            });
+                           
                           }
                         });
                       }
@@ -1345,7 +1340,6 @@
           $('#fsp_button').html(fsp_button);
         });
         $('#update_student_btn').on('click',function(){
-
           var bck = 'background-color',clr='#fbe2e6',a=$('#pn2').val(),b=$('#cn2').val(),c=$('#nn2').val(),d=$('#ad2').val(),e=$('#pb2').val(),f=$('#db2').val(), g=$('#ph2').val(),h=$('#pr2').val(),i=$('#pd2').val(),j=$('#sd2').val(),k=$('#re2').val(),l=$('#ta2').val(),m=$('#di2').val(),n=$('#bg2').val(),  o=$('#si2').val(),p=$('#wp2').val(),action_plan=$('#ap2').val(),fsp='';
           if ($('#fsp').is(':checked')){fsp='yes';}else{fsp='';}
           if (a==''||b==''||d==''|| f=='' || g=='' || h=='' || i==''){
@@ -1545,7 +1539,6 @@
                             $('[name="ap"]').val(""); 
                             $('#nsm').modal('hide');
                             $('#mystudents').DataTable().ajax.reload();
-                            console.log(data);
                           }
                         });
                       }
