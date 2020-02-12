@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en=us">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <style>
+      a:hover {
+          text-decoration: none;
+          color: #ebf1eb;
+          background-color: grey;
+          border-radius: 4px;
+          padding: 3px;
+          margin: 2px;
+      }
+
+      a {
+          color: black;
+          text-decoration: none;
+      }
+      .code{
+        background-color:aquamarine;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-4" id="table-of-content">
+          <details>
+            <summary>Table of Content</summary>
+            <ul>
+              <li><a class="toc_link" href="javascript:void(0);" data-ch="login">Login</a></li>
+              <li><a class="toc_link" href="javascript:void(0);" data-ch="homepage">Home Page</a></li>
+              <li><a class="toc_link" href="javascript:void(0);" data-ch="student">Student File</a></li>
+              <li><a class="toc_link" href="javascript:void(0);" data-ch="test">Student Test</a></li>
+              <li><a class="toc_link" href="javascript:void(0);" data-ch="chat">Live Chat</a></li>
+            </ul>
+          </details>
+        </div>
+        <div class="col-md-8" id="main-content">
+          
+        </div>
+      </div>
+    </div>
+    <script src="assets/js/jquery-3.4.1.min.js"></script>
+    <script src="assets/js/popper.min.js"></script>
+    <script src="assets/js/bootstrap.js"></script>
+    <script>
+      $(document).ready(function(){
+        console.log('page loaded');
+        $('#table-of-content').on('click', '.toc_link', function(){
+          var ch = $(this).data('ch');
+          console.log(ch);
+          $('#main-content').load('documentation/'+ch+'.html');
+        });
+      });
+    </script>
+  </body>
+</html>

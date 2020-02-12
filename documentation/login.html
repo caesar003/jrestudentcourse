@@ -1,0 +1,36 @@
+<h1>Login</h1>
+<p>This is the structure of table user</p>
+<pre>
+________________________________________________________________________________________
+|id |    user_name   |   user_password   |   user_level   |  unread_message  |  avatar  |
+|___|________________|___________________|________________|__________________|__________|
+| 1 |   name         | md5-hash          | int            | yes/no           | link     |
+|___|________________|___________________|________________|__________________|__________|
+</pre>
+
+<h2>Index</h2>
+<div class="code">
+  <code>
+    <pre>
+  function index(){
+    $this->load->view('elegant_login.php');
+    if($this->session->userdata('logged_in') == TRUE){
+      redirect('student');
+    }
+  }
+    </pre>
+  </code>
+</div>
+<p>Those line above load the form on <code>elegant_login.php</code> and check if user has already logged in, if user has, it will redirect the page to the homepage.</p>
+<h2>Auth</h2>
+<h2>Logout</h2>
+<div class="code">
+  <code>
+    <pre>
+  function logout(){
+    $this->session->sess_destroy();
+    redirect('login');
+  }
+    </pre>
+  </code>
+</div>

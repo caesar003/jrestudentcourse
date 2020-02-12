@@ -1,0 +1,73 @@
+<h1>Homepage</h1>
+<p>There are two classes that play roles in this page, they are <code>Schedule</code> and <code>Student</code>.</p>
+<h2>Schedule</h2>
+<div class="code">
+  <code>
+    <pre>
+  class Schedule extends CI_Controller{
+    // methods go here
+  }
+    </pre>
+  </code>
+  
+</div>
+<p>This class would treat user diferently whether they are an admin or a regular user.</p>
+<h3>Shedule Admin</h3>
+<p>An administrator have access to change schedules, modify teachers, or even add new teachers as well as delete them.</p>
+<h3>Schedule User</h3>
+<p>A regular user would only be able to read the schedule for the current date, or for other days (if the schedule for requested day has been created by administrator).</p>
+<p></p>
+<h2>Student</h2>
+<div class="code">
+  <code>
+    <pre>
+  class Student extends CI_Controller{
+    // methods go here
+  }
+    </pre>
+  </code>
+</div>
+<h3>Student List</h3>
+<div class="code">
+  <code>
+    <pre>
+  function student_data(){
+    $data=$this->student_model->student_list();
+    echo json_encode($data);
+  }
+    </pre>
+  </code>
+</div>
+<h3>Add New Student</h3>
+<div class="code">
+  <code>
+    <pre>
+  function save(){
+    $data=$this->student_model->save_student();
+    echo json_encode($data);
+  }	
+    </pre>
+  </code>
+</div>
+<h3>Update Student Record</h3>
+<div class="code">
+  <code>
+    <pre>
+  function update(){
+    $data=$this->student_model->update_student();
+    echo json_encode($data);
+  }	
+    </pre>
+  </code>
+</div>
+<h3>After Teaching List</h3>
+<div class="code">
+  <code>
+    <pre>
+  function after_teaching_data(){
+    $data = $this->student_model->after_teaching_list();
+    echo json_encode($data);
+  }
+    </pre>
+  </code>
+</div>
