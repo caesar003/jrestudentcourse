@@ -9,6 +9,11 @@ class Student_model extends CI_Model{
     $result=$this->db->get('students');
     return $result->result();
   }
+  function get_cities(){
+    $this->db->order_by('city', 'asc');
+    $query = $this->db->get('cities');
+    return $query->result();
+  }
   function pin_availability($pin){
     $this->db->where('pin', $pin);
     $query = $this->db->get('students');

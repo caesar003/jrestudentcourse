@@ -23,6 +23,10 @@ class Student extends CI_Controller{
     echo json_encode($data);
   }
   /* New Student */
+  function get_cities(){
+    $data = $this->student_model->get_cities();
+    echo json_encode($data);
+  }
   function pin_availability(){
     $pin = $this->input->post('pin');
     if ($this->student_model->pin_availability($pin)){

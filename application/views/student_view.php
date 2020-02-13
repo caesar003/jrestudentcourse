@@ -226,7 +226,10 @@
                           <div class="input-group-prepend">
                             <span class="input-group-text"><i style="color:grey;" class="fa fa-map-marker fa-fw"></i></span>
                           </div>
-                          <input type="text" class="form-control" name="pb" id="pb" placeholder="Place of Birth">
+                          <!--input type="text" class="form-control" name="pb" id="pb" placeholder="Place of Birth"-->
+                          <select class="form-control" name="pb" id="pb">
+                            <option>Choose</option>
+                          </select>
                         </div>
                       </div>
                       <div class="form-group col-6">
@@ -377,7 +380,7 @@
           </div>
         </div>
       </div>
-    </form> 
+    </form> <!-- END NEW STUDENT -->
     <form>
       <div class="modal fade" id="esm" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true"> 
         <div style="max-width: 90%;" class="modal-dialog modal-lg" role="document"> 
@@ -657,7 +660,7 @@
         </div>
       </div>
     </form> <!-- END DELETE TEACHER -->
-<?php endif;?>
+    <?php endif;?>
     <?php include 'inc/scripts.php';?> 
     <?php include 'inc/chat-script.php';?>
     <?php if($this->session->userdata('level') == '21'):?>
@@ -1104,7 +1107,22 @@
     <?php if($this->session->userdata('level') == '17'):?>
      <script type="text/javascript">
       $(document).ready(function(){
-        var today = $.format.date(new Date(), "yyyy-MM-dd");        
+        var today = $.format.date(new Date(), "yyyy-MM-dd");   
+        get_cities();
+        function get_cities(){
+          $.ajax({
+            url: "<?php echo site_url('student/get_cities') ?>",
+            type : "ajax",
+            dataType : "json",
+            success : function(data){
+              var html = '', i;
+              for(i=0;i<data.length;i++){
+                html += '<option value="'+data[i].city+'">'+data[i].city+'</option>'
+              }
+              $('#pb').html(html);
+            }
+          });
+        }
           $('#mystudents').dataTable({
             "ajax" :{
               "url":"<?php echo site_url('student/student_data');?>",
@@ -1244,6 +1262,7 @@
           $('#nsf, #esf').removeClass("alert alert-danger");
           $('#nsf, #esf').html("");
         });
+        
         $('#save_student_btn').on('click',function(){
           var bck = 'background-color',
               clr ='#fbe2e6',
@@ -1377,7 +1396,22 @@
     <script type="text/javascript">
       $(document).ready(function(){
         var today = $.format.date(new Date(), "yyyy-MM-dd");
-          $('#mystudents').dataTable({
+        get_cities();
+        function get_cities(){
+          $.ajax({
+            url: "<?php echo site_url('student/get_cities') ?>",
+            type : "ajax",
+            dataType : "json",
+            success : function(data){
+              var html = '', i;
+              for(i=0;i<data.length;i++){
+                html += '<option value="'+data[i].city+'">'+data[i].city+'</option>'
+              }
+              $('#pb').html(html);
+            }
+          });
+        }
+      $('#mystudents').dataTable({
             "ajax" :{
               "url":"<?php echo site_url('student/student_data');?>",
               "dataSrc":""
