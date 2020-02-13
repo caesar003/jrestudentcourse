@@ -226,10 +226,10 @@
                           <div class="input-group-prepend">
                             <span class="input-group-text"><i style="color:grey;" class="fa fa-map-marker fa-fw"></i></span>
                           </div>
-                          <!--input type="text" class="form-control" name="pb" id="pb" placeholder="Place of Birth"-->
-                          <select class="form-control" name="pb" id="pb">
+                          <input type="text" class="form-control" name="pb" id="pb" placeholder="Place of Birth">
+                          <!--select class="form-control" name="pb" id="pb">
                             <option>Choose</option>
-                          </select>
+                          </select-->
                         </div>
                       </div>
                       <div class="form-group col-6">
@@ -1112,7 +1112,7 @@
      <script type="text/javascript">
       $(document).ready(function(){
         var today = $.format.date(new Date(), "yyyy-MM-dd");   
-        get_cities();
+        //get_cities();
         function get_cities(){
           $.ajax({
             url: "<?php echo site_url('student/get_cities') ?>",
