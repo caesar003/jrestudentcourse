@@ -274,6 +274,8 @@
                             <option value="Believe">Believe</option>
                             <option value="Express">Express</option>
                             <option value="Intensive">Intensive</option>
+                            <option value="TOEFL Prep">TOEFL Prep</option>
+                            <option value="IELTS Prep">IELTS Prep</option>
                             <option value="Pre-Confidence">Pre Confidence</option> <option value="Monthly">Monthly</option>
                           </select> 
                         </div>
@@ -481,6 +483,8 @@
                             <option value="Believe">Believe</option>
                              <option value="Express">Express</option>
                             <option value="Intensive">Intensive</option>
+                            <option value="TOEFL Prep">TOEFL Prep</option>
+                            <option value="IELTS Prep">IELTS Prep</option>
                             <option value="Pre-Confidence">Pre Confidence</option> 
                             <option value="Monthly">Monthly</option> 
                           </select> 
