@@ -10,7 +10,16 @@ class Student_model extends CI_Model{
     return $result->result();
   }
   function get_cities(){
+    $term = $this->input->post('keyword');
+    $this->db->like('city', $term, 'after');
     $this->db->order_by('city', 'asc');
+    $query = $this->db->get('cities');
+    return $query->result();
+  }
+  function search_blog($term){
+    $this->db->like('city', $term);
+    $this->db->order_by('city', 'ASC');
+    $this->db->limit(10);
     $query = $this->db->get('cities');
     return $query->result();
   }

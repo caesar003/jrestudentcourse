@@ -227,10 +227,11 @@
                             <span class="input-group-text"><i style="color:grey;" class="fa fa-map-marker fa-fw"></i></span>
                           </div>
                           <input type="text" class="form-control" name="pb" id="pb" placeholder="Place of Birth">
-                          <!--select class="form-control" name="pb" id="pb">
-                            <option>Choose</option>
-                          </select-->
+                          
                         </div>
+                        <div id="suggestion_box">
+                            <ul id="suggestions"></ul>
+                          </div>
                       </div>
                       <div class="form-group col-6">
                         <label>Date of Birth<sup>&lowast;</sup></label>
@@ -672,7 +673,6 @@
       $(document).ready(function(){
         get_schedules();
         get_schedule();
-        
         function get_schedules(){
           var d = $('#schedule_date').val();
           $.ajax({
@@ -1106,27 +1106,12 @@
       });
     }
   });
-</script>
+</script> <!-- end schedule user -->
     <?php endif;?>
-    <?php if($this->session->userdata('level') == '17'):?>
+    <?php if($this->session->userdata('level') == '17'): /* script spv*/?> 
      <script type="text/javascript">
       $(document).ready(function(){
         var today = $.format.date(new Date(), "yyyy-MM-dd");   
-        //get_cities();
-        function get_cities(){
-          $.ajax({
-            url: "<?php echo site_url('student/get_cities') ?>",
-            type : "ajax",
-            dataType : "json",
-            success : function(data){
-              var html = '', i;
-              for(i=0;i<data.length;i++){
-                html += '<option value="'+data[i].city+'">'+data[i].city+'</option>'
-              }
-              $('#pb').html(html);
-            }
-          });
-        }
           $('#mystudents').dataTable({
             "ajax" :{
               "url":"<?php echo site_url('student/student_data');?>",
@@ -1396,11 +1381,35 @@
         });
       }); 
     </script> 
-    <?php else:?>
+    <?php else: /* script user */?>
     <script type="text/javascript">
       $(document).ready(function(){
+       $("#pb").keyup(function(){
+         if($(this).val()==''){
+           $('#suggestion_box').hide();
+         } else {
+           $.ajax({
+             type: "POST",
+             url: "<?php echo site_url('student/get_cities') ;?>",
+             data:'keyword='+$(this).val(),
+             dataType : "json",
+             success: function(data){
+               var html = '', i;
+               for(i=0;i<data.length;i++){
+                 html += '<li data-city="'+data[i].city+'" class="city-name">'+data[i].city+'</li>';
+               }
+               $("#suggestion_box").show();
+               $("#suggestions").html(html);
+             }
+           });
+         }
+       });
+        $('#suggestions').on('click', '.city-name', function(){
+          var city_name = $(this).data('city');
+          $('#pb').val(city_name);
+          $('#suggestion_box').hide();
+        });
         var today = $.format.date(new Date(), "yyyy-MM-dd");
-        get_cities();
         function get_cities(){
           $.ajax({
             url: "<?php echo site_url('student/get_cities') ?>",
