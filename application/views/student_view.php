@@ -682,8 +682,7 @@
             url : "<?php echo site_url('schedule/get_schedules');?>",
             dataType : "JSON",
             success : function(data){
-              var html = '',
-                  i;
+              var html = '',i;
               for(i=0;i<data.length;i++){
                 if(data[i].table_name == d){
                   html += '<li class="list-group-item curr"><a class="schedule_list_item  curr_a" href="javascript:void(0);" data-d="'+data[i].table_name+'">'+data[i].table_name+'</a></li>'
@@ -752,13 +751,11 @@
             });
           }          
         });
-        
         $('#schedule_list').on('click','.schedule_list_item', function(){
           var d = $(this).data('d');
           get_schedule(d);
           $('#schedule_date').val(d);
         });
-        
         function get_schedule(d = $('#schedule_date').val()){
           var dtf = d + " 00:00:00";
           $.ajax({
@@ -832,7 +829,6 @@
             }
           });
         }
-        
         $('#my_schedule').on('focusin','.edit', function(){
           $(this).addClass('editMode');
           var id= $(this).data('id'),
@@ -859,7 +855,6 @@
             }
           });
         });
-        
         $('#note').on('focusin', function(){
           $(this).addClass('editMode');
           var str = $(this).text(),
@@ -869,9 +864,9 @@
         });
         $('#note').on('focusout',function(){
           $(this).removeClass('editMode');
-          var str = $('#str').val();
-          var str2 = $(this).text();
-          var d = $('#schedule_date').val();
+          var str = $('#str').val(),
+              str2 = $(this).text(),
+              d = $('#schedule_date').val();
           if (str != str2){
             $.ajax({
               type : "post",
@@ -886,8 +881,7 @@
         });
         $('#new_teacher_button').on('click', function(){
           $('#new_teacher_modal').modal('show');
-        });
-        
+        }); 
         $('#btn_save_teacher').on('click', function(){
           var name = $('#teacher_name').val(),
               d = $('#schedule_date').val();
@@ -941,206 +935,206 @@
     </script>
     <?php else: /* schedule user */?>
     <script>
-  $(document).ready(function(){
-    show_schedule();
-    setInterval(function(){
-      show_schedule();
-    }, 20000);
-    $('#schedule_date').on('change', function(){
-      var d = $(this).val();
-      $.ajax({
-        type: "POST",
-        url : "<?php echo site_url('schedule/date_availability');?>",
-        data: {d:d},
-        success : function(response){
-          if(response == 'false'){
-            $('#sch_r').addClass('alert alert-danger');
-            $('#sch_r').fadeIn('fast');
-            $('#sch_r').html('Table for <em>'+d+' </em>isn\'t available yet!');
-            $('#sch_r').fadeOut(5000);
-          } else{
-            show_schedule();
-          }
-        }
-      });
-    });
-    function show_schedule(d = $('#schedule_date').val()){
-      var dtf = d + " 00:00:00";
-      $.ajax({
-        type: "ajax",
-        url: "<?php echo site_url('schedule/get_schedule?d=');?>"+d,
-        dataType : "JSON",
-        success : function(data){
-          var html = '',
-              schd_head = '<small>Schedule for</small> '+$.format.date(dtf, "ddd, MMM D, yyyy"),
-              stl = "<?php echo site_url('student_single?pin=');?>",
-              i;
-          for (i=0;i<data.length;i++){
-            html += '<tr>'+
-                      '<td style="text-align:right;">'+data[i].id+'</td>'+
-                      '<td style="text-align:left;">'+data[i].name+'</td>';
-            if(isNaN(data[i]._9)){
-                html += '<td class="tc_break">'+data[i]._9+'</td>';
-            } else if(data[i]._9p == 'a'){
-              html += '<td class="abs""><a href="'+stl+data[i]._9+'">'+data[i]._9+' <span class="req">'+data[i]._9r+'</span></a></td>';
-            } else if(data[i]._9p == 'p'){
-              html += '<td class="prst"><a href="'+stl+data[i]._9+'">'+data[i]._9+' <span class="req">'+data[i]._9r+'</span></a></td>';
-            } else {
-              html += '<td><a href="'+stl+data[i]._9+'">'+data[i]._9+' <span class="req">'+data[i]._9r+'</span></a></td>';
-            }
-            if(isNaN(data[i]._10)){
-                 html += '<td class="tc_break">'+data[i]._10+'</td>';
-            } else if(data[i]._10p == 'a'){
-              html += '<td class="abs""><a href="'+stl+data[i]._10+'">'+data[i]._10+' <span class="req">'+data[i]._10r+'</span></a></td>';
-            } else if(data[i]._10p == 'p'){
-              html += '<td class="prst"><a href="'+stl+data[i]._10+'">'+data[i]._10+' <span class="req">'+data[i]._10r+'</span></a></td>';
-            } else {
-              html += '<td><a href="'+stl+data[i]._10+'">'+data[i]._10+' <small><stronsg>'+data[i]._10r+'</span></a></td>';
-            }
-            if(isNaN(data[i]._11)){
-                 html += '<td class="tc_break">'+data[i]._11+'</td>';
-            } else if(data[i]._11p == 'a'){
-              html += '<td class="abs""><a href="'+stl+data[i]._11+'">'+data[i]._11+' <span class="req">'+data[i]._11r+'</span></a></td>';
-            } else if(data[i]._11p == 'p'){
-              html += '<td class="prst"><a href="'+stl+data[i]._11+'">'+data[i]._11+' <span class="req">'+data[i]._11r+'</span></a></td>';
-            } else {
-              html += '<td><a href="'+stl+data[i]._11+'">'+data[i]._11+' <span class="req">'+data[i]._11r+'</span></a></td>';
-            }
-           if(isNaN(data[i]._12)){
-                 html += '<td class="tc_break">'+data[i]._12+'</td>';
-            } else if(data[i]._12p == 'a'){
-              html += '<td class="abs""><a href="'+stl+data[i]._12+'">'+data[i]._12+' <span class="req">'+data[i]._12r+'</span></a></td>';
-            } else if(data[i]._12p == 'p'){
-              html += '<td class="prst"><a href="'+stl+data[i]._12+'">'+data[i]._12+' <span class="req">'+data[i]._12r+'</span></a></td>';
-            } else {
-              html += '<td><a href="'+stl+data[i]._12+'">'+data[i]._12+' <span class="req">'+data[i]._12r+'</span></a></td>';
-            }
-            if(isNaN(data[i]._13)){
-                 html += '<td class="tc_break">'+data[i]._13+'</td>';
-            } else if(data[i]._13p == 'a'){
-              html += '<td class="abs""><a href="'+stl+data[i]._13+'">'+data[i]._13+' <span class="req">'+data[i]._13r+'</span></a></td>';
-            } else if(data[i]._13p == 'p'){
-              html += '<td class="prst"><a href="'+stl+data[i]._13+'">'+data[i]._13+' <span class="req">'+data[i]._13r+'</span></a></td>';
-            } else {
-              html += '<td><a href="'+stl+data[i]._13+'">'+data[i]._13+' <span class="req">'+data[i]._13r+'</span></a></td>';
-            }
-            if(isNaN(data[i]._14)){
-                 html += '<td class="tc_break">'+data[i]._14+'</td>';
-            } else if(data[i]._14p == 'a'){
-              html += '<td class="abs""><a href="'+stl+data[i]._14+'">'+data[i]._14+' <span class="req">'+data[i]._14r+'</span></a></td>';
-            } else if(data[i]._14p == 'p'){
-              html += '<td class="prst"><a href="'+stl+data[i]._14+'">'+data[i]._14+' <span class="req">'+data[i]._14r+'</span></a></td>';
-            } else {
-              html += '<td><a href="'+stl+data[i]._14+'">'+data[i]._14+' <span class="req">'+data[i]._14r+'</span></a></td>';
-            }
-            if(isNaN(data[i]._15)){
-                 html += '<td class="tc_break">'+data[i]._15+'</td>';
-            } else if(data[i]._15p == 'a'){
-              html += '<td class="abs""><a href="'+stl+data[i]._15+'">'+data[i]._15+' <span class="req">'+data[i]._15r+'</span></a></td>';                  
-            } else if(data[i]._15p == 'p'){
-              html += '<td class="prst"><a href="'+stl+data[i]._15+'">'+data[i]._15+' <span class="req">'+data[i]._15r+'</span></a></td>';
-            } else {
-              html += '<td><a href="'+stl+data[i]._15+'">'+data[i]._15+' <span class="req">'+data[i]._15r+'</span></a></td>';
-            }
-            if(isNaN(data[i]._16)){
-                 html += '<td class="tc_break">'+data[i]._16+'</td>';
-            } else if(data[i]._16p == 'a'){
-              html += '<td class="abs""><a href="'+stl+data[i]._16+'">'+data[i]._16+' <span class="req">'+data[i]._16r+'</span></a></td>';                  
-            } else if(data[i]._16p == 'p'){
-              html += '<td class="prst"><a href="'+stl+data[i]._16+'">'+data[i]._16+' <span class="req">'+data[i]._16r+'</span></a></td>';
-            } else {
-              html += '<td><a href="'+stl+data[i]._16+'">'+data[i]._16+' <span class="req">'+data[i]._16r+'</span></a></td>';
-            }
-            if(isNaN(data[i]._17)){
-                 html += '<td class="tc_break">'+data[i]._17+'</td>';
-            } else if(data[i]._17p == 'a'){
-              html += '<td class="abs""><a href="'+stl+data[i]._17+'">'+data[i]._17+' <span class="req">'+data[i]._17r+'</span></a></td>';                  
-            } else if(data[i]._17p == 'p'){
-              html += '<td class="prst"><a href="'+stl+data[i]._17+'">'+data[i]._17+' <span class="req">'+data[i]._17r+'</span></a></td>';
-            } else {
-              html += '<td><a href="'+stl+data[i]._17+'">'+data[i]._17+' <span class="req">'+data[i]._17r+'</span></a></td>';
-            }
-            if(isNaN(data[i]._18)){
-                 html += '<td class="tc_break">'+data[i]._18+'</td>';
-            } else if(data[i]._18p == 'a'){
-              html += '<td class="abs""><a href="'+stl+data[i]._18+'">'+data[i]._18+' <span class="req">'+data[i]._18r+'</span></a></td>';                  
-            } else if(data[i]._18p == 'p'){
-              html += '<td class="prst"><a href="'+stl+data[i]._18+'">'+data[i]._18+' <span class="req">'+data[i]._18r+'</span></a></td>';
-            } else {
-              html += '<td><a href="'+stl+data[i]._18+'">'+data[i]._18+' <span class="req">'+data[i]._18r+'</span></a></td>';
-            }
-            if(isNaN(data[i]._19)){
-                 html += '<td class="tc_break">'+data[i]._19+'</td>';
-            } else if(data[i]._19p == 'a'){
-              html += '<td class="abs""><a href="'+stl+data[i]._19+'">'+data[i]._19+' <span class="req">'+data[i]._19r+'</span></a></td>';                  
-            } else if(data[i]._19p == 'p'){
-              html += '<td class="prst"><a href="'+stl+data[i]._19+'">'+data[i]._19+' <span class="req">'+data[i]._19r+'</span></a></td>';
-            } else {
-              html += '<td><a href="'+stl+data[i]._19+'">'+data[i]._19+' <span class="req">'+data[i]._19r+'</span></a></td>';
-            }
-            if(isNaN(data[i]._20)){
-                 html += '<td class="tc_break">'+data[i]._20+'</td>';
-            } else if(data[i]._20p == 'a'){
-              html += '<td class="abs""><a href="'+stl+data[i]._20+'">'+data[i]._20+' <span class="req">'+data[i]._20r+'</span></a></td>';                  
-            } else if(data[i]._20p == 'p'){
-              html += '<td class="prst"><a href="'+stl+data[i]._20+'">'+data[i]._20+' <span class="req">'+data[i]._20r+'</span></a></td>';
-            } else {
-              html += '<td><a href="'+stl+data[i]._20+'">'+data[i]._20+' <span class="req">'+data[i]._20r+'</span></a></td>';
-            }
-            html += '</tr>';
-          }
-          $('#my_schedule').html(html);
-          $('#schedule_header').html(schd_head);
+      $(document).ready(function(){
+        show_schedule();
+        setInterval(function(){
+          show_schedule();
+        }, 20000);
+        $('#schedule_date').on('change', function(){
+          var d = $(this).val();
           $.ajax({
-            type : "POST",
-            url : "<?php echo site_url('schedule/get_note') ;?>",
-            dataType : "JSON",
-            data : {d:d},
-            success: function(data){
-              var html = '', i;
-              for(i=0;i<data.length;i++){
-                html += data[i].note;
+            type: "POST",
+            url : "<?php echo site_url('schedule/date_availability');?>",
+            data: {d:d},
+            success : function(response){
+              if(response == 'false'){
+                $('#sch_r').addClass('alert alert-danger');
+                $('#sch_r').fadeIn('fast');
+                $('#sch_r').html('Table for <em>'+d+' </em>isn\'t available yet!');
+                $('#sch_r').fadeOut(5000);
+              } else{
+                show_schedule();
               }
-              $('#note').html(html);
+            }
+          });
+        });
+        function show_schedule(d = $('#schedule_date').val()){
+          var dtf = d + " 00:00:00";
+          $.ajax({
+            type: "ajax",
+            url: "<?php echo site_url('schedule/get_schedule?d=');?>"+d,
+            dataType : "JSON",
+            success : function(data){
+              var html = '',
+                  schd_head = '<small>Schedule for</small> '+$.format.date(dtf, "ddd, MMM D, yyyy"),
+                  stl = "<?php echo site_url('student_single?pin=');?>",
+                  i;
+              for (i=0;i<data.length;i++){
+                html += '<tr>'+
+                          '<td style="text-align:right;">'+data[i].id+'</td>'+
+                          '<td style="text-align:left;">'+data[i].name+'</td>';
+                if(isNaN(data[i]._9)){
+                    html += '<td class="tc_break">'+data[i]._9+'</td>';
+                } else if(data[i]._9p == 'a'){
+                  html += '<td class="abs""><a href="'+stl+data[i]._9+'">'+data[i]._9+' <span class="req">'+data[i]._9r+'</span></a></td>';
+                } else if(data[i]._9p == 'p'){
+                  html += '<td class="prst"><a href="'+stl+data[i]._9+'">'+data[i]._9+' <span class="req">'+data[i]._9r+'</span></a></td>';
+                } else {
+                  html += '<td><a href="'+stl+data[i]._9+'">'+data[i]._9+' <span class="req">'+data[i]._9r+'</span></a></td>';
+                }
+                if(isNaN(data[i]._10)){
+                     html += '<td class="tc_break">'+data[i]._10+'</td>';
+                } else if(data[i]._10p == 'a'){
+                  html += '<td class="abs""><a href="'+stl+data[i]._10+'">'+data[i]._10+' <span class="req">'+data[i]._10r+'</span></a></td>';
+                } else if(data[i]._10p == 'p'){
+                  html += '<td class="prst"><a href="'+stl+data[i]._10+'">'+data[i]._10+' <span class="req">'+data[i]._10r+'</span></a></td>';
+                } else {
+                  html += '<td><a href="'+stl+data[i]._10+'">'+data[i]._10+' <small><stronsg>'+data[i]._10r+'</span></a></td>';
+                }
+                if(isNaN(data[i]._11)){
+                     html += '<td class="tc_break">'+data[i]._11+'</td>';
+                } else if(data[i]._11p == 'a'){
+                  html += '<td class="abs""><a href="'+stl+data[i]._11+'">'+data[i]._11+' <span class="req">'+data[i]._11r+'</span></a></td>';
+                } else if(data[i]._11p == 'p'){
+                  html += '<td class="prst"><a href="'+stl+data[i]._11+'">'+data[i]._11+' <span class="req">'+data[i]._11r+'</span></a></td>';
+                } else {
+                  html += '<td><a href="'+stl+data[i]._11+'">'+data[i]._11+' <span class="req">'+data[i]._11r+'</span></a></td>';
+                }
+               if(isNaN(data[i]._12)){
+                     html += '<td class="tc_break">'+data[i]._12+'</td>';
+                } else if(data[i]._12p == 'a'){
+                  html += '<td class="abs""><a href="'+stl+data[i]._12+'">'+data[i]._12+' <span class="req">'+data[i]._12r+'</span></a></td>';
+                } else if(data[i]._12p == 'p'){
+                  html += '<td class="prst"><a href="'+stl+data[i]._12+'">'+data[i]._12+' <span class="req">'+data[i]._12r+'</span></a></td>';
+                } else {
+                  html += '<td><a href="'+stl+data[i]._12+'">'+data[i]._12+' <span class="req">'+data[i]._12r+'</span></a></td>';
+                }
+                if(isNaN(data[i]._13)){
+                     html += '<td class="tc_break">'+data[i]._13+'</td>';
+                } else if(data[i]._13p == 'a'){
+                  html += '<td class="abs""><a href="'+stl+data[i]._13+'">'+data[i]._13+' <span class="req">'+data[i]._13r+'</span></a></td>';
+                } else if(data[i]._13p == 'p'){
+                  html += '<td class="prst"><a href="'+stl+data[i]._13+'">'+data[i]._13+' <span class="req">'+data[i]._13r+'</span></a></td>';
+                } else {
+                  html += '<td><a href="'+stl+data[i]._13+'">'+data[i]._13+' <span class="req">'+data[i]._13r+'</span></a></td>';
+                }
+                if(isNaN(data[i]._14)){
+                     html += '<td class="tc_break">'+data[i]._14+'</td>';
+                } else if(data[i]._14p == 'a'){
+                  html += '<td class="abs""><a href="'+stl+data[i]._14+'">'+data[i]._14+' <span class="req">'+data[i]._14r+'</span></a></td>';
+                } else if(data[i]._14p == 'p'){
+                  html += '<td class="prst"><a href="'+stl+data[i]._14+'">'+data[i]._14+' <span class="req">'+data[i]._14r+'</span></a></td>';
+                } else {
+                  html += '<td><a href="'+stl+data[i]._14+'">'+data[i]._14+' <span class="req">'+data[i]._14r+'</span></a></td>';
+                }
+                if(isNaN(data[i]._15)){
+                     html += '<td class="tc_break">'+data[i]._15+'</td>';
+                } else if(data[i]._15p == 'a'){
+                  html += '<td class="abs""><a href="'+stl+data[i]._15+'">'+data[i]._15+' <span class="req">'+data[i]._15r+'</span></a></td>';                  
+                } else if(data[i]._15p == 'p'){
+                  html += '<td class="prst"><a href="'+stl+data[i]._15+'">'+data[i]._15+' <span class="req">'+data[i]._15r+'</span></a></td>';
+                } else {
+                  html += '<td><a href="'+stl+data[i]._15+'">'+data[i]._15+' <span class="req">'+data[i]._15r+'</span></a></td>';
+                }
+                if(isNaN(data[i]._16)){
+                     html += '<td class="tc_break">'+data[i]._16+'</td>';
+                } else if(data[i]._16p == 'a'){
+                  html += '<td class="abs""><a href="'+stl+data[i]._16+'">'+data[i]._16+' <span class="req">'+data[i]._16r+'</span></a></td>';                  
+                } else if(data[i]._16p == 'p'){
+                  html += '<td class="prst"><a href="'+stl+data[i]._16+'">'+data[i]._16+' <span class="req">'+data[i]._16r+'</span></a></td>';
+                } else {
+                  html += '<td><a href="'+stl+data[i]._16+'">'+data[i]._16+' <span class="req">'+data[i]._16r+'</span></a></td>';
+                }
+                if(isNaN(data[i]._17)){
+                     html += '<td class="tc_break">'+data[i]._17+'</td>';
+                } else if(data[i]._17p == 'a'){
+                  html += '<td class="abs""><a href="'+stl+data[i]._17+'">'+data[i]._17+' <span class="req">'+data[i]._17r+'</span></a></td>';                  
+                } else if(data[i]._17p == 'p'){
+                  html += '<td class="prst"><a href="'+stl+data[i]._17+'">'+data[i]._17+' <span class="req">'+data[i]._17r+'</span></a></td>';
+                } else {
+                  html += '<td><a href="'+stl+data[i]._17+'">'+data[i]._17+' <span class="req">'+data[i]._17r+'</span></a></td>';
+                }
+                if(isNaN(data[i]._18)){
+                     html += '<td class="tc_break">'+data[i]._18+'</td>';
+                } else if(data[i]._18p == 'a'){
+                  html += '<td class="abs""><a href="'+stl+data[i]._18+'">'+data[i]._18+' <span class="req">'+data[i]._18r+'</span></a></td>';                  
+                } else if(data[i]._18p == 'p'){
+                  html += '<td class="prst"><a href="'+stl+data[i]._18+'">'+data[i]._18+' <span class="req">'+data[i]._18r+'</span></a></td>';
+                } else {
+                  html += '<td><a href="'+stl+data[i]._18+'">'+data[i]._18+' <span class="req">'+data[i]._18r+'</span></a></td>';
+                }
+                if(isNaN(data[i]._19)){
+                     html += '<td class="tc_break">'+data[i]._19+'</td>';
+                } else if(data[i]._19p == 'a'){
+                  html += '<td class="abs""><a href="'+stl+data[i]._19+'">'+data[i]._19+' <span class="req">'+data[i]._19r+'</span></a></td>';                  
+                } else if(data[i]._19p == 'p'){
+                  html += '<td class="prst"><a href="'+stl+data[i]._19+'">'+data[i]._19+' <span class="req">'+data[i]._19r+'</span></a></td>';
+                } else {
+                  html += '<td><a href="'+stl+data[i]._19+'">'+data[i]._19+' <span class="req">'+data[i]._19r+'</span></a></td>';
+                }
+                if(isNaN(data[i]._20)){
+                     html += '<td class="tc_break">'+data[i]._20+'</td>';
+                } else if(data[i]._20p == 'a'){
+                  html += '<td class="abs""><a href="'+stl+data[i]._20+'">'+data[i]._20+' <span class="req">'+data[i]._20r+'</span></a></td>';                  
+                } else if(data[i]._20p == 'p'){
+                  html += '<td class="prst"><a href="'+stl+data[i]._20+'">'+data[i]._20+' <span class="req">'+data[i]._20r+'</span></a></td>';
+                } else {
+                  html += '<td><a href="'+stl+data[i]._20+'">'+data[i]._20+' <span class="req">'+data[i]._20r+'</span></a></td>';
+                }
+                html += '</tr>';
+              }
+              $('#my_schedule').html(html);
+              $('#schedule_header').html(schd_head);
+              $.ajax({
+                type : "POST",
+                url : "<?php echo site_url('schedule/get_note') ;?>",
+                dataType : "JSON",
+                data : {d:d},
+                success: function(data){
+                  var html = '', i;
+                  for(i=0;i<data.length;i++){
+                    html += data[i].note;
+                  }
+                  $('#note').html(html);
+                }
+              });
             }
           });
         }
       });
-    }
-  });
-</script> <!-- end schedule user -->
+    </script> <!-- end schedule user -->
     <?php endif;?>
     <?php if($this->session->userdata('level') == '17'): /* script spv*/?> 
-     <script type="text/javascript">
+    <script type="text/javascript">
       $(document).ready(function(){
+        var today = $.format.date(new Date(), "yyyy-MM-dd");  
         $("#pb").keyup(function(){
-         if($(this).val()==''){
-           $('#suggestion_box').hide();
-         } else {
-           $.ajax({
-             type: "POST",
-             url: "<?php echo site_url('student/get_cities') ;?>",
-             data:'keyword='+$(this).val(),
-             dataType : "json",
-             success: function(data){
-               var html = '', i;
-               for(i=0;i<data.length;i++){
-                 html += '<li data-city="'+data[i].city+'" class="city-name">'+data[i].city+'</li>';
-               }
-               $("#suggestion_box").show();
-               $("#suggestions").html(html);
-             }
-           });
-         }
-       });
+          if($(this).val()==''){
+            $('#suggestion_box').hide();
+          } else {
+            $.ajax({
+              type: "POST",
+              url: "<?php echo site_url('student/get_cities') ;?>",
+              data:'keyword='+$(this).val(),
+              dataType : "json",
+              success: function(data){
+                var html = '', i;
+                for(i=0;i<data.length;i++){
+                  html += '<li data-city="'+data[i].city+'" class="city-name">'+data[i].city+'</li>';
+                }
+                $("#suggestion_box").show();
+                $("#suggestions").html(html);
+              }
+            });
+          }
+        });
         $('#suggestions').on('click', '.city-name', function(){
           var city_name = $(this).data('city');
           $('#pb').val(city_name);
           $('#suggestion_box').hide();
-        });
-        
+        });    
         $("#pb2").keyup(function(){
-         if($(this).val()==''){
+          if($(this).val()==''){
            $('#suggestion_box2').hide();
          } else {
            $.ajax({
@@ -1158,14 +1152,13 @@
              }
            });
          }
-       });
+        });
         $('#suggestions2').on('click', '.city-name', function(){
           var city_name = $(this).data('city');
           $('#pb2').val(city_name);
           $('#suggestion_box2').hide();
         });
-        var today = $.format.date(new Date(), "yyyy-MM-dd");   
-          $('#mystudents').dataTable({
+        $('#mystudents').dataTable({
             "ajax" :{
               "url":"<?php echo site_url('student/student_data');?>",
               "dataSrc":""
@@ -1203,20 +1196,14 @@
               }
             ]
           });
-          $('#show_data').on('click', '.item_delete', function(){
+        $('#show_data').on('click', '.item_delete', function(){
              var pin = $(this).data('pin');
              $('#pin_delete').val(pin);
              $('#delete_student_modal').modal('show');
           });
-         $('#btn_delete_student').on('click', function(){
+        $('#btn_delete_student').on('click', function(){
              var pin = $('#pin_delete').val();
              console.log(pin);
-           // get test
-           // for each test ->meeting number
-           // from that meeting number, whe know the students test tables
-           // remove test tables using array
-           // check if student has fsp
-           // if he has, delete it, if not
              $.ajax({
                 type: "post",
                 url: "<?php echo site_url('student/delete_student');?>",
@@ -1227,36 +1214,10 @@
                     $('#mystudents').DataTable().ajax.reload();
                     $('#myaft').DataTable().ajax.reload();
                     $('#delete_student_modal').modal('hide');
-                   /* $.ajax({
-                       type : "post",
-                       url : "<?php echo site_url('student/delete_table');?>",
-                       dataType : "json",
-                       success : function(data){
-                         console.log('table deleted');
-                         $.ajax({
-                           type : "post",
-                           url : "<?php echo site_url('student/del_dir_contents');?>",
-                           data : {pin:pin},
-                           success : function(response){
-                             console.log('deleted');
-                             if(response== 'true'){
-                             // it is not implemented yet
-                               $.ajax({
-                                 type : "post",
-                                 data : {pin:pin},
-                                 url : "<?php echo site_url('student/del_dir');?>",
-                               });
-                             } else {
-                               console.log('error');
-                             }
-                           }
-                         }); 
-                       }
-                    }); */
                 }
              });
           }); 
-      $('#myaft').DataTable({
+        $('#myaft').DataTable({
           "ajax" : {
             "url" :"<?php echo site_url('student/after_teaching_data')?>",
             "dataSrc" : ""
@@ -1304,7 +1265,6 @@
           $('#nsf, #esf').removeClass("alert alert-danger");
           $('#nsf, #esf').html("");
         });
-        
         $('#save_student_btn').on('click',function(){
           var bck = 'background-color',
               clr ='#fbe2e6',
@@ -1437,7 +1397,8 @@
     <?php else: /* script user */?>
     <script type="text/javascript">
       $(document).ready(function(){
-       $("#pb").keyup(function(){
+        var today = $.format.date(new Date(), "yyyy-MM-dd");
+        $("#pb").keyup(function(){
          if($(this).val()==''){
            $('#suggestion_box').hide();
          } else {
@@ -1461,8 +1422,7 @@
           var city_name = $(this).data('city');
           $('#pb').val(city_name);
           $('#suggestion_box').hide();
-        });
-        
+        }); 
         $("#pb2").keyup(function(){
          if($(this).val()==''){
            $('#suggestion_box2').hide();
@@ -1488,23 +1448,7 @@
           $('#pb2').val(city_name);
           $('#suggestion_box2').hide();
         });
-        
-        var today = $.format.date(new Date(), "yyyy-MM-dd");
-        function get_cities(){
-          $.ajax({
-            url: "<?php echo site_url('student/get_cities') ?>",
-            type : "ajax",
-            dataType : "json",
-            success : function(data){
-              var html = '', i;
-              for(i=0;i<data.length;i++){
-                html += '<option value="'+data[i].city+'">'+data[i].city+'</option>'
-              }
-              $('#pb').html(html);
-            }
-          });
-        }
-      $('#mystudents').dataTable({
+        $('#mystudents').dataTable({
             "ajax" :{
               "url":"<?php echo site_url('student/student_data');?>",
               "dataSrc":""
@@ -1542,7 +1486,7 @@
               }
             ]
           });
-      $('#myaft').dataTable({
+        $('#myaft').dataTable({
           "ajax" : {
             "url" :"<?php echo site_url('student/after_teaching_data')?>",
             "dataSrc" : ""
@@ -1590,7 +1534,7 @@
           $('#nsf, #esf').removeClass("alert alert-danger");
           $('#nsf, #esf').html("");
         });
-      $('#save_student_btn').on('click',function(){
+        $('#save_student_btn').on('click',function(){
           var bck = 'background-color',
               clr ='#fbe2e6',
               a=$('#pn').val(),
@@ -1685,7 +1629,6 @@
           $('#fsp_button').html(fsp_button);
         });
         $('#update_student_btn').on('click',function(){
-
           var bck = 'background-color',clr='#fbe2e6',a=$('#pn2').val(),b=$('#cn2').val(),c=$('#nn2').val(),d=$('#ad2').val(),e=$('#pb2').val(),f=$('#db2').val(), g=$('#ph2').val(),h=$('#pr2').val(),i=$('#pd2').val(),j=$('#sd2').val(),k=$('#re2').val(),l=$('#ta2').val(),m=$('#di2').val(),n=$('#bg2').val(),  o=$('#si2').val(),p=$('#wp2').val(),action_plan=$('#ap2').val(),fsp='';
           if ($('#fsp').is(':checked')){fsp='yes';}else{fsp='';}
           if (a==''||b==''||d==''|| f=='' || g=='' || h=='' || i==''){
@@ -1720,6 +1663,5 @@
       }); 
     </script> 
     <?php endif;?>
-   
 </body> 
 </html>
