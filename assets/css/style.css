@@ -1,4 +1,4 @@
-#suggestions {
+.suggestions {
     float: right;
     list-style: none;
     z-index: 2;
@@ -8,12 +8,12 @@
     width: 190px;
     position: absolute;
 }
-#suggestions li{
+.suggestions li{
   padding: 10px; 
   background: #f0f0f0; 
   border-bottom: #bbb9b9 1px solid;
 }
-#suggestions li:hover{
+.suggestions li:hover{
   background:#ece3d2;
   cursor: pointer;
 }

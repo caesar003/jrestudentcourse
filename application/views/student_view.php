@@ -227,11 +227,10 @@
                             <span class="input-group-text"><i style="color:grey;" class="fa fa-map-marker fa-fw"></i></span>
                           </div>
                           <input type="text" class="form-control" name="pb" id="pb" placeholder="Place of Birth">
-                          
                         </div>
-                        <div id="suggestion_box">
-                            <ul id="suggestions"></ul>
-                          </div>
+                        <div class="suggestion_box" id="suggestion_box">
+                          <ul class="suggestions" id="suggestions"></ul>
+                        </div>
                       </div>
                       <div class="form-group col-6">
                         <label>Date of Birth<sup>&lowast;</sup></label>
@@ -440,6 +439,9 @@
                            <span class="input-group-text"><i style="color:grey;" class="fa fa-map-marker fa-fw"></i></span>
                           </div>
                           <input type="text" class="form-control" name="pb2" id="pb2" placeholder="Place of Birth">
+                        </div>
+                        <div class="suggestion_box" id="suggestion_box2">
+                          <ul class="suggestions" id="suggestions2"></ul>
                         </div>
                       </div>
                       <div class="form-group col-6">
@@ -1111,6 +1113,57 @@
     <?php if($this->session->userdata('level') == '17'): /* script spv*/?> 
      <script type="text/javascript">
       $(document).ready(function(){
+        $("#pb").keyup(function(){
+         if($(this).val()==''){
+           $('#suggestion_box').hide();
+         } else {
+           $.ajax({
+             type: "POST",
+             url: "<?php echo site_url('student/get_cities') ;?>",
+             data:'keyword='+$(this).val(),
+             dataType : "json",
+             success: function(data){
+               var html = '', i;
+               for(i=0;i<data.length;i++){
+                 html += '<li data-city="'+data[i].city+'" class="city-name">'+data[i].city+'</li>';
+               }
+               $("#suggestion_box").show();
+               $("#suggestions").html(html);
+             }
+           });
+         }
+       });
+        $('#suggestions').on('click', '.city-name', function(){
+          var city_name = $(this).data('city');
+          $('#pb').val(city_name);
+          $('#suggestion_box').hide();
+        });
+        
+        $("#pb2").keyup(function(){
+         if($(this).val()==''){
+           $('#suggestion_box2').hide();
+         } else {
+           $.ajax({
+             type: "POST",
+             url: "<?php echo site_url('student/get_cities') ;?>",
+             data:'keyword='+$(this).val(),
+             dataType : "json",
+             success: function(data){
+               var html = '', i;
+               for(i=0;i<data.length;i++){
+                 html += '<li data-city="'+data[i].city+'" class="city-name">'+data[i].city+'</li>';
+               }
+               $("#suggestion_box2").show();
+               $("#suggestions2").html(html);
+             }
+           });
+         }
+       });
+        $('#suggestions2').on('click', '.city-name', function(){
+          var city_name = $(this).data('city');
+          $('#pb2').val(city_name);
+          $('#suggestion_box2').hide();
+        });
         var today = $.format.date(new Date(), "yyyy-MM-dd");   
           $('#mystudents').dataTable({
             "ajax" :{
@@ -1409,6 +1462,33 @@
           $('#pb').val(city_name);
           $('#suggestion_box').hide();
         });
+        
+        $("#pb2").keyup(function(){
+         if($(this).val()==''){
+           $('#suggestion_box2').hide();
+         } else {
+           $.ajax({
+             type: "POST",
+             url: "<?php echo site_url('student/get_cities') ;?>",
+             data:'keyword='+$(this).val(),
+             dataType : "json",
+             success: function(data){
+               var html = '', i;
+               for(i=0;i<data.length;i++){
+                 html += '<li data-city="'+data[i].city+'" class="city-name">'+data[i].city+'</li>';
+               }
+               $("#suggestion_box2").show();
+               $("#suggestions2").html(html);
+             }
+           });
+         }
+       });
+        $('#suggestions2').on('click', '.city-name', function(){
+          var city_name = $(this).data('city');
+          $('#pb2').val(city_name);
+          $('#suggestion_box2').hide();
+        });
+        
         var today = $.format.date(new Date(), "yyyy-MM-dd");
         function get_cities(){
           $.ajax({
