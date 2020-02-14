@@ -1,20 +1,25 @@
-  <?php include 'inc/header.php';?>
-    <?php foreach ($students->result() as $row){$pin=$row->pin;$name=$row->nick_name;$program=$row->program;}?>
-<div class="container-fluid">
-  <nav aria-label="breadcrumb">
-    <ol class="breadcrumb">
-      <li class="breadcrumb-item"><a href="<?php echo site_url();?>"><i class="fas fa-home fa-fw"></i> Home</a></li>
-      <li class="breadcrumb-item active" aria-current="page"><i class="fas fa-user-circle fa-fw"></i><?php echo $name;?> - <?php echo $pin;?> </li>
-    </ol>
-  </nav>
-</div>    
-<div class="container-fluid">
+<?php include 'inc/header.php';
+    foreach ($students->result() as $row){
+      $pin=$row->pin;
+      $name=$row->nick_name;
+      $program=$row->program;
+    }
+?>
+    <div class="container-fluid">
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="<?php echo site_url();?>"><i class="fas fa-home fa-fw"></i> Home</a></li>
+          <li class="breadcrumb-item active" aria-current="page"><i class="fas fa-user-circle fa-fw"></i><?php echo $name;?> - <?php echo $pin;?> </li>
+        </ol>
+      </nav>
+    </div>    
+    <div class="container-fluid">
       <div class="row">
         <!-- STUDENT INFO -->
         <div class="col-md-3 col-lg-3" id="student_info_div">
           <span><a id="new_session_btn" title="New Session" class="btn btn-secondary tooltip-right" href="javascript:void(0);"><span class="fa fa-plus"></span></a></span>
           <span id="edit_student_span"></span>
-          <h3 class="page-header"><small>Student</small>Information </h3>
+          <h3 class="page-header"><small>Student </small>Information </h3>
           <ul class="list-group" id="student_info"></ul>
         </div><!-- END STUDENT INFO -->
         <div class="col-md-9 col-lg-9">
@@ -1009,7 +1014,7 @@
             dataType: 'json',
             data :{pin:pin},
             success: function(data) {
-              var html = '', var i;
+              var html = '', i;
               for (i = 0; i < data.length; i++) {
                 if (data[i].topic == 0 && data[i].ind == 0) {
                   html += '<div class="col-2 syll_section">' + 
