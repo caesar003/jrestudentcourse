@@ -1009,10 +1009,9 @@
             dataType: 'json',
             data :{pin:pin},
             success: function(data) {
-              var html = '';
-              var i;
+              var html = '', var i;
               for (i = 0; i < data.length; i++) {
-               if (data[i].topic == 0 && data[i].ind == 0) {
+                if (data[i].topic == 0 && data[i].ind == 0) {
                   html += '<div class="col-2 syll_section">' + 
                             data[i].section + 
                           '</div>' + 
@@ -1027,7 +1026,6 @@
                             data[i].indicator + 
                           '</div>';
                 } else { 
-                
                   if (data[i].status == 1) { 
                     html += '<div class="col-2 syll_ind"><span class="topic_discussed">' + 
                               data[i].section + '.' + data[i].topic + '.' + data[i].ind + 
@@ -1050,11 +1048,11 @@
                             '</div>';
                   }
                 }
+              }
+              $('#show_syllabus').html(html);
             }
-            $('#show_syllabus').html(html);
-          }
-        });
-      }
+          });
+        }
         /* get tests */
         $('#my_tests').DataTable({
           responsive: true,
@@ -1313,54 +1311,53 @@
         }
       });
         function submit_course(a,b,c,d,e,f,g,h,i,j,k,l,m,n, after_teaching){
-        $.ajax({
-          type: "POST",
-          url: "<?php echo site_url('student_single/save_course')?>",
-          dataType: "JSON",
-          data: {p : a, m: b, cd: c, tc: d,du: e, ma: f,ev: g,w: h,s: i,test: j, tnu: k,tn : l,otn : m, ot : n},
-          success: function(data) {
-            $('[name="me"]').val("");
-            $('[name="tc"]').val("");
-            $('[name="du"]').val("");
-            $('[name="ma"]').val("");
-            $('[name="ev"]').val("");
-            $('[name="wr"]').val("");
-            $('[name="sp"]').val("");
-            $('[name="test"]').val("");
-            $('[name="tnu"]').val("");
-            $('[name="tn"]').val("");
-            $('[name="otn"]').val("");
-            $('[name="ot"]').val(""); 
-            $('#new_session_modal').modal('hide');           
-            $('#mycourse').DataTable().ajax.reload();
-            set_aft(a, after_teaching);            
-          }
-        });
-      }
+          $.ajax({
+            type: "POST",
+            url: "<?php echo site_url('student_single/save_course')?>",
+            dataType: "JSON",
+            data: {p : a, m: b, cd: c, tc: d,du: e, ma: f,ev: g,w: h,s: i,test: j, tnu: k,tn : l,otn : m, ot : n},
+            success: function(data) {
+              $('[name="me"]').val("");
+              $('[name="tc"]').val("");
+              $('[name="du"]').val("");
+              $('[name="ma"]').val("");
+              $('[name="ev"]').val("");
+              $('[name="wr"]').val("");
+              $('[name="sp"]').val("");
+              $('[name="test"]').val("");
+              $('[name="tnu"]').val("");
+              $('[name="tn"]').val("");
+              $('[name="otn"]').val("");
+              $('[name="ot"]').val(""); 
+              $('#new_session_modal').modal('hide');           
+              $('#mycourse').DataTable().ajax.reload();
+              set_aft(a, after_teaching);            
+            }
+          });
+        }
         function create_test_table(a,b){
-        $.ajax({
-          type: "POST",
-          url : "<?php echo site_url('student_single/create_test');?>",
-          dataType : "JSON",
-          data : {pin: a, meeting: b},
-          success : function(data){
-            console.log("Test created");
-            $('#my_tests').DataTable().ajax.reload();
-          }
-        });
-      }
+          $.ajax({
+            type: "POST",
+            url : "<?php echo site_url('student_single/create_test');?>",
+            dataType : "JSON",
+            data : {pin: a, meeting: b},
+            success : function(data){
+              console.log("Test created");
+              $('#my_tests').DataTable().ajax.reload();
+            }
+          });
+        }
         function set_aft(a,b){
-        $.ajax({
-          type: "POST",
-          url : "<?php echo site_url('student_single/set_aft')?>",
-          dataType : "JSON",
-          data : {pin: a, after_teaching: b},
-          success : function(data){
-            //console.log("after after teaching set =" +b);
-            get_student_detail();
-          }
-        })
-      }
+          $.ajax({
+            type: "POST",
+            url : "<?php echo site_url('student_single/set_aft')?>",
+            dataType : "JSON",
+            data : {pin: a, after_teaching: b},
+            success : function(data){
+              get_student_detail();
+            }
+          })
+        }
         /* edit course */
         $('#show_course').on('click', '.item_edit', function(){
           var b=$(this).data('m'),
@@ -1554,7 +1551,6 @@
               $('#edit_session_modal').modal('hide');
               $('#mycourse').DataTable().ajax.reload();
               set_aft(p,after_teaching);
-              //get_student_detail();
             }
           });
         }
@@ -1649,20 +1645,17 @@
               assign= $(this).data('assign'),
               pin = "<?php echo $pin;?>";
           if(topic == 0){
-            console.log('Take the section');
             $.ajax({
               type : "post",
               url : "<?php echo site_url('student_single/assign_syllabus_section') ;?>",
               dataType : "JSON",
               data : {section : section, assign: assign, pin: pin},
               success : function(data){
-                console.log('section '+section+' assigned to '+assign );
                 get_all_syllabus();
                 show_syllabus();
               }
             });
           } else if (ind==0 && topic!=0){
-            console.log('Take the topic');
             $.ajax({
               type : "post",
               url : "<?php echo site_url('student_single/assign_syllabus_topic') ;?>",
@@ -1675,7 +1668,6 @@
               }
             });
           } else {
-            console.log('Take indicator');
             $.ajax({
               type : "POST",
               url : "<?php echo site_url('student_single/assign_syllabus') ;?>",
