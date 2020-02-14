@@ -63,6 +63,14 @@ class Student_single_model extends CI_Model{
       return false;
     }
   }
+  function test_edit_avail(){
+    $pin = $this->input->post('pin');
+    $test = $this->input->post('test');
+    $student_table = "s_".$pin;
+    $this->db->where('test', $test);
+    $query = $this->db->get($student_table,1);
+    return $query->result();
+  }
   function save_course(){
     $pin = $this->input->post('p');
     $course_table = "s_".$pin;

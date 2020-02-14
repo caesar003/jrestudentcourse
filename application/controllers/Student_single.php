@@ -20,7 +20,8 @@ class Student_single extends CI_Controller{
         $data['pin'] = $pin;
         $this->load->view('pin_not_exists.php',$data);
     }
-  }/*
+  }
+  /*
   function index(){
     $pin = $this->input->post('pin');
     $data['title']="Student - ".$pin;
@@ -84,7 +85,10 @@ class Student_single extends CI_Controller{
     $data = $this->student_single_model->set_after_teaching();
     echo json_encode($data);
   }
-  
+  function test_edit_avail(){
+    $data = $this->student_single_model->test_edit_avail();
+    echo json_encode($data);
+  }
   function update_course(){
     $data=$this->student_single_model->update_course();
     echo json_encode($data);

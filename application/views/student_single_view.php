@@ -473,11 +473,11 @@
                     </div>
                   </div>
                 </div>
-                <div title="Test change is disabled" id="edit_test_div">
+                <div id="edit_test_div">
                   <div class="form-group">
                     <label for="tnu2">#</label>
                     <div class="input-group">
-                      <select name="tnu2" id="tnu2" class="form-control" disabled>
+                      <select name="tnu2" id="tnu2" class="form-control">
                         <option value="">Choose</option>
                         <option value="1st">1<sup>st</sup></option>
                         <option value="2nd">2<sup>nd</sup></option>
@@ -490,7 +490,7 @@
                   <div class="form-group">
                     <label for="tn2">Test</label>
                     <div class="input-group">
-                      <select name="tn2" id="tn2" class="form-control" disabled>
+                      <select name="tn2" id="tn2" class="form-control">
                         <option value="">Choose</option>
                         <option value="Pre Written">Pre Written</option>
                         <option value="Pre Spoken">Pre Spoken</option>
@@ -1149,14 +1149,6 @@
           });
         }
         /* form event handler */
-        $('#new_session_btn').on('click', function(){
-          var d = new Date(),
-              teacher = "<?php echo $this->session->userdata('username');?>";
-          var curr_time = ($.format.date(d, "yyyy-MM-dd\THH:mm"));
-          $('#new_session_modal').modal('show');
-          $('[name="cd"]').val(curr_time);
-          $('[name="tc"]').val(teacher);    
-        });
         $('select, input, textarea').on('focus', function(){
           $(this).css('background-color', 'white');
           $('#nsef, #esef, #edit_student_feedback').removeClass("alert alert-danger");
@@ -1171,21 +1163,37 @@
             $('#new_session_btn').fadeOut('100');
             $('#new_session_btn').fadeIn('200');
         });
-        $('select[name="tn"]').on('change', function(){
-          var test=$(this).val();
-          if(test == 'Remedial'){
-            $('select[name="otn"], select[name="ot"]').removeAttr('disabled');
-          } else {
-            $('select[name="otn"], select[name="ot"]').attr('disabled', 'disabled');
-            $('select[name="otn"], select[name="ot"]').val('');
-          }
-        });
-        $('#test').on('click', function(){
-          if ($(this).is(':checked')){
-            $('#course_div').removeClass('col'); $('#course_div').addClass('col-7'); $('#test_div').addClass('col-5'); $('#test_div').fadeIn('slow');
-          } else {$('#course_div').removeClass('col-7');$('#course_div').addClass('col'); $('#test_div').removeClass('col-5');$('#test_div').fadeOut('fast');
-          }
-        });
+        $('#new_session_btn').on('click', function(){
+          var d = new Date(), /* variable declaration */
+              teacher = "<?php echo $this->session->userdata('username');?>",
+              curr_time = ($.format.date(d, "yyyy-MM-dd\THH:mm"));
+          $('#new_session_modal').modal('show'); /* opens the modal window */
+          $('[name="cd"]').val(curr_time); /* assigns values to the corresponding fields */
+          $('[name="tc"]').val(teacher);
+          
+          $('#test').on('click', function(){ /* test button checkbox */
+            if ($(this).is(':checked')){
+              $('#course_div').removeClass('col');
+              $('#course_div').addClass('col-7');
+              $('#test_div').addClass('col-5');
+              $('#test_div').fadeIn('slow');
+              $('select[name="tn"]').on('change', function(){ /* test name */
+                var test=$(this).val();
+                if(test == 'Remedial'){
+                  $('select[name="otn"], select[name="ot"]').removeAttr('disabled');
+                } else {
+                  $('select[name="otn"], select[name="ot"]').attr('disabled', 'disabled');
+                  $('select[name="otn"], select[name="ot"]').val('');
+                }
+              });
+            } else { /* the field just hidden */
+              $('#course_div').removeClass('col-7');
+              $('#course_div').addClass('col');
+              $('#test_div').removeClass('col-5');
+              $('#test_div').fadeOut('fast');
+            }
+          });        
+        });             
         /* save course */
         $('#btn_save').on('click', function(){
         var p="<?php echo $pin;?>",
@@ -1254,7 +1262,7 @@
                                     $('#nsef').html('<em>'+test+'</em> has been conducted before!');
                                     $('#tnu, #tn').css(bgc,clr);
                                   } else {
-                                    submit_course(p, m, cd, tc, du, ma, ev, w, s, test, tnu, tn, otn, ot);
+                                    submit_course(p, m, cd, tc, du, ma, ev, w, s, test, tnu, tn, otn, ot, after_teaching);
                                     create_test_table(p, m);
                                   }
                                 }
@@ -1281,7 +1289,7 @@
                                         $('#nsef').html('<em>'+test+'</em> has been conducted before!');
                                         $('#tnu, #tn, #otn, #ot').css(bgc,clr);
                                       } else {
-                                        submit_course(p, m, cd, tc, du, ma, ev, w, s, test, tnu, tn, otn, ot);
+                                        submit_course(p, m, cd, tc, du, ma, ev, w, s, test, tnu, tn, otn, ot, after_teaching);
                                         create_test_table(p, m);
                                         
                                       }
@@ -1293,8 +1301,8 @@
                           }
                         }
                       } else {
-                        submit_course(p, m, cd, tc, du, ma, ev, w, s, test, tnu, tn, otn, ot);
-                        set_aft(p, after_teaching);
+                        submit_course(p, m, cd, tc, du, ma, ev, w, s, test, tnu, tn, otn, ot, after_teaching);
+                        //set_aft(p, after_teaching);
                       }
                     }
                   }
@@ -1304,7 +1312,7 @@
           }
         }
       });
-        function submit_course(a,b,c,d,e,f,g,h,i,j,k,l,m,n){
+        function submit_course(a,b,c,d,e,f,g,h,i,j,k,l,m,n, after_teaching){
         $.ajax({
           type: "POST",
           url: "<?php echo site_url('student_single/save_course')?>",
@@ -1325,8 +1333,7 @@
             $('[name="ot"]').val(""); 
             $('#new_session_modal').modal('hide');           
             $('#mycourse').DataTable().ajax.reload();
-            $('#my_tests').DataTable().ajax.reload();
-            get_student_detail();
+            set_aft(a, after_teaching);            
           }
         });
       }
@@ -1338,6 +1345,7 @@
           data : {pin: a, meeting: b},
           success : function(data){
             console.log("Test created");
+            $('#my_tests').DataTable().ajax.reload();
           }
         });
       }
@@ -1348,32 +1356,104 @@
           dataType : "JSON",
           data : {pin: a, after_teaching: b},
           success : function(data){
-            console.log("after after teaching set =" +b);
+            //console.log("after after teaching set =" +b);
+            get_student_detail();
           }
         })
       }
         /* edit course */
-        $('#show_course').on('click', '.item_edit', function() {
-          var b=$(this).data('m'),c=($.format.date($(this).data('cd'), "yyyy-MM-dd\THH:mm")),d=$(this).data('tc'),e=$(this).data('du'),f=$(this).data('ma'),g=$(this).data('ev'),w=$(this).data('w'),s=$(this).data('s'),j=$(this).data('test'),k=$(this).data('tnu'),l=$(this).data('tn'),m=$(this).data('otn'),n=$(this).data('ot'),o='';        
-          $('#edit_session_modal').modal('show'); $('[name="me2"]').val(b); $('[name="cd2"]').val(c);$('[name="tc2"]').val(d);$('[name="du2"]').val(e); $('[name="ma2"]').val(f);$('[name="ev2"]').val(g);$('[name="wr2"]').val(w); $('[name="sp2"]').val(s);$('[name="tnu2"]').val(k);$('[name="tn2"]').val(l); $('[name="otn2"]').val(m);$('[name="ot2"]').val(n);
+        $('#show_course').on('click', '.item_edit', function(){
+          var b=$(this).data('m'),
+              c=($.format.date($(this).data('cd'), "yyyy-MM-dd\THH:mm")),
+              d=$(this).data('tc'),
+              e=$(this).data('du'),
+              f=$(this).data('ma'),
+              g=$(this).data('ev'),
+              w=$(this).data('w'),
+              s=$(this).data('s'),
+              j=$(this).data('test'),
+              k=$(this).data('tnu'),
+              l=$(this).data('tn'),
+              m=$(this).data('otn'),
+              n=$(this).data('ot'),
+              o='';        
+          $('#edit_session_modal').modal('show');
+          $('[name="me2"]').val(b);
+          $('[name="cd2"]').val(c);
+          $('[name="tc2"]').val(d);
+          $('[name="du2"]').val(e);
+          $('[name="ma2"]').val(f);
+          $('[name="ev2"]').val(g);
+          $('[name="wr2"]').val(w);
+          $('[name="sp2"]').val(s);
+          $('[name="tnu2"]').val(k);
+          $('[name="tn2"]').val(l);
+          $('[name="otn2"]').val(m);
+          $('[name="ot2"]').val(n);
           if(j==''){
-            o+='<input type="checkbox" disabled> Test';
+            o+='<input name="test_edit" id="test_edit" type="checkbox"> <label for="test_edit"> Test</label>';
             $('#edit_course_div').removeClass('col-7');
             $('#edit_course_div').addClass('col');
             $('#edit_test_div').css('display', 'none');
           }else{
-            o+='<input title="Test change is disabled" type="checkbox" disabled checked> Test';
+            o+='<input name="test_edit" id="test_edit" type="checkbox" checked> <label for="test_edit"> Test</label>';
             $('#edit_course_div').removeClass('col');
             $('#edit_course_div').addClass('col-7');
             $('#edit_test_div').addClass('col-5');
             $('#edit_test_div').css('display', 'block');
+            if(l== 'Remedial'){
+              $('select[name="otn2"], select[name="ot2"]').removeAttr('disabled');
+            }
           }
           $('#test_check_edit').html(o);
+          $('#test_edit').on('click', function(){ /* test button checkbox */
+            if ($(this).is(':checked')){
+              $('#edit_course_div').removeClass('col');
+              $('#edit_course_div').addClass('col-7');
+              $('#edit_test_div').addClass('col-5');
+              $('#edit_test_div').fadeIn('slow');
+              
+            } else { /* the field just hidden */
+              $('#edit_course_div').removeClass('col-7');
+              $('#edit_course_div').addClass('col');
+              $('#edit_test_div').removeClass('col-5');
+              $('#edit_test_div').fadeOut('fast');
+            }
+          }); 
+        });
+        $('select[name="tn2"]').on('change', function(){ /* test name */
+          var test=$(this).val();
+          if(test == 'Remedial'){
+            $('select[name="otn2"], select[name="ot2"]').removeAttr('disabled');
+          } else {
+            $('select[name="otn2"], select[name="ot2"]').attr('disabled', 'disabled');
+            $('select[name="otn2"], select[name="ot2"]').val('');
+          }
         });
         $('#btn_update').on('click', function() {
-          var p = "<?php echo $pin;?>", m = $('#me2').val(),cd = $('#cd2').val(), tc = $('#tc2').val(), du = $('#du2').val(), ma = $('#ma2').val(), ev = $('#ev2').val(), w = $('#wr2').val(), s = $('#sp2').val(), test = '', tnu = $('#tnu2').val(), tn = $('#tn2').val(), otn = $('#otn2').val(), ot = $('#ot2').val(), after_teaching = '', bgc = 'background-color',clr = 'pink';
+          var p = "<?php echo $pin;?>", 
+              m = $('#me2').val(),
+              cd = $('#cd2').val(),
+              tc = $('#tc2').val(),
+              du = $('#du2').val(),
+              ma = $('#ma2').val(),
+              ev = $('#ev2').val(),
+              w = $('#wr2').val(),
+              s = $('#sp2').val(),
+              test = '',
+              tnu = $('#tnu2').val(),
+              tn = $('#tn2').val(),
+              otn = $('#otn2').val(),
+              ot = $('#ot2').val(),
+              after_teaching = '',
+              bgc = 'background-color',
+              clr = 'pink';
           if(tn!=''){if(tn!='Remedial'){test=tnu+" "+tn;}else{test=tnu+" "+tn+" of "+otn+" "+ot;}}else{test='';}
-          if($('#after_teaching').is(':checked')){after_teaching='no';}else{after_teaching='yes';}
+          if($('#after_teaching').is(':checked')){
+            after_teaching='no';
+          }else{
+            after_teaching='yes';
+          }
           if(cd==''||tc==''||du==''||ma==''||ev==''){
             if(tc==''){$('#tc2').css(bgc,clr);}
             if(cd==''){$('#cd2').css(bgc,clr);}
@@ -1394,27 +1474,90 @@
                 $('#esef').html("Meeting duration can only be numbers");
                 $('#du2').css(bgc,clr);
               }else{
-                $.ajax({
-                  type:"POST",
-                  url:"<?php echo site_url('student_single/update_course')?>",
-                  dataType:"JSON",
-                  data:{p:p,m:m,cd:cd,tc:tc,du:du,ma:ma,ev:ev,w:w,s:s,test:test,tnu:tnu,tn:tn,otn:otn,ot:ot},
-                  success:function(data){$('#edit_session_modal').modal('hide');$('#mycourse').DataTable().ajax.reload();get_student_detail();}
-                });
-                $.ajax({
-                  type: "POST",
-                  url: "<?php echo site_url('student_single/set_aft')?>",
-                  dataType: "JSON",
-                  data: {pin: p, after_teaching: after_teaching},
-                  success: function(data) {
-                    console.log('after teaching set = '+ after_teaching);
+                if($('#test_edit').is(':checked')){
+                  if(tnu == ''){ 
+                    $('#tnu2').css(bgc,clr);
+                    $('#esef').addClass("alert alert-danger");
+                    $('#esef').html("Please complete test details");
+                  } else { 
+                    if(tn == ''){
+                      $('#esef').addClass("alert alert-danger");
+                      $('#esef').html("Please complete test details");
+                      $('#tn2').css(bgc,clr);
+                    } else { 
+                      if(tn != 'Remedial'){
+                        test = tnu+' '+tn;
+                        $.ajax({
+                          url : "<?php echo site_url('student_single/test_edit_avail') ;?>",
+                          type : "post",
+                          dataType : "json",
+                          data : {pin:p, test:test},
+                          success : function(data){
+                            if(data !='' && data[0].meeting !=m){
+                              $('#tnu2,#tn2').css(bgc,clr);
+                              $('#esef').addClass("alert alert-danger");
+                              $('#esef').html("This test has been conducted in meeting "+data[0].meeting);
+                            } else {
+                              update_course(p,m,cd,tc,du,ma,ev,w,s,test,tnu,tn,otn,ot,after_teaching);
+                              create_test_table(p,m);
+                            }
+                          }
+                        });
+                      } else { 
+                        if (otn == ''){
+                          $('#otn2').css(bgc,clr);
+                          $('#esef').addClass("alert alert-danger");
+                          $('#esef').html("Please complete test details");
+                        } else {
+                          if(ot == ''){
+                            $('#ot2').css(bgc,clr);
+                            $('#esef').addClass("alert alert-danger");
+                            $('#esef').html("Please complete test details");
+                          } else{
+                            test = tnu+' '+ tn+' of '+ otn+' '+ ot;
+                            $.ajax({
+                              type : "post",
+                              url : "<?php echo site_url('student_single/test_edit_avail');?>",
+                              dataType : "json",
+                              data : {pin:p, test:test},
+                              success : function(data){
+                                if(data !='' && data[0].meeting !=m){
+                                  $('#tnu2,#tn2,#otn2,#ot2').css(bgc,clr);
+                                  $('#esef').addClass("alert alert-danger");
+                                  $('#esef').html("This remedial has been conducted in meeting "+data[0].meeting);
+                                } else {
+                                  update_course(p,m,cd,tc,du,ma,ev,w,s,test,tnu,tn,otn,ot,after_teaching);
+                                  create_test_table(p,m);
+                                }
+                              }
+                            });
+                          }
+                        }
+                      }
+                    }
                   }
-                });
+                } else {
+                  update_course(p,m,cd,tc,du,ma,ev,w,s,test,tnu,tn,otn,ot,after_teaching);
+                }
               }
             }
           }
           return false;
         });
+        function update_course(p,m,cd,tc,du,ma,ev,w,s,test,tnu,tn,otn,ot,after_teaching){
+          $.ajax({
+            type:"POST",
+            url:"<?php echo site_url('student_single/update_course')?>",
+            dataType:"JSON",
+            data:{p:p,m:m,cd:cd,tc:tc,du:du,ma:ma,ev:ev,w:w,s:s,test:test,tnu:tnu,tn:tn,otn:otn,ot:ot},
+            success:function(data){
+              $('#edit_session_modal').modal('hide');
+              $('#mycourse').DataTable().ajax.reload();
+              set_aft(p,after_teaching);
+              //get_student_detail();
+            }
+          });
+        }
         /* edit syllabus */
         function get_all_syllabus(){
           var pin = "<?php echo $pin;?>";
