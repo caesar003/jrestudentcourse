@@ -21,13 +21,6 @@ class Student_single extends CI_Controller{
         $this->load->view('pin_not_exists.php',$data);
     }
   }
-  /*
-  function index(){
-    $pin = $this->input->post('pin');
-    $data['title']="Student - ".$pin;
-    $data['students']=$this->student_single_model->get_student($pin);
-    $this->load->view('student_single_view',$data);
-  }*/
   function get_student_info(){
     $data = $this->student_single_model->get_student2();
     echo json_encode($data);
