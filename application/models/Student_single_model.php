@@ -176,6 +176,21 @@ class Student_single_model extends CI_Model{
     $result = $this->db->update($course_table);
     return $result;
   }
+  function delete_course(){
+    $pin = $this->input->post('pin');
+    $m = $this->input->post('m');
+    $course_table = "s_".$pin;
+    $this->db->where('meeting', $m);
+    $query = $this->db->delete($course_table);
+    return $query;
+  }
+  function delete_test(){
+    $pin = $this->input->post('pin');
+    $m = $this->input->post('m');
+    $test_table = "t_".$pin."_".$m;
+    $query = $this->dbforge->drop_table($test_table, true);
+    return $query;
+  }
   function get_all_syllabus(){
     $pin = $this->input->post('pin');
     $syllabus_table = "syll_".$pin;

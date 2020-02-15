@@ -541,6 +541,28 @@
         </div>
       </div>
     </form><!-- EDIT COURSE-->
+     <!-- DELETE  COURSE -->
+    <form>
+      <div class="modal fade" id="delete_session_modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-sm" role="document">
+          <div class="modal-content add">
+            <div class="modal-header">
+              <h5 class="modal-title">Delete Student</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            </div>
+            <div class="modal-body">
+                Are you sure? Once executed, it will be permanently gone!            
+            </div>
+            <div class="modal-footer">
+              <input type="hidden" name="m_d" id="m_d">
+              <input type="hidden" name="t_d" id="t_d">
+              <button type="button" class="btn btn-primary" data-dismiss="modal"><i class="fas fa-times"></i> Close</button>
+              <button type="button" id="btn_delete_session" class="btn btn-danger"><i class="fa fa-trash"></i> Delete</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form> <!-- END COURSE STUDENT -->
     <!-- EDIT STUDENT FORM -->
     <form>
       <div class="modal fade" id="edit_student_modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true"> 
@@ -1000,7 +1022,7 @@
             {
               "data" : {meeting:"meeting", course_date: "course_date", teacher: "teacher", duration: "duration", material: "material", w:"w", s: "s", test:"test", test_number: "test_number", test_name: "test_name", of_test_number: "of_test_number", of_test: "of_test" },
               "render" : function(data, type, row, meta){
-                return '<a title="Edit" href="javascript:void(0);" class="btn btn-info btn-sm item_edit tooltip-right" data-m="'+data.meeting+'" data-cd="'+data.course_date+'" data-tc="'+data.teacher+'" data-du="'+data.duration+'" data-ma="'+data.material+'" data-ev="'+data.evaluation+'" data-w="'+data.w+'" data-s="'+data.s+'" data-test="'+data.test+'" data-tnu="'+data.test_number+'" data-tn="'+data.test_name+'" data-otn="'+data.of_test_number+'" data-ot="'+data.of_test+'"><i class="fas fa-pencil-alt"></i></a>'
+                return '<a title="Edit" href="javascript:void(0);" class="btn btn-info btn-sm item_edit tooltip-right" data-m="'+data.meeting+'" data-cd="'+data.course_date+'" data-tc="'+data.teacher+'" data-du="'+data.duration+'" data-ma="'+data.material+'" data-ev="'+data.evaluation+'" data-w="'+data.w+'" data-s="'+data.s+'" data-test="'+data.test+'" data-tnu="'+data.test_number+'" data-tn="'+data.test_name+'" data-otn="'+data.of_test_number+'" data-ot="'+data.of_test+'"><i class="fas fa-pencil-alt fa-fw"></i></a> <a href="javascript:void(0);" title="delete" class="btn btn-danger btn-sm item_delete tooltip-bottom" data-m="'+data.meeting+'" data-test="'+data.test+'"><i class="fas fa-trash fa-fw"></i></a>';
               }
             }
           ]
@@ -1556,6 +1578,64 @@
               $('#edit_session_modal').modal('hide');
               $('#mycourse').DataTable().ajax.reload();
               set_aft(p,after_teaching);
+            }
+          });
+        }
+        $('#show_course').on('click', '.item_delete', function(){
+          var m_d = $(this).data('m'), t_d = $(this).data('test');
+          $('#delete_session_modal').modal('show');
+          $('#m_d').val(m_d);
+          $('#t_d').val(t_d);
+        });
+        $('#btn_delete_session').on('click',function(){
+          var pin = "<?php echo $pin;?>", m_d = $('#m_d').val(), t_d = $('#t_d').val();
+          if(t_d!=''){
+            // delete test and course
+            delete_test(pin,m_d);
+            delete_course(pin,m_d);
+            $('#mycourse').DataTable().ajax.reload();
+            $('#mytests').DataTable().ajax.reload();
+          } else {
+            // delete course
+            delete_course(pin,m_d);
+            $('#mycourse').DataTable().ajax.reload();
+            $('#mytests').DataTable().ajax.reload();
+          }
+          $('#delete_session_modal').modal('hide');
+          /*$.ajax({
+            url : "<?php echo site_url('student_single/delete_course'); ?>",
+            type : "post",
+            dataType : "json",
+            data : {pin:pin, m:m_d},
+            success: function(data){
+              $('#mycourse').DataTables().ajax.reload();
+              $('#mytests').DataTables().ajax.reload();
+              $('#delete_session_modal').modal('hide');
+            }
+          });*/
+        });
+        function delete_test(pin,m_d){
+          console.log('test deleted');
+          $.ajax({
+            type:"post",
+            url:"<?php echo site_url('student_single/delete_test');?>",
+            dataType : "json",
+            data: {pin:pin, m:m_d},
+            success : function(data){
+              console.log('test deleted');
+            }
+          });
+        }
+        function delete_course(pin,m_d){
+          console.log('course deleted');
+          $.ajax({
+            type:"post",
+            url:"<?php echo site_url('student_single/delete_course');?>",
+            dataType : "json",
+            data: {pin:pin, m:m_d},
+            success : function(data){
+              console.log('course deleted');
+              
             }
           });
         }

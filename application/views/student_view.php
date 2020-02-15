@@ -106,8 +106,7 @@
             <div id="sch_r"></div>
           </div>
         </div>
-      </div>
-      
+      </div> 
       <?php endif;?>
     </div>
     <hr>

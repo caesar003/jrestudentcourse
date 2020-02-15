@@ -86,6 +86,14 @@ class Student_single extends CI_Controller{
     $data=$this->student_single_model->update_course();
     echo json_encode($data);
   }
+  function delete_course(){
+    $data = $this->student_single_model->delete_course();
+    echo json_encode($data);
+  }
+  function delete_test(){
+    $data = $this->student_single_model->delete_test();
+    echo json_encode($data);
+  }
   /* syllabus edit */
   function get_all_syllabus(){
     $data = $this->student_single_model->get_all_syllabus();
