@@ -864,6 +864,7 @@
             }
           });
         }
+        
         $('#student_info_div').on('click', '.student_info_edit', function(){
           var a=$(this).data('pin'),  b=$(this).data('cmn'), c=$(this).data('ncn'), d=$(this).data('adr'), e=$(this).data('pob'), f=$(this).data('dob'), g=$(this).data('pho'), h=$(this).data('prg'), i=$(this).data('prd'), j=$(this).data('std'), k=$(this).data('rea'), l=$(this).data('trg'), m=$(this).data('dff'), n=$(this).data('bgrr'), o=$(this).data('sin'), p=$(this).data('wep'),  q=$(this).data('acp'), fsp = $(this).data('fsp'), fsp_button = '<input type="checkbox" name="fsp" id="fsp"' ;
           $('#edit_student_modal').modal('show');
@@ -1293,7 +1294,7 @@
                                       } else {
                                         submit_course(p, m, cd, tc, du, ma, ev, w, s, test, tnu, tn, otn, ot, after_teaching);
                                         create_test_table(p, m);
-                                        
+             
                                       }
                                     }
                                   });
@@ -1499,8 +1500,8 @@
                               $('#esef').addClass("alert alert-danger");
                               $('#esef').html("This test has been conducted in meeting "+data[0].meeting);
                             } else {
-                              update_course(p,m,cd,tc,du,ma,ev,w,s,test,tnu,tn,otn,ot,after_teaching);
                               create_test_table(p,m);
+                              update_course(p,m,cd,tc,du,ma,ev,w,s,test,tnu,tn,otn,ot,after_teaching);
                             }
                           }
                         });
@@ -1527,8 +1528,8 @@
                                   $('#esef').addClass("alert alert-danger");
                                   $('#esef').html("This remedial has been conducted in meeting "+data[0].meeting);
                                 } else {
-                                  update_course(p,m,cd,tc,du,ma,ev,w,s,test,tnu,tn,otn,ot,after_teaching);
                                   create_test_table(p,m);
+                                  update_course(p,m,cd,tc,du,ma,ev,w,s,test,tnu,tn,otn,ot,after_teaching);
                                 }
                               }
                             });
