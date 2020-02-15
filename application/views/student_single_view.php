@@ -325,8 +325,7 @@
                         <input type="text" name="sp" id="sp" class="form-control">
                       </div>
                     </div>
-                  </div>
-                  
+                  </div>             
                 </div> <!-- end course div -->
                 <div id="test_div"> <!-- test div -->
                   <div class="form-group">
