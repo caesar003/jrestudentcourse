@@ -34,29 +34,48 @@ class Student_model extends CI_Model{
   }
   function save_student(){
     $data = array(
-      'pin' 			 => $this->input->post('pin'),
-      'complete_name'    => $this->input->post('complete_name'),
-      'nick_name' 		 => $this->input->post('nick_name'),
-      'address' 		 => $this->input->post('address'),
-      'place_of_birth'   => $this->input->post('place_of_birth'),
-      'date_of_birth'    => $this->input->post('date_of_birth'),
-      'phone' 		     => $this->input->post('phone'),
-      'program' 		 => $this->input->post('program'),
-      'program_duration' => $this->input->post('program_duration'),
-      'starting_date' 	 => $this->input->post('starting_date'),
-      'reason' 		     => $this->input->post('reason'),
-      'target' 		     => $this->input->post('target'),
-      'difficulties'     => $this->input->post('difficulties'),
-      'bground' 		 => $this->input->post('bground'),
-      'self_introduction'=> $this->input->post('self_introduction'),
-      'weakness_point'   => $this->input->post('weakness_point'),
-      'action_plan'      => $this->input->post('action_plan')
+      'grp'       => $this->input->post('grp'),
+      'pin' 			 => $this->input->post('pn'),
+      'complete_name'    => $this->input->post('cn'),
+      'nick_name' 		 => $this->input->post('nn'),
+      'address' 		 => $this->input->post('ad'),
+      'place_of_birth'   => $this->input->post('pb'),
+      'date_of_birth'    => $this->input->post('db'),
+      'phone' 		     => $this->input->post('ph'),
+      'cnst2'           => $this->input->post('cn2'),
+      'nnst2'         => $this->input->post('nn2'),
+      'adrst2'          => $this->input->post('ad2'),
+      'pobst2'          => $this->input->post('pb2'),
+      'dobst2'          => $this->input->post('db2'),
+      'phst2'           => $this->input->post('ph2'),
+      'cnst3'           => $this->input->post('cn3'),
+      'nnst3'           => $this->input->post('nn3'),
+      'adrst3'          => $this->input->post('ad3'),
+      'pobst3'          => $this->input->post('pb3'),
+      'dobst3'          => $this->input->post('db3'),
+      'phst3'           => $this->input->post('ph3'),
+      'cnst4'           => $this->input->post('cn4'),
+      'nnst4'           => $this->input->post('nn4'),
+      'adrst4'          => $this->input->post('ad4'),
+      'pobst4' => $this->input->post('pb4'),
+      'dobst4' => $this->input->post('db4'),
+      'phst4' => $this->input->post('ph4'),
+      'program' 		 => $this->input->post('pr'),
+      'program_duration' => $this->input->post('pd'),
+      'starting_date' 	 => $this->input->post('sd'),
+      'reason' 		     => $this->input->post('re'),
+      'target' 		     => $this->input->post('ta'),
+      'difficulties'     => $this->input->post('di'),
+      'bground' 		 => $this->input->post('bg'),
+      'self_introduction'=> $this->input->post('si'),
+      'weakness_point'   => $this->input->post('we'),
+      'action_plan'      => $this->input->post('ap')
     );
     $result = $this->db->insert('students', $data);
     return $result;
   }  
   function create_course_table(){
-    $pin = $this->input->post('pin');
+    $pin = $this->input->post('pn');
     $course_table = "s_".$pin;
     $fields = array(
       'meeting' => array(
@@ -130,7 +149,7 @@ class Student_model extends CI_Model{
     return $result;
   }
   function create_syllabus_table(){
-    $pin = $this->input->post('pin');
+    $pin = $this->input->post('pn');
     $syllabus_table = "syll_".$pin;
     $fields = array(
       'id' => array(
@@ -168,7 +187,7 @@ class Student_model extends CI_Model{
     return $result;
   }
   function insert_into_syllabus(){
-     $pin 			= $this->input->post('pin');
+     $pin 			= $this->input->post('pn');
     $syllabus_table = "syll_".$pin;
     $query = $this->db->query("INSERT INTO `$syllabus_table` 
       (`id`, `section`, `topic`, `ind`, `status`, `assign`) 
@@ -539,7 +558,7 @@ class Student_model extends CI_Model{
     return $query;
   }
   function create_student_directories(){
-    $pin = $this->input->post('pin');
+    $pin = $this->input->post('pn');
     $result = mkdir('assets/students/'.$pin);
     return $result;
   }

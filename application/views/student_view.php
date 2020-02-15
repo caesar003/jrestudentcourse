@@ -168,7 +168,7 @@
           </table>
         </div>
       </div>
-    </div>
+    </div> <!-- SCHEDULE LIST -->
     <?php include 'inc/footer.php';?>
     <?php include 'inc/chat_dialog.php';?>
     <form>
@@ -183,45 +183,55 @@
               <div class="row"> 
                 <div class="col-lg-5">
                   <fieldset>
-                    <legend>Personal Information</legend>        
-                    <div class="form-row"> 
-                      <div class="form-group col-4"> 
-                        <label>PIN<sup>&lowast;</sup></label> 
-                        <div class="input-group"> 
-                          <div class="input-group-prepend"> <span style="color:green;" class="input-group-text"><i class="fas fa-barcode fa-fw"></i></span> 
+                    <legend>Personal Information <a id="add_one" href="javascript:void(0);"><i class="fas fa-plus-circle fa-fw"></i></a></legend>
+                    <div class="form-row">
+                      <div class="form-group col-12 row">
+                        <div class="col-4"><label for="pn" class="pers_info">PIN<sup>&lowast;</sup></label>
+                        </div>
+                        <div class="input-group col"> 
+                          <div class="input-group-prepend">
+                            <span style="color:green;" class="input-group-text"><i class="fas fa-barcode fa-fw"></i></span> 
                           </div>
                           <input type="text" class="form-control" name="pn" id="pn" placeholder="PIN"> 
                         </div>
                       </div>
-                      <div class="form-group col-8">
-                        <label>Name<sup>&lowast;</sup></label>
-                        <div class="input-group">
+                      <div class="form-group col-12 row">
+                        <div class="col-4">
+                          <label for="cn" class="pers_info">Name<sup>&lowast;</sup></label>
+                        </div>
+                        <div class="input-group col">
                           <div class="input-group-prepend">
                             <span class="input-group-text"><i  style="color:red;" class="fa fa-user-circle fa-fw"></i></span> 
                           </div>
                           <input type="text" class="form-control" name="cn" id="cn" placeholder="Name">
                         </div>
                       </div>
-                      <div class="form-group col-4">
-                        <label>Nick name</label>
-                        <div class="input-group">
+                      <div class="form-group col-12 row">
+                        <div class="col-4">
+                          <label for="nn" class="pers_info">Nick name</label>
+                        </div>
+                        <div class="input-group col">
                           <div class="input-group-prepend"> 
                             <span class="input-group-text"><i style="color:rgb(70,0,90);" class="fas fa-user-circle fa-fw"></i> </span> 
                           </div>
                           <input type="text" class="form-control" name="nn" id="nn" placeholder="Alias">
                         </div>
                       </div>
-                      <div class="form-group col-8">
-                        <label>Address<sup>&lowast;</sup></label>
-                        <div class="input-group">
+                      <div class="form-group col-12 row">
+                        <div class="col-4">
+                          <label for="ad" class="pers_info">Address<sup>&lowast;</sup></label>
+                        </div>
+                        <div class="input-group col">
                           <div class="input-group-prepend"> <span class="input-group-text"><i style="color:blue;"  class="fa fa-home fa-fw"></i></span>
                           </div>
                           <input type="text" class="form-control" name="ad" id="ad" placeholder="Adress" required> 
                         </div>
                       </div>
-                      <div class="form-group col-6">
-                        <label>Place of Birth</label>
-                        <div class="input-group">
+                      <div class="form-group col-12 row">
+                        <div class="col-4">
+                          <label for="pb" class="pers_info">Place of Birth</label>
+                        </div>
+                        <div class="input-group col">
                           <div class="input-group-prepend">
                             <span class="input-group-text"><i style="color:grey;" class="fa fa-map-marker fa-fw"></i></span>
                           </div>
@@ -231,26 +241,256 @@
                           <ul class="suggestions" id="suggestions"></ul>
                         </div>
                       </div>
-                      <div class="form-group col-6">
-                        <label>Date of Birth<sup>&lowast;</sup></label>
-                        <div class="input-group">
+                      <div class="form-group col-12 row ">
+                        <div class="col-4">
+                          <label class="pers_info" for="db">Date of Birth<sup>&lowast;</sup></label>
+                        </div>
+                        <div class="input-group col">
                           <div class="input-group-prepend">
                             <span class="input-group-text"><i style="color:rgb(120,50,255);" class="fas fa-birthday-cake fa-fw"></i></span>
                           </div>
                           <input type="date" class="form-control" name="db" id="db" required> 
                         </div>
                       </div>
-                      <div class="form-group col">
-                        <label>Phone <sup>&lowast;</sup></label>
-                        <div class="input-group">
+                      <div class="form-group col-12 row">
+                        <div class="col-4">
+                          <label class="pers_info" for="ph">Phone <sup>&lowast;</sup></label>
+                        </div>
+                        <div class="input-group col">
                           <div class="input-group-prepend">
                             <span class="input-group-text"><i style="color:navy;" class="fa fa-phone-square fa-fw"></i></span>
                           </div>
                           <input type="text" class="form-control" name="ph" id="ph" placeholder="62877" value="62"> 
                         </div>
-                        <small class="form-text text-muted">Make sure you write the number in international format with no whitespace.</small>
                       </div>
                     </div>
+                    <div class="form-row" id="group_name">
+                      <h4>Group Name</h4>
+                      <div class="form-group col-12 row">
+                        <div class="input-group col-12"> 
+                          <div class="input-group-prepend">
+                            <span style="color:green;" class="input-group-text"><i class="fas fa-user-friends fa-fw"></i></span> 
+                          </div>
+                          <input class="form-control" type="text" name="grp" id="grp" placeholder="Group name">
+                        </div>
+                      </div>
+                    </div>
+                    <!-- STUDENT 2 -->
+                    <div class="form-row" id="student2">
+                      <h4>Student 2 <a id="add_two" href="javascript:void(0);"><i class="fas fa-plus-circle fa-fw"></i></a> <a href="javascript:void(0);" id="remove_three"><i style="color:rgb(255,0,0);" class="fas fa-times-circle fa-fw"></i></a></h4> 
+                      <div class="form-group col-12 row">
+                        <div class="col-4">
+                          <label for="cnst2" class="pers_info">Name<sup>&lowast;</sup></label>
+                        </div>
+                        <div class="input-group col">
+                          <div class="input-group-prepend">
+                            <span class="input-group-text"><i  style="color:red;" class="fa fa-user-circle fa-fw"></i></span> 
+                          </div>
+                          <input type="text" class="form-control" name="cnst2" id="cnst2" placeholder="Name">
+                        </div>
+                      </div>
+                      <div class="form-group col-12 row">
+                        <div class="col-4">
+                          <label for="nnst2" class="pers_info">Nick name</label>
+                        </div>
+                        <div class="input-group col">
+                          <div class="input-group-prepend"> 
+                            <span class="input-group-text"><i style="color:rgb(70,0,90);" class="fas fa-user-circle fa-fw"></i> </span> 
+                          </div>
+                          <input type="text" class="form-control" name="nnst2" id="nnst2" placeholder="Alias">
+                        </div>
+                      </div>
+                      <div class="form-group col-12 row">
+                        <div class="col-4">
+                          <label for="adst2" class="pers_info">Address<sup>&lowast;</sup></label>
+                        </div>
+                        <div class="input-group col">
+                          <div class="input-group-prepend"> <span class="input-group-text"><i style="color:blue;"  class="fa fa-home fa-fw"></i></span>
+                          </div>
+                          <input type="text" class="form-control" name="adst2" id="adst2" placeholder="Adress" required> 
+                        </div>
+                      </div>
+                      <div class="form-group col-12 row">
+                        <div class="col-4">
+                          <label for="pbst2" class="pers_info">Place of Birth</label>
+                        </div>
+                        <div class="input-group col">
+                          <div class="input-group-prepend">
+                            <span class="input-group-text"><i style="color:grey;" class="fa fa-map-marker fa-fw"></i></span>
+                          </div>
+                          <input type="text" class="form-control" name="pbst2" id="pbst2" placeholder="Place of Birth">
+                        </div>
+                        <div class="suggestion_box" id="suggestion_box">
+                          <ul class="suggestions" id="suggestions"></ul>
+                        </div>
+                      </div>
+                      <div class="form-group col-12 row ">
+                        <div class="col-4">
+                          <label class="pers_info" for="dbst2">Date of Birth<sup>&lowast;</sup></label>
+                        </div>
+                        <div class="input-group col">
+                          <div class="input-group-prepend">
+                            <span class="input-group-text"><i style="color:rgb(120,50,255);" class="fas fa-birthday-cake fa-fw"></i></span>
+                          </div>
+                          <input type="date" class="form-control" name="dbst2" id="dbst2" required> 
+                        </div>
+                      </div>
+                      <div class="form-group col-12 row">
+                        <div class="col-4">
+                          <label class="pers_info" for="phst2">Phone <sup>&lowast;</sup></label>
+                        </div>
+                        <div class="input-group col">
+                          <div class="input-group-prepend">
+                            <span class="input-group-text"><i style="color:navy;" class="fa fa-phone-square fa-fw"></i></span>
+                          </div>
+                          <input type="text" class="form-control" name="phst2" id="phst2" placeholder="62877" value="62"> 
+                        </div>
+                      </div>
+                    </div><!-- END STUDENT 2 -->
+                    <!-- STUDENT 3 -->
+                    <div class="form-row" id="student3">
+                      <h4>Student 3 <a id="add_three" href="javascript:void(0);"><i class="fas fa-plus-circle fa-fw"></i></a> <a href="javascript:void(0);" id="remove_two"><i style="color:rgb(255,0,0);" class="fas fa-times-circle fa-fw"></i></a></h4> 
+                      <div class="form-group col-12 row">
+                        <div class="col-4">
+                          <label for="cnst3" class="pers_info">Name<sup>&lowast;</sup></label>
+                        </div>
+                        <div class="input-group col">
+                          <div class="input-group-prepend">
+                            <span class="input-group-text"><i  style="color:red;" class="fa fa-user-circle fa-fw"></i></span> 
+                          </div>
+                          <input type="text" class="form-control" name="cnst3" id="cnst3" placeholder="Name">
+                        </div>
+                      </div>
+                      <div class="form-group col-12 row">
+                        <div class="col-4">
+                          <label for="nnst3" class="pers_info">Nick name</label>
+                        </div>
+                        <div class="input-group col">
+                          <div class="input-group-prepend"> 
+                            <span class="input-group-text"><i style="color:rgb(70,0,90);" class="fas fa-user-circle fa-fw"></i> </span> 
+                          </div>
+                          <input type="text" class="form-control" name="nnst3" id="nnst3" placeholder="Alias">
+                        </div>
+                      </div>
+                      <div class="form-group col-12 row">
+                        <div class="col-4">
+                          <label for="adst3" class="pers_info">Address<sup>&lowast;</sup></label>
+                        </div>
+                        <div class="input-group col">
+                          <div class="input-group-prepend"> <span class="input-group-text"><i style="color:blue;"  class="fa fa-home fa-fw"></i></span>
+                          </div>
+                          <input type="text" class="form-control" name="adst3" id="adst3" placeholder="Adress" required> 
+                        </div>
+                      </div>
+                      <div class="form-group col-12 row">
+                        <div class="col-4">
+                          <label for="pbst3" class="pers_info">Place of Birth</label>
+                        </div>
+                        <div class="input-group col">
+                          <div class="input-group-prepend">
+                            <span class="input-group-text"><i style="color:grey;" class="fa fa-map-marker fa-fw"></i></span>
+                          </div>
+                          <input type="text" class="form-control" name="pbst3" id="pbst3" placeholder="Place of Birth">
+                        </div>
+                        <div class="suggestion_box" id="suggestion_box">
+                          <ul class="suggestions" id="suggestions"></ul>
+                        </div>
+                      </div>
+                      <div class="form-group col-12 row ">
+                        <div class="col-4">
+                          <label class="pers_info" for="dbst3">Date of Birth<sup>&lowast;</sup></label>
+                        </div>
+                        <div class="input-group col">
+                          <div class="input-group-prepend">
+                            <span class="input-group-text"><i style="color:rgb(120,50,255);" class="fas fa-birthday-cake fa-fw"></i></span>
+                          </div>
+                          <input type="date" class="form-control" name="dbst3" id="dbst3" required> 
+                        </div>
+                      </div>
+                      <div class="form-group col-12 row">
+                        <div class="col-4">
+                          <label class="pers_info" for="phst3">Phone <sup>&lowast;</sup></label>
+                        </div>
+                        <div class="input-group col">
+                          <div class="input-group-prepend">
+                            <span class="input-group-text"><i style="color:navy;" class="fa fa-phone-square fa-fw"></i></span>
+                          </div>
+                          <input type="text" class="form-control" name="phst3" id="phst3" placeholder="62877" value="62"> 
+                        </div>
+                      </div>
+                    </div><!-- END STUDENT 3 -->
+                    <!-- STUDENT 4 -->
+                    <div class="form-row" id="student4">
+                      <h4>Student 4 <a href="javascript:void(0);" id="remove_one"><i style="color:rgb(255,0,0);" class="fas fa-times-circle fa-fw"></i></a></h4> 
+                      <div class="form-group col-12 row">
+                        <div class="col-4">
+                          <label for="cnst4" class="pers_info">Name<sup>&lowast;</sup></label>
+                        </div>
+                        <div class="input-group col">
+                          <div class="input-group-prepend">
+                            <span class="input-group-text"><i  style="color:red;" class="fa fa-user-circle fa-fw"></i></span> 
+                          </div>
+                          <input type="text" class="form-control" name="cnst4" id="cnst4" placeholder="Name">
+                        </div>
+                      </div>
+                      <div class="form-group col-12 row">
+                        <div class="col-4">
+                          <label for="nnst4" class="pers_info">Nick name</label>
+                        </div>
+                        <div class="input-group col">
+                          <div class="input-group-prepend"> 
+                            <span class="input-group-text"><i style="color:rgb(70,0,90);" class="fas fa-user-circle fa-fw"></i> </span> 
+                          </div>
+                          <input type="text" class="form-control" name="nnst4" id="nnst4" placeholder="Alias">
+                        </div>
+                      </div>
+                      <div class="form-group col-12 row">
+                        <div class="col-4">
+                          <label for="adst4" class="pers_info">Address<sup>&lowast;</sup></label>
+                        </div>
+                        <div class="input-group col">
+                          <div class="input-group-prepend"> <span class="input-group-text"><i style="color:blue;"  class="fa fa-home fa-fw"></i></span>
+                          </div>
+                          <input type="text" class="form-control" name="adst4" id="adst4" placeholder="Adress" required> 
+                        </div>
+                      </div>
+                      <div class="form-group col-12 row">
+                        <div class="col-4">
+                          <label for="pbst4" class="pers_info">Place of Birth</label>
+                        </div>
+                        <div class="input-group col">
+                          <div class="input-group-prepend">
+                            <span class="input-group-text"><i style="color:grey;" class="fa fa-map-marker fa-fw"></i></span>
+                          </div>
+                          <input type="text" class="form-control" name="pbst4" id="pbst4" placeholder="Place of Birth">
+                        </div>
+                        <div class="suggestion_box" id="suggestion_box">
+                          <ul class="suggestions" id="suggestions"></ul>
+                        </div>
+                      </div>
+                      <div class="form-group col-12 row ">
+                        <div class="col-4">
+                          <label class="pers_info" for="dbst4">Date of Birth<sup>&lowast;</sup></label>
+                        </div>
+                        <div class="input-group col">
+                          <div class="input-group-prepend">
+                            <span class="input-group-text"><i style="color:rgb(120,50,255);" class="fas fa-birthday-cake fa-fw"></i></span>
+                          </div>
+                          <input type="date" class="form-control" name="dbst4" id="dbst4" required> 
+                        </div>
+                      </div>
+                      <div class="form-group col-12 row">
+                        <div class="col-4">
+                          <label class="pers_info" for="phst4">Phone <sup>&lowast;</sup></label>
+                        </div>
+                        <div class="input-group col">
+                          <div class="input-group-prepend">
+                            <span class="input-group-text"><i style="color:navy;" class="fa fa-phone-square fa-fw"></i></span>
+                          </div>
+                          <input type="text" class="form-control" name="phst4" id="phst4" placeholder="62877" value="62"> 
+                        </div>
+                      </div>
+                    </div><!-- END STUDENT 4 -->  
                   </fieldset>
                 </div>
                 <div class="col-lg-7"> 
@@ -382,6 +622,7 @@
         </div>
       </div>
     </form> <!-- END NEW STUDENT -->
+    <!-- EDIT STUDENT -->
     <form>
       <div class="modal fade" id="esm" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true"> 
         <div style="max-width: 90%;" class="modal-dialog modal-lg" role="document"> 
@@ -393,7 +634,7 @@
             <div class="modal-body"> 
               <div class="row"> 
                 <div class="col-lg-5"> 
-                  <fieldset>
+                  <!--fieldset>
                     <legend>Personal Information</legend>
                     <div class="form-row"> 
                       <div class="form-group col-3"> 
@@ -463,6 +704,316 @@
                         <small class="form-text text-muted">Make sure to write the number in international format with no whitespace.</small>
                       </div>
                     </div>    
+                  </fieldset-->
+                  <fieldset>
+                    <legend>Personal Information <a id="add_one_e" href="javascript:void(0);"><i class="fas fa-plus-circle fa-fw"></i></a></legend>
+                    <div class="form-row">
+                      <div class="form-group col-12 row">
+                        <div class="col-4"><label for="pn_e" class="pers_info">PIN<sup>&lowast;</sup></label>
+                        </div>
+                        <div class="input-group col"> 
+                          <div class="input-group-prepend">
+                            <span style="color:green;" class="input-group-text"><i class="fas fa-barcode fa-fw"></i></span> 
+                          </div>
+                          <input type="text" class="form-control" name="pn_e" id="pn_e" placeholder="PIN"> 
+                        </div>
+                      </div>
+                      <div class="form-group col-12 row">
+                        <div class="col-4">
+                          <label for="cn_e" class="pers_info">Name<sup>&lowast;</sup></label>
+                        </div>
+                        <div class="input-group col">
+                          <div class="input-group-prepend">
+                            <span class="input-group-text"><i  style="color:red;" class="fa fa-user-circle fa-fw"></i></span> 
+                          </div>
+                          <input type="text" class="form-control" name="cn_e" id="cn_e" placeholder="Name">
+                        </div>
+                      </div>
+                      <div class="form-group col-12 row">
+                        <div class="col-4">
+                          <label for="nn_e" class="pers_info">Nick name</label>
+                        </div>
+                        <div class="input-group col">
+                          <div class="input-group-prepend"> 
+                            <span class="input-group-text"><i style="color:rgb(70,0,90);" class="fas fa-user-circle fa-fw"></i> </span> 
+                          </div>
+                          <input type="text" class="form-control" name="nn_e" id="nn_e" placeholder="Alias">
+                        </div>
+                      </div>
+                      <div class="form-group col-12 row">
+                        <div class="col-4">
+                          <label for="ad_e" class="pers_info">Address<sup>&lowast;</sup></label>
+                        </div>
+                        <div class="input-group col">
+                          <div class="input-group-prepend"> <span class="input-group-text"><i style="color:blue;"  class="fa fa-home fa-fw"></i></span>
+                          </div>
+                          <input type="text" class="form-control" name="ad_e" id="ad_e" placeholder="Adress" required> 
+                        </div>
+                      </div>
+                      <div class="form-group col-12 row">
+                        <div class="col-4">
+                          <label for="pb_e" class="pers_info">Place of Birth</label>
+                        </div>
+                        <div class="input-group col">
+                          <div class="input-group-prepend">
+                            <span class="input-group-text"><i style="color:grey;" class="fa fa-map-marker fa-fw"></i></span>
+                          </div>
+                          <input type="text" class="form-control" name="pb_e" id="pb_e" placeholder="Place of Birth">
+                        </div>
+                        <div class="suggestion_box" id="suggestion_box_e">
+                          <ul class="suggestions" id="suggestions_e"></ul>
+                        </div>
+                      </div>
+                      <div class="form-group col-12 row ">
+                        <div class="col-4">
+                          <label class="pers_info" for="db_e">Date of Birth<sup>&lowast;</sup></label>
+                        </div>
+                        <div class="input-group col">
+                          <div class="input-group-prepend">
+                            <span class="input-group-text"><i style="color:rgb(120,50,255);" class="fas fa-birthday-cake fa-fw"></i></span>
+                          </div>
+                          <input type="date" class="form-control" name="db_e" id="db_e" required> 
+                        </div>
+                      </div>
+                      <div class="form-group col-12 row">
+                        <div class="col-4">
+                          <label class="pers_info" for="ph_e">Phone <sup>&lowast;</sup></label>
+                        </div>
+                        <div class="input-group col">
+                          <div class="input-group-prepend">
+                            <span class="input-group-text"><i style="color:navy;" class="fa fa-phone-square fa-fw"></i></span>
+                          </div>
+                          <input type="text" class="form-control" name="ph_e" id="ph_e" placeholder="62877" value="62"> 
+                        </div>
+                      </div>
+                    </div>
+                    <div class="form-row" id="group_name_e">
+                      <h4>Group Name</h4>
+                      <div class="form-group col-12 row">
+                        <div class="input-group col-12"> 
+                          <div class="input-group-prepend">
+                            <span style="color:green;" class="input-group-text"><i class="fas fa-user-friends fa-fw"></i></span> 
+                          </div>
+                          <input class="form-control" type="text" name="grp_e" id="grp_e" placeholder="Group name">
+                        </div>
+                      </div>
+                    </div>
+                    <!-- STUDENT 2 -->
+                    <div class="form-row" id="student2">
+                      <h4>Student 2 <a id="add_two_e" href="javascript:void(0);"><i class="fas fa-plus-circle fa-fw"></i></a> <a href="javascript:void(0);" id="remove_three_e"><i style="color:rgb(255,0,0);" class="fas fa-times-circle fa-fw"></i></a></h4> 
+                      <div class="form-group col-12 row">
+                        <div class="col-4">
+                          <label for="cnst2_e" class="pers_info">Name<sup>&lowast;</sup></label>
+                        </div>
+                        <div class="input-group col">
+                          <div class="input-group-prepend">
+                            <span class="input-group-text"><i  style="color:red;" class="fa fa-user-circle fa-fw"></i></span> 
+                          </div>
+                          <input type="text" class="form-control" name="cnst2_e" id="cnst2_e" placeholder="Name">
+                        </div>
+                      </div>
+                      <div class="form-group col-12 row">
+                        <div class="col-4">
+                          <label for="nnst2_e" class="pers_info">Nick name</label>
+                        </div>
+                        <div class="input-group col">
+                          <div class="input-group-prepend"> 
+                            <span class="input-group-text"><i style="color:rgb(70,0,90);" class="fas fa-user-circle fa-fw"></i> </span> 
+                          </div>
+                          <input type="text" class="form-control" name="nnst2_e" id="nnst2_e" placeholder="Alias">
+                        </div>
+                      </div>
+                      <div class="form-group col-12 row">
+                        <div class="col-4">
+                          <label for="adst2_e" class="pers_info">Address<sup>&lowast;</sup></label>
+                        </div>
+                        <div class="input-group col">
+                          <div class="input-group-prepend"> <span class="input-group-text"><i style="color:blue;"  class="fa fa-home fa-fw"></i></span>
+                          </div>
+                          <input type="text" class="form-control" name="adst2_e" id="adst2_e" placeholder="Adress" required> 
+                        </div>
+                      </div>
+                      <div class="form-group col-12 row">
+                        <div class="col-4">
+                          <label for="pbst2_e" class="pers_info">Place of Birth</label>
+                        </div>
+                        <div class="input-group col">
+                          <div class="input-group-prepend">
+                            <span class="input-group-text"><i style="color:grey;" class="fa fa-map-marker fa-fw"></i></span>
+                          </div>
+                          <input type="text" class="form-control" name="pbst2_e" id="pbst2_e" placeholder="Place of Birth">
+                        </div>
+                        <div class="suggestion_box" id="suggestion_box">
+                          <ul class="suggestions" id="suggestions"></ul>
+                        </div>
+                      </div>
+                      <div class="form-group col-12 row ">
+                        <div class="col-4">
+                          <label class="pers_info" for="dbst2_e">Date of Birth<sup>&lowast;</sup></label>
+                        </div>
+                        <div class="input-group col">
+                          <div class="input-group-prepend">
+                            <span class="input-group-text"><i style="color:rgb(120,50,255);" class="fas fa-birthday-cake fa-fw"></i></span>
+                          </div>
+                          <input type="date" class="form-control" name="dbst2_e" id="dbst2_e" required> 
+                        </div>
+                      </div>
+                      <div class="form-group col-12 row">
+                        <div class="col-4">
+                          <label class="pers_info" for="phst2_e">Phone <sup>&lowast;</sup></label>
+                        </div>
+                        <div class="input-group col">
+                          <div class="input-group-prepend">
+                            <span class="input-group-text"><i style="color:navy;" class="fa fa-phone-square fa-fw"></i></span>
+                          </div>
+                          <input type="text" class="form-control" name="phst2_e" id="phst2_e" placeholder="62877" value="62"> 
+                        </div>
+                      </div>
+                    </div><!-- END STUDENT 2 -->
+                    <!-- STUDENT 3 -->
+                    <div class="form-row" id="student3">
+                      <h4>Student 3 <a id="add_three_e" href="javascript:void(0);"><i class="fas fa-plus-circle fa-fw"></i></a> <a href="javascript:void(0);" id="remove_two_e"><i style="color:rgb(255,0,0);" class="fas fa-times-circle fa-fw"></i></a></h4> 
+                      <div class="form-group col-12 row">
+                        <div class="col-4">
+                          <label for="cnst3_e" class="pers_info">Name<sup>&lowast;</sup></label>
+                        </div>
+                        <div class="input-group col">
+                          <div class="input-group-prepend">
+                            <span class="input-group-text"><i  style="color:red;" class="fa fa-user-circle fa-fw"></i></span> 
+                          </div>
+                          <input type="text" class="form-control" name="cnst3_e" id="cnst3_e" placeholder="Name">
+                        </div>
+                      </div>
+                      <div class="form-group col-12 row">
+                        <div class="col-4">
+                          <label for="nnst3_e" class="pers_info">Nick name</label>
+                        </div>
+                        <div class="input-group col">
+                          <div class="input-group-prepend"> 
+                            <span class="input-group-text"><i style="color:rgb(70,0,90);" class="fas fa-user-circle fa-fw"></i> </span> 
+                          </div>
+                          <input type="text" class="form-control" name="nnst3_e" id="nnst3_e" placeholder="Alias">
+                        </div>
+                      </div>
+                      <div class="form-group col-12 row">
+                        <div class="col-4">
+                          <label for="adst3_e" class="pers_info">Address<sup>&lowast;</sup></label>
+                        </div>
+                        <div class="input-group col">
+                          <div class="input-group-prepend"> <span class="input-group-text"><i style="color:blue;"  class="fa fa-home fa-fw"></i></span>
+                          </div>
+                          <input type="text" class="form-control" name="adst3_e" id="adst3_e" placeholder="Adress" required> 
+                        </div>
+                      </div>
+                      <div class="form-group col-12 row">
+                        <div class="col-4">
+                          <label for="pbst3_e" class="pers_info">Place of Birth</label>
+                        </div>
+                        <div class="input-group col">
+                          <div class="input-group-prepend">
+                            <span class="input-group-text"><i style="color:grey;" class="fa fa-map-marker fa-fw"></i></span>
+                          </div>
+                          <input type="text" class="form-control" name="pbst3_e" id="pbst3_e" placeholder="Place of Birth">
+                        </div>
+                        <div class="suggestion_box" id="suggestion_box">
+                          <ul class="suggestions" id="suggestions"></ul>
+                        </div>
+                      </div>
+                      <div class="form-group col-12 row ">
+                        <div class="col-4">
+                          <label class="pers_info" for="dbst3">Date of Birth<sup>&lowast;</sup></label>
+                        </div>
+                        <div class="input-group col">
+                          <div class="input-group-prepend">
+                            <span class="input-group-text"><i style="color:rgb(120,50,255);" class="fas fa-birthday-cake fa-fw"></i></span>
+                          </div>
+                          <input type="date" class="form-control" name="dbst3_e" id="dbst3_e" required> 
+                        </div>
+                      </div>
+                      <div class="form-group col-12 row">
+                        <div class="col-4">
+                          <label class="pers_info" for="phst3_e">Phone <sup>&lowast;</sup></label>
+                        </div>
+                        <div class="input-group col">
+                          <div class="input-group-prepend">
+                            <span class="input-group-text"><i style="color:navy;" class="fa fa-phone-square fa-fw"></i></span>
+                          </div>
+                          <input type="text" class="form-control" name="phst3_e" id="phst3_e" placeholder="62877" value="62"> 
+                        </div>
+                      </div>
+                    </div><!-- END STUDENT 3 -->
+                    <!-- STUDENT 4 -->
+                    <div class="form-row" id="student4_e">
+                      <h4>Student 4 <a href="javascript:void(0);" id="remove_one_e"><i style="color:rgb(255,0,0);" class="fas fa-times-circle fa-fw"></i></a></h4> 
+                      <div class="form-group col-12 row">
+                        <div class="col-4">
+                          <label for="cnst4_e" class="pers_info">Name<sup>&lowast;</sup></label>
+                        </div>
+                        <div class="input-group col">
+                          <div class="input-group-prepend">
+                            <span class="input-group-text"><i  style="color:red;" class="fa fa-user-circle fa-fw"></i></span> 
+                          </div>
+                          <input type="text" class="form-control" name="cnst4_e" id="cnst4_e" placeholder="Name">
+                        </div>
+                      </div>
+                      <div class="form-group col-12 row">
+                        <div class="col-4">
+                          <label for="nnst4_e" class="pers_info">Nick name</label>
+                        </div>
+                        <div class="input-group col">
+                          <div class="input-group-prepend"> 
+                            <span class="input-group-text"><i style="color:rgb(70,0,90);" class="fas fa-user-circle fa-fw"></i> </span> 
+                          </div>
+                          <input type="text" class="form-control" name="nnst4_e" id="nnst4_e" placeholder="Alias">
+                        </div>
+                      </div>
+                      <div class="form-group col-12 row">
+                        <div class="col-4">
+                          <label for="adst4_e" class="pers_info">Address<sup>&lowast;</sup></label>
+                        </div>
+                        <div class="input-group col">
+                          <div class="input-group-prepend"> <span class="input-group-text"><i style="color:blue;"  class="fa fa-home fa-fw"></i></span>
+                          </div>
+                          <input type="text" class="form-control" name="adst4_e" id="adst4_e" placeholder="Adress" required> 
+                        </div>
+                      </div>
+                      <div class="form-group col-12 row">
+                        <div class="col-4">
+                          <label for="pbst4_e" class="pers_info">Place of Birth</label>
+                        </div>
+                        <div class="input-group col">
+                          <div class="input-group-prepend">
+                            <span class="input-group-text"><i style="color:grey;" class="fa fa-map-marker fa-fw"></i></span>
+                          </div>
+                          <input type="text" class="form-control" name="pbst4_e" id="pbst4_e" placeholder="Place of Birth">
+                        </div>
+                        <div class="suggestion_box" id="suggestion_box">
+                          <ul class="suggestions" id="suggestions"></ul>
+                        </div>
+                      </div>
+                      <div class="form-group col-12 row ">
+                        <div class="col-4">
+                          <label class="pers_info" for="dbst4_e">Date of Birth<sup>&lowast;</sup></label>
+                        </div>
+                        <div class="input-group col">
+                          <div class="input-group-prepend">
+                            <span class="input-group-text"><i style="color:rgb(120,50,255);" class="fas fa-birthday-cake fa-fw"></i></span>
+                          </div>
+                          <input type="date" class="form-control" name="dbst4_e" id="dbst4_e" required> 
+                        </div>
+                      </div>
+                      <div class="form-group col-12 row">
+                        <div class="col-4">
+                          <label class="pers_info" for="phst4_e">Phone <sup>&lowast;</sup></label>
+                        </div>
+                        <div class="input-group col">
+                          <div class="input-group-prepend">
+                            <span class="input-group-text"><i style="color:navy;" class="fa fa-phone-square fa-fw"></i></span>
+                          </div>
+                          <input type="text" class="form-control" name="phst4_e" id="phst4_e" placeholder="62877" value="62"> 
+                        </div>
+                      </div>
+                    </div><!-- END STUDENT 4 -->  
                   </fieldset>
                 </div>
                 <div class="col-lg-7"> 
@@ -1396,7 +1947,7 @@
     <?php else: /* script user */?>
     <script type="text/javascript">
       $(document).ready(function(){
-        var today = $.format.date(new Date(), "yyyy-MM-dd");
+        var today = $.format.date(new Date(), "yyyy-MM-dd");  
         $("#pb").keyup(function(){
          if($(this).val()==''){
            $('#suggestion_box').hide();
@@ -1454,7 +2005,34 @@
             },
             "columns":[
               {"data" : "pin"},
-              {"data" : "complete_name"},
+              {
+                "data" : {grp:"grp",complete_name:"complete_name",cnst2:"cnst2",cnst3:"cnst3",cnst4:"cnst4"},
+                "render":function(data,type,row){
+                  if(data.grp!=''){
+                    if(data.cnst2!=''&&data.cnst3!=''&&data.cnst4!=''){
+                      return '<span class="tooltip-bottom" title="'+data.complete_name+' - '+data.cnst2+' - '+data.cnst3+' - '+data.cnst4+'">'+data.grp+'</span>';
+                    } else if(data.cnst2!=''&&data.cnst3!=''){
+                      return '<span class="tootip-bottom" title="'+data.complete_name+' - '+data.cnst2+' - '+data.cnst3+'">'+data.grp+'</span>';
+                    } else{
+                      return '<span class="tooltip-bottom" title="'+data.complete_name+' - '+data.cnst2+'">'+data.grp+'</span>';
+                    }
+                  } else {
+                    if(data.cnst2!=''){
+                      if(data.cnst3!=''){
+                        if(data.cnst4!=''){
+                          return '<span title="'+data.complete_name+' - '+data.cnst2+' - '+data.cnst3+'-'+data.cnst4+'">'+data.complete_name+'</span>';
+                        } else {
+                          return '<span title="'+data.complete_name+' - '+data.cnst2+' - '+data.cnst3+'">'+data.complete_name+'</span>';
+                        }
+                      } else{
+                        return '<span title="'+data.complete_name+' - '+data.cnst2+'">'+data.complete_name+'</span>';
+                      }
+                    } else {
+                      return data.complete_name;
+                    }
+                  }
+                }
+              },
               {"data" : "nick_name"},
               {"data" : "address"},
               {
@@ -1478,9 +2056,9 @@
                 }
               },
               {
-                "data" : {pin: "pin", complete_name: "complete_name", nick_name:"nick_name", address: "address", place_of_birth: "place_of_birth", date_of_birth: "date_of_birth", phone: "phone", program: "program", program_duration: "program_duration", starting_date: "starting_date", reason: "reason", target: "target", difficulties: "difficulties", bground: "bground", self_introduction: "self_introduction", weakness_point: "weakness_point", action_plan: "action_plan", fsp: "fsp"},
+                "data" : {grp:"grp",pin: "pin", complete_name: "complete_name", nick_name:"nick_name", address: "address", place_of_birth: "place_of_birth", date_of_birth: "date_of_birth", phone: "phone",cnst2:"cnst2",nnst2:"nnst2",adrst2:"adrst2",pobst2:"pobst2",dobst2:"dobst2",phst2:"phst2",cnst3:"cnst3",nnst3:"nnst3",adrst3:"adrst3",pobst3:"pobst3",dobst3:"dobst3",phst3:"phst3",cnst4:"cnst4",nnst4:"nnst4",adrst4:"adrst4",pobst4:"pobst4",dobst4:"dobst4",phst4:"phst4",program: "program", program_duration: "program_duration", starting_date: "starting_date", reason: "reason", target: "target", difficulties: "difficulties", bground: "bground", self_introduction: "self_introduction", weakness_point: "weakness_point", action_plan: "action_plan", fsp: "fsp"},
                 "render" : function(data, type, row, meta){
-                  return '<a class="btn btn-success btn-sm" href="<?php echo site_url('student_single?pin=');?>'+data.pin+'&name='+data.nick_name+'"><i class="fas fa-eye fa-fw"></i></a> <a title="Edit" href="javascript:void(0);" class="btn btn-info btn-sm item_edit tooltip-bottom" data-pn="'+data.pin+'" data-cn="'+data.complete_name+'" data-nn="'+data.nick_name+'" data-ad="'+data.address+'" data-pb="'+data.place_of_birth+'" data-db="'+($.format.date(data.date_of_birth, "yyyy-MM-dd"))+'" data-ph="'+data.phone+'" data-pr="'+data.program+'" data-pd="'+data.program_duration+'" data-sd="'+($.format.date(data.starting_date, "yyyy-MM-dd"))+'" data-re="'+data.reason+'" data-ta="'+data.target+'" data-di="'+data.difficulties+'" data-bg="'+data.bground+'" data-si="'+data.self_introduction+'" data-wp="'+data.weakness_point+'" data-ap="'+data.action_plan+'" data-fsp="'+data.fsp+'"><i class="fas fa-user-edit fa-fw"></i></a>';
+                  return '<a class="btn btn-success btn-sm" href="<?php echo site_url('student_single?pin=');?>'+data.pin+'&name='+data.nick_name+'"><i class="fas fa-eye fa-fw"></i></a> <a title="Edit" href="javascript:void(0);" class="btn btn-info btn-sm item_edit tooltip-bottom" data-pn="'+data.pin+'" data-cn="'+data.complete_name+'" data-nn="'+data.nick_name+'" data-ad="'+data.address+'" data-pb="'+data.place_of_birth+'" data-db="'+($.format.date(data.date_of_birth, "yyyy-MM-dd"))+'" data-ph="'+data.phone+'" data-cnst2="'+data.cnst2+'"data-nnst2="'+data.nnst2+'"data-adrst2="'+data.adrst2+'"data-pobst2="'+data.pobst2+'"data-dobst2="'+($.format.date(data.dobst2, "yyyy-MM-dd"))+'"data-phst2="'+data.phst2+'"data-cnst3="'+data.cnst3+'"data-nnst3="'+data.nnst3+'"data-adrst3="'+data.adrst3+'"data-pobst3="'+data.pobst3+'"data-dobst3="'+($.format.date(data.dobst3, "yyyy-MM-dd"))+'"data-phst3="'+data.phst3+'"data-cnst4="'+data.cnst4+'"data-nnst4="'+data.nnst4+'"data-adrst4="'+data.adrst4+'"data-pobst4="'+data.pobst4+'"data-dobst4="'+($.format.date(data.dobst4, "yyyy-MM-dd"))+'"data-phst4="'+data.phst4+'" data-pr="'+data.program+'" data-pd="'+data.program_duration+'" data-sd="'+($.format.date(data.starting_date, "yyyy-MM-dd"))+'" data-re="'+data.reason+'" data-ta="'+data.target+'" data-di="'+data.difficulties+'" data-bg="'+data.bground+'" data-si="'+data.self_introduction+'" data-wp="'+data.weakness_point+'" data-ap="'+data.action_plan+'" data-fsp="'+data.fsp+'"><i class="fas fa-user-edit fa-fw"></i></a>';
                 }
               }
             ]
@@ -1527,6 +2105,25 @@
         $('#new_student_button').on('click', function(){
           $('#nsm').modal('show');
           $('[name="starting_date"]').val(today);
+          $('#add_one').on('click',function(){
+            $('#group_name,#student2').fadeIn('slow');
+            $('#remove_three').on('click', function(){
+              $('#group_name,#student2,#student3,#student4').fadeOut('slow');
+               $('#cnst2,#nnst2,#adst2,#pbst2,#dbst2,#phst2,#cnst3,#nnst3,#adst3,#pbst3,#dbst3,#phst3,#cnst4,#nnst4,#adst4,#pbst4,#dbst4,#phst4').val("");
+            });
+            $('#add_two').on('click',function(){
+              $('#student3').fadeIn('slow');
+              $('#remove_two').on('click', function(){
+                $('#student3,#student4').fadeOut('slow');
+              });
+              $('#add_three').on('click', function(){
+                $('#student4').fadeIn('slow');
+                $('#remove_one').on('click', function(){
+                  $('#student4').fadeOut('slow');
+                });
+              });
+            })
+          });
         });
         $('input, select, textarea').on('focus', function(){
           $(this).css('background-color', 'white');
@@ -1536,90 +2133,177 @@
         $('#save_student_btn').on('click',function(){
           var bck = 'background-color',
               clr ='#fbe2e6',
-              a=$('#pn').val(),
-              b=$('#cn').val(),
-              c=$('#nn').val(),
-              d=$('#ad').val(),
-              e=$('#pb').val(),
-              f=$('#db').val(),
-              g=$('#ph').val(),
-              h=$('#pr').val(),
-              i=$('#pd').val(),
-              j=$('#sd').val(),
-              k=$('#re').val(),
-              l=$('#ta').val(),
-              m=$('#di').val(),
-              n=$('#bg').val(),
-              o=$('#si').val(),
-              p=$('#wp').val(),
-              q=$('#ap').val();
-          if (a==''|| b==''||d==''||f=='' ||g==''||h==''||i==''){
-            $('#nsf').addClass('alert alert-danger'); $('#nsf').html('Please fill out all required fields'); 
-            if (a=='') {$('#pn').css(bck, clr);}if (b=='') {$('#cn').css(bck, clr);}if(d==''){ $('#ad').css(bck, clr);}
-            if (f=='') {$('#db').css(bck, clr);}if (g=='') { $('#ph').css(bck, clr);}if(h==''){ $('#pr').css(bck, clr);}if (i=='') {$('#pd').css(bck, clr);
+              grp = $('#grp').val(),
+              pn=$('#pn').val(),
+              cn=$('#cn').val(),
+              nn=$('#nn').val(),
+              ad=$('#ad').val(),
+              pb=$('#pb').val(),
+              db=$('#db').val(),
+              ph=$('#ph').val(),
+              cn2=$('#cnst2').val(),
+              nn2=$('#nnst2').val(),
+              ad2=$('#adst2').val(),
+              pb2=$('#pbst2').val(),
+              db2=$('#dbst2').val(),
+              ph2=$('#phst2').val(),
+              cn3=$('#cnst3').val(),
+              nn3=$('#nnst3').val(),
+              ad3=$('#adst3').val(),
+              pb3=$('#pbst3').val(),
+              db3=$('#dbst3').val(),
+              ph3=$('#phst3').val(),
+              cn4=$('#cnst4').val(),
+              nn4=$('#nnst4').val(),
+              ad4=$('#adst4').val(),
+              pb4=$('#pbst4').val(),
+              db4=$('#dbst4').val(),
+              ph4=$('#phst4').val(),
+              pr=$('#pr').val(),
+              pd=$('#pd').val(),
+              sd=$('#sd').val(),
+              re=$('#re').val(),
+              ta=$('#ta').val(),
+              di=$('#di').val(),
+              bg=$('#bg').val(),
+              si=$('#si').val(),
+              wp=$('#wp').val(),
+              ap=$('#ap').val();
+          if (pn==''|| cn==''||ad==''||db==''||ph==''||pr==''||pd==''){
+            $('#nsf').addClass('alert alert-danger'); 
+            $('#nsf').html('Please fill out all required fields'); 
+            if (pn=='') {
+              $('#pn').css(bck, clr);
+            }
+            if (cn=='') {
+              $('#cn').css(bck, clr);}
+            if(ad==''){
+              $('#ad').css(bck, clr);}
+            if (db==''){
+              $('#db').css(bck, clr);}
+            if (ph==''){
+              $('#ph').css(bck, clr);}
+            if(pr==''){
+              $('#pr').css(bck, clr);}
+            if (pd=='') {
+              $('#pd').css(bck, clr);
             }
           }else{
-            if (isNaN(a)){
+            if (isNaN(pn)){
               $('#nsf').addClass('alert alert-danger'); 
               $('#nsf').html('pin can only consist of number'); 
               $('#pn').css(bck, clr);
             }else{
-              if (isNaN(g)){
+              if (isNaN(ph)){
                 $('#nsf').addClass('alert alert-danger'); 
                 $('#nsf').html('phone can only consist of number'); 
                 $('#ph').css(bck, clr);
               }else{
-                if (isNaN(i)){
+                if (isNaN(pd)){
                   $('#nsf').addClass('alert alert-danger');
                   $('#nsf').html('Program duration only consist of number'); 
                   $('#pd').css(bck, clr);
-                }else{
-                  $.ajax({
-                    url: '<?php echo site_url('student/pin_availability')?>', 
-                    type: 'post', 
-                    data:{pin:a}, 
-                    success: function(response){
-                      if (response=='true' ){
-                        $('#nsf').addClass('alert alert-danger'); 
-                        $('#nsf').html('pin is already used');
-                        $('#pn').css(bck, clr);            
-                      }else{
-                        $.ajax({
-                          type : "POST", 
-                          url : "<?php echo site_url('student/save')?>", 
-                          dataType : "JSON", 
-                          data:{pin:a,complete_name:b,nick_name:c,address:d,place_of_birth:e,date_of_birth:f,phone:g,program:h,program_duration:i,starting_date:j,reason:k,target:l,difficulties:m,bground:n,self_introduction:o,weakness_point:p,action_plan:q},
-                          success: function(data){
-                            $('[name="pn"]').val(""); 
-                            $('[name="cn"]').val(""); 
-                            $('[name="nn"]').val(""); 
-                            $('[name="ad"]').val(""); 
-                            $('[name="pb"]').val(""); 
-                            $('[name="db"]').val(""); 
-                            $('[name="ph"]').val(""); 
-                            $('[name="pr"]').val(""); 
-                            $('[name="pd"]').val(""); 
-                            $('[name="sd"]').val(today);
-                            $('[name="re"]').val(""); 
-                            $('[name="ta"]').val(""); 
-                            $('[name="di"]').val(""); 
-                            $('[name="bg"]').val(""); 
-                            $('[name="si"]').val("");
-                            $('[name="wp"]').val("");
-                            $('[name="ap"]').val(""); 
-                            $('#nsm').modal('hide');
-                            $('#mystudents').DataTable().ajax.reload();
+                } else {
+                  if ($('#student2').css('display')==='block'){// student 2 is opened
+                    if(cn2 == ''||ad2==''||db2==''||ph2==''){ 
+                      $('#nsf').addClass('alert alert-danger');
+                      $('#nsf').html('Please fill out all required fields'); 
+                      if(cn2==''){$('cnst2').css(bck,clr);}
+                      if(ad2==''){$('adst2').css(bck,clr);}
+                      if(db2==''){$('dbst2').css(bck,clr);}
+                      if(ph2==''){$('cnst2').css(bck,clr);}
+                    } else {
+                      if(isNaN(ph2)){
+                        console.log('phone 2 is not number');
+                      } else {
+                        if($('#student3').css('display')==='block'){
+                          if(cn3 == ''||ad3==''||db3==''||ph3==''){
+                            console.log('fill out three students');
+                          } else {
+                            if(isNaN(ph3)){
+                              console.log('phone 3 is not number');
+                            } else{
+                              if($('#student4').css('display')==='block'){
+                                if(cn4 == ''||ad4==''||db4==''||ph4==''){
+                                  console.log('fill out four students');
+                                } else {
+                                  if(isNaN(ph4)){
+                                    console.log('phone 4 is not number');
+                                  } else{
+                                    console.log('submit four students');
+                                    check_pin(grp,pn,cn,nn,ad,pb,db,ph,cn2,nn2,ad2,pb2,db2,ph2,cn3,nn3,ad3,pb3,db3,ph3,cn4,nn4,ad4,pb4,db4,ph4,pr,pd,sd,re,ta,di,bg,si,wp,ap);
+                                    }
+                                }
+                              } else {
+                                console.log('submit three students');
+                                check_pin(grp,pn,cn,nn,ad,pb,db,ph,cn2,nn2,ad2,pb2,db2,ph2,cn3,nn3,ad3,pb3,db3,ph3,cn4,nn4,ad4,pb4,db4,ph4,pr,pd,sd,re,ta,di,bg,si,wp,ap);
+                              }
+                            }
                           }
-                        });
+                        } else{
+                          console.log('submit two students');
+                          check_pin(grp,pn,cn,nn,ad,pb,db,ph,cn2,nn2,ad2,pb2,db2,ph2,cn3,nn3,ad3,pb3,db3,ph3,cn4,nn4,ad4,pb4,db4,ph4,pr,pd,sd,re,ta,di,bg,si,wp,ap);
+                        }
                       }
                     }
-                  });
+                  } else{
+                    check_pin(grp,pn,cn,nn,ad,pb,db,ph,cn2,nn2,ad2,pb2,db2,ph2,cn3,nn3,ad3,pb3,db3,ph3,cn4,nn4,ad4,pb4,db4,ph4,pr,pd,sd,re,ta,di,bg,si,wp,ap);
+                     console.log('submitted one student');
+                  }
                 }
               }
             }
           }
           return false;
         });
+        function check_pin(grp,pn,cn,nn,ad,pb,db,ph,cn2,nn2,ad2,pb2,db2,ph2,cn3,nn3,ad3,pb3,db3,ph3,cn4,nn4,ad4,pb4,db4,ph4,pr,pd,sd,re,ta,di,bg,si,wp,ap){
+          var bck = 'background-color',
+              clr ='#fbe2e6';
+          $.ajax({
+            url: '<?php echo  site_url('student/pin_availability')?>', 
+            type: 'post', 
+            data:{pin:pn}, 
+            success: function(response){
+              if (response=='true' ){
+                $('#nsf').addClass('alert alert-danger'); 
+                $('#nsf').html('pin is already used');
+                $('#pn').css(bck, clr);
+                console.log('pin is taken');
+              }else{
+               submit_student(grp,pn,cn,nn,ad,pb,db,ph,cn2,nn2,ad2,pb2,db2,ph2,cn3,nn3,ad3,pb3,db3,ph3,cn4,nn4,ad4,pb4,db4,ph4,pr,pd,sd,re,ta,di,bg,si,wp,ap);
+              }
+            }
+          });
+        }
+        function submit_student(grp,pn,cn,nn,ad,pb,db,ph,cn2,nn2,ad2,pb2,db2,ph2,cn3,nn3,ad3,pb3,db3,ph3,cn4,nn4,ad4,pb4,db4,ph4,pr,pd,sd,re,ta,di,bg,si,wp,ap){
+          $.ajax({
+            type : "POST", 
+            url : "<?php echo site_url('student/save')?>", 
+            dataType : "JSON", 
+            data:{grp:grp,pn:pn,cn:cn,nn:nn,ad:ad,pb:pb,db:db,ph:ph,cn2:cn2,nn2:nn2,ad2:ad2,pb2:pb2,db2:db2,ph2:ph2,cn3:cn3,nn3:nn3,ad3:ad3,pb3:pb3,db3:db3,ph3:ph3,cn4:cn4,nn4:nn4,ad4:ad4,pb4:pb4,db4:db4,ph4:ph4,pr:pr,pd:pd,sd:sd,re:re,ta:ta,di:di,bg:bg,si:si,we:wp,ap:ap},
+            success: function(data){
+              $('[name="pn"]').val(""); 
+              $('[name="cn"]').val(""); 
+              $('[name="nn"]').val(""); 
+              $('[name="ad"]').val(""); 
+              $('[name="pb"]').val(""); 
+              $('[name="db"]').val(""); 
+              $('[name="ph"]').val(""); 
+              $('[name="pr"]').val(""); 
+              $('[name="pd"]').val(""); 
+              $('[name="sd"]').val(today);
+              $('[name="re"]').val(""); 
+              $('[name="ta"]').val(""); 
+              $('[name="di"]').val(""); 
+              $('[name="bg"]').val(""); 
+              $('[name="si"]').val("");
+              $('[name="wp"]').val("");
+              $('[name="ap"]').val(""); 
+              $('#nsm').modal('hide');
+              $('#mystudents').DataTable().ajax.reload();
+            }
+          });
+        }
         $('#show_data').on('click','.item_edit',function(){
           var a=$(this).data('pn'), b=$(this).data('cn'), c=$(this).data('nn'),d=$(this).data('ad'), e=$(this).data('pb'), f=$(this).data('db'), g=$(this).data('ph'), h=$(this).data('pr'), i=$(this).data('pd'), j=$(this).data('sd'), k=$(this).data('re'), l=$(this).data('ta'), m=$(this).data('di'), n=$(this).data('bg'), o=$(this).data('si'), p=$(this).data('wp'), q=$(this).data('ap'), fsp = $(this).data('fsp'), fsp_button = '<input type="checkbox" name="fsp" id="fsp"' ;
           $('#esm').modal('show'); $('[name="pn2"]').val(a); $('[name="cn2"]').val(b); $('[name="nn2"]').val(c); $('[name="ad2"]').val(d); $('[name="pb2"]').val(e); $('[name="db2"]').val(f); $('[name="ph2"]').val(g); $('[name="pr2"]').val(h); $('[name="pd2"]').val(i); $('[name="sd2"]').val(j); $('[name="re2"]').val(k); $('[name="ta2"]').val(l); $('[name="di2"]').val(m); $('[name="bg2"]').val(n); $('[name="si2"]').val(o); $('[name="wp2"]').val(p); $('[name="ap2"]').val(q);
@@ -1628,7 +2312,9 @@
           $('#fsp_button').html(fsp_button);
         });
         $('#update_student_btn').on('click',function(){
-          var bck = 'background-color',clr='#fbe2e6',a=$('#pn2').val(),b=$('#cn2').val(),c=$('#nn2').val(),d=$('#ad2').val(),e=$('#pb2').val(),f=$('#db2').val(), g=$('#ph2').val(),h=$('#pr2').val(),i=$('#pd2').val(),j=$('#sd2').val(),k=$('#re2').val(),l=$('#ta2').val(),m=$('#di2').val(),n=$('#bg2').val(),  o=$('#si2').val(),p=$('#wp2').val(),action_plan=$('#ap2').val(),fsp='';
+          var bck = 'background-color',
+              clr='#fbe2e6',
+              a=$('#pn2').val(),b=$('#cn2').val(),c=$('#nn2').val(),d=$('#ad2').val(),e=$('#pb2').val(),f=$('#db2').val(), g=$('#ph2').val(),h=$('#pr2').val(),i=$('#pd2').val(),j=$('#sd2').val(),k=$('#re2').val(),l=$('#ta2').val(),m=$('#di2').val(),n=$('#bg2').val(),  o=$('#si2').val(),p=$('#wp2').val(),action_plan=$('#ap2').val(),fsp='';
           if ($('#fsp').is(':checked')){fsp='yes';}else{fsp='';}
           if (a==''||b==''||d==''|| f=='' || g=='' || h=='' || i==''){
             $('#esf').addClass('alert alert-danger'); 
