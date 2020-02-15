@@ -1,9 +1,11 @@
+/*#group_name,#group_name_e{ */
 #group_name{
   display:none;
 }
 .pers_info{
   float:right;
 }
+/*#student2,#student3,#student4,#student2_e,#student3_e,#student4_e{*/
 #student2,#student3,#student4{
   display:none;
 }
