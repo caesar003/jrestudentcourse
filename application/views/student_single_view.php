@@ -1369,7 +1369,6 @@
             dataType : "JSON",
             data : {pin: a, meeting: b},
             success : function(data){
-              console.log("Test created");
               $('#my_tests').DataTable().ajax.reload();
             }
           });
@@ -1602,20 +1601,8 @@
             $('#mytests').DataTable().ajax.reload();
           }
           $('#delete_session_modal').modal('hide');
-          /*$.ajax({
-            url : "<?php echo site_url('student_single/delete_course'); ?>",
-            type : "post",
-            dataType : "json",
-            data : {pin:pin, m:m_d},
-            success: function(data){
-              $('#mycourse').DataTables().ajax.reload();
-              $('#mytests').DataTables().ajax.reload();
-              $('#delete_session_modal').modal('hide');
-            }
-          });*/
         });
         function delete_test(pin,m_d){
-          console.log('test deleted');
           $.ajax({
             type:"post",
             url:"<?php echo site_url('student_single/delete_test');?>",
@@ -1627,7 +1614,6 @@
           });
         }
         function delete_course(pin,m_d){
-          console.log('course deleted');
           $.ajax({
             type:"post",
             url:"<?php echo site_url('student_single/delete_course');?>",
@@ -1635,7 +1621,6 @@
             data: {pin:pin, m:m_d},
             success : function(data){
               console.log('course deleted');
-              
             }
           });
         }
