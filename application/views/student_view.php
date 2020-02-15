@@ -799,7 +799,7 @@
                       </div>
                     </div>
                     <!-- STUDENT 2 -->
-                    <div class="form-row" id="student2">
+                    <div class="form-row" id="student2_e">
                       <h4>Student 2 <a id="add_two_e" href="javascript:void(0);"><i class="fas fa-plus-circle fa-fw"></i></a> <a href="javascript:void(0);" id="remove_three_e"><i style="color:rgb(255,0,0);" class="fas fa-times-circle fa-fw"></i></a></h4> 
                       <div class="form-group col-12 row">
                         <div class="col-4">
@@ -843,8 +843,8 @@
                           </div>
                           <input type="text" class="form-control" name="pbst2_e" id="pbst2_e" placeholder="Place of Birth">
                         </div>
-                        <div class="suggestion_box" id="suggestion_box">
-                          <ul class="suggestions" id="suggestions"></ul>
+                        <div class="suggestion_box" id="suggestion_box_st2_e">
+                          <ul class="suggestions" id="suggestions_st2_e"></ul>
                         </div>
                       </div>
                       <div class="form-group col-12 row ">
@@ -871,7 +871,7 @@
                       </div>
                     </div><!-- END STUDENT 2 -->
                     <!-- STUDENT 3 -->
-                    <div class="form-row" id="student3">
+                    <div class="form-row" id="student3_e">
                       <h4>Student 3 <a id="add_three_e" href="javascript:void(0);"><i class="fas fa-plus-circle fa-fw"></i></a> <a href="javascript:void(0);" id="remove_two_e"><i style="color:rgb(255,0,0);" class="fas fa-times-circle fa-fw"></i></a></h4> 
                       <div class="form-group col-12 row">
                         <div class="col-4">
@@ -915,13 +915,13 @@
                           </div>
                           <input type="text" class="form-control" name="pbst3_e" id="pbst3_e" placeholder="Place of Birth">
                         </div>
-                        <div class="suggestion_box" id="suggestion_box">
-                          <ul class="suggestions" id="suggestions"></ul>
+                        <div class="suggestion_box" id="suggestion_box_st3_e">
+                          <ul class="suggestions" id="suggestions_st3_e"></ul>
                         </div>
                       </div>
                       <div class="form-group col-12 row ">
                         <div class="col-4">
-                          <label class="pers_info" for="dbst3">Date of Birth<sup>&lowast;</sup></label>
+                          <label class="pers_info" for="dbst3_e">Date of Birth<sup>&lowast;</sup></label>
                         </div>
                         <div class="input-group col">
                           <div class="input-group-prepend">
@@ -974,7 +974,7 @@
                         <div class="input-group col">
                           <div class="input-group-prepend"> <span class="input-group-text"><i style="color:blue;"  class="fa fa-home fa-fw"></i></span>
                           </div>
-                          <input type="text" class="form-control" name="adst4_e" id="adst4_e" placeholder="Adress" required> 
+                          <input type="text" class="form-control" name="adst4_e" id="adst4_e" placeholder="Address" required> 
                         </div>
                       </div>
                       <div class="form-group col-12 row">
@@ -987,8 +987,8 @@
                           </div>
                           <input type="text" class="form-control" name="pbst4_e" id="pbst4_e" placeholder="Place of Birth">
                         </div>
-                        <div class="suggestion_box" id="suggestion_box">
-                          <ul class="suggestions" id="suggestions"></ul>
+                        <div class="suggestion_box" id="suggestion_box_st4_e">
+                          <ul class="suggestions" id="suggestions_st4_e"></ul>
                         </div>
                       </div>
                       <div class="form-group col-12 row ">
@@ -1220,7 +1220,7 @@
     <?php endif;?>
     <?php include 'inc/scripts.php';?> 
     <?php include 'inc/chat-script.php';?>
-    <?php if($this->session->userdata('level') == '21'):?>
+    <?php if($this->session->userdata('level') == '21'):/* schedule user */?>
     <script>
       $(document).ready(function(){
         get_schedules();
@@ -2305,10 +2305,48 @@
           });
         }
         $('#show_data').on('click','.item_edit',function(){
-          var a=$(this).data('pn'), b=$(this).data('cn'), c=$(this).data('nn'),d=$(this).data('ad'), e=$(this).data('pb'), f=$(this).data('db'), g=$(this).data('ph'), h=$(this).data('pr'), i=$(this).data('pd'), j=$(this).data('sd'), k=$(this).data('re'), l=$(this).data('ta'), m=$(this).data('di'), n=$(this).data('bg'), o=$(this).data('si'), p=$(this).data('wp'), q=$(this).data('ap'), fsp = $(this).data('fsp'), fsp_button = '<input type="checkbox" name="fsp" id="fsp"' ;
-          $('#esm').modal('show'); $('[name="pn2"]').val(a); $('[name="cn2"]').val(b); $('[name="nn2"]').val(c); $('[name="ad2"]').val(d); $('[name="pb2"]').val(e); $('[name="db2"]').val(f); $('[name="ph2"]').val(g); $('[name="pr2"]').val(h); $('[name="pd2"]').val(i); $('[name="sd2"]').val(j); $('[name="re2"]').val(k); $('[name="ta2"]').val(l); $('[name="di2"]').val(m); $('[name="bg2"]').val(n); $('[name="si2"]').val(o); $('[name="wp2"]').val(p); $('[name="ap2"]').val(q);
-          if (fsp == 'yes'){ fsp_button += 'checked disabled> <label for="fsp">Final Speaking Performance</label>';
-          } else { fsp_button += '> <label for="fsp">Final Speaking Performance</label>'; }
+          var a=$(this).data('pn'),
+              b=$(this).data('cn'),
+              c=$(this).data('nn'),
+              d=$(this).data('ad'),
+              e=$(this).data('pb'),
+              f=$(this).data('db'),
+              g=$(this).data('ph'),
+              h=$(this).data('pr'),
+              i=$(this).data('pd'),
+              j=$(this).data('sd'),
+              k=$(this).data('re'),
+              l=$(this).data('ta'), 
+              m=$(this).data('di'),
+              n=$(this).data('bg'),
+              o=$(this).data('si'),
+              p=$(this).data('wp'),
+              q=$(this).data('ap'),
+              fsp = $(this).data('fsp'),
+              fsp_button = '<input type="checkbox" name="fsp" id="fsp"' ;
+          $('#esm').modal('show');
+          $('[name="pn2"]').val(a);
+          $('[name="cn2"]').val(b);
+          $('[name="nn2"]').val(c);
+          $('[name="ad2"]').val(d);
+          $('[name="pb2"]').val(e);
+          $('[name="db2"]').val(f);
+          $('[name="ph2"]').val(g);
+          $('[name="pr2"]').val(h);
+          $('[name="pd2"]').val(i);
+          $('[name="sd2"]').val(j);
+          $('[name="re2"]').val(k);
+          $('[name="ta2"]').val(l);
+          $('[name="di2"]').val(m);
+          $('[name="bg2"]').val(n);
+          $('[name="si2"]').val(o);
+          $('[name="wp2"]').val(p);
+          $('[name="ap2"]').val(q);
+          if (fsp == 'yes'){
+            fsp_button += 'checked disabled> <label for="fsp">Final Speaking Performance</label>';
+          } else {
+            fsp_button += '> <label for="fsp">Final Speaking Performance</label>';
+          }
           $('#fsp_button').html(fsp_button);
         });
         $('#update_student_btn').on('click',function(){
