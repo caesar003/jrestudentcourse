@@ -580,14 +580,75 @@ class Student_model extends CI_Model{
     $self_introduction = $this->input->post('self_introduction');
     $weakness_point    = $this->input->post('weakness_point');
     $action_plan       = $this->input->post('action_plan');
+   
+    $pin             = $this->input->post('pn');
+    $grp             = $this->input->post('grp');
+    $complete_name   = $this->input->post('cn');
+    $cnst2	         = $this->input->post('cn2');
+    $cnst3	         = $this->input->post('cn3');
+    $cnst4           = $this->input->post('cn4');
+   
+    $nick_name	     = $this->input->post('nn');
+    $nnst2           = $this->input->post('nn2');	
+    $nnst3           = $this->input->post('nn3');
+	$nnst4	         = $this->input->post('nn4');
     
-
+	$address	     = $this->input->post('ad');
+	$adrst2	         = $this->input->post('ad2');
+	$adrst3	         = $this->input->post('ad3');
+	$adrst4	         = $this->input->post('ad4');
+    
+	$place_of_birth	 = $this->input->post('pb');
+	$pobst2	         = $this->input->post('pb2');
+	$pobst3	         = $this->input->post('pb3');
+	$pobst4          = $this->input->post('pb4');
+    
+	$date_of_birth   = $this->input->post('db');
+    $dobst2          = $this->input->post('db2');
+    $dobst3          = $this->input->post('db3');
+    $dobst4          = $this->input->post('db4');
+    
+    $phone           = $this->input->post('ph');
+    $phst2           = $this->input->post('ph2');
+    $phst3           = $this->input->post('ph3');
+    $phst4           = $this->input->post('ph4');
+    
+    $program         = $this->input->post('pr');
+    $program_duration= $this->input->post('pd');
+    $starting_date   = $this->input->post('sd');
+    $reason          = $this->input->post('re');
+    $target          = $this->input->post('ta');
+    $difficulties	 = $this->input->post('di');
+    $bground	     = $this->input->post('bg');
+    $self_introduction	= $this->input->post('si');
+    $weakness_point	 = $this->input->post('wp');
+    $action_plan	 = $this->input->post('ap');
+    $fsp             = $this->input->post('fsp');
+    
     $this->db->set('complete_name', $complete_name);
+    $this->db->set('cnst2',$cnst2);
+    $this->db->set('cnst3',$cnst3);
+    $this->db->set('cnst4',$cnst4);
     $this->db->set('nick_name', $nick_name);
+    $this->db->set('nnst2',$nnst2);	
+    $this->db->set('nnst3',$nnst3);
+	$this->db->set('nnst4',$nnst4);
     $this->db->set('address', $address);
+    $this->db->set('adrst2',$adrst2);
+	$this->db->set('adrst3',$adrst3);
+	$this->db->set('adrst4',$adrst4);
     $this->db->set('place_of_birth', $place_of_birth);
+    $this->db->set('pobst2',$pobst2);
+	$this->db->set('pobst3',$pobst3);
+	$this->db->set('pobst4',$pobst4);
     $this->db->set('date_of_birth', $date_of_birth);
+    $this->db->set('dobst2', $dobst2);
+    $this->db->set('dobst3', $dobst3);
+    $this->db->set('dobst4', $dobst4);
     $this->db->set('phone', $phone);
+    $this->db->set('phst2',$phst2);
+    $this->db->set('phst3',$phst3);
+    $this->db->set('phst4',$phst4);
     $this->db->set('program', $program);
     $this->db->set('program_duration', $program_duration);
     $this->db->set('starting_date', $starting_date);
