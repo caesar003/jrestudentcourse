@@ -1043,41 +1043,11 @@
                   i;
               for(i=0;i<data.length;i++){
                 syllabus += '<small>Syllabus for </small>' + data[i].program;
-                //$.format.date(data.date_of_birth, "MMM/dd/yyyy") yyyy-MM-dd
-                //edit_student_button += '<a id="edit_student_btn" title="New Session" class="btn btn-secondary tooltip-right" href="javascript:void(0);"><span class="fa fa-plus"></span></a>';
-              edit_student_button += '<a title="Edit" href="javascript:void(0);" class="btn btn-info tooltip-bottom student_info_edit" data-grp="'+data[i].grp+'" data-pn="'+data[i].pin+'" data-cn="'+data[i].complete_name+'" data-nn="'+data[i].nick_name+'" data-ad="'+data[i].address+'" data-pb="'+data[i].place_of_birth+'" data-db="'+($.format.date(data[i].date_of_birth, "yyyy-MM-dd"))+'" data-ph="'+data[i].phone+
-                 '"data-cnst2="'+data[i].cnst2+
-                 '"data-nnst2="'+data[i].nnst2+
-                 '"data-adrst2="'+data[i].adrst2+
-                 '"data-pobst2="'+data[i].pobst2+
-                 '"data-dobst2="'+($.format.date(data[i].dobst2, "yyyy-MM-dd"))+
-                 '"data-phst2="'+data[i].phst2+
+              edit_student_button += '<a title="Edit" href="javascript:void(0);" class="btn btn-info tooltip-bottom student_info_edit" data-grp="'+data[i].grp+'" data-pn="'+data[i].pin+'" data-cn="'+data[i].complete_name+'" data-nn="'+data[i].nick_name+'" data-ad="'+data[i].address+'" data-pb="'+data[i].place_of_birth+'" data-db="'+($.format.date(data[i].date_of_birth, "yyyy-MM-dd"))+'" data-ph="'+data[i].phone+'"data-cnst2="'+data[i].cnst2+'"data-nnst2="'+data[i].nnst2+'"data-adrst2="'+data[i].adrst2+'"data-pobst2="'+data[i].pobst2+'"data-dobst2="'+($.format.date(data[i].dobst2, "yyyy-MM-dd"))+'"data-phst2="'+data[i].phst2+
+                 '"data-cnst3="'+data[i].cnst3+'"data-nnst3="'+data[i].nnst3+'"data-adrst3="'+data[i].adrst3+'"data-pobst3="'+data[i].pobst3+'"data-dobst3="'+($.format.date(data[i].dobst3, "yyyy-MM-dd"))+'"data-phst3="'+data[i].phst3+
                 
-                 '"data-cnst3="'+data[i].cnst3+
-                 '"data-nnst3="'+data[i].nnst3+
-                 '"data-adrst3="'+data[i].adrst3+
-                 '"data-pobst3="'+data[i].pobst3+
-                 '"data-dobst3="'+($.format.date(data[i].dobst3, "yyyy-MM-dd"))+
-                 '"data-phst3="'+data[i].phst3+
-                
-                 '"data-cnst4="'+data[i].cnst4+
-                 '"data-nnst4="'+data[i].nnst4+
-                 '"data-adrst4="'+data[i].adrst4+
-                 '"data-pobst4="'+data[i].pobst4+
-                 '"data-dobst4="'+($.format.date(data[i].dobst4, "yyyy-MM-dd"))+
-                 '"data-phst4="'+data[i].phst4+
-                
-                 '"data-pr="'+data[i].program+
-                 '"data-pd="'+data[i].program_duration+
-                 '"data-sd="'+($.format.date(data[i].starting_date, "yyyy-MM-dd"))+
-                 '"data-re="'+data[i].reason+
-                 '"data-ta="'+data[i].target+
-                 '" data-di="'+data[i].difficulties+
-                 '"data-bg="'+data[i].bground+
-                 '"data-si="'+data[i].self_introduction+
-                 '" data-wp="'+data[i].weakness_point+
-                 '"data-ap="'+data[i].action_plan+
-                 '" data-fsp=""><i class="fas fa-user-edit fa-fw"></i></a>'; 
+                 '"data-cnst4="'+data[i].cnst4+'"data-nnst4="'+data[i].nnst4+'"data-adrst4="'+data[i].adrst4+'"data-pobst4="'+data[i].pobst4+'"data-dobst4="'+($.format.date(data[i].dobst4, "yyyy-MM-dd"))+'"data-phst4="'+data[i].phst4+
+                 '"data-pr="'+data[i].program+'"data-pd="'+data[i].program_duration+'"data-sd="'+($.format.date(data[i].starting_date, "yyyy-MM-dd"))+'"data-re="'+data[i].reason+'"data-ta="'+data[i].target+'" data-di="'+data[i].difficulties+'"data-bg="'+data[i].bground+'"data-si="'+data[i].self_introduction+'" data-wp="'+data[i].weakness_point+'"data-ap="'+data[i].action_plan+'" data-fsp=""><i class="fas fa-user-edit fa-fw"></i></a>'; 
                 
                 /* edit_student_button +='<a title="Edit" href="javascript:void(0);"'+ 
                 ' class="btn btn-info student_info_edit tooltip-bottom" '+ 
@@ -1518,7 +1488,6 @@
                   } else{ 
                     if($('#student3_e').css('display')==='block'){
                       if(cn3==''||ad3==''||db3==''||ph3==''){ 
-                        console.log('student 3 is not complete');
                         $('#esf').addClass('alert alert-danger');
                         $('#esf').html('Please fill out all required fields!');
                         if(cn3==''){
@@ -1535,14 +1504,12 @@
                         }
                       } else{ 
                         if(isNaN(ph3)){
-                          console.log('phone 3 is not number');
                           $('#esf').addClass('alert alert-danger');
                           $('#esf').html('Phone must only be number!');
                           $('#phst3_e').css(bck,clr);
                         } else{ 
                           if($('#student4_e').css('display')==='block'){ 
                             if(cn4==''||ad4==''||db4==""||ph4==''){ 
-                              console.log('student four not complete');
                               $('#esf').addClass('alert alert-danger');
                               $('#esf').html('Please fill out all required fields!');
                               if(cn4==''){
@@ -1559,32 +1526,27 @@
                               }
                             } else { 
                               if(isNaN(ph4)){ 
-                                console.log('phone 4 is not number');
                                 $('#esf').addClass('alert alert-danger');
                                 $('#esf').html('Phone must only be number!');
                                 $('#phst4_e').css(bck,clr);
                               } else { 
-                                console.log('submit four students');
                                 update_student(pn,cn,nn,ad,pb,db,ph,grp,cn2,nn2,ad2,pb2,db2,ph2,cn3,nn3,ad3,pb3,db3,ph3,cn4,nn4,ad4,pb4,db4,ph4,pr,pd,sd,re,ta,di,bg,si,wp,ap,fsp);
                               }
                             }
                           } else { 
                             cn4 = nn4 = pb4 = ad4 = ph4 = db4 = '';
-                            console.log('submit 3 students');
                            update_student(pn,cn,nn,ad,pb,db,ph,grp,cn2,nn2,ad2,pb2,db2,ph2,cn3,nn3,ad3,pb3,db3,ph3,cn4,nn4,ad4,pb4,db4,ph4,pr,pd,sd,re,ta,di,bg,si,wp,ap,fsp);
                           } 
                         }
                       }
                     } else { 
                       cn3=nn3=pb3=ad3=ph3=db3=cn4=nn4=pb4=ad4=ph4=db4='';
-                      console.log('submit 2 students');
                      update_student(pn,cn,nn,ad,pb,db,ph,grp,cn2,nn2,ad2,pb2,db2,ph2,cn3,nn3,ad3,pb3,db3,ph3,cn4,nn4,ad4,pb4,db4,ph4,pr,pd,sd,re,ta,di,bg,si,wp,ap,fsp);
                     }
                   }
                 }
               } else { 
                 cn2=nn2=pb2=ad2=ph2=db2=cn3=nn3=pb3=ad3=ph3=db3=cn4=nn4=pb4=ad4=ph4=db4='';
-                console.log('submit the student');
                update_student(pn,cn,nn,ad,pb,db,ph,grp,cn2,nn2,ad2,pb2,db2,ph2,cn3,nn3,ad3,pb3,db3,ph3,cn4,nn4,ad4,pb4,db4,ph4,pr,pd,sd,re,ta,di,bg,si,wp,ap,fsp);
               }
             }
@@ -1599,7 +1561,6 @@
             dataType : "json",
             data : {pn:pn,cn:cn,nn:nn,ad:ad,pb:pb,db:db,ph:ph,grp,cn2:cn2,nn2:nn2,ad2:ad2,pb2:pb2,db2:db2,ph2:ph2,cn3:cn3,nn3:nn3,ad3:ad3,pb3:pb3,db3:db3,ph3:ph3,cn4:cn4,nn4:nn4,ad4:ad4,pb4:pb4,db4:db4,ph4:ph4,pr:pr,pd:pd,sd:sd,re:re,ta:ta,di:di,bg:bg,si:si,wp:wp,ap:ap,fsp:fsp},
             success : function(data){
-              console.log('updated');
               $('#esm').modal('hide');
               $('#mystudents').DataTable().ajax.reload();
               get_student_detail();
@@ -2047,7 +2008,6 @@
                         }
                       } else {
                         submit_course(p, m, cd, tc, du, ma, ev, w, s, test, tnu, tn, otn, ot, after_teaching);
-                        //set_aft(p, after_teaching);
                       }
                     }
                   }

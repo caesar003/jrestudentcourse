@@ -1964,30 +1964,20 @@
                   }
                 }
               },
-/* 
-1 student => nickname,
-2 students => nickanme - nickname,
-3 students => nickname1 ... title=""
-4 students => nickname 1 ... title=""
-*/
               {
                 "data" : {nick_name:"nick_name",cnst2:"cnst2",cnst2:"cnst2",cnst2:"cnst2"},
                 "render" :function(data,type,row){
                   if(data.cnst2!=''){
                     if(data.cnst3!=''){
                       if(data.cnst4!=''){
-                        // four students
                         return '<span title="'+data.complete_name+' - '+data.cnst2+' - '+data.cnst3+' - '+data.cnst4+'">'+data.complete_name+'</span>';
                       } else {
-                        // three students
                         return '<span title="'+data.complete_name+' - '+data.cnst2+' - '+data.cnst3+'">'+data.complete_name+'</span>';
                       }
                     }else {
-                      // two students
                       return data.nick_name+' - '+data.cnst2;
                     }
                   } else {
-                    // one student
                     return data.nick_name;
                   }
                 }
@@ -2367,8 +2357,6 @@
               ap=$(this).data('ap'),
               fsp = $(this).data('fsp'),
               fsp_button = '<input type="checkbox" name="fsp" id="fsp"' ;
-          
-          
           $('#esm').modal('show');
           $('[name="pn_e"]').val(pn);
           $('[name="cn_e"]').val(cn);
