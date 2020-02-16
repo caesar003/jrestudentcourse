@@ -633,9 +633,6 @@
                           </div>
                           <input type="text" class="form-control" name="pb_e" id="pb_e" placeholder="Place of Birth">
                         </div>
-                        <div class="suggestion_box" id="suggestion_box_e">
-                          <ul class="suggestions" id="suggestions_e"></ul>
-                        </div>
                       </div>
                       <div class="form-group col-12 row ">
                         <div class="col-4">
@@ -716,9 +713,6 @@
                           </div>
                           <input type="text" class="form-control" name="pbst2_e" id="pbst2_e" placeholder="Place of Birth">
                         </div>
-                        <div class="suggestion_box" id="suggestion_box_st2_e">
-                          <ul class="suggestions" id="suggestions_st2_e"></ul>
-                        </div>
                       </div>
                       <div class="form-group col-12 row ">
                         <div class="col-4">
@@ -788,9 +782,6 @@
                           </div>
                           <input type="text" class="form-control" name="pbst3_e" id="pbst3_e" placeholder="Place of Birth">
                         </div>
-                        <div class="suggestion_box" id="suggestion_box_st3_e">
-                          <ul class="suggestions" id="suggestions_st3_e"></ul>
-                        </div>
                       </div>
                       <div class="form-group col-12 row ">
                         <div class="col-4">
@@ -859,9 +850,6 @@
                             <span class="input-group-text"><i style="color:grey;" class="fa fa-map-marker fa-fw"></i></span>
                           </div>
                           <input type="text" class="form-control" name="pbst4_e" id="pbst4_e" placeholder="Place of Birth">
-                        </div>
-                        <div class="suggestion_box" id="suggestion_box_st4_e">
-                          <ul class="suggestions" id="suggestions_st4_e"></ul>
                         </div>
                       </div>
                       <div class="form-group col-12 row ">
@@ -1049,45 +1037,6 @@
                  '"data-cnst4="'+data[i].cnst4+'"data-nnst4="'+data[i].nnst4+'"data-adrst4="'+data[i].adrst4+'"data-pobst4="'+data[i].pobst4+'"data-dobst4="'+($.format.date(data[i].dobst4, "yyyy-MM-dd"))+'"data-phst4="'+data[i].phst4+
                  '"data-pr="'+data[i].program+'"data-pd="'+data[i].program_duration+'"data-sd="'+($.format.date(data[i].starting_date, "yyyy-MM-dd"))+'"data-re="'+data[i].reason+'"data-ta="'+data[i].target+'" data-di="'+data[i].difficulties+'"data-bg="'+data[i].bground+'"data-si="'+data[i].self_introduction+'" data-wp="'+data[i].weakness_point+'"data-ap="'+data[i].action_plan+'" data-fsp=""><i class="fas fa-user-edit fa-fw"></i></a>'; 
                 
-                /* edit_student_button +='<a title="Edit" href="javascript:void(0);"'+ 
-                ' class="btn btn-info student_info_edit tooltip-bottom" '+ 
-              
-                'data-pin="'+data[i].pin+
-                '" data-cn="'+data[i].complete_name+
-                '" data-nn="'+data[i].nick_name+
-                '" data-ad="'+data[i].address+
-                '" data-pb="'+data[i].place_of_birth+
-                '" data-db="'+($.format.date(data[i].date_of_birth, "yyyy-MM-dd"))+
-                '" data-ph="'+data[i].phone+
-                '" data-cnst2="'+data[i].cnst2+
-                  '"data-nnst2="'+data[i].nnst2+
-                  '"data-adrst2="'+data[i].adrst2+
-                  '"data-pbst2="'+data[i].pbst2+
-                  '"data-dbst2="'+($.format.date(data[i].dbst2, "yyyy-MM-dd"))+
-                  '"data-phst2="'+data[i].phst2+
-                  '" data-cnst3="'+data[i].cnst3+
-                  '"data-nnst3="'+data[i].nnst3+
-                  '"data-adrst3="'+data[i].adrst3+
-                  '"data-pbst3="'+data[i].pbst3+
-                  '"data-dbst3="'+($.format.date(data[i].dbst3, "yyyy-MM-dd"))+
-                  '"data-phst3="'+data[i].phst3+
-                  '" data-cnst4="'+data[i].cnst4+
-                  '"data-nnst4="'+data[i].nnst4+
-                  '"data-adrst4="'+data[i].adrst4+
-                  '"data-pbst4="'+data[i].pbst4+
-                  '"data-dbst4="'+($.format.date(data[i].dbst4, "yyyy-MM-dd"))+
-                  '"data-phst4="'+data[i].phst4+
-                  '" data-pr="'+data[i].program+
-                '" data-pd="'+data[i].program_duration+
-                '" data-sd="'+($.format.date(data[i].starting_date, "yyyy-MM-dd"))+
-                '" data-re="'+data[i].reason+'" data-trg="'+data[i].target+
-                '" data-di="'+data[i].difficulties+
-                '" data-bg="'+data[i].bground+
-                '" data-si="'+data[i].self_introduction+
-                '" data-wp="'+data[i].weakness_point+
-                '" data-ap="'+data[i].action_plan+
-                  '" data-fsp="'+data[i].fsp+'"><i class="fas fa-user-edit fa-fw"></i></a>';*/
-                
                 if(data[i].grp!=''){
                   html += '<li class="list-group-item tooltip-bottom" title="Group study" style="background-color:gray;color:white;"><span style="font-variant-caps: all-small-caps;font-size: x-large;">'+data[i].grp+'</span></li>';
                 } else {
@@ -1198,107 +1147,8 @@
             }
           });
         }
-        /*function get_student_detail() {
-          var pin = "<?php echo $pin;?>";
-          $.ajax({
-            type: 'post', 
-            url: '<?php echo site_url('student_single/get_student_info');?>', 
-            dataType : 'json', 
-            data :{pin:pin},
-            success: function(data) { 
-              var html = '', 
-                  syllabus = '', 
-                  edit_student_button= '', 
-                  after_teaching_button = '<input type="checkbox" name="after_teaching" id="after_teaching"', 
-                  i; 
-              for (i = 0; i < data.length;i++) {
-                html += '<li class="list-group-item tooltip-bottom" title="Pin number">' + 
-                          '<i style="color:green;" class="fas fa-barcode fa-fw fa-lg"></i>' + data[i].pin + 
-                        '</li>' + 
-                        '<li class="list-group-item tooltip-right" title="Complete name">'+
-                          '<i style="color:red;" class="fa fa-user-circle fa-fw fa-lg"></i>' + data[i].complete_name + 
-                        '</li>' + 
-                        '<li class="list-group-item tooltip-right" title="Nick name">' + 
-                          '<i style="color:rgb(70,0,90);" class="fa fa-user-circle fa-fw fa-lg"></i>' + data[i].nick_name + 
-                        '</li>' + 
-                        '<li class="list-group-item tooltip-bottom" title="Address">' + 
-                          '<i style="color:blue;" class="fa fa-home fa-fw fa-lg"></i>' + data[i].address + 
-                        '</li>' + 
-                        '<li class="list-group-item tooltip-bottom" title="Place of birth">' + '<i style="color:grey;" class="fa fa-map-marker fa-fw fa-lg"></i>' + data[i].place_of_birth + 
-                        '</li>' + 
-                        '<li class="list-group-item tooltip-bottom" title="Date or birth">' + '<i style="color:rgb(120,50,255);" class="fa fa-gift fa-fw fa-lg"></i>' + ($.format.date(data[i].date_of_birth, "MMM,dd yyyy")) + 
-                        '</li>' + 
-                        '<li class="list-group-item tooltip-bottom" title="Phone,click to call">' + 
-                        '<i style="color:navy;" class="fa fa-phone-square fa-fw fa-lg"></i><a style="text-decoration:none;" target="_blank" href="https://wa.me/' + data[i].phone + '">' + data[i].phone + '</a>' + 
-                        '</li>' + 
-                        '<li class="list-group-item tooltip-bottom" title="Study Program">' + 
-                          '<i style="color:rgb(162,255,20);" class="fa fa-list-ul fa-fw fa-lg"></i>' + data[i].program + 
-                        '</li>' + 
-                        '<li class="list-group-item tooltip-bottom" title="Program Duration">' + 
-                          '<i style="color:rgb(80,83,210);" class="fa fa-hourglass-end fa-fw fa-lg"></i>' + data[i].program_duration + 
-                        ' meetings</li>' + 
-                        '<li class="list-group-item tooltip-bottom" title="Starting date">' + 
-                          '<i style="color:rgb(80,170,243);" class="fa fa-flag fa-fw fa-lg"></i>' + ($.format.date(data[i].starting_date, "MMM,dd yyyy")) + 
-                        '</li>' + 
-                        '<li class="list-group-item tooltip-bottom" title="Reason for studying">' + '<i style="color:rgb(80,255,20);" class="fa fa-question-circle fa-fw fa-lg"></i>' + data[i].reason + '</li>' + 
-                        '<li class="list-group-item tooltip-bottom" title="Target at the completion">' + 
-                          '<i style="color: rgb(190,110,27);" class="fa fa-crosshairs fa-fw fa-lg"></i>' + data[i].target + 
-                        '</li>' + 
-                        '<li class="list-group-item tooltip-bottom" title="Difficulties">' + 
-                          '<i style="color:rgb(255,0,255);" class="fa fa-thumbs-down fa-fw fa-lg"></i>' + data[i].difficulties + '</li>' + 
-                        '<li class="list-group-item tooltip-bottom" title="Background">' + 
-                          '<i style="color:rgb(100,120,190);" class="fa fa-graduation-cap fa-fw fa-lg"></i>' + data[i].bground + '</li>' + 
-                        '<li class="list-group-item tooltip-bottom" title="Self Introduction">' + 
-                          '<i style="color:rgb(70,210,155);" class="fa fa-info-circle fa-fw fa-lg"></i>' + data[i].self_introduction + 
-                        '</li>' + 
-                        '<li class="list-group-item tooltip-bottom" title="Weakness Points">' + 
-                          '<i style="color:rgb(255,20,60);" class="fa fa-exclamation-triangle fa-fw fa-lg"></i>' + data[i].weakness_point + 
-                        '</li>' + 
-                        '<li class="list-group-item tooltip-bottom" title="Action Plan">' + 
-                          '<i style="color:rgb(0,120,80);" class="fa fa-wrench fa-fw fa-lg"></i>' + data[i].action_plan + 
-                        '</li>';
-             
-                edit_student_button += '<a title="Edit" href="javascript:void(0);"'+ 
-                ' class="btn btn-info student_info_edit tooltip-bottom" '+ 
-              
-                'data-pin="'+data[i].pin+
-                '" data-cmn="'+data[i].complete_name+
-                '" data-ncn="'+data[i].nick_name+
-                '" data-adr="'+data[i].address+
-                '" data-pob="'+data[i].place_of_birth+
-                '" data-dob="'+($.format.date(data[i].date_of_birth, "yyyy-MM-dd"))+
-                '" data-pho="'+data[i].phone+'" data-prg="'+data[i].program+
-                '" data-prd="'+data[i].program_duration+
-                '" data-std="'+($.format.date(data[i].starting_date, "yyyy-MM-dd"))+
-                '" data-rea="'+data[i].reason+'" data-trg="'+data[i].target+
-                '" data-dff="'+data[i].difficulties+
-                '" data-bgr="'+data[i].bground+
-                '" data-sin="'+data[i].self_introduction+
-                '" data-wep="'+data[i].weakness_point+
-                '" data-acp="'+data[i].action_plan+'" data-fsp="'+data[i].fsp+'"><i class="fas fa-user-edit fa-fw"></i></a>';
-                if (data[i].fsp == 'yes'){
-                  $('#fsp_tab').css('display','block');
-                  get_fsp();
-                 
-                }
-                syllabus += '<small>Syllabus for </small>' + data[i].program;
-                if (data[i].after_teaching == 'yes') {
-                  after_teaching_button += '';
-                } else {
-                  after_teaching_button += 'checked disabled';
-                }
-                after_teaching_button += '> <label for="after_teaching">Remove from after teaching list.</label>';
-              }
-              $('#edit_student_span').html(edit_student_button);
-              $('#student_info').html(html);
-              $('#syllabus_tab_header').html(syllabus);
-              $('#after_teaching_div').html(after_teaching_button);
-            }
-          });
-        } */
       $('#edit_student_span').on('click','.student_info_edit', function(){
-       //$('#edit_student_btn').on('click',function(){
-          var grp=$(this).data('grp'),
+        var grp=$(this).data('grp'),
               pn=$(this).data('pn'),
               cn=$(this).data('cn'),
               nn=$(this).data('nn'),
@@ -1568,112 +1418,6 @@
           });
            
         }
-        /*$('#student_info_div').on('click', '.student_info_edit', function(){
-          var a=$(this).data('pin'),  b=$(this).data('cmn'), c=$(this).data('ncn'), d=$(this).data('adr'), e=$(this).data('pob'), f=$(this).data('dob'), g=$(this).data('pho'), h=$(this).data('prg'), i=$(this).data('prd'), j=$(this).data('std'), k=$(this).data('rea'), l=$(this).data('trg'), m=$(this).data('dff'), n=$(this).data('bgrr'), o=$(this).data('sin'), p=$(this).data('wep'),  q=$(this).data('acp'), fsp = $(this).data('fsp'), fsp_button = '<input type="checkbox" name="fsp" id="fsp"' ;
-          $('#edit_student_modal').modal('show');
-          $('[name="pn2"]').val(a);
-          $('[name="cn2"]').val(b);
-          $('[name="nn2"]').val(c);
-          $('[name="ad2"]').val(d);
-          $('[name="pb2"]').val(e);
-          $('[name="db2"]').val(f);
-          $('[name="ph2"]').val(g);
-          $('[name="pr2"]').val(h);
-          $('[name="pd2"]').val(i);
-          $('[name="sd2"]').val(j);
-          $('[name="re2"]').val(k);
-          $('[name="ta2"]').val(l); 
-          $('[name="di2"]').val(m);
-          $('[name="bg2"]').val(n);
-          $('[name="si2"]').val(o);
-          $('[name="wp2"]').val(p);
-          $('[name="ap2"]').val(q);
-          if (fsp == 'yes'){
-            fsp_button += 'checked disabled> <label for="fsp">Final Speaking Performance</label>';
-          } else {
-            fsp_button += '> <label for="fsp">Final Speaking Performance</label>';
-          }
-          $('#fsp_button').html(fsp_button);
-        }); */
-      /*  $('#btn_update_student').on('click',function(){
-          var bcg = 'background-color', clr = '#fbe2e6', pn=$('#pn2').val(), cn=$('#cn2').val(),   nn=$('#nn2').val(), ad=$('#ad2').val(), pb=$('#pb2').val(), db=$('#db2').val(), ph=$('#ph2').val(), pr=$('#pr2').val(), pd=$('#pd2').val(),  sd=$('#sd2').val(), re=$('#re2').val(), ta=$('#ta2').val(), di=$('#di2').val(), bg=$('#bg2').val(), si=$('#si2').val(), wp=$('#wp2').val(), ap=$('#ap2').val(), fsp = '';
-          if ($('#fsp').is(':checked')){
-            fsp = 'yes';
-          } else {
-            fsp ='';
-          };
-          if (pn=='' || cn=='' || ad=='' || db=='' || ph=='' || pr=='' || pd==''){ 
-            $('#edit_student_feedback').addClass('alert alert-danger'); 
-            $('#edit_student_feedback').html('Please fill out all required fields');
-          
-            if (cn=='') {
-              $('#cn2').css(bcg,clr);
-            }
-            if (ad=='') {
-              $('#ad2').css(bcg,clr);
-            }
-            if (db=='') {
-              $('#db2').css(bcg,clr);
-            }
-            if (ph=='') {
-              $('#ph2').css(bcg,clr);
-            }
-            if (pd=='') {
-              $('#pd2').css(bcg,clr);
-            }
-          } else{
-              if (isNaN(ph)){
-                $('#edit_student_feedback').addClass('alert alert-danger'); 
-                $('#edit_student_feedback').html('phone can only consist of number'); 
-                $('#ph2').css(bcg,clr);
-              }else{ 
-                if (isNaN(pd)){
-                  $('#edit_student_feedback').addClass('alert alert-danger');
-                  $('#edit_student_feedback').html('Program duration only consist of number'); 
-                  $('#pd2').css(bcg,clr);
-                }else{
-                  $.ajax({
-                    type : "POST", 
-                    url : "<?php echo site_url('student/update')?>",
-                    dataType : "JSON",
-                    data :{pin:pn, complete_name:cn, nick_name:nn, address:ad, place_of_birth:pb, date_of_birth:db, phone:ph, program:pr, program_duration:pd, starting_date:sd, reason:re, target:ta, difficulties:di, bground:bg, self_introduction:si, weakness_point:wp, action_plan:ap},
-                    success: function(data){
-                      $('#edit_student_modal').modal('hide');
-                      if(fsp == 'yes'){
-                        $.ajax({
-                          type : "POST",
-                          url : "<?php echo site_url('student/set_fsp')?>",
-                          dataType : "JSON",
-                          data : {pin:pn},
-                          success : function(data){
-                            $.ajax({
-                              type: "POST",
-                              url : "<?php echo site_url('student/fsp_table');?>",
-                              dataType : "JSON",
-                              data : {pin:pn},
-                              success : function (data){
-                                console.log('fsp table for '+pn+' created');
-                                $('#mycourse').DataTable().ajax.reload();
-                                $('#my_tests').DataTable().ajax.reload();
-                                get_student_detail();
-                                show_syllabus();
-                              }
-                            });
-                          }
-                        });
-                      } else {
-                        $('#mycourse').DataTable().ajax.reload();
-                        $('#my_tests').DataTable().ajax.reload();
-                        get_student_detail();
-                        show_syllabus();
-                      }
-                    }
-                  });
-                }
-              }
-          }
-          return false;
-        }); */
         /* get course */
         $('#mycourse').DataTable({
           responsive : true,

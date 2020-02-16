@@ -237,9 +237,6 @@
                           </div>
                           <input type="text" class="form-control" name="pb" id="pb" placeholder="Place of Birth">
                         </div>
-                        <div class="suggestion_box" id="suggestion_box">
-                          <ul class="suggestions" id="suggestions"></ul>
-                        </div>
                       </div>
                       <div class="form-group col-12 row ">
                         <div class="col-4">
@@ -320,9 +317,6 @@
                           </div>
                           <input type="text" class="form-control" name="pbst2" id="pbst2" placeholder="Place of Birth">
                         </div>
-                        <div class="suggestion_box" id="suggestion_box">
-                          <ul class="suggestions" id="suggestions"></ul>
-                        </div>
                       </div>
                       <div class="form-group col-12 row ">
                         <div class="col-4">
@@ -392,9 +386,6 @@
                           </div>
                           <input type="text" class="form-control" name="pbst3" id="pbst3" placeholder="Place of Birth">
                         </div>
-                        <div class="suggestion_box" id="suggestion_box">
-                          <ul class="suggestions" id="suggestions"></ul>
-                        </div>
                       </div>
                       <div class="form-group col-12 row ">
                         <div class="col-4">
@@ -463,9 +454,6 @@
                             <span class="input-group-text"><i style="color:grey;" class="fa fa-map-marker fa-fw"></i></span>
                           </div>
                           <input type="text" class="form-control" name="pbst4" id="pbst4" placeholder="Place of Birth">
-                        </div>
-                        <div class="suggestion_box" id="suggestion_box">
-                          <ul class="suggestions" id="suggestions"></ul>
                         </div>
                       </div>
                       <div class="form-group col-12 row ">
@@ -692,9 +680,6 @@
                           </div>
                           <input type="text" class="form-control" name="pb_e" id="pb_e" placeholder="Place of Birth">
                         </div>
-                        <div class="suggestion_box" id="suggestion_box_e">
-                          <ul class="suggestions" id="suggestions_e"></ul>
-                        </div>
                       </div>
                       <div class="form-group col-12 row ">
                         <div class="col-4">
@@ -775,9 +760,6 @@
                           </div>
                           <input type="text" class="form-control" name="pbst2_e" id="pbst2_e" placeholder="Place of Birth">
                         </div>
-                        <div class="suggestion_box" id="suggestion_box_st2_e">
-                          <ul class="suggestions" id="suggestions_st2_e"></ul>
-                        </div>
                       </div>
                       <div class="form-group col-12 row ">
                         <div class="col-4">
@@ -847,9 +829,6 @@
                           </div>
                           <input type="text" class="form-control" name="pbst3_e" id="pbst3_e" placeholder="Place of Birth">
                         </div>
-                        <div class="suggestion_box" id="suggestion_box_st3_e">
-                          <ul class="suggestions" id="suggestions_st3_e"></ul>
-                        </div>
                       </div>
                       <div class="form-group col-12 row ">
                         <div class="col-4">
@@ -918,9 +897,6 @@
                             <span class="input-group-text"><i style="color:grey;" class="fa fa-map-marker fa-fw"></i></span>
                           </div>
                           <input type="text" class="form-control" name="pbst4_e" id="pbst4_e" placeholder="Place of Birth">
-                        </div>
-                        <div class="suggestion_box" id="suggestion_box_st4_e">
-                          <ul class="suggestions" id="suggestions_st4_e"></ul>
                         </div>
                       </div>
                       <div class="form-group col-12 row ">
@@ -1155,6 +1131,7 @@
     <?php if($this->session->userdata('level') == '21'):/* schedule admin */?>
     <script>
       $(document).ready(function(){
+        
         get_schedules();
         get_schedule();
         function get_schedules(){
@@ -1247,10 +1224,12 @@
             success : function(data){
               var html = '',
                   schd_head = '<small>Schedule for</small> '+$.format.date(dtf, "ddd, MMM D, yyyy"),
-                  i;
+                  i,
+                  c=0;
               for (i=0;i<data.length;i++){
+                c = c+1;
                 html += '<tr>'+
-                          '<td style="text-align:right;"><div>'+data[i].id+'</div></td>'+
+                          '<td style="text-align:right;"><div>'+c+'</div></td>'+
                           '<td style="text-align:left;"><div contentEditable="true" class="edit" data-id="'+data[i].id+'" data-col="name">'+data[i].name+'</div></td>'+
                           '<td><div contentEditable="true" class="edit"  data-id="'+data[i].id+'" data-col="_9">'+data[i]._9+'</div></td>'+
                           '<td><div contentEditable="true" class="edit" data-id="'+data[i].id+'" data-col="_9r">'+data[i]._9r+'</div></td>'+
@@ -1450,10 +1429,12 @@
               var html = '',
                   schd_head = '<small>Schedule for</small> '+$.format.date(dtf, "ddd, MMM D, yyyy"),
                   stl = "<?php echo site_url('student_single?pin=');?>",
-                  i;
+                  i,
+                  c=0;
               for (i=0;i<data.length;i++){
+                c = c+1;
                 html += '<tr>'+
-                          '<td style="text-align:right;">'+data[i].id+'</td>'+
+                          '<td style="text-align:right;">'+c+'</td>'+
                           '<td style="text-align:left;">'+data[i].name+'</td>';
                 if(isNaN(data[i]._9)){
                     html += '<td class="tc_break">'+data[i]._9+'</td>';
@@ -1590,56 +1571,7 @@
     <script type="text/javascript">
       $(document).ready(function(){
         var today = $.format.date(new Date(), "yyyy-MM-dd");  
-        $("#pb").keyup(function(){
-          if($(this).val()==''){
-            $('#suggestion_box').hide();
-          } else {
-            $.ajax({
-              type: "POST",
-              url: "<?php echo site_url('student/get_cities') ;?>",
-              data:'keyword='+$(this).val(),
-              dataType : "json",
-              success: function(data){
-                var html = '', i;
-                for(i=0;i<data.length;i++){
-                  html += '<li data-city="'+data[i].city+'" class="city-name">'+data[i].city+'</li>';
-                }
-                $("#suggestion_box").show();
-                $("#suggestions").html(html);
-              }
-            });
-          }
-        });
-        $('#suggestions').on('click', '.city-name', function(){
-          var city_name = $(this).data('city');
-          $('#pb').val(city_name);
-          $('#suggestion_box').hide();
-        });    
-        $("#pb2").keyup(function(){
-          if($(this).val()==''){
-           $('#suggestion_box2').hide();
-         } else {
-           $.ajax({
-             type: "POST",
-             url: "<?php echo site_url('student/get_cities') ;?>",
-             data:'keyword='+$(this).val(),
-             dataType : "json",
-             success: function(data){
-               var html = '', i;
-               for(i=0;i<data.length;i++){
-                 html += '<li data-city="'+data[i].city+'" class="city-name">'+data[i].city+'</li>';
-               }
-               $("#suggestion_box2").show();
-               $("#suggestions2").html(html);
-             }
-           });
-         }
-        });
-        $('#suggestions2').on('click', '.city-name', function(){
-          var city_name = $(this).data('city');
-          $('#pb2').val(city_name);
-          $('#suggestion_box2').hide();
-        });
+        
         $('#mystudents').dataTable({
             "ajax" :{
               "url":"<?php echo site_url('student/student_data');?>",
@@ -1878,57 +1810,7 @@
     <?php else: /* script user */?>
     <script type="text/javascript">
       $(document).ready(function(){
-        var today = $.format.date(new Date(), "yyyy-MM-dd");  
-        $("#pb").keyup(function(){
-         if($(this).val()==''){
-           $('#suggestion_box').hide();
-         } else {
-           $.ajax({
-             type: "POST",
-             url: "<?php echo site_url('student/get_cities') ;?>",
-             data:'keyword='+$(this).val(),
-             dataType : "json",
-             success: function(data){
-               var html = '', i;
-               for(i=0;i<data.length;i++){
-                 html += '<li data-city="'+data[i].city+'" class="city-name">'+data[i].city+'</li>';
-               }
-               $("#suggestion_box").show();
-               $("#suggestions").html(html);
-             }
-           });
-         }
-       });
-        $('#suggestions').on('click', '.city-name', function(){
-          var city_name = $(this).data('city');
-          $('#pb').val(city_name);
-          $('#suggestion_box').hide();
-        }); 
-        $("#pb2").keyup(function(){
-         if($(this).val()==''){
-           $('#suggestion_box2').hide();
-         } else {
-           $.ajax({
-             type: "POST",
-             url: "<?php echo site_url('student/get_cities') ;?>",
-             data:'keyword='+$(this).val(),
-             dataType : "json",
-             success: function(data){
-               var html = '', i;
-               for(i=0;i<data.length;i++){
-                 html += '<li data-city="'+data[i].city+'" class="city-name">'+data[i].city+'</li>';
-               }
-               $("#suggestion_box2").show();
-               $("#suggestions2").html(html);
-             }
-           });
-         }
-       });
-        $('#suggestions2').on('click', '.city-name', function(){
-          var city_name = $(this).data('city');
-          $('#pb2').val(city_name);
-          $('#suggestion_box2').hide();
-        });
+        var today = $.format.date(new Date(), "yyyy-MM-dd");
         $('#mystudents').dataTable({
             "ajax" :{
               "url":"<?php echo site_url('student/student_data');?>",
@@ -2098,6 +1980,7 @@
             ]  
         });
         $('#new_student_button').on('click', function(){
+          $('.easy-autocomplete').css('width','85%');
           $('#nsm').modal('show');
           $('[name="starting_date"]').val(today);
           $('#add_one').on('click',function(){
