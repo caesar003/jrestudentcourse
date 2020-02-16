@@ -710,34 +710,38 @@ class Student_model extends CI_Model{
     return $result;
   }
   function create_fsp_table(){
-    $pin = $this->input->post('pin');
-    $fsp_table = "fsp_".$pin;
-    $fields = array(
-      'id' => array(
-        'type'           => 'INT',
-        'constraint'     => 5,
-        'unsigned'       => TRUE,
-        'auto_increment' => TRUE
-      ),
-      'material' => array(
-        'type' => 'varchar',
-        'constraint' => '255',
-        'default' => ''
-      ),
-      'fsp_result' => array(
-        'type' => 'varchar',
-        'constraint' => '255',
-        'default' => ''
-      ),
-      'comment' => array(
-        'type' => 'varchar',
-        'constraint' => '255',
-        'default' => ''
-      )
-    );
-    $this->dbforge->add_key('id', TRUE);
-    $this->dbforge->add_field($fields);
-    $result = $this->dbforge->create_table($fsp_table, TRUE);
-    return $result;
+    $fsp = $this->input->post('fsp');
+    $pin = $this->input->post('pn');
+    if($fsp !=''){
+      $fsp_table = "fsp_".$pin;
+      $fields = array(
+        'id' => array(
+          'type'           => 'INT',
+          'constraint'     => 5,
+          'unsigned'       => TRUE,
+          'auto_increment' => TRUE
+        ),
+        'material' => array(
+          'type' => 'varchar',
+          'constraint' => '255',
+          'default' => ''
+        ),
+        'fsp_result' => array(
+          'type' => 'varchar',
+          'constraint' => '255',
+          'default' => ''
+        ),
+        'comment' => array(
+          'type' => 'varchar',
+          'constraint' => '255',
+          'default' => ''
+        )
+      );
+      $this->dbforge->add_key('id', TRUE);
+      $this->dbforge->add_field($fields);
+      $result = $this->dbforge->create_table($fsp_table, TRUE);
+      return $result;
+    }
+    
   }
 }

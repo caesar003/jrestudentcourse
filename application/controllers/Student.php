@@ -61,7 +61,8 @@ class Student extends CI_Controller{
   }
   /* Update Student Record */
  function update(){
-    $data=$this->student_model->update_student();
+    $data['update']=$this->student_model->update_student();
+   $data['fsp']=$this->student_model->create_fsp_table();
     echo json_encode($data);
   }
   function delete_student(){

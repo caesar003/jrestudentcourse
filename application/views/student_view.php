@@ -1964,10 +1964,37 @@
                   }
                 }
               },
-              {"data" : "nick_name"},
+/* 
+1 student => nickname,
+2 students => nickanme - nickname,
+3 students => nickname1 ... title=""
+4 students => nickname 1 ... title=""
+*/
+              {
+                "data" : {nick_name:"nick_name",cnst2:"cnst2",cnst2:"cnst2",cnst2:"cnst2"},
+                "render" :function(data,type,row){
+                  if(data.cnst2!=''){
+                    if(data.cnst3!=''){
+                      if(data.cnst4!=''){
+                        // four students
+                        return '<span title="'+data.complete_name+' - '+data.cnst2+' - '+data.cnst3+' - '+data.cnst4+'">'+data.complete_name+'</span>';
+                      } else {
+                        // three students
+                        return '<span title="'+data.complete_name+' - '+data.cnst2+' - '+data.cnst3+'">'+data.complete_name+'</span>';
+                      }
+                    }else {
+                      // two students
+                      return data.nick_name+' - '+data.cnst2;
+                    }
+                  } else {
+                    // one student
+                    return data.nick_name;
+                  }
+                }
+              }, 
               {"data" : "address"},
               {
-                "data" : "starting_date",
+                "data" : "date_of_birth",
                 "render" : function (data, type, row){
                   return $.format.date(data, "MMM/dd/yyyy");
                 }
@@ -2103,19 +2130,12 @@
           if (pn==''|| cn==''||ad==''||db==''||ph==''||pr==''||pd==''){
             $('#nsf').addClass('alert alert-danger'); 
             $('#nsf').html('Please fill out all required fields'); 
-            if (pn=='') {
-              $('#pn').css(bck, clr);
-            }
-            if (cn=='') {
-              $('#cn').css(bck, clr);}
-            if(ad==''){
-              $('#ad').css(bck, clr);}
-            if (db==''){
-              $('#db').css(bck, clr);}
-            if (ph==''){
-              $('#ph').css(bck, clr);}
-            if(pr==''){
-              $('#pr').css(bck, clr);}
+            if (pn=='') {$('#pn').css(bck, clr);}
+            if (cn=='') {$('#cn').css(bck, clr);}
+            if(ad==''){$('#ad').css(bck, clr);}
+            if (db==''){$('#db').css(bck, clr);}
+            if (ph==''){$('#ph').css(bck, clr);}
+            if(pr==''){$('#pr').css(bck, clr);}
             if (pd=='') {
               $('#pd').css(bck, clr);
             }
@@ -2140,48 +2160,69 @@
                       $('#nsf').addClass('alert alert-danger');
                       $('#nsf').html('Please fill out all required fields');
                       console.log('student 2 incomplete');
-                      if(cn2==''){$('cnst2').css(bck,clr);}
-                      if(ad2==''){$('adrst2').css(bck,clr);}
-                      if(db2==''){$('dbst2').css(bck,clr);}
-                      if(ph2==''){$('cnst2').css(bck,clr);}
+                      if(cn2==''){$('#cnst2').css(bck,clr);}
+                      if(ad2==''){$('#adrst2').css(bck,clr);}
+                      if(db2==''){$('#dbst2').css(bck,clr);}
+                      if(ph2==''){$('#phst2').css(bck,clr);}
                     } else {
                       if(isNaN(ph2)){
                         console.log('phone 2 is not number');
+                        $('#nsf').addClass('alert alert-danger');
+                        $('#nsf').html('Phone must only be numbers');
+                        $('#phst2').css(bck,clr);
                       } else {
                         if($('#student3').css('display')==='block'){
                           if(cn3 == ''||ad3==''||db3==''||ph3==''){
-                            console.log('fill out three students');
+                            $('#nsf').addClass('alert alert-danger');
+                            $('#nsf').html('Please fill out all required fields');
+                            console.log('student 3 incomplete');
+                            if(cn3==''){$('#cnst3').css(bck,clr);}
+                            if(ad3==''){$('#adrst3').css(bck,clr);}
+                            if(db3==''){$('#dbst3').css(bck,clr);}
+                            if(ph3==''){$('#phst3').css(bck,clr);}
                           } else {
                             if(isNaN(ph3)){
                               console.log('phone 3 is not number');
+                              $('#nsf').addClass('alert alert-danger');
+                              $('#nsf').html('Phone must only be numbers');
+                              $('#phst3').css(bck,clr);
                             } else{
                               if($('#student4').css('display')==='block'){
                                 if(cn4 == ''||ad4==''||db4==''||ph4==''){
-                                  console.log('fill out four students');
+                                  $('#nsf').addClass('alert alert-danger');
+                                  $('#nsf').html('Please fill out all required fields');
+                                  console.log('student 4 incomplete');
+                                  if(cn4==''){$('#cnst4').css(bck,clr);}
+                                  if(ad4==''){$('#adrst4').css(bck,clr);}
+                                  if(db4==''){$('#dbst4').css(bck,clr);}
+                                  if(ph4==''){$('#phst4').css(bck,clr);}
                                 } else {
                                   if(isNaN(ph4)){
                                     console.log('phone 4 is not number');
+                                    $('#nsf').addClass('alert alert-danger');
+                                    $('#nsf').html('Phone must only be numbers');
+                                    $('#phst4').css(bck,clr);
                                   } else{
                                     console.log('submit four students');
                                     check_pin(grp,pn,cn,nn,ad,pb,db,ph,cn2,nn2,ad2,pb2,db2,ph2,cn3,nn3,ad3,pb3,db3,ph3,cn4,nn4,ad4,pb4,db4,ph4,pr,pd,sd,re,ta,di,bg,si,wp,ap);
                                     }
                                 }
                               } else {
-                                cn4='';
+                                cn4=nn4=ad4=pb4=db4=ph4='';
                                 console.log('submit three students');
                                 check_pin(grp,pn,cn,nn,ad,pb,db,ph,cn2,nn2,ad2,pb2,db2,ph2,cn3,nn3,ad3,pb3,db3,ph3,cn4,nn4,ad4,pb4,db4,ph4,pr,pd,sd,re,ta,di,bg,si,wp,ap);
                               }
                             }
                           }
                         } else{
-                          cn3='';
+                          cn3=nn3=ad3=pb3=db3=ph3=cn4=nn4=ad4=pb4=db4=ph4='';
                           console.log('submit two students');
                           check_pin(grp,pn,cn,nn,ad,pb,db,ph,cn2,nn2,ad2,pb2,db2,ph2,cn3,nn3,ad3,pb3,db3,ph3,cn4,nn4,ad4,pb4,db4,ph4,pr,pd,sd,re,ta,di,bg,si,wp,ap);
                         }
                       }
                     }
                   } else{
-                    cn2='';
+                    cn2=nn2=ad2=pb2=db2=ph2=cn3=nn3=ad3=pb3=db3=ph3=cn4=nn4=ad4=pb4=db4=ph4='';
                     check_pin(grp,pn,cn,nn,ad,pb,db,ph,cn2,nn2,ad2,pb2,db2,ph2,cn3,nn3,ad3,pb3,db3,ph3,cn4,nn4,ad4,pb4,db4,ph4,pr,pd,sd,re,ta,di,bg,si,wp,ap);
                      console.log('submitted one student');
                   }
@@ -2370,85 +2411,64 @@
             data : {pn:pn,cn:cn,nn:nn,ad:ad,pb:pb,db:db,ph:ph,grp,cn2:cn2,nn2:nn2,ad2:ad2,pb2:pb2,db2:db2,ph2:ph2,cn3:cn3,nn3:nn3,ad3:ad3,pb3:pb3,db3:db3,ph3:ph3,cn4:cn4,nn4:nn4,ad4:ad4,pb4:pb4,db4:db4,ph4:ph4,pr:pr,pd:pd,sd:sd,re:re,ta:ta,di:di,bg:bg,si:si,wp:wp,ap:ap,fsp:fsp},
             success : function(data){
               console.log('updated');
+              $('#esm').modal('hide');
               $('#mystudents').DataTable().ajax.reload();
             }
           });
            
         }
       $('#update_student_btn').on('click', function(){
-        var bck = 'background-color',
-            clr = '#fbe2e6',
-         pn  =$('#pn_e').val(),
-          cn=$('#cn_e').val(),
-          nn=$('#nn_e').val(),
-          ad=$('#ad_e').val(),
-          pb=$('#pb_e').val(),
-          db=$('#db_e').val(),
-          ph=$('#ph_e').val(),
-          grp=$('#grp_e').val(),
-          cn2=$('#cnst2_e').val(),
-          nn2=$('#nnst2_e').val(),
-          ad2=$('#adrst2_e').val(),
-          pb2=$('#pbst2_e').val(),
-          db2=$('#dbst2_e').val(),
-          ph2=$('#phst2_e').val(),
-          cn3=$('#cnst3_e').val(),
-          nn3=$('#nnst3_e').val(),
-          ad3=$('#adrst3_e').val(),
-          pb3=$('#pbst3_e').val(),
-          db3=$('#dbst3_e').val(),
-          ph3=$('#phst3_e').val(),
-          cn4=$('#cnst4_e').val(),
-          nn4=$('#nnst4_e').val(),
-          ad4=$('#adrst4_e').val(),
-          pb4=$('#pbst4_e').val(),
-          db4=$('#dbst4_e').val(),
-          ph4=$('#phst4_e').val(),
-          pr=$('#pr2').val(),
-          pd=$('#pd2').val(),
-          sd=$('#sd2').val(),
-          re=$('#re2').val(),
-          ta=$('#ta2').val(),
-          di=$('#di2').val(),
-          bg=$('#bg2').val(),
-          si=$('#si2').val(),
-          wp=$('#wp2').val(),
-          ap=$('#ap2').val(),
+        var bck = 'background-color',clr = '#fbe2e6',
+            pn  =$('#pn_e').val(),
+            cn=$('#cn_e').val(),nn=$('#nn_e').val(),ad=$('#ad_e').val(),pb=$('#pb_e').val(),db=$('#db_e').val(),ph=$('#ph_e').val(),
+            grp=$('#grp_e').val(),
+            
+            cn2=$('#cnst2_e').val(),nn2=$('#nnst2_e').val(),ad2=$('#adrst2_e').val(),pb2=$('#pbst2_e').val(),          db2=$('#dbst2_e').val(),ph2=$('#phst2_e').val(),
+            cn3=$('#cnst3_e').val(),nn3=$('#nnst3_e').val(),
+          ad3=$('#adrst3_e').val(),pb3=$('#pbst3_e').val(),
+          db3=$('#dbst3_e').val(),ph3=$('#phst3_e').val(),
+          cn4=$('#cnst4_e').val(),nn4=$('#nnst4_e').val(),
+          ad4=$('#adrst4_e').val(),pb4=$('#pbst4_e').val(),
+          db4=$('#dbst4_e').val(),ph4=$('#phst4_e').val(),
+          pr=$('#pr2').val(),pd=$('#pd2').val(),
+          sd=$('#sd2').val(),re=$('#re2').val(),
+          ta=$('#ta2').val(),di=$('#di2').val(),
+          bg=$('#bg2').val(),si=$('#si2').val(),
+          wp=$('#wp2').val(),ap=$('#ap2').val(),
             fsp='';
         if ($('#fsp').is(':checked')){fsp='yes';}else{fsp='';}
-        if(cn==''|| ad==''|| db==''|| ph==''|| pr==''|| pd==''){ // FORM INCOMPLETE
-         console.log('form incomplete'); // PHONE CHECK FAILED
-        } else { // FORM COMPLETE 
-          if(isNaN(ph)){ // PHONE CHECK
+        if(cn==''|| ad==''|| db==''|| ph==''|| pr==''|| pd==''){ 
+         console.log('form incomplete'); 
+        } else { 
+          if(isNaN(ph)){ 
             console.log('phone not number');
-          } else { // PHONE CHECK PASSED, GO TO THE NEXT CHECK
-            if(isNaN(pd)){ // PROGRAM DURATION CHECK
-              console.log('duration not number'); // PROGRAM DURATION CHECK FAILED
-            } else { // DURATION CHECK PASSED
-              if($('#student2_e').css('display')==='block'){ // CHECK FOR THE SECOND STUDENT
-                if(cn2==''||ad2==''||db2==''||ph2==''){ // STUDENT 2 FORM INCOMPLETE
+          } else { 
+            if(isNaN(pd)){ 
+              console.log('duration not number'); 
+            } else { 
+              if($('#student2_e').css('display')==='block'){ 
+                if(cn2==''||ad2==''||db2==''||ph2==''){
                   console.log('student 2 incomplete');
-                } else{ // STUDENT 2 FORM IS COMPLETE
-                  if(isNaN(ph2)){ // PHONE 2 NOT NUMBER
+                } else{ 
+                  if(isNaN(ph2)){
                     console.log('phone 2 is not number');
-                  } else{ // PHONE TWO CHECK PASSED
+                  } else{ 
                     if($('#student3_e').css('display')==='block'){
-                    //if($('#student3_e').css('display')==='block'){ // THERE ARE THREE STUDENTS 
-                      if(cn3==''||ad3==''||db3==''||ph3==''){ // STUDENT THREE INCOMPLETE
+                      if(cn3==''||ad3==''||db3==''||ph3==''){ 
                         console.log('student 3 is not complete');
-                      } else{ // STUDENT 3 COMPLETE
-                        if(isNaN(ph3)){ // PHONE 3 IS NOT NUMBER
+                      } else{ 
+                        if(isNaN(ph3)){
                           console.log('phone 3 is not number');
-                        } else{ // PHONE THREE TEST PASSED
-                          if($('#student4_e').css('display')==='block'){ //THERE ARE FOUR STUDENTS
-                            if(cn4==''||ad4==''||db4==""||ph4==''){ // STUDENT FOUR NOT COMPLETE
+                        } else{ 
+                          if($('#student4_e').css('display')==='block'){ 
+                            if(cn4==''||ad4==''||db4==""||ph4==''){ 
                               console.log('student four not complete');
-                            } else { // STUDENT FOUR FILLED OUT
-                              if(isNaN(ph4)){ // PHONE 4 IS NOT NUMBER
+                            } else { 
+                              if(isNaN(ph4)){ 
                                 console.log('phone 4 is not number');
-                              } else { // PHONE CHECK PASSED
+                              } else { 
                                 console.log('submit four students');
-                                update_student(pn,cn,nn,ad,pb,db,ph,grp,cn2,nn2,ad2,pb2,db2,ph2,cn3,nn3,ad3,pb3,db3,ph3,cn4,nn4,ad4,pb4,db4,ph4,pr,pd,sd,re,ta,di,bg,si,wp,ap,fsp);
+                                //update_student(pn,cn,nn,ad,pb,db,ph,grp,cn2,nn2,ad2,pb2,db2,ph2,cn3,nn3,ad3,pb3,db3,ph3,cn4,nn4,ad4,pb4,db4,ph4,pr,pd,sd,re,ta,di,bg,si,wp,ap,fsp);
                               }
                             }
                           } else { // THERE ARE ONLY THREE STUDENTS
@@ -2459,215 +2479,22 @@
                         }
                       }
                     } else { // THERE ARE ONLY 2 STUDENTS
-                      cn3 = '';
+                      cn3=nn3=pb3=ad3=ph3=db3=cn4=nn4=pb4=ad4=ph4=db4='';
                       console.log('submit 2 students');
                       update_student(pn,cn,nn,ad,pb,db,ph,grp,cn2,nn2,ad2,pb2,db2,ph2,cn3,nn3,ad3,pb3,db3,ph3,cn4,nn4,ad4,pb4,db4,ph4,pr,pd,sd,re,ta,di,bg,si,wp,ap,fsp);
                     }
                   }
                 }
               } else { // THERE IS NO SECOND STUDENT, SUBMIT THE FORM
+                cn2=nn2=pb2=ad2=ph2=db2=cn3=nn3=pb3=ad3=ph3=db3=cn4=nn4=pb4=ad4=ph4=db4='';
                 console.log('submit the student');
                 update_student(pn,cn,nn,ad,pb,db,ph,grp,cn2,nn2,ad2,pb2,db2,ph2,cn3,nn3,ad3,pb3,db3,ph3,cn4,nn4,ad4,pb4,db4,ph4,pr,pd,sd,re,ta,di,bg,si,wp,ap,fsp);
               }
             }
           }
         }
-        /*if(cn==''||ad==''||db==''||ph==''||pr==''||pd==''){
-          // deliver an error
-          console.log('student one is not complete');
-        } else {
-          if ($('#student2_e').css('display')==='block'){
-            console.log('student 2 is opened');
-            if(cn2==''||ad2==''||db2==''||ph2==''){
-              console.log('student 2 is not complete');
-            } else {
-              if($('#student3_e').css('display')==='block'){
-                if(cn3==''||ad3==''||db3==''||ph3==''){
-                  console.log('student 3 incomplete');
-                } else {
-                  if($('#student4_e').css('display')==='block'){
-                    if(cn4==''||ad4==''||db4==''||ph4==''){
-                      console.log('student 4 incomplete');
-                    } else {
-                      console.log('submit 4 students');
-                    }
-                  } else {
-                    console.log('three students submitted');
-                  }
-                }
-              } else { // there is no third students, there are only two
-                console.log('two students submitted');
-              }
-            }
-          } else { /* no second student */
-       /*     console.log(pn);
-            console.log(cn); console.log(nn); console.log(ad); console.log(pb);console.log(db);console.log(ph);     
-            console.log(grp);
-            console.log(cn2);console.log(nn2);console.log(ad2);console.log(pb2);console.log(db2);console.log(ph2);
-            console.log(cn3);console.log(nn3);console.log(ad3);console.log(pb3);console.log(db3);console.log(ph3);
-            console.log(cn4);console.log(nn4);console.log(ad4);console.log(pb4);console.log(db4);console.log(ph4);
-        
-            console.log(pr);console.log(pd);console.log(sd);
-            console.log(re);console.log(ta);console.log(di);
-            console.log(bg);console.log(si);console.log(wp);console.log(ap);
-            console.log('one student submitted');
-            // one student 
-            // submit form
-          }
-        }*/
-          
-        /*  console.log(pn);
-         console.log(cn); console.log(nn); console.log(ad); console.log(pb);console.log(db);console.log(ph);
-            
-          console.log(grp);
-            
-          console.log(cn2);console.log(nn2);console.log(ad2);console.log(pb2);console.log(db2);console.log(ph2);
-          console.log(cn3);console.log(nn3);console.log(ad3); console.log(pb3);console.log(db3);console.log(ph3);
-          console.log(cn4);console.log(nn4);console.log(ad4);console.log(pb4);console.log(db4);console.log(ph4);
-        
-         console.log(pr);
-         console.log(pd);
-         console.log(sd);
-         console.log(re);
-         console.log(ta);
-         console.log(di);
-         console.log(bg);
-         console.log(si);
-         console.log(wp);
-         console.log(ap);*/
       });
-      /*  $('#update_student_btn').on('click',function(){
-          var bck = 'background-color',
-              clr='#fbe2e6',
-              pn=$('#pn_e').val(),
-              cn=$('#cn_e').val(),
-              nn=$('#nn_e').val(),
-              ad=$('#ad_e').val(),
-              pb=$('#pb_e').val(),
-              db=$('#db_e').val(), 
-              ph=$('#ph_e').val(),
-              grp=$('#grp_e').val(),
-              cn2=$('#cnst2_e').val(),
-              nn2=$('#nnst2_e').val(),
-              ad2=$('#adrst2_e').val(),
-              pb2=$('#pbst2_e').val(),
-              db2=$('#dbst2_e').val(), 
-              ph2=$('#phst2_e').val(),
-              cn3=$('#cnst3_e').val(),
-              nn3=$('#nnst3_e').val(),
-              ad3=$('#adrst3_e').val(),
-              pb3=$('#pbst3_e').val(),
-              db3=$('#dbst3_e').val(), 
-              ph3=$('#phst3_e').val(),
-              cn4=$('#cnst4_e').val(),
-              nn4=$('#nnst4_e').val(),
-              ad4=$('#adrst4_e').val(),
-              pb4=$('#pbst4_e').val(),
-              db4=$('#dbst4_e').val(), 
-              ph4=$('#phst4_e').val(),
-              pr=$('#pr2').val(),
-              pd=$('#pd2').val(),
-              sd=$('#sd2').val(),
-              re=$('#re2').val(),
-              ta=$('#ta2').val(),
-              di=$('#di2').val(),
-              bg=$('#bg2').val(),
-              si=$('#si2').val(),
-              wp=$('#wp2').val(),
-              action_plan=$('#ap2').val(),
-              fsp='';
-          if ($('#fsp').is(':checked')){fsp='yes';}else{fsp='';}
-          if (cn==''||ad==''|| db=='' || ph=='' || pr=='' || pd==''){
-            $('#esf').addClass('alert alert-danger'); 
-            $('#esf').html('Please fill out all required fields');
-            if(nn==''){$('#cn2').css(bck,clr);}
-            if(ad==''){$('#ad2').css(bck,clr);}
-            if(db==''){$('#db2').css(bck,clr);}
-            if(ph==''){$('#ph2').css(bck,clr);}
-            if(pd==''){$('#pd2').css(bck,clr);}
-            if(pdf==''){$('#pr2').css(bck,clr);}
-          } else{ 
-              if (isNaN(ph)){
-                $('#esf').addClass('alert alert-danger');
-                $('#esf').html('phone can only consist of number');
-                $('#ph2').css(bck, clr);
-              }else{ 
-                if (isNaN(pd)){
-                  $('#esf').addClass('alert alert-danger');
-                  $('#esf').html('Program duration only consist of number');
-                  $('#pd2').css(bck, clr);
-                }else{
-                  $.ajax({
-                    type : "POST", 
-                    url : "<?php echo site_url('student/update')?>",
-                    dataType : "JSON",
-                    data :{pn:pn,
-                          cn:cn,
-                          nn:nn,
-                          ad:ad,
-                          pb:pb,
-                          db:db,
-                          ph:ph,
-                          grp:grp,
-                          cn2:cn2,
-                          nn2:nn2,
-                          ad2:ad2,
-                          pb2:pb2,
-                          db2:db2,
-                          ph2:ph2,
-                          cn3:cn3,
-                          nn3:nn3,
-                          ad3:ad3,
-                          pb3:pb3,
-                          db3:db3,
-                          ph3:ph3,
-                          cn4:cn4,
-                          nn4:nn4,
-                          ad4:ad4,
-                          pb4:pb4,
-                          db4:db4,
-                          ph4:ph4,
-                          pr:pr,
-                          pd:pd,
-                          s:sd,
-                          re:re,
-                          ta:ta,
-                          di:di,
-                          bg:bg,
-                          si:si,
-                          wp:wp,
-                          ap:ap},
-                    success: function(data){
-                      $('#esm').modal('hide');
-                      $('#mystudents').DataTable().ajax.reload();
-                    }
-                  });
-                  console.log('fsp is '+fsp);
-                  if(fsp == 'yes'){
-                    $.ajax({
-                      type : "POST",
-                      url : "<?php echo site_url('student/set_fsp')?>", 
-                      dataType : "JSON",
-                      data : {pin:pn},
-                      success : function(data){ 
-                        console.log('fsp set');
-                        $.ajax({
-                          type: "POST",
-                          url : "<?php echo site_url('student/fsp_table');?>",
-                          dataType : "JSON",
-                          data : {pin:pn},
-                          success : function (data){ 
-                            console.log('fsp table for '+pn+' created')
-                          }
-                        });
-                      }
-                    });
-                  }
-                }
-              }
-          }
-          return false;
-        }); */
+      
       }); 
     </script> 
     <?php endif;?>
