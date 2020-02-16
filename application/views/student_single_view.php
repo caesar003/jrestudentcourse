@@ -544,20 +544,20 @@
      <!-- DELETE  COURSE -->
     <form>
       <div class="modal fade" id="delete_session_modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-sm" role="document">
+        <div class="modal-dialog modal-md" role="document">
           <div class="modal-content add">
             <div class="modal-header">
-              <h5 class="modal-title">Delete Student</h5>
+              <h5 class="modal-title">Delete this session?</h5>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
             </div>
             <div class="modal-body">
-                Are you sure? Once executed, it will be permanently gone!            
+                Please execute with care! Once it's done, it's gone! <br> And there is no coming back. &#128512;  
             </div>
             <div class="modal-footer">
               <input type="hidden" name="m_d" id="m_d">
               <input type="hidden" name="t_d" id="t_d">
-              <button type="button" class="btn btn-primary" data-dismiss="modal"><i class="fas fa-times"></i> Close</button>
-              <button type="button" id="btn_delete_session" class="btn btn-danger"><i class="fa fa-trash"></i> Delete</button>
+              <button type="button" class="btn btn-primary" data-dismiss="modal"><i class="fas fa-times fa-fw"></i> just take me back.</button>
+              <button type="button" id="btn_delete_session" class="btn btn-danger"><i class="fa fa-trash fa-fw"></i> Yeah, get rid of it!</button>
             </div>
           </div>
         </div>
@@ -575,7 +575,7 @@
             <div class="modal-body"> 
               <div class="row"> 
                 <div class="col-lg-5"> 
-                  <fieldset>
+                  <!--fieldset>
                     <legend>Personal Information</legend>
                     <div class="form-row"> 
                       <div class="form-group col-3"> 
@@ -643,6 +643,319 @@
                         <small class="form-text text-muted">Make sure to write the number in international format with no whitespace.</small>
                       </div>
                     </div>    
+                  </fieldset-->
+                  <fieldset>
+                    <legend>Personal Information <a id="add_one_e" href="javascript:void(0);"><i class="fas fa-plus-circle fa-fw"></i></a></legend>
+                    <div class="form-row">
+                      <div class="form-group col-12 row">
+                        <div class="col-4"><label for="pn_e" class="pers_info">PIN<sup>&lowast;</sup></label>
+                        </div>
+                        <div class="input-group col"> 
+                          <div class="input-group-prepend">
+                            <span style="color:green;" class="input-group-text"><i class="fas fa-barcode fa-fw"></i></span> 
+                          </div>
+                          <input type="text" class="form-control" name="pn_e" id="pn_e" disabled> 
+                        </div>
+                      </div>
+                      <div class="form-group col-12 row">
+                        <div class="col-4">
+                          <label for="cn_e" class="pers_info">Name<sup>&lowast;</sup></label>
+                        </div>
+                        <div class="input-group col">
+                          <div class="input-group-prepend">
+                            <span class="input-group-text"><i  style="color:red;" class="fa fa-user-circle fa-fw"></i></span> 
+                          </div>
+                          <input type="text" class="form-control" name="cn_e" id="cn_e" placeholder="Name">
+                        </div>
+                      </div>
+                      <div class="form-group col-12 row">
+                        <div class="col-4">
+                          <label for="nn_e" class="pers_info">Nick name</label>
+                        </div>
+                        <div class="input-group col">
+                          <div class="input-group-prepend"> 
+                            <span class="input-group-text"><i style="color:rgb(70,0,90);" class="fas fa-user-circle fa-fw"></i> </span> 
+                          </div>
+                          <input type="text" class="form-control" name="nn_e" id="nn_e" placeholder="Alias">
+                        </div>
+                      </div>
+                      <div class="form-group col-12 row">
+                        <div class="col-4">
+                          <label for="ad_e" class="pers_info">Address<sup>&lowast;</sup></label>
+                        </div>
+                        <div class="input-group col">
+                          <div class="input-group-prepend">
+                            <span class="input-group-text">
+                            <i style="color:blue;"  class="fa fa-home fa-fw"></i>
+                            </span>
+                          </div>
+                          <input type="text" class="form-control" name="ad_e" id="ad_e" placeholder="Adress" required> 
+                        </div>
+                      </div>
+                      <div class="form-group col-12 row">
+                        <div class="col-4">
+                          <label for="pb_e" class="pers_info">Place of Birth</label>
+                        </div>
+                        <div class="input-group col">
+                          <div class="input-group-prepend">
+                            <span class="input-group-text"><i style="color:grey;" class="fa fa-map-marker fa-fw"></i></span>
+                          </div>
+                          <input type="text" class="form-control" name="pb_e" id="pb_e" placeholder="Place of Birth">
+                        </div>
+                        <div class="suggestion_box" id="suggestion_box_e">
+                          <ul class="suggestions" id="suggestions_e"></ul>
+                        </div>
+                      </div>
+                      <div class="form-group col-12 row ">
+                        <div class="col-4">
+                          <label class="pers_info" for="db_e">Date of Birth<sup>&lowast;</sup></label>
+                        </div>
+                        <div class="input-group col">
+                          <div class="input-group-prepend">
+                            <span class="input-group-text"><i style="color:rgb(120,50,255);" class="fas fa-birthday-cake fa-fw"></i></span>
+                          </div>
+                          <input type="date" class="form-control" name="db_e" id="db_e" required> 
+                        </div>
+                      </div>
+                      <div class="form-group col-12 row">
+                        <div class="col-4">
+                          <label class="pers_info" for="ph_e">Phone <sup>&lowast;</sup></label>
+                        </div>
+                        <div class="input-group col">
+                          <div class="input-group-prepend">
+                            <span class="input-group-text"><i style="color:navy;" class="fa fa-phone-square fa-fw"></i></span>
+                          </div>
+                          <input type="text" class="form-control" name="ph_e" id="ph_e" placeholder="62877" value="62"> 
+                        </div>
+                      </div>
+                    </div>
+                    <div class="form-row" id="group_name_e">
+                      <h4>Group Name</h4>
+                      <div class="form-group col-12 row">
+                        <div class="input-group col-12"> 
+                          <div class="input-group-prepend">
+                            <span style="color:green;" class="input-group-text"><i class="fas fa-user-friends fa-fw"></i></span> 
+                          </div>
+                          <input class="form-control" type="text" name="grp_e" id="grp_e" placeholder="Group name">
+                        </div>
+                      </div>
+                    </div>
+                    <!-- STUDENT 2 -->
+                    <div class="form-row" id="student2_e">
+                      <h4>Student 2 <a id="add_two_e" href="javascript:void(0);"><i class="fas fa-plus-circle fa-fw"></i></a> <a href="javascript:void(0);" id="remove_three_e"><i style="color:rgb(255,0,0);" class="fas fa-times-circle fa-fw"></i></a></h4> 
+                      <div class="form-group col-12 row">
+                        <div class="col-4">
+                          <label for="cnst2_e" class="pers_info">Name<sup>&lowast;</sup></label>
+                        </div>
+                        <div class="input-group col">
+                          <div class="input-group-prepend">
+                            <span class="input-group-text"><i  style="color:red;" class="fa fa-user-circle fa-fw"></i></span> 
+                          </div>
+                          <input type="text" class="form-control" name="cnst2_e" id="cnst2_e" placeholder="Name">
+                        </div>
+                      </div>
+                      <div class="form-group col-12 row">
+                        <div class="col-4">
+                          <label for="nnst2_e" class="pers_info">Nick name</label>
+                        </div>
+                        <div class="input-group col">
+                          <div class="input-group-prepend"> 
+                            <span class="input-group-text"><i style="color:rgb(70,0,90);" class="fas fa-user-circle fa-fw"></i> </span> 
+                          </div>
+                          <input type="text" class="form-control" name="nnst2_e" id="nnst2_e" placeholder="Alias">
+                        </div>
+                      </div>
+                      <div class="form-group col-12 row">
+                        <div class="col-4">
+                          <label for="adrst2_e" class="pers_info">Address<sup>&lowast;</sup></label>
+                        </div>
+                        <div class="input-group col">
+                          <div class="input-group-prepend"> <span class="input-group-text"><i style="color:blue;"  class="fa fa-home fa-fw"></i></span>
+                          </div>
+                          <input type="text" class="form-control" name="adrst2_e" id="adrst2_e" placeholder="Adress" required> 
+                        </div>
+                      </div>
+                      <div class="form-group col-12 row">
+                        <div class="col-4">
+                          <label for="pbst2_e" class="pers_info">Place of Birth</label>
+                        </div>
+                        <div class="input-group col">
+                          <div class="input-group-prepend">
+                            <span class="input-group-text"><i style="color:grey;" class="fa fa-map-marker fa-fw"></i></span>
+                          </div>
+                          <input type="text" class="form-control" name="pbst2_e" id="pbst2_e" placeholder="Place of Birth">
+                        </div>
+                        <div class="suggestion_box" id="suggestion_box_st2_e">
+                          <ul class="suggestions" id="suggestions_st2_e"></ul>
+                        </div>
+                      </div>
+                      <div class="form-group col-12 row ">
+                        <div class="col-4">
+                          <label class="pers_info" for="dbst2_e">Date of Birth<sup>&lowast;</sup></label>
+                        </div>
+                        <div class="input-group col">
+                          <div class="input-group-prepend">
+                            <span class="input-group-text"><i style="color:rgb(120,50,255);" class="fas fa-birthday-cake fa-fw"></i></span>
+                          </div>
+                          <input type="date" class="form-control" name="dbst2_e" id="dbst2_e" required> 
+                        </div>
+                      </div>
+                      <div class="form-group col-12 row">
+                        <div class="col-4">
+                          <label class="pers_info" for="phst2_e">Phone <sup>&lowast;</sup></label>
+                        </div>
+                        <div class="input-group col">
+                          <div class="input-group-prepend">
+                            <span class="input-group-text"><i style="color:navy;" class="fa fa-phone-square fa-fw"></i></span>
+                          </div>
+                          <input type="text" class="form-control" name="phst2_e" id="phst2_e" placeholder="62877" value="62"> 
+                        </div>
+                      </div>
+                    </div><!-- END STUDENT 2 -->
+                    <!-- STUDENT 3 -->
+                    <div class="form-row" id="student3_e">
+                      <h4>Student 3 <a id="add_three_e" href="javascript:void(0);"><i class="fas fa-plus-circle fa-fw"></i></a> <a href="javascript:void(0);" id="remove_two_e"><i style="color:rgb(255,0,0);" class="fas fa-times-circle fa-fw"></i></a></h4> 
+                      <div class="form-group col-12 row">
+                        <div class="col-4">
+                          <label for="cnst3_e" class="pers_info">Name<sup>&lowast;</sup></label>
+                        </div>
+                        <div class="input-group col">
+                          <div class="input-group-prepend">
+                            <span class="input-group-text"><i  style="color:red;" class="fa fa-user-circle fa-fw"></i></span> 
+                          </div>
+                          <input type="text" class="form-control" name="cnst3_e" id="cnst3_e" placeholder="Name">
+                        </div>
+                      </div>
+                      <div class="form-group col-12 row">
+                        <div class="col-4">
+                          <label for="nnst3_e" class="pers_info">Nick name</label>
+                        </div>
+                        <div class="input-group col">
+                          <div class="input-group-prepend"> 
+                            <span class="input-group-text"><i style="color:rgb(70,0,90);" class="fas fa-user-circle fa-fw"></i> </span> 
+                          </div>
+                          <input type="text" class="form-control" name="nnst3_e" id="nnst3_e" placeholder="Alias">
+                        </div>
+                      </div>
+                      <div class="form-group col-12 row">
+                        <div class="col-4">
+                          <label for="adrst3_e" class="pers_info">Address<sup>&lowast;</sup></label>
+                        </div>
+                        <div class="input-group col">
+                          <div class="input-group-prepend"> <span class="input-group-text"><i style="color:blue;"  class="fa fa-home fa-fw"></i></span>
+                          </div>
+                          <input type="text" class="form-control" name="adrst3_e" id="adrst3_e" placeholder="Adress" required> 
+                        </div>
+                      </div>
+                      <div class="form-group col-12 row">
+                        <div class="col-4">
+                          <label for="pbst3_e" class="pers_info">Place of Birth</label>
+                        </div>
+                        <div class="input-group col">
+                          <div class="input-group-prepend">
+                            <span class="input-group-text"><i style="color:grey;" class="fa fa-map-marker fa-fw"></i></span>
+                          </div>
+                          <input type="text" class="form-control" name="pbst3_e" id="pbst3_e" placeholder="Place of Birth">
+                        </div>
+                        <div class="suggestion_box" id="suggestion_box_st3_e">
+                          <ul class="suggestions" id="suggestions_st3_e"></ul>
+                        </div>
+                      </div>
+                      <div class="form-group col-12 row ">
+                        <div class="col-4">
+                          <label class="pers_info" for="dbst3_e">Date of Birth<sup>&lowast;</sup></label>
+                        </div>
+                        <div class="input-group col">
+                          <div class="input-group-prepend">
+                            <span class="input-group-text"><i style="color:rgb(120,50,255);" class="fas fa-birthday-cake fa-fw"></i></span>
+                          </div>
+                          <input type="date" class="form-control" name="dbst3_e" id="dbst3_e" required> 
+                        </div>
+                      </div>
+                      <div class="form-group col-12 row">
+                        <div class="col-4">
+                          <label class="pers_info" for="phst3_e">Phone <sup>&lowast;</sup></label>
+                        </div>
+                        <div class="input-group col">
+                          <div class="input-group-prepend">
+                            <span class="input-group-text"><i style="color:navy;" class="fa fa-phone-square fa-fw"></i></span>
+                          </div>
+                          <input type="text" class="form-control" name="phst3_e" id="phst3_e" placeholder="62877" value="62"> 
+                        </div>
+                      </div>
+                    </div><!-- END STUDENT 3 -->
+                    <!-- STUDENT 4 -->
+                    <div class="form-row" id="student4_e">
+                      <h4>Student 4 <a href="javascript:void(0);" id="remove_one_e"><i style="color:rgb(255,0,0);" class="fas fa-times-circle fa-fw"></i></a></h4> 
+                      <div class="form-group col-12 row">
+                        <div class="col-4">
+                          <label for="cnst4_e" class="pers_info">Name<sup>&lowast;</sup></label>
+                        </div>
+                        <div class="input-group col">
+                          <div class="input-group-prepend">
+                            <span class="input-group-text"><i  style="color:red;" class="fa fa-user-circle fa-fw"></i></span> 
+                          </div>
+                          <input type="text" class="form-control" name="cnst4_e" id="cnst4_e" placeholder="Name">
+                        </div>
+                      </div>
+                      <div class="form-group col-12 row">
+                        <div class="col-4">
+                          <label for="nnst4_e" class="pers_info">Nick name</label>
+                        </div>
+                        <div class="input-group col">
+                          <div class="input-group-prepend"> 
+                            <span class="input-group-text"><i style="color:rgb(70,0,90);" class="fas fa-user-circle fa-fw"></i> </span> 
+                          </div>
+                          <input type="text" class="form-control" name="nnst4_e" id="nnst4_e" placeholder="Alias">
+                        </div>
+                      </div>
+                      <div class="form-group col-12 row">
+                        <div class="col-4">
+                          <label for="adrst4_e" class="pers_info">Address<sup>&lowast;</sup></label>
+                        </div>
+                        <div class="input-group col">
+                          <div class="input-group-prepend"> <span class="input-group-text"><i style="color:blue;"  class="fa fa-home fa-fw"></i></span>
+                          </div>
+                          <input type="text" class="form-control" name="adrst4_e" id="adrst4_e" placeholder="Address" required> 
+                        </div>
+                      </div>
+                      <div class="form-group col-12 row">
+                        <div class="col-4">
+                          <label for="pbst4_e" class="pers_info">Place of Birth</label>
+                        </div>
+                        <div class="input-group col">
+                          <div class="input-group-prepend">
+                            <span class="input-group-text"><i style="color:grey;" class="fa fa-map-marker fa-fw"></i></span>
+                          </div>
+                          <input type="text" class="form-control" name="pbst4_e" id="pbst4_e" placeholder="Place of Birth">
+                        </div>
+                        <div class="suggestion_box" id="suggestion_box_st4_e">
+                          <ul class="suggestions" id="suggestions_st4_e"></ul>
+                        </div>
+                      </div>
+                      <div class="form-group col-12 row ">
+                        <div class="col-4">
+                          <label class="pers_info" for="dbst4_e">Date of Birth<sup>&lowast;</sup></label>
+                        </div>
+                        <div class="input-group col">
+                          <div class="input-group-prepend">
+                            <span class="input-group-text"><i style="color:rgb(120,50,255);" class="fas fa-birthday-cake fa-fw"></i></span>
+                          </div>
+                          <input type="date" class="form-control" name="dbst4_e" id="dbst4_e" required> 
+                        </div>
+                      </div>
+                      <div class="form-group col-12 row">
+                        <div class="col-4">
+                          <label class="pers_info" for="phst4_e">Phone <sup>&lowast;</sup></label>
+                        </div>
+                        <div class="input-group col">
+                          <div class="input-group-prepend">
+                            <span class="input-group-text"><i style="color:navy;" class="fa fa-phone-square fa-fw"></i></span>
+                          </div>
+                          <input type="text" class="form-control" name="phst4_e" id="phst4_e" placeholder="62877" value="62"> 
+                        </div>
+                      </div>
+                    </div><!-- END STUDENT 4 -->  
                   </fieldset>
                 </div>
                 <div class="col-lg-7"> 
@@ -788,7 +1101,213 @@
         get_student_detail();
         show_syllabus();
         get_all_syllabus();
-        function get_student_detail() {
+        function get_student_detail(){
+          var pin = "<?php echo $pin;?>";
+          $.ajax({
+            type : 'post',
+            url : '<?php echo site_url('student_single/get_student_info');?>',
+            dataType : 'json',
+            data : {pin:pin},
+            success : function(data){
+              var html = '';
+              var i;
+              for(i=0;i<data.length;i++){
+                if(data[i].grp!=''){
+                  html += '<li class="list-group-item tooltip-bottom" title="Group study">'+data[i].grp+'</li>';
+                } else {
+                  html += '';
+                } 
+                if(data[i].cnst2==''){
+                  // one student
+                  html += '<li class="list-group-item tooltip-bottom" title="Pin number">' + 
+                          '<i style="color:green;" class="fas fa-barcode fa-fw fa-lg"></i>' + data[i].pin + 
+                        '</li>' + 
+                        '<li class="list-group-item tooltip-right" title="Complete name">'+
+                          '<i style="color:red;" class="fa fa-user-circle fa-fw fa-lg"></i>' + data[i].complete_name + 
+                        '</li>' + 
+                        '<li class="list-group-item tooltip-right" title="Nick name">' + 
+                          '<i style="color:rgb(70,0,90);" class="fa fa-user-circle fa-fw fa-lg"></i>' + data[i].nick_name + 
+                        '</li>' + 
+                        '<li class="list-group-item tooltip-bottom" title="Address">' + 
+                          '<i style="color:blue;" class="fa fa-home fa-fw fa-lg"></i>' + data[i].address + 
+                        '</li>' + 
+                        '<li class="list-group-item tooltip-bottom" title="Place of birth">' + '<i style="color:grey;" class="fa fa-map-marker fa-fw fa-lg"></i>' + data[i].place_of_birth + 
+                        '</li>' + 
+                        '<li class="list-group-item tooltip-bottom" title="Date or birth">' + '<i style="color:rgb(120,50,255);" class="fa fa-gift fa-fw fa-lg"></i>' + ($.format.date(data[i].date_of_birth, "MMM,dd yyyy")) + 
+                        '</li>' + 
+                        '<li class="list-group-item tooltip-bottom" title="Phone,click to call">' + 
+                        '<i style="color:navy;" class="fa fa-phone-square fa-fw fa-lg"></i><a style="text-decoration:none;" target="_blank" href="https://wa.me/' + data[i].phone + '">' + data[i].phone + '</a>' + 
+                        '</li>';
+                } else { 
+                  if(data[i].cnst3==''){
+                    // two student
+                     html += '<li class="list-group-item tooltip-bottom" title="Pin number">' + 
+                          '<i style="color:green;" class="fas fa-barcode fa-fw fa-lg"></i>' + data[i].pin + 
+                        '</li>' + 
+                        '<li class="list-group-item tooltip-right" title="Complete name">'+
+                          '<i style="color:red;" class="fa fa-user-circle fa-fw fa-lg"></i>' + data[i].complete_name + 
+                        '</li>' + 
+                        '<li class="list-group-item tooltip-right" title="Nick name">' + 
+                          '<i style="color:rgb(70,0,90);" class="fa fa-user-circle fa-fw fa-lg"></i>' + data[i].nick_name + 
+                        '</li>' + 
+                        '<li class="list-group-item tooltip-bottom" title="Address">' + 
+                          '<i style="color:blue;" class="fa fa-home fa-fw fa-lg"></i>' + data[i].address + 
+                        '</li>' + 
+                        '<li class="list-group-item tooltip-bottom" title="Place of birth">' + '<i style="color:grey;" class="fa fa-map-marker fa-fw fa-lg"></i>' + data[i].place_of_birth + 
+                        '</li>' + 
+                        '<li class="list-group-item tooltip-bottom" title="Date or birth">' + '<i style="color:rgb(120,50,255);" class="fa fa-gift fa-fw fa-lg"></i>' + ($.format.date(data[i].date_of_birth, "MMM,dd yyyy")) + 
+                        '</li>' + 
+                        '<li class="list-group-item tooltip-bottom" title="Phone,click to call">' + 
+                        '<i style="color:navy;" class="fa fa-phone-square fa-fw fa-lg"></i><a style="text-decoration:none;" target="_blank" href="https://wa.me/' + data[i].phone + '">' + data[i].phone + '</a>' + 
+                        '</li>'+
+                        '<li class="list-group-item tooltip-right" title="Complete name">'+
+                          '<i style="color:red;" class="fa fa-user-circle fa-fw fa-lg"></i>' + data[i].cnst2 + 
+                        '</li>' + 
+                        '<li class="list-group-item tooltip-right" title="Nick name">' + 
+                          '<i style="color:rgb(70,0,90);" class="fa fa-user-circle fa-fw fa-lg"></i>' + data[i].nnst2 + 
+                        '</li>' + 
+                        '<li class="list-group-item tooltip-bottom" title="Address">' + 
+                          '<i style="color:blue;" class="fa fa-home fa-fw fa-lg"></i>' + data[i].adrst2 + 
+                        '</li>' + 
+                        '<li class="list-group-item tooltip-bottom" title="Place of birth">' + '<i style="color:grey;" class="fa fa-map-marker fa-fw fa-lg"></i>' + data[i].pobst2 + 
+                        '</li>' + 
+                        '<li class="list-group-item tooltip-bottom" title="Date or birth">' + '<i style="color:rgb(120,50,255);" class="fa fa-gift fa-fw fa-lg"></i>' + ($.format.date(data[i].dobst2, "MMM,dd yyyy")) + 
+                        '</li>' + 
+                        '<li class="list-group-item tooltip-bottom" title="Phone,click to call">' + 
+                        '<i style="color:navy;" class="fa fa-phone-square fa-fw fa-lg"></i><a style="text-decoration:none;" target="_blank" href="https://wa.me/' + data[i].phone + '">' + data[i].phst2 + '</a>' + 
+                        '</li>';
+                  } else {
+                    if(data[i].cnst4==''){
+                      // three students
+                      html += '<li class="list-group-item tooltip-bottom" title="Pin number">' + 
+                          '<i style="color:green;" class="fas fa-barcode fa-fw fa-lg"></i>' + data[i].pin + 
+                        '</li>' + 
+                        '<li class="list-group-item tooltip-right" title="Complete name">'+
+                          '<i style="color:red;" class="fa fa-user-circle fa-fw fa-lg"></i>' + data[i].complete_name + 
+                        '</li>' + 
+                        '<li class="list-group-item tooltip-right" title="Nick name">' + 
+                          '<i style="color:rgb(70,0,90);" class="fa fa-user-circle fa-fw fa-lg"></i>' + data[i].nick_name + 
+                        '</li>' + 
+                        '<li class="list-group-item tooltip-bottom" title="Address">' + 
+                          '<i style="color:blue;" class="fa fa-home fa-fw fa-lg"></i>' + data[i].address + 
+                        '</li>' + 
+                        '<li class="list-group-item tooltip-bottom" title="Place of birth">' + '<i style="color:grey;" class="fa fa-map-marker fa-fw fa-lg"></i>' + data[i].place_of_birth + 
+                        '</li>' + 
+                        '<li class="list-group-item tooltip-bottom" title="Date or birth">' + '<i style="color:rgb(120,50,255);" class="fa fa-gift fa-fw fa-lg"></i>' + ($.format.date(data[i].date_of_birth, "MMM,dd yyyy")) + 
+                        '</li>' + 
+                        '<li class="list-group-item tooltip-bottom" title="Phone,click to call">' + 
+                        '<i style="color:navy;" class="fa fa-phone-square fa-fw fa-lg"></i><a style="text-decoration:none;" target="_blank" href="https://wa.me/' + data[i].phone + '">' + data[i].phone + '</a>' + 
+                        '</li>'+
+                        '<li class="list-group-item tooltip-right" title="Complete name">'+
+                          '<i style="color:red;" class="fa fa-user-circle fa-fw fa-lg"></i>' + data[i].cnst2 + 
+                        '</li>' + 
+                        '<li class="list-group-item tooltip-right" title="Nick name">' + 
+                          '<i style="color:rgb(70,0,90);" class="fa fa-user-circle fa-fw fa-lg"></i>' + data[i].nnst2 + 
+                        '</li>' + 
+                        '<li class="list-group-item tooltip-bottom" title="Address">' + 
+                          '<i style="color:blue;" class="fa fa-home fa-fw fa-lg"></i>' + data[i].adrst2 + 
+                        '</li>' + 
+                        '<li class="list-group-item tooltip-bottom" title="Place of birth">' + '<i style="color:grey;" class="fa fa-map-marker fa-fw fa-lg"></i>' + data[i].pobst2 + 
+                        '</li>' + 
+                        '<li class="list-group-item tooltip-bottom" title="Date or birth">' + '<i style="color:rgb(120,50,255);" class="fa fa-gift fa-fw fa-lg"></i>' + ($.format.date(data[i].dobst2, "MMM,dd yyyy")) + 
+                        '</li>' + 
+                        '<li class="list-group-item tooltip-bottom" title="Phone,click to call">' + 
+                        '<i style="color:navy;" class="fa fa-phone-square fa-fw fa-lg"></i><a style="text-decoration:none;" target="_blank" href="https://wa.me/' + data[i].phst2 + '">' + data[i].phst2 + '</a>' + 
+                        '</li>'+
+                        '<li class="list-group-item tooltip-right" title="Complete name">'+
+                          '<i style="color:red;" class="fa fa-user-circle fa-fw fa-lg"></i>' + data[i].cnst3 + 
+                        '</li>' + 
+                        '<li class="list-group-item tooltip-right" title="Nick name">' + 
+                          '<i style="color:rgb(70,0,90);" class="fa fa-user-circle fa-fw fa-lg"></i>' + data[i].nnst3 + 
+                        '</li>' + 
+                        '<li class="list-group-item tooltip-bottom" title="Address">' + 
+                          '<i style="color:blue;" class="fa fa-home fa-fw fa-lg"></i>' + data[i].adrst3 + 
+                        '</li>' + 
+                        '<li class="list-group-item tooltip-bottom" title="Place of birth">' + '<i style="color:grey;" class="fa fa-map-marker fa-fw fa-lg"></i>' + data[i].pobst3 + 
+                        '</li>' + 
+                        '<li class="list-group-item tooltip-bottom" title="Date or birth">' + '<i style="color:rgb(120,50,255);" class="fa fa-gift fa-fw fa-lg"></i>' + ($.format.date(data[i].dobst3, "MMM,dd yyyy")) + 
+                        '</li>' + 
+                        '<li class="list-group-item tooltip-bottom" title="Phone,click to call">' + 
+                        '<i style="color:navy;" class="fa fa-phone-square fa-fw fa-lg"></i><a style="text-decoration:none;" target="_blank" href="https://wa.me/' + data[i].phst3 + '">' + data[i].phst3 + '</a>' + 
+                        '</li>';
+                    } else {
+                      // four students
+                      html += '<li class="list-group-item tooltip-bottom" title="Pin number">' + 
+                          '<i style="color:green;" class="fas fa-barcode fa-fw fa-lg"></i> ' + data[i].pin + 
+                        '</li>' + 
+                        '<li class="list-group-item"><strong>Student One</strong></li>'+
+                        '<li class="list-group-item tooltip-right" title="Name">'+
+                          '<i style="color:red;" class="fa fa-user-circle fa-fw fa-lg"></i> ' + data[i].complete_name+' - '+ data[i].nick_name +
+                        '</li>' + 
+                        '<li class="list-group-item tooltip-bottom" title="Address">' + 
+                          '<i style="color:blue;" class="fa fa-home fa-fw fa-lg"></i> ' + data[i].address + 
+                        '</li>' + 
+                        '<li class="list-group-item tooltip-bottom" title="Place, date or birth">' + '<i style="color:rgb(120,50,255);" class="fa fa-gift fa-fw fa-lg"></i> '+ data[i].place_of_birth +', '+ ($.format.date(data[i].date_of_birth,  "MMM, dd yyyy")) + 
+                        '</li>' + 
+                        '<li class="list-group-item tooltip-bottom" title="Phone, click to call">' + 
+                        '<i style="color:navy;" class="fa fa-phone-square fa-fw fa-lg"></i><a style="text-decoration:none;" target="_blank" href="https://wa.me/' + data[i].phone + '"> ' + data[i].phone + '</a>' + 
+                        '</li>'+
+                        
+                        '<li class="list-group-item"><strong>Student Two</strong></li>'+
+                        '<li class="list-group-item tooltip-right" title="Complete name">'+
+                          '<i style="color:red;" class="fa fa-user-circle fa-fw fa-lg"></i> '+ data[i].cnst2 +' - '+ data[i].nnst2 +  
+                        '</li>' + 
+                       /* '<li class="list-group-item tooltip-right" title="Nick name">' + 
+                          '<i style="color:rgb(70,0,90);" class="fa fa-user-circle fa-fw fa-lg"></i>' + data[i].nnst2 + 
+                        '</li>' + */
+                        '<li class="list-group-item tooltip-bottom" title="Address">' + 
+                          '<i style="color:blue;" class="fa fa-home fa-fw fa-lg"></i> ' + data[i].adrst2 + 
+                        '</li>' + 
+                        '<li class="list-group-item tooltip-bottom" title="Place, dates of birth">' + '<i style="color:grey;" class="fa fa-map-marker fa-fw fa-lg"></i> ' + data[i].pobst2 +', '+ ($.format.date(data[i].dobst2, "MMM, dd yyyy")) +
+                        '</li>' + 
+                        /*'<li class="list-group-item tooltip-bottom" title="Date or birth">' + '<i style="color:rgb(120,50,255);" class="fa fa-gift fa-fw fa-lg"></i>' + ($.format.date(data[i].dobst2, "MMM, dd yyyy")) + 
+                        '</li>' + */
+                        '<li class="list-group-item tooltip-bottom" title="Phone,click to call">' + 
+                        '<i style="color:navy;" class="fa fa-phone-square fa-fw fa-lg"></i><a style="text-decoration:none;" target="_blank" href="https://wa.me/' + data[i].phst2 + '">' + data[i].phst2 + '</a>' + 
+                        '</li>'+
+                        '<li class="list-group-item"><strong>Student Three</strong></li>'+
+                        '<li class="list-group-item tooltip-right" title="Complete name">'+
+                          '<i style="color:red;" class="fa fa-user-circle fa-fw fa-lg"></i>' + data[i].cnst3 + 
+                        '</li>' + 
+                        '<li class="list-group-item tooltip-right" title="Nick name">' + 
+                          '<i style="color:rgb(70,0,90);" class="fa fa-user-circle fa-fw fa-lg"></i>' + data[i].nnst3 + 
+                        '</li>' + 
+                        '<li class="list-group-item tooltip-bottom" title="Address">' + 
+                          '<i style="color:blue;" class="fa fa-home fa-fw fa-lg"></i>' + data[i].adrst3 + 
+                        '</li>' + 
+                        '<li class="list-group-item tooltip-bottom" title="Place of birth">' + '<i style="color:grey;" class="fa fa-map-marker fa-fw fa-lg"></i>' + data[i].pobst3 + 
+                        '</li>' + 
+                        '<li class="list-group-item tooltip-bottom" title="Date or birth">' + '<i style="color:rgb(120,50,255);" class="fa fa-gift fa-fw fa-lg"></i>' + ($.format.date(data[i].dobst3, "MMM,dd yyyy")) + 
+                        '</li>' + 
+                        '<li class="list-group-item tooltip-bottom" title="Phone,click to call">' + 
+                        '<i style="color:navy;" class="fa fa-phone-square fa-fw fa-lg"></i><a style="text-decoration:none;" target="_blank" href="https://wa.me/' + data[i].phst3 + '">' + data[i].phst3 + '</a>' + 
+                        '</li>'+
+                        '<li class="list-group-item"><strong>Student Four</strong></li>'+
+                      '<li class="list-group-item tooltip-right" title="Complete name">'+
+                          '<i style="color:red;" class="fa fa-user-circle fa-fw fa-lg"></i>' + data[i].cnst4 + 
+                        '</li>' + 
+                        '<li class="list-group-item tooltip-right" title="Nick name">' + 
+                          '<i style="color:rgb(70,0,90);" class="fa fa-user-circle fa-fw fa-lg"></i>' + data[i].nnst4 + 
+                        '</li>' + 
+                        '<li class="list-group-item tooltip-bottom" title="Address">' + 
+                          '<i style="color:blue;" class="fa fa-home fa-fw fa-lg"></i>' + data[i].adrst4 + 
+                        '</li>' + 
+                        '<li class="list-group-item tooltip-bottom" title="Place of birth">' + '<i style="color:grey;" class="fa fa-map-marker fa-fw fa-lg"></i>' + data[i].pobst4 + 
+                        '</li>' + 
+                        '<li class="list-group-item tooltip-bottom" title="Date or birth">' + '<i style="color:rgb(120,50,255);" class="fa fa-gift fa-fw fa-lg"></i>' + ($.format.date(data[i].dobst4, "MMM,dd yyyy")) + 
+                        '</li>' + 
+                        '<li class="list-group-item tooltip-bottom" title="Phone,click to call">' + 
+                        '<i style="color:navy;" class="fa fa-phone-square fa-fw fa-lg"></i><a style="text-decoration:none;" target="_blank" href="https://wa.me/' + data[i].phst4 + '">' + data[i].phst4 + '</a>' + 
+                        '</li>';
+                    }
+                  }
+                }
+              }
+              $('#student_info').html(html);
+            }
+          });
+        }
+        /*function get_student_detail() {
           var pin = "<?php echo $pin;?>";
           $.ajax({
             type: 'post', 
@@ -805,7 +1324,7 @@
                 html += '<li class="list-group-item tooltip-bottom" title="Pin number">' + 
                           '<i style="color:green;" class="fas fa-barcode fa-fw fa-lg"></i>' + data[i].pin + 
                         '</li>' + 
-                        '<li class="list-group-item tooltip-right" title="Complete name">' + 
+                        '<li class="list-group-item tooltip-right" title="Complete name">'+
                           '<i style="color:red;" class="fa fa-user-circle fa-fw fa-lg"></i>' + data[i].complete_name + 
                         '</li>' + 
                         '<li class="list-group-item tooltip-right" title="Nick name">' + 
@@ -885,7 +1404,7 @@
               $('#after_teaching_div').html(after_teaching_button);
             }
           });
-        }
+        } */
         
         $('#student_info_div').on('click', '.student_info_edit', function(){
           var a=$(this).data('pin'),  b=$(this).data('cmn'), c=$(this).data('ncn'), d=$(this).data('adr'), e=$(this).data('pob'), f=$(this).data('dob'), g=$(this).data('pho'), h=$(this).data('prg'), i=$(this).data('prd'), j=$(this).data('std'), k=$(this).data('rea'), l=$(this).data('trg'), m=$(this).data('dff'), n=$(this).data('bgrr'), o=$(this).data('sin'), p=$(this).data('wep'),  q=$(this).data('acp'), fsp = $(this).data('fsp'), fsp_button = '<input type="checkbox" name="fsp" id="fsp"' ;

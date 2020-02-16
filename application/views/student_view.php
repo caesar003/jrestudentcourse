@@ -183,7 +183,7 @@
               <div class="row"> 
                 <div class="col-lg-5">
                   <fieldset>
-                    <legend>Personal Information <a id="add_one" href="javascript:void(0);"><i class="fas fa-plus-circle fa-fw"></i></a></legend>
+                    <legend>Personal Information <a title="click for group study" id="add_one" href="javascript:void(0);"><i class="fas fa-plus-circle fa-fw"></i></a></legend>
                     <div class="form-row">
                       <div class="form-group col-12 row">
                         <div class="col-4"><label for="pn" class="pers_info">PIN<sup>&lowast;</sup></label>
@@ -635,7 +635,7 @@
               <div class="row"> 
                 <div class="col-lg-5">
                   <fieldset>
-                    <legend>Personal Information <a id="add_one_e" href="javascript:void(0);"><i class="fas fa-plus-circle fa-fw"></i></a></legend>
+                    <legend>Personal Information <a title="click for group study" id="add_one_e" href="javascript:void(0);"><i class="fas fa-plus-circle fa-fw"></i></a></legend>
                     <div class="form-row">
                       <div class="form-group col-12 row">
                         <div class="col-4"><label for="pn_e" class="pers_info">PIN<sup>&lowast;</sup></label>
@@ -644,7 +644,7 @@
                           <div class="input-group-prepend">
                             <span style="color:green;" class="input-group-text"><i class="fas fa-barcode fa-fw"></i></span> 
                           </div>
-                          <input type="text" class="form-control" name="pn_e" id="pn_e" placeholder="PIN"> 
+                          <input type="text" class="form-control" name="pn_e" id="pn_e" disabled> 
                         </div>
                       </div>
                       <div class="form-group col-12 row">
@@ -1090,7 +1090,7 @@
               <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
             </div>
             <div class="modal-body">
-                Are you sure? Once executed, it will be permanently gone!            
+                Excecute with care! Once it is done, it is gone!            
             </div>
             <div class="modal-footer">
               <input type="hidden" name="pin_delete" id="pin_delete">
@@ -1134,11 +1134,11 @@
         <div class="modal-dialog modal-sm" role="document">
           <div class="modal-content add">
             <div class="modal-header">
-              <h5 class="modal-title">Delete Teacher</h5>
+              <h5 class="modal-title">Delete Teacher?</h5>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
             </div>
             <div class="modal-body">
-                Are you sure? Once executed, it will be permanently gone!            
+                Please execute with care! Once it is done, it's gone!   
             </div>
             <div class="modal-footer">
               <input type="hidden" name="id" id="id">
@@ -2419,7 +2419,7 @@
         }
       $('#update_student_btn').on('click', function(){
         var bck = 'background-color',clr = '#fbe2e6',
-            pn  =$('#pn_e').val(),
+            pn=$('#pn_e').val(),
             cn=$('#cn_e').val(),nn=$('#nn_e').val(),ad=$('#ad_e').val(),pb=$('#pb_e').val(),db=$('#db_e').val(),ph=$('#ph_e').val(),
             grp=$('#grp_e').val(),
             
@@ -2438,57 +2438,122 @@
             fsp='';
         if ($('#fsp').is(':checked')){fsp='yes';}else{fsp='';}
         if(cn==''|| ad==''|| db==''|| ph==''|| pr==''|| pd==''){ 
-         console.log('form incomplete'); 
+         console.log('form incomplete');
+          $('#esf').addClass('alert alert-danger');
+          $('#esf').html('Please fill out all required fields');
+          if(cn==''){$('#cn_e').css(bck, clr);}
+          if(ad==''){$('#ad_e').css(bck, clr);}
+          if(db==''){$('#db_e').css(bck, clr);}
+          if(ph==''){$('#ph_e').css(bck, clr);}
+          if(pr==''){$('#pr_e').css(bck, clr);}
+          if(pd==''){$('#pd_e').css(bck, clr);}
         } else { 
           if(isNaN(ph)){ 
             console.log('phone not number');
+            $('#esf').addClass('alert alert-danger');
+            $('#esf').html('Phone must only be number!');
+            $('#ph_e').css(bck, clr);
           } else { 
             if(isNaN(pd)){ 
-              console.log('duration not number'); 
+              console.log('duration not number');
+              $('#esf').addClass('alert alert-danger');
+              $('#esf').html('Program duration must only be number!');
+              $('#pd_e').css(bck, clr);
             } else { 
               if($('#student2_e').css('display')==='block'){ 
                 if(cn2==''||ad2==''||db2==''||ph2==''){
+                  $('#esf').addClass('alert alert-danger');
+                  $('#esf').html('Please fill out all required fields!');
                   console.log('student 2 incomplete');
+                  if(cn2==''){
+                    $('#cnst2_e').css(bck,clr);
+                  }
+                  if(ad2==''){
+                    $('#adrst2_e').css(bck,clr);
+                  }
+                  if(db2==''){
+                    $('#dbst2_e').css(bck,clr);
+                  }
+                  if(ph2==''){
+                    $('#phst2_e').css(bck,clr);
+                  }
                 } else{ 
                   if(isNaN(ph2)){
                     console.log('phone 2 is not number');
+                    $('#esf').addClass('alert alert-danger');
+                    $('#esf').html('Phone must only be number!');
+                    $('#phst2_e').css(bck,clr);
                   } else{ 
                     if($('#student3_e').css('display')==='block'){
                       if(cn3==''||ad3==''||db3==''||ph3==''){ 
                         console.log('student 3 is not complete');
+                        $('#esf').addClass('alert alert-danger');
+                        $('#esf').html('Please fill out all required fields!');
+                        if(cn3==''){
+                          $('#cnst3_e').css(bck,clr);
+                        }
+                        if(ad3==''){
+                          $('#adrst3_e').css(bck,clr);
+                        }
+                        if(db3==''){
+                          $('#dbst3_e').css(bck,clr);
+                        }
+                        if(ph3==''){
+                          $('#phst3_e').css(bck,clr);
+                        }
                       } else{ 
                         if(isNaN(ph3)){
                           console.log('phone 3 is not number');
+                          $('#esf').addClass('alert alert-danger');
+                          $('#esf').html('Phone must only be number!');
+                          $('#phst3_e').css(bck,clr);
                         } else{ 
                           if($('#student4_e').css('display')==='block'){ 
                             if(cn4==''||ad4==''||db4==""||ph4==''){ 
                               console.log('student four not complete');
+                              $('#esf').addClass('alert alert-danger');
+                              $('#esf').html('Please fill out all required fields!');
+                              if(cn4==''){
+                                $('#cnst4_e').css(bck,clr);
+                              }
+                              if(ad4==''){
+                                $('#adrst4_e').css(bck,clr);
+                              }
+                              if(db4==''){
+                                $('#dbst4_e').css(bck,clr);
+                              }
+                              if(ph4==''){
+                                $('#phst4_e').css(bck,clr);
+                              }
                             } else { 
                               if(isNaN(ph4)){ 
                                 console.log('phone 4 is not number');
+                                $('#esf').addClass('alert alert-danger');
+                                $('#esf').html('Phone must only be number!');
+                                $('#phst4_e').css(bck,clr);
                               } else { 
                                 console.log('submit four students');
-                                //update_student(pn,cn,nn,ad,pb,db,ph,grp,cn2,nn2,ad2,pb2,db2,ph2,cn3,nn3,ad3,pb3,db3,ph3,cn4,nn4,ad4,pb4,db4,ph4,pr,pd,sd,re,ta,di,bg,si,wp,ap,fsp);
+                                update_student(pn,cn,nn,ad,pb,db,ph,grp,cn2,nn2,ad2,pb2,db2,ph2,cn3,nn3,ad3,pb3,db3,ph3,cn4,nn4,ad4,pb4,db4,ph4,pr,pd,sd,re,ta,di,bg,si,wp,ap,fsp);
                               }
                             }
-                          } else { // THERE ARE ONLY THREE STUDENTS
+                          } else { 
                             cn4 = nn4 = pb4 = ad4 = ph4 = db4 = '';
                             console.log('submit 3 students');
-                            update_student(pn,cn,nn,ad,pb,db,ph,grp,cn2,nn2,ad2,pb2,db2,ph2,cn3,nn3,ad3,pb3,db3,ph3,cn4,nn4,ad4,pb4,db4,ph4,pr,pd,sd,re,ta,di,bg,si,wp,ap,fsp);
+                           update_student(pn,cn,nn,ad,pb,db,ph,grp,cn2,nn2,ad2,pb2,db2,ph2,cn3,nn3,ad3,pb3,db3,ph3,cn4,nn4,ad4,pb4,db4,ph4,pr,pd,sd,re,ta,di,bg,si,wp,ap,fsp);
                           } 
                         }
                       }
-                    } else { // THERE ARE ONLY 2 STUDENTS
+                    } else { 
                       cn3=nn3=pb3=ad3=ph3=db3=cn4=nn4=pb4=ad4=ph4=db4='';
                       console.log('submit 2 students');
-                      update_student(pn,cn,nn,ad,pb,db,ph,grp,cn2,nn2,ad2,pb2,db2,ph2,cn3,nn3,ad3,pb3,db3,ph3,cn4,nn4,ad4,pb4,db4,ph4,pr,pd,sd,re,ta,di,bg,si,wp,ap,fsp);
+                     update_student(pn,cn,nn,ad,pb,db,ph,grp,cn2,nn2,ad2,pb2,db2,ph2,cn3,nn3,ad3,pb3,db3,ph3,cn4,nn4,ad4,pb4,db4,ph4,pr,pd,sd,re,ta,di,bg,si,wp,ap,fsp);
                     }
                   }
                 }
-              } else { // THERE IS NO SECOND STUDENT, SUBMIT THE FORM
+              } else { 
                 cn2=nn2=pb2=ad2=ph2=db2=cn3=nn3=pb3=ad3=ph3=db3=cn4=nn4=pb4=ad4=ph4=db4='';
                 console.log('submit the student');
-                update_student(pn,cn,nn,ad,pb,db,ph,grp,cn2,nn2,ad2,pb2,db2,ph2,cn3,nn3,ad3,pb3,db3,ph3,cn4,nn4,ad4,pb4,db4,ph4,pr,pd,sd,re,ta,di,bg,si,wp,ap,fsp);
+               update_student(pn,cn,nn,ad,pb,db,ph,grp,cn2,nn2,ad2,pb2,db2,ph2,cn3,nn3,ad3,pb3,db3,ph3,cn4,nn4,ad4,pb4,db4,ph4,pr,pd,sd,re,ta,di,bg,si,wp,ap,fsp);
               }
             }
           }
