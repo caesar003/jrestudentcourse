@@ -563,9 +563,9 @@
         </div>
       </div>
     </form> <!-- END COURSE STUDENT -->
-    <!-- EDIT STUDENT FORM -->
+     <!-- EDIT STUDENT -->
     <form>
-      <div class="modal fade" id="edit_student_modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true"> 
+      <div class="modal fade" id="esm" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true"> 
         <div style="max-width: 90%;" class="modal-dialog modal-lg" role="document"> 
           <div class="modal-content edit"> 
             <div class="modal-header"> 
@@ -574,78 +574,9 @@
             </div>
             <div class="modal-body"> 
               <div class="row"> 
-                <div class="col-lg-5"> 
-                  <!--fieldset>
-                    <legend>Personal Information</legend>
-                    <div class="form-row"> 
-                      <div class="form-group col-3"> 
-                        <label for="pn2">PIN<sup>&lowast;</sup></label> 
-                        <div class="input-group"> 
-                          <div class="input-group-prepend"> 
-                          <span style="color:green;" class="input-group-text"><i class="fas fa-barcode fa-fw"></i></span> 
-                          </div>
-                          <input type="text" class="form-control" name="pn2" id="pn2" placeholder="PIN" required readonly> 
-                        </div>
-                      </div>
-                      <div class="form-group col-9">
-                        <label for="cn2">Name<sup>&lowast;</sup></label>
-                        <div class="input-group">
-                          <div class="input-group-prepend">
-                            <span class="input-group-text"><i  style="color:red;" class="fa fa-user-circle fa-fw"></i></span> 
-                          </div>
-                          <input type="text" class="form-control" id="cn2" placeholder="Name" name="cn2">
-                        </div>
-                      </div>
-                      <div class="form-group col-6">
-                        <label for="nn2">Nickname</label>
-                        <div class="input-group">
-                          <div class="input-group-prepend">
-                           <span class="input-group-text"><i style="color:rgb(70,0,90);" class="fas fa-user-circle fa-fw"></i> </span>
-                          </div>
-                          <input type="text" class="form-control" name="nn2" id="nn2" placeholder="Alias">
-                        </div>
-                      </div>
-                      <div class="form-group col-6">
-                        <label for="ad2">Address<sup>&lowast;</sup></label>
-                        <div class="input-group">
-                          <div class="input-group-prepend">
-                            <span class="input-group-text"><i style="color:blue;"  class="fa fa-home fa-fw"></i></span>
-                          </div>
-                          <input type="text" class="form-control" name="ad2" id="ad2" placeholder="Address">
-                        </div>
-                      </div>
-                      <div class="form-group col-6">
-                        <label for="pb2">Place of Birth</label>
-                        <div class="input-group">
-                          <div class="input-group-prepend">
-                            <span class="input-group-text"><i style="color:grey;" class="fa fa-map-marker fa-fw"></i></span>
-                          </div>
-                          <input type="text" class="form-control" name="pb2" id="pb2" placeholder="Place of Birth">
-                        </div>
-                      </div>
-                      <div class="form-group col-6">
-                        <label for="db2">Date of Birth<sup>&lowast;</sup></label>
-                        <div class="input-group"> 
-                          <div class="input-group-prepend">
-                            <span class="input-group-text"><i style="color:rgb(120,50,255);" class="fas fa-birthday-cake fa-fw"></i></span>
-                          </div>
-                          <input type="date" class="form-control" name="db2" id="db2">
-                        </div>
-                      </div>
-                      <div class="form-group col"> 
-                        <label for="ph2">Phone<sup>&lowast;</sup></label> 
-                        <div class="input-group"> 
-                          <div class="input-group-prepend"> 
-                            <span class="input-group-text"><i style="color:navy;" class="fa fa-phone-square fa-fw"></i></span>
-                          </div>
-                          <input type="text" class="form-control" name="ph2" id="ph2" placeholder="62877"> 
-                        </div>
-                        <small class="form-text text-muted">Make sure to write the number in international format with no whitespace.</small>
-                      </div>
-                    </div>    
-                  </fieldset-->
+                <div class="col-lg-5">
                   <fieldset>
-                    <legend>Personal Information <a id="add_one_e" href="javascript:void(0);"><i class="fas fa-plus-circle fa-fw"></i></a></legend>
+                    <legend>Personal Information <a title="click for group study" id="add_one_e" href="javascript:void(0);"><i class="fas fa-plus-circle fa-fw"></i></a></legend>
                     <div class="form-row">
                       <div class="form-group col-12 row">
                         <div class="col-4"><label for="pn_e" class="pers_info">PIN<sup>&lowast;</sup></label>
@@ -963,19 +894,18 @@
                     <legend>Course Detail</legend>
                     <div class="form-row"> 
                       <div class="form-group col-5"> 
-                        <label for="pr2">Program <sup>&lowast;</sup></label> 
+                        <label>Program <sup>&lowast;</sup></label> 
                         <div class="input-group"> 
                           <div class="input-group-prepend"> 
-                             <span  style="color:rgb(200,100,255);" class="input-group-text"><i class="fa fa-list-ul fa-fw"></i></span> 
+                            <span  style="color:rgb(200,100,255);" class="input-group-text"><i class="fa fa-list-ul fa-fw"></i></span> 
                           </div>
-                          <select class="form-control" name="pr2" id="pr2" required> 
-                            
+                          <select class="form-control" name="pr2" id="pr2"> 
                             <option value="">Choose Program</option> 
                             <option value="Confidence Elementary - Kids">Confidence Elementary - Kids</option> 
                             <option value="Confidence Elementary">Confidence Elementary</option> 
                             <option value="Confidence Junior Student">Confidence Junior</option> 
                             <option value="Confidence Senior Student">Confidence Senior</option> 
-                            <option value="Confidence General">Confidence General</option>
+                            <option value="Confidence General">Confidence General</option> 
                             <option value="Believe">Believe</option>
                              <option value="Express">Express</option>
                             <option value="Intensive">Intensive</option>
@@ -984,95 +914,93 @@
                             <option value="Pre-Confidence">Pre Confidence</option> 
                             <option value="Monthly">Monthly</option> 
                           </select> 
-                        </div> 
+                        </div>
                       </div>
                       <div class="form-group col-3">
-                        <label for="pd2">Program Duration <sup>&lowast;</sup></label>
+                        <label>Program Duration <sup>&lowast;</sup></label>
                         <div class="input-group">
                           <div class="input-group-prepend">
-                            <span class="input-group-text"><i style="color:rgb(80,83,210);" class="fa fa-hourglass-end fa-fw"></i></span> 
+                           <span class="input-group-text"><i style="color:rgb(80,83,210);" class="fa fa-hourglass-end fa-fw"></i></span> 
                           </div>
                           <input type="text" class="form-control" name="pd2" id="pd2" placeholder="Duration">
                         </div>
                       </div>
                       <div class="form-group col-4">
-                        <label for="sd2">Starting Date</label>
+                        <label>Starting Date</label>
                         <div class="input-group">
                           <div class="input-group-prepend">
-                            <span class="input-group-text"><i style="color:rgb(80,170,243);" class="fa fa-flag fa-fw"></i></span> 
+                             <span class="input-group-text"><i style="color:rgb(80,170,243);" class="fa fa-flag fa-fw"></i></span> 
                           </div>
                           <input type="date" class="form-control" name="sd2" id="sd2"> 
                         </div>
                       </div>
                       <div class="form-group col-4">
-                        <label for="re2">Reason</label>
+                        <label>Reason</label>
                         <div class="input-group">
                           <div class="input-group-prepend">
-                           <span class="input-group-text"><i style="color:rgb(80,255,20);" class="fa fa-question-circle fa-fw"></i></span> 
+                            <span class="input-group-text"><i style="color:rgb(80,255,20);" class="fa fa-question-circle fa-fw"></i></span> 
                           </div>
                           <textarea class="form-control" name="re2" id="re2" placeholder="Reason for studying"></textarea>
                         </div>
                       </div>
                       <div class="form-group col-4">
-                        <label for="ta2">Target</label> 
+                        <label>Target</label> 
                         <div class="input-group">
                           <div class="input-group-prepend">
-                            <span class="input-group-text"><i style="color: rgb(190,110,27);" class="fa fa-crosshairs fa-fw"></i></span> 
+                             <span class="input-group-text"><i style="color: rgb(190,110,27);" class="fa fa-crosshairs fa-fw"></i></span> 
                           </div>
                           <textarea class="form-control" name="ta2" id="ta2" placeholder="Target after completion"></textarea> 
                         </div>
                       </div>
                       <div class="form-group col-4">
-                        <label for="bg2">Background</label>
+                        <label>Background</label>
                         <div class="input-group">
                           <div class="input-group-prepend">
-                             <span class="input-group-text"><i style="color:rgb(100,120,190);" class="fa fa-graduation-cap fa-fw"></i></span>
+                            <span class="input-group-text"><i style="color:rgb(100,120,190);" class="fa fa-graduation-cap fa-fw"></i></span> 
                           </div>
                           <textarea class="form-control" name="bg2" id="bg2" placeholder="Background"></textarea>
                         </div>
                       </div>
                       <div class="form-group col-6">
-                        <label for="di2">Difficulties</label>
+                        <label>Difficulties</label>
                         <div class="input-group">
                           <div class="input-group-prepend">
-                             <span class="input-group-text">
-                              <i style="color:rgb(255,0,255);" class="fa fa-thumbs-down fa-fw"></i></span>
+                            <span class="input-group-text">
+                              <i style="color:rgb(255,0,255);" class="fa fa-thumbs-down fa-fw"></i></span> 
                           </div>
                           <input type="text" class="form-control" name="di2" id="di2" placeholder="Difficulties">
                         </div>
                       </div>
                       <div class="form-group col-6">
-                        <label for="si2">Self Introduction</label>
+                        <label>Self Introduction</label>
                         <div class="input-group">
                           <div class="input-group-prepend">
-                           <span class="input-group-text"><i style="color:rgb(70,210,155);" class="fa fa-info-circle fa-fw"></i></span> 
+                            <span class="input-group-text"><i style="color:rgb(70,210,155);" class="fa fa-info-circle fa-fw"></i></span> 
                           </div>
                           <select class="form-control" name="si2" id="si2"> 
                             <option value="">Choose one</option>
                             <option value="Poor">Poor</option>
                             <option value="Below Average">Below Average</option>
-                            <option value="Average">Average</option>
+                            <option value="Average" selected>Average</option>
                             <option value="Good">Good</option>
                             <option value="Excellent">Excellent</option>
                           </select>
                         </div>
                       </div>
                       <div class="form-group col-6">
-                        <label for="wp2">Weakness Points</label>
+                        <label>Weakness Points</label>
                         <div class="input-group">
                           <div class="input-group-prepend">
-                             <span class="input-group-text"> 
-                              <i style="color:rgb(255,20,60);" class="fas fa-exclamation-triangle fa-fw"></i> 
-                            </span> 
+                            <span class="input-group-text"><i style="color:rgb(255,20,60);" class="fas fa-exclamation-triangle fa-fw"></i></span>
                           </div>
                           <textarea class="form-control" name="wp2" id="wp2" placeholder="Student's main problems"></textarea>
                         </div>
                       </div>
                       <div class="form-group col-6"> 
-                        <label for="ap2">Action Plan</label> 
+                        <label>Action Plan</label> 
                         <div class="input-group"> 
                           <div class="input-group-prepend"> 
-                           <span class="input-group-text"><i style="color:rgb(0,120,80);" class="fa fa-wrench fa-fw"></i> </span>
+                          <span class="input-group-text"><i style="color:rgb(0,120,80);" class="fa fa-wrench fa-fw"></i> </span>
                           </div>
                           <textarea class="form-control" name="ap2" id="ap2" placeholder="Suggestions and recommendations"></textarea> 
                         </div>
@@ -1084,15 +1012,14 @@
               <div id="fsp_button"></div>
             </div>
             <div class="modal-footer"> 
-              <span class="ffb" id="edit_student_feedback"></span>
+              <span class="ffb" id="esf"></span>
               <button type="button" class="btn btn-secondary" data-dismiss="modal"> <i class="fa fa-times"></i> Close </button> 
-              <button type="button" type="submit" id="btn_update_student" class="btn btn-primary"> <i class="fa fa-check"></i> Update</button> 
+              <button type="button" type="submit" id="update_student_btn" class="btn btn-primary"> <i class="fa fa-check"></i> Update</button> 
             </div>
           </div>
         </div>
       </div>
     </form>
-    <!-- END EDIT STUDENT FORM -->
     <?php include 'inc/chat_dialog.php';?>
     <?php include 'inc/scripts.php';?>
     <?php include 'inc/chat-script.php';?>
@@ -1109,133 +1036,96 @@
             dataType : 'json',
             data : {pin:pin},
             success : function(data){
-              var html = '';
-              var i;
+              var html = '',
+                  syllabus = '', 
+                  edit_student_button= '', 
+                  after_teaching_button = '<input type="checkbox" name="after_teaching" id="after_teaching"', 
+                  i;
               for(i=0;i<data.length;i++){
+                syllabus += '<small>Syllabus for </small>' + data[i].program;
+                //$.format.date(data.date_of_birth, "MMM/dd/yyyy") yyyy-MM-dd
+                //edit_student_button += '<a id="edit_student_btn" title="New Session" class="btn btn-secondary tooltip-right" href="javascript:void(0);"><span class="fa fa-plus"></span></a>';
+              edit_student_button += '<a title="Edit" href="javascript:void(0);" class="btn btn-info tooltip-bottom student_info_edit" data-grp="'+data[i].grp+'" data-pn="'+data[i].pin+'" data-cn="'+data[i].complete_name+'" data-nn="'+data[i].nick_name+'" data-ad="'+data[i].address+'" data-pb="'+data[i].place_of_birth+'" data-db="'+($.format.date(data[i].date_of_birth, "yyyy-MM-dd"))+'" data-ph="'+data[i].phone+
+                 '"data-cnst2="'+data[i].cnst2+
+                 '"data-nnst2="'+data[i].nnst2+
+                 '"data-adrst2="'+data[i].adrst2+
+                 '"data-pobst2="'+data[i].pobst2+
+                 '"data-dobst2="'+($.format.date(data[i].dobst2, "yyyy-MM-dd"))+
+                 '"data-phst2="'+data[i].phst2+
+                
+                 '"data-cnst3="'+data[i].cnst3+
+                 '"data-nnst3="'+data[i].nnst3+
+                 '"data-adrst3="'+data[i].adrst3+
+                 '"data-pobst3="'+data[i].pobst3+
+                 '"data-dobst3="'+($.format.date(data[i].dobst3, "yyyy-MM-dd"))+
+                 '"data-phst3="'+data[i].phst3+
+                
+                 '"data-cnst4="'+data[i].cnst4+
+                 '"data-nnst4="'+data[i].nnst4+
+                 '"data-adrst4="'+data[i].adrst4+
+                 '"data-pobst4="'+data[i].pobst4+
+                 '"data-dobst4="'+($.format.date(data[i].dobst4, "yyyy-MM-dd"))+
+                 '"data-phst4="'+data[i].phst4+
+                
+                 '"data-pr="'+data[i].program+
+                 '"data-pd="'+data[i].program_duration+
+                 '"data-sd="'+($.format.date(data[i].starting_date, "yyyy-MM-dd"))+
+                 '"data-re="'+data[i].reason+
+                 '"data-ta="'+data[i].target+
+                 '" data-di="'+data[i].difficulties+
+                 '"data-bg="'+data[i].bground+
+                 '"data-si="'+data[i].self_introduction+
+                 '" data-wp="'+data[i].weakness_point+
+                 '"data-ap="'+data[i].action_plan+
+                 '" data-fsp=""><i class="fas fa-user-edit fa-fw"></i></a>'; 
+                
+                /* edit_student_button +='<a title="Edit" href="javascript:void(0);"'+ 
+                ' class="btn btn-info student_info_edit tooltip-bottom" '+ 
+              
+                'data-pin="'+data[i].pin+
+                '" data-cn="'+data[i].complete_name+
+                '" data-nn="'+data[i].nick_name+
+                '" data-ad="'+data[i].address+
+                '" data-pb="'+data[i].place_of_birth+
+                '" data-db="'+($.format.date(data[i].date_of_birth, "yyyy-MM-dd"))+
+                '" data-ph="'+data[i].phone+
+                '" data-cnst2="'+data[i].cnst2+
+                  '"data-nnst2="'+data[i].nnst2+
+                  '"data-adrst2="'+data[i].adrst2+
+                  '"data-pbst2="'+data[i].pbst2+
+                  '"data-dbst2="'+($.format.date(data[i].dbst2, "yyyy-MM-dd"))+
+                  '"data-phst2="'+data[i].phst2+
+                  '" data-cnst3="'+data[i].cnst3+
+                  '"data-nnst3="'+data[i].nnst3+
+                  '"data-adrst3="'+data[i].adrst3+
+                  '"data-pbst3="'+data[i].pbst3+
+                  '"data-dbst3="'+($.format.date(data[i].dbst3, "yyyy-MM-dd"))+
+                  '"data-phst3="'+data[i].phst3+
+                  '" data-cnst4="'+data[i].cnst4+
+                  '"data-nnst4="'+data[i].nnst4+
+                  '"data-adrst4="'+data[i].adrst4+
+                  '"data-pbst4="'+data[i].pbst4+
+                  '"data-dbst4="'+($.format.date(data[i].dbst4, "yyyy-MM-dd"))+
+                  '"data-phst4="'+data[i].phst4+
+                  '" data-pr="'+data[i].program+
+                '" data-pd="'+data[i].program_duration+
+                '" data-sd="'+($.format.date(data[i].starting_date, "yyyy-MM-dd"))+
+                '" data-re="'+data[i].reason+'" data-trg="'+data[i].target+
+                '" data-di="'+data[i].difficulties+
+                '" data-bg="'+data[i].bground+
+                '" data-si="'+data[i].self_introduction+
+                '" data-wp="'+data[i].weakness_point+
+                '" data-ap="'+data[i].action_plan+
+                  '" data-fsp="'+data[i].fsp+'"><i class="fas fa-user-edit fa-fw"></i></a>';*/
+                
                 if(data[i].grp!=''){
-                  html += '<li class="list-group-item tooltip-bottom" title="Group study">'+data[i].grp+'</li>';
+                  html += '<li class="list-group-item tooltip-bottom" title="Group study" style="background-color:gray;color:white;"><span style="font-variant-caps: all-small-caps;font-size: x-large;">'+data[i].grp+'</span></li>';
                 } else {
                   html += '';
                 } 
-                if(data[i].cnst2==''){
-                  // one student
-                  html += '<li class="list-group-item tooltip-bottom" title="Pin number">' + 
-                          '<i style="color:green;" class="fas fa-barcode fa-fw fa-lg"></i>' + data[i].pin + 
-                        '</li>' + 
-                        '<li class="list-group-item tooltip-right" title="Complete name">'+
-                          '<i style="color:red;" class="fa fa-user-circle fa-fw fa-lg"></i>' + data[i].complete_name + 
-                        '</li>' + 
-                        '<li class="list-group-item tooltip-right" title="Nick name">' + 
-                          '<i style="color:rgb(70,0,90);" class="fa fa-user-circle fa-fw fa-lg"></i>' + data[i].nick_name + 
-                        '</li>' + 
-                        '<li class="list-group-item tooltip-bottom" title="Address">' + 
-                          '<i style="color:blue;" class="fa fa-home fa-fw fa-lg"></i>' + data[i].address + 
-                        '</li>' + 
-                        '<li class="list-group-item tooltip-bottom" title="Place of birth">' + '<i style="color:grey;" class="fa fa-map-marker fa-fw fa-lg"></i>' + data[i].place_of_birth + 
-                        '</li>' + 
-                        '<li class="list-group-item tooltip-bottom" title="Date or birth">' + '<i style="color:rgb(120,50,255);" class="fa fa-gift fa-fw fa-lg"></i>' + ($.format.date(data[i].date_of_birth, "MMM,dd yyyy")) + 
-                        '</li>' + 
-                        '<li class="list-group-item tooltip-bottom" title="Phone,click to call">' + 
-                        '<i style="color:navy;" class="fa fa-phone-square fa-fw fa-lg"></i><a style="text-decoration:none;" target="_blank" href="https://wa.me/' + data[i].phone + '">' + data[i].phone + '</a>' + 
-                        '</li>';
-                } else { 
-                  if(data[i].cnst3==''){
-                    // two student
-                     html += '<li class="list-group-item tooltip-bottom" title="Pin number">' + 
-                          '<i style="color:green;" class="fas fa-barcode fa-fw fa-lg"></i>' + data[i].pin + 
-                        '</li>' + 
-                        '<li class="list-group-item tooltip-right" title="Complete name">'+
-                          '<i style="color:red;" class="fa fa-user-circle fa-fw fa-lg"></i>' + data[i].complete_name + 
-                        '</li>' + 
-                        '<li class="list-group-item tooltip-right" title="Nick name">' + 
-                          '<i style="color:rgb(70,0,90);" class="fa fa-user-circle fa-fw fa-lg"></i>' + data[i].nick_name + 
-                        '</li>' + 
-                        '<li class="list-group-item tooltip-bottom" title="Address">' + 
-                          '<i style="color:blue;" class="fa fa-home fa-fw fa-lg"></i>' + data[i].address + 
-                        '</li>' + 
-                        '<li class="list-group-item tooltip-bottom" title="Place of birth">' + '<i style="color:grey;" class="fa fa-map-marker fa-fw fa-lg"></i>' + data[i].place_of_birth + 
-                        '</li>' + 
-                        '<li class="list-group-item tooltip-bottom" title="Date or birth">' + '<i style="color:rgb(120,50,255);" class="fa fa-gift fa-fw fa-lg"></i>' + ($.format.date(data[i].date_of_birth, "MMM,dd yyyy")) + 
-                        '</li>' + 
-                        '<li class="list-group-item tooltip-bottom" title="Phone,click to call">' + 
-                        '<i style="color:navy;" class="fa fa-phone-square fa-fw fa-lg"></i><a style="text-decoration:none;" target="_blank" href="https://wa.me/' + data[i].phone + '">' + data[i].phone + '</a>' + 
-                        '</li>'+
-                        '<li class="list-group-item tooltip-right" title="Complete name">'+
-                          '<i style="color:red;" class="fa fa-user-circle fa-fw fa-lg"></i>' + data[i].cnst2 + 
-                        '</li>' + 
-                        '<li class="list-group-item tooltip-right" title="Nick name">' + 
-                          '<i style="color:rgb(70,0,90);" class="fa fa-user-circle fa-fw fa-lg"></i>' + data[i].nnst2 + 
-                        '</li>' + 
-                        '<li class="list-group-item tooltip-bottom" title="Address">' + 
-                          '<i style="color:blue;" class="fa fa-home fa-fw fa-lg"></i>' + data[i].adrst2 + 
-                        '</li>' + 
-                        '<li class="list-group-item tooltip-bottom" title="Place of birth">' + '<i style="color:grey;" class="fa fa-map-marker fa-fw fa-lg"></i>' + data[i].pobst2 + 
-                        '</li>' + 
-                        '<li class="list-group-item tooltip-bottom" title="Date or birth">' + '<i style="color:rgb(120,50,255);" class="fa fa-gift fa-fw fa-lg"></i>' + ($.format.date(data[i].dobst2, "MMM,dd yyyy")) + 
-                        '</li>' + 
-                        '<li class="list-group-item tooltip-bottom" title="Phone,click to call">' + 
-                        '<i style="color:navy;" class="fa fa-phone-square fa-fw fa-lg"></i><a style="text-decoration:none;" target="_blank" href="https://wa.me/' + data[i].phone + '">' + data[i].phst2 + '</a>' + 
-                        '</li>';
-                  } else {
-                    if(data[i].cnst4==''){
-                      // three students
-                      html += '<li class="list-group-item tooltip-bottom" title="Pin number">' + 
-                          '<i style="color:green;" class="fas fa-barcode fa-fw fa-lg"></i>' + data[i].pin + 
-                        '</li>' + 
-                        '<li class="list-group-item tooltip-right" title="Complete name">'+
-                          '<i style="color:red;" class="fa fa-user-circle fa-fw fa-lg"></i>' + data[i].complete_name + 
-                        '</li>' + 
-                        '<li class="list-group-item tooltip-right" title="Nick name">' + 
-                          '<i style="color:rgb(70,0,90);" class="fa fa-user-circle fa-fw fa-lg"></i>' + data[i].nick_name + 
-                        '</li>' + 
-                        '<li class="list-group-item tooltip-bottom" title="Address">' + 
-                          '<i style="color:blue;" class="fa fa-home fa-fw fa-lg"></i>' + data[i].address + 
-                        '</li>' + 
-                        '<li class="list-group-item tooltip-bottom" title="Place of birth">' + '<i style="color:grey;" class="fa fa-map-marker fa-fw fa-lg"></i>' + data[i].place_of_birth + 
-                        '</li>' + 
-                        '<li class="list-group-item tooltip-bottom" title="Date or birth">' + '<i style="color:rgb(120,50,255);" class="fa fa-gift fa-fw fa-lg"></i>' + ($.format.date(data[i].date_of_birth, "MMM,dd yyyy")) + 
-                        '</li>' + 
-                        '<li class="list-group-item tooltip-bottom" title="Phone,click to call">' + 
-                        '<i style="color:navy;" class="fa fa-phone-square fa-fw fa-lg"></i><a style="text-decoration:none;" target="_blank" href="https://wa.me/' + data[i].phone + '">' + data[i].phone + '</a>' + 
-                        '</li>'+
-                        '<li class="list-group-item tooltip-right" title="Complete name">'+
-                          '<i style="color:red;" class="fa fa-user-circle fa-fw fa-lg"></i>' + data[i].cnst2 + 
-                        '</li>' + 
-                        '<li class="list-group-item tooltip-right" title="Nick name">' + 
-                          '<i style="color:rgb(70,0,90);" class="fa fa-user-circle fa-fw fa-lg"></i>' + data[i].nnst2 + 
-                        '</li>' + 
-                        '<li class="list-group-item tooltip-bottom" title="Address">' + 
-                          '<i style="color:blue;" class="fa fa-home fa-fw fa-lg"></i>' + data[i].adrst2 + 
-                        '</li>' + 
-                        '<li class="list-group-item tooltip-bottom" title="Place of birth">' + '<i style="color:grey;" class="fa fa-map-marker fa-fw fa-lg"></i>' + data[i].pobst2 + 
-                        '</li>' + 
-                        '<li class="list-group-item tooltip-bottom" title="Date or birth">' + '<i style="color:rgb(120,50,255);" class="fa fa-gift fa-fw fa-lg"></i>' + ($.format.date(data[i].dobst2, "MMM,dd yyyy")) + 
-                        '</li>' + 
-                        '<li class="list-group-item tooltip-bottom" title="Phone,click to call">' + 
-                        '<i style="color:navy;" class="fa fa-phone-square fa-fw fa-lg"></i><a style="text-decoration:none;" target="_blank" href="https://wa.me/' + data[i].phst2 + '">' + data[i].phst2 + '</a>' + 
-                        '</li>'+
-                        '<li class="list-group-item tooltip-right" title="Complete name">'+
-                          '<i style="color:red;" class="fa fa-user-circle fa-fw fa-lg"></i>' + data[i].cnst3 + 
-                        '</li>' + 
-                        '<li class="list-group-item tooltip-right" title="Nick name">' + 
-                          '<i style="color:rgb(70,0,90);" class="fa fa-user-circle fa-fw fa-lg"></i>' + data[i].nnst3 + 
-                        '</li>' + 
-                        '<li class="list-group-item tooltip-bottom" title="Address">' + 
-                          '<i style="color:blue;" class="fa fa-home fa-fw fa-lg"></i>' + data[i].adrst3 + 
-                        '</li>' + 
-                        '<li class="list-group-item tooltip-bottom" title="Place of birth">' + '<i style="color:grey;" class="fa fa-map-marker fa-fw fa-lg"></i>' + data[i].pobst3 + 
-                        '</li>' + 
-                        '<li class="list-group-item tooltip-bottom" title="Date or birth">' + '<i style="color:rgb(120,50,255);" class="fa fa-gift fa-fw fa-lg"></i>' + ($.format.date(data[i].dobst3, "MMM,dd yyyy")) + 
-                        '</li>' + 
-                        '<li class="list-group-item tooltip-bottom" title="Phone,click to call">' + 
-                        '<i style="color:navy;" class="fa fa-phone-square fa-fw fa-lg"></i><a style="text-decoration:none;" target="_blank" href="https://wa.me/' + data[i].phst3 + '">' + data[i].phst3 + '</a>' + 
-                        '</li>';
-                    } else {
-                      // four students
-                      html += '<li class="list-group-item tooltip-bottom" title="Pin number">' + 
+                html += '<li class="list-group-item tooltip-bottom" title="Pin number">' + 
                           '<i style="color:green;" class="fas fa-barcode fa-fw fa-lg"></i> ' + data[i].pin + 
-                        '</li>' + 
-                        '<li class="list-group-item"><strong>Student One</strong></li>'+
+                        '</li>' +
                         '<li class="list-group-item tooltip-right" title="Name">'+
                           '<i style="color:red;" class="fa fa-user-circle fa-fw fa-lg"></i> ' + data[i].complete_name+' - '+ data[i].nick_name +
                         '</li>' + 
@@ -1246,64 +1136,95 @@
                         '</li>' + 
                         '<li class="list-group-item tooltip-bottom" title="Phone, click to call">' + 
                         '<i style="color:navy;" class="fa fa-phone-square fa-fw fa-lg"></i><a style="text-decoration:none;" target="_blank" href="https://wa.me/' + data[i].phone + '"> ' + data[i].phone + '</a>' + 
-                        '</li>'+
-                        
-                        '<li class="list-group-item"><strong>Student Two</strong></li>'+
+                        '</li>';
+                if(data[i].cnst2!==''){
+                  html += '<li class="list-group-item student_header">Student Two</li>'+
                         '<li class="list-group-item tooltip-right" title="Complete name">'+
                           '<i style="color:red;" class="fa fa-user-circle fa-fw fa-lg"></i> '+ data[i].cnst2 +' - '+ data[i].nnst2 +  
                         '</li>' + 
-                       /* '<li class="list-group-item tooltip-right" title="Nick name">' + 
-                          '<i style="color:rgb(70,0,90);" class="fa fa-user-circle fa-fw fa-lg"></i>' + data[i].nnst2 + 
-                        '</li>' + */
                         '<li class="list-group-item tooltip-bottom" title="Address">' + 
                           '<i style="color:blue;" class="fa fa-home fa-fw fa-lg"></i> ' + data[i].adrst2 + 
                         '</li>' + 
                         '<li class="list-group-item tooltip-bottom" title="Place, dates of birth">' + '<i style="color:grey;" class="fa fa-map-marker fa-fw fa-lg"></i> ' + data[i].pobst2 +', '+ ($.format.date(data[i].dobst2, "MMM, dd yyyy")) +
                         '</li>' + 
-                        /*'<li class="list-group-item tooltip-bottom" title="Date or birth">' + '<i style="color:rgb(120,50,255);" class="fa fa-gift fa-fw fa-lg"></i>' + ($.format.date(data[i].dobst2, "MMM, dd yyyy")) + 
-                        '</li>' + */
                         '<li class="list-group-item tooltip-bottom" title="Phone,click to call">' + 
                         '<i style="color:navy;" class="fa fa-phone-square fa-fw fa-lg"></i><a style="text-decoration:none;" target="_blank" href="https://wa.me/' + data[i].phst2 + '">' + data[i].phst2 + '</a>' + 
-                        '</li>'+
-                        '<li class="list-group-item"><strong>Student Three</strong></li>'+
-                        '<li class="list-group-item tooltip-right" title="Complete name">'+
-                          '<i style="color:red;" class="fa fa-user-circle fa-fw fa-lg"></i>' + data[i].cnst3 + 
-                        '</li>' + 
+                        '</li>';
+                }
+                if(data[i].cnst3!==''){
+                  html += '<li class="list-group-item student_header">Student Three</li>'+
                         '<li class="list-group-item tooltip-right" title="Nick name">' + 
-                          '<i style="color:rgb(70,0,90);" class="fa fa-user-circle fa-fw fa-lg"></i>' + data[i].nnst3 + 
+                          '<i style="color:rgb(70,0,90);" class="fa fa-user-circle fa-fw fa-lg"></i> ' +  data[i].cnst3 +' - '+ data[i].nnst3 + 
                         '</li>' + 
                         '<li class="list-group-item tooltip-bottom" title="Address">' + 
-                          '<i style="color:blue;" class="fa fa-home fa-fw fa-lg"></i>' + data[i].adrst3 + 
+                          '<i style="color:blue;" class="fa fa-home fa-fw fa-lg"></i> ' + data[i].adrst3 + 
                         '</li>' + 
-                        '<li class="list-group-item tooltip-bottom" title="Place of birth">' + '<i style="color:grey;" class="fa fa-map-marker fa-fw fa-lg"></i>' + data[i].pobst3 + 
-                        '</li>' + 
-                        '<li class="list-group-item tooltip-bottom" title="Date or birth">' + '<i style="color:rgb(120,50,255);" class="fa fa-gift fa-fw fa-lg"></i>' + ($.format.date(data[i].dobst3, "MMM,dd yyyy")) + 
+                        '<li class="list-group-item tooltip-bottom" title="Date or birth">' + '<i style="color:rgb(120,50,255);" class="fa fa-gift fa-fw fa-lg"></i> ' + data[i].pobst3+', '+ ($.format.date(data[i].dobst3, "MMM, dd yyyy")) + 
                         '</li>' + 
                         '<li class="list-group-item tooltip-bottom" title="Phone,click to call">' + 
                         '<i style="color:navy;" class="fa fa-phone-square fa-fw fa-lg"></i><a style="text-decoration:none;" target="_blank" href="https://wa.me/' + data[i].phst3 + '">' + data[i].phst3 + '</a>' + 
-                        '</li>'+
-                        '<li class="list-group-item"><strong>Student Four</strong></li>'+
-                      '<li class="list-group-item tooltip-right" title="Complete name">'+
-                          '<i style="color:red;" class="fa fa-user-circle fa-fw fa-lg"></i>' + data[i].cnst4 + 
-                        '</li>' + 
-                        '<li class="list-group-item tooltip-right" title="Nick name">' + 
-                          '<i style="color:rgb(70,0,90);" class="fa fa-user-circle fa-fw fa-lg"></i>' + data[i].nnst4 + 
+                        '</li>';
+                }
+                if(data[i].cnst4!==''){
+                  html += '<li class="list-group-item student_header">Student Four</li>'+
+                        '<li class="list-group-item tooltip-right" title="Nick name"> ' + 
+                          '<i style="color:rgb(70,0,90);" class="fa fa-user-circle fa-fw fa-lg"></i> '  + data[i].cnst4 +' - '+ data[i].nnst4 + 
                         '</li>' + 
                         '<li class="list-group-item tooltip-bottom" title="Address">' + 
-                          '<i style="color:blue;" class="fa fa-home fa-fw fa-lg"></i>' + data[i].adrst4 + 
+                          '<i style="color:blue;" class="fa fa-home fa-fw fa-lg"></i> ' + data[i].adrst4 + 
                         '</li>' + 
-                        '<li class="list-group-item tooltip-bottom" title="Place of birth">' + '<i style="color:grey;" class="fa fa-map-marker fa-fw fa-lg"></i>' + data[i].pobst4 + 
-                        '</li>' + 
-                        '<li class="list-group-item tooltip-bottom" title="Date or birth">' + '<i style="color:rgb(120,50,255);" class="fa fa-gift fa-fw fa-lg"></i>' + ($.format.date(data[i].dobst4, "MMM,dd yyyy")) + 
+                        '<li class="list-group-item tooltip-bottom" title="Date or birth">' + 
+                        '<i style="color:rgb(120,50,255);" class="fa fa-gift fa-fw fa-lg"></i> ' + 
+                        data[i].pobst4 +', '+($.format.date(data[i].dobst4, "MMM,dd yyyy")) + 
+                        
                         '</li>' + 
                         '<li class="list-group-item tooltip-bottom" title="Phone,click to call">' + 
-                        '<i style="color:navy;" class="fa fa-phone-square fa-fw fa-lg"></i><a style="text-decoration:none;" target="_blank" href="https://wa.me/' + data[i].phst4 + '">' + data[i].phst4 + '</a>' + 
+                        '<i style="color:navy;" class="fa fa-phone-square fa-fw fa-lg"></i> <a style="text-decoration:none;" target="_blank" href="https://wa.me/' + data[i].phst4+'">' + data[i].phst4 + '</a>' + 
                         '</li>';
-                    }
-                  }
                 }
+                html += '<li style="background-color:black;color:white;" class="list-group-item">COURSE DETAIL</li>'+
+                        '<li class="list-group-item tooltip-bottom" title="Study Program">' + 
+                          '<i style="color:rgb(162,255,20);" class="fa fa-list-ul fa-fw fa-lg"></i>' + data[i].program + 
+                        '</li>' + 
+                        '<li class="list-group-item tooltip-bottom" title="Program Duration">' + 
+                          '<i style="color:rgb(80,83,210);" class="fa fa-hourglass-end fa-fw fa-lg"></i>' + data[i].program_duration + 
+                        ' meetings</li>' + 
+                        '<li class="list-group-item tooltip-bottom" title="Starting date">' + 
+                          '<i style="color:rgb(80,170,243);" class="fa fa-flag fa-fw fa-lg"></i>' + ($.format.date(data[i].starting_date, "MMM,dd yyyy")) + 
+                        '</li>' + 
+                        '<li class="list-group-item tooltip-bottom" title="Reason for studying">' + '<i style="color:rgb(80,255,20);" class="fa fa-question-circle fa-fw fa-lg"></i>' + data[i].reason + '</li>' + 
+                        '<li class="list-group-item tooltip-bottom" title="Target at the completion">' + 
+                          '<i style="color: rgb(190,110,27);" class="fa fa-crosshairs fa-fw fa-lg"></i>' + data[i].target + 
+                        '</li>' + 
+                        '<li class="list-group-item tooltip-bottom" title="Difficulties">' + 
+                          '<i style="color:rgb(255,0,255);" class="fa fa-thumbs-down fa-fw fa-lg"></i>' + data[i].difficulties + '</li>' + 
+                        '<li class="list-group-item tooltip-bottom" title="Background">' + 
+                          '<i style="color:rgb(100,120,190);" class="fa fa-graduation-cap fa-fw fa-lg"></i>' + data[i].bground + '</li>' + 
+                        '<li class="list-group-item tooltip-bottom" title="Self Introduction">' + 
+                          '<i style="color:rgb(70,210,155);" class="fa fa-info-circle fa-fw fa-lg"></i>' + data[i].self_introduction + 
+                        '</li>' + 
+                        '<li class="list-group-item tooltip-bottom" title="Weakness Points">' + 
+                          '<i style="color:rgb(255,20,60);" class="fa fa-exclamation-triangle fa-fw fa-lg"></i>' + data[i].weakness_point + 
+                        '</li>' + 
+                        '<li class="list-group-item tooltip-bottom" title="Action Plan">' + 
+                          '<i style="color:rgb(0,120,80);" class="fa fa-wrench fa-fw fa-lg"></i>' + data[i].action_plan + 
+                        '</li>';
+                if (data[i].fsp == 'yes'){
+                  $('#fsp_tab').css('display','block');
+                  get_fsp();
+                 
+                }
+                if (data[i].after_teaching == 'yes') {
+                  after_teaching_button += '';
+                } else {
+                  after_teaching_button += 'checked disabled';
+                }
+                after_teaching_button += '> <label for="after_teaching">Remove from after teaching list.</label>';
               }
               $('#student_info').html(html);
+              $('#syllabus_tab_header').html(syllabus);
+              $('#edit_student_span').html(edit_student_button);
+               $('#after_teaching_div').html(after_teaching_button);
             }
           });
         }
@@ -1405,8 +1326,288 @@
             }
           });
         } */
+      $('#edit_student_span').on('click','.student_info_edit', function(){
+       //$('#edit_student_btn').on('click',function(){
+          var grp=$(this).data('grp'),
+              pn=$(this).data('pn'),
+              cn=$(this).data('cn'),
+              nn=$(this).data('nn'),
+              ad=$(this).data('ad'),
+              pb=$(this).data('pb'),
+              db=$(this).data('db'),
+              ph=$(this).data('ph'),
+              cnst2=$(this).data('cnst2'),
+              nnst2=$(this).data('nnst2'),
+              adrst2=$(this).data('adrst2'),
+              pobst2=$(this).data('pobst2'),
+              dobst2=$(this).data('dobst2'),
+              phst2=$(this).data('phst2'),
+              cnst3=$(this).data('cnst3'),
+              nnst3=$(this).data('nnst3'),
+              adrst3=$(this).data('adrst3'),
+              pobst3=$(this).data('pobst3'),
+              dobst3=$(this).data('dobst3'),
+              phst3=$(this).data('phst3'),
+              cnst4=$(this).data('cnst4'),
+              nnst4=$(this).data('nnst4'),
+              adrst4=$(this).data('adrst4'),
+              pobst4=$(this).data('pobst4'),
+              dobst4=$(this).data('dobst4'),
+              phst4=$(this).data('phst4'),
+              pr=$(this).data('pr'),
+              pd=$(this).data('pd'),
+              sd=$(this).data('sd'),
+              re=$(this).data('re'),
+              ta=$(this).data('ta'), 
+              di=$(this).data('di'),
+              bg=$(this).data('bg'),
+              si=$(this).data('si'),
+              wp=$(this).data('wp'),
+              ap=$(this).data('ap'),
+              fsp = $(this).data('fsp'),
+              fsp_button = '<input type="checkbox" name="fsp" id="fsp"' ;
+          
+          
+          $('#esm').modal('show');
+          $('[name="pn_e"]').val(pn);
+          $('[name="cn_e"]').val(cn);
+          $('[name="nn_e"]').val(nn);
+          $('[name="ad_e"]').val(ad);
+          $('[name="pb_e"]').val(pb);
+          $('[name="db_e"]').val(db);
+          $('[name="ph_e"]').val(ph);
+          $('[name="grp_e"]').val(grp);
+          $('[name="cnst2_e"]').val(cnst2);
+          $('[name="nnst2_e"]').val(nnst2);
+          $('[name="adrst2_e"]').val(adrst2);
+          $('[name="pbst2_e"]').val(pobst2);
+          $('[name="dbst2_e"]').val(dobst2);
+          $('[name="phst2_e"]').val(phst2);
+          $('[name="cnst3_e"]').val(cnst3);
+          $('[name="nnst3_e"]').val(nnst3);
+          $('[name="adrst3_e"]').val(adrst3);
+          $('[name="pbst3_e"]').val(pobst3);
+          $('[name="dbst3_e"]').val(dobst3);
+          $('[name="phst3_e"]').val(phst3);
+          $('[name="cnst4_e"]').val(cnst4);
+          $('[name="nnst4_e"]').val(nnst4);
+          $('[name="adrst4_e"]').val(adrst4);
+          $('[name="pbst4_e"]').val(pobst4);
+          $('[name="dbst4_e"]').val(dobst4);
+          $('[name="phst4_e"]').val(phst4);
+          $('[name="pr2"]').val(pr);
+          $('[name="pd2"]').val(pd);
+          $('[name="sd2"]').val(sd);
+          $('[name="re2"]').val(re);
+          $('[name="ta2"]').val(ta);
+          $('[name="di2"]').val(di);
+          $('[name="bg2"]').val(bg);
+          $('[name="si2"]').val(si);
+          $('[name="wp2"]').val(wp);
+          $('[name="ap2"]').val(ap);
+          if(cnst2==''){
+            $('#group_name_e,#student2_e,#student3_e,#student4_e').css('display', 'none');
+          } else {
+            if(cnst3==''){ 
+              $('#group_name_e,#student2_e').css('display', 'block');
+              $('#student3_e,#student4_e').css('display', 'none');
+            } else {
+              if(cnst4 == ''){ 
+                $('#group_name_e,#student2_e,#student3_e').css('display', 'block');
+                $('#student4_e').css('display','none');       
+              } else{
+                $('#group_name_e,#student2_e,#student3_e,#student4_e').css('display', 'block'); 
+              }
+            }
+          }
+          $('#add_one_e').on('click',function(){
+            $('#group_name_e,#student2_e').fadeIn('slow');
+            $('#group_name_e,#student2_e').css('display', 'block'); 
+          });
+          $('#add_two_e').on('click', function(){
+            $('#student3_e').fadeIn('slow');
+            $('#student3_e').css('display','block');
+          });
+          $('#remove_three_e').on('click',function(){
+            $('#group_name_e,#student2_e,#student3_e,#student4_e').fadeOut('fast');
+          });
+          $('#add_three_e').on('click', function(){
+            $('#student4_e').fadeIn('slow');
+            $('#student4_e').css('display', 'block');
+          });
+          $('#remove_two_e').on('click', function(){
+            $('#student3_e,#student4_e').fadeOut('fast');
+          });
+          $('#remove_one_e').on('click', function(){
+            $('#student4_e').fadeOut('fast');
+          });
+          if (fsp == 'yes'){
+            fsp_button += 'checked disabled> <label for="fsp">Final Speaking Performance</label>';
+          } else {
+            fsp_button += '> <label for="fsp">Final Speaking Performance</label>';
+          }
+          $('#fsp_button').html(fsp_button);
+        });
         
-        $('#student_info_div').on('click', '.student_info_edit', function(){
+        $('#update_student_btn').on('click', function(){
+        var bck = 'background-color',clr = '#fbe2e6',
+            pn=$('#pn_e').val(),
+            cn=$('#cn_e').val(),nn=$('#nn_e').val(),ad=$('#ad_e').val(),pb=$('#pb_e').val(),db=$('#db_e').val(),ph=$('#ph_e').val(),
+            grp=$('#grp_e').val(),
+            
+            cn2=$('#cnst2_e').val(),nn2=$('#nnst2_e').val(),ad2=$('#adrst2_e').val(),pb2=$('#pbst2_e').val(),          db2=$('#dbst2_e').val(),ph2=$('#phst2_e').val(),
+            cn3=$('#cnst3_e').val(),nn3=$('#nnst3_e').val(),
+          ad3=$('#adrst3_e').val(),pb3=$('#pbst3_e').val(),
+          db3=$('#dbst3_e').val(),ph3=$('#phst3_e').val(),
+          cn4=$('#cnst4_e').val(),nn4=$('#nnst4_e').val(),
+          ad4=$('#adrst4_e').val(),pb4=$('#pbst4_e').val(),
+          db4=$('#dbst4_e').val(),ph4=$('#phst4_e').val(),
+          pr=$('#pr2').val(),pd=$('#pd2').val(),
+          sd=$('#sd2').val(),re=$('#re2').val(),
+          ta=$('#ta2').val(),di=$('#di2').val(),
+          bg=$('#bg2').val(),si=$('#si2').val(),
+          wp=$('#wp2').val(),ap=$('#ap2').val(),
+            fsp='';
+        if ($('#fsp').is(':checked')){fsp='yes';}else{fsp='';}
+        if(cn==''|| ad==''|| db==''|| ph==''|| pr==''|| pd==''){ 
+         console.log('form incomplete');
+          $('#esf').addClass('alert alert-danger');
+          $('#esf').html('Please fill out all required fields');
+          if(cn==''){$('#cn_e').css(bck, clr);}
+          if(ad==''){$('#ad_e').css(bck, clr);}
+          if(db==''){$('#db_e').css(bck, clr);}
+          if(ph==''){$('#ph_e').css(bck, clr);}
+          if(pr==''){$('#pr_e').css(bck, clr);}
+          if(pd==''){$('#pd_e').css(bck, clr);}
+        } else { 
+          if(isNaN(ph)){ 
+            console.log('phone not number');
+            $('#esf').addClass('alert alert-danger');
+            $('#esf').html('Phone must only be number!');
+            $('#ph_e').css(bck, clr);
+          } else { 
+            if(isNaN(pd)){ 
+              console.log('duration not number');
+              $('#esf').addClass('alert alert-danger');
+              $('#esf').html('Program duration must only be number!');
+              $('#pd_e').css(bck, clr);
+            } else { 
+              if($('#student2_e').css('display')==='block'){ 
+                if(cn2==''||ad2==''||db2==''||ph2==''){
+                  $('#esf').addClass('alert alert-danger');
+                  $('#esf').html('Please fill out all required fields!');
+                  console.log('student 2 incomplete');
+                  if(cn2==''){
+                    $('#cnst2_e').css(bck,clr);
+                  }
+                  if(ad2==''){
+                    $('#adrst2_e').css(bck,clr);
+                  }
+                  if(db2==''){
+                    $('#dbst2_e').css(bck,clr);
+                  }
+                  if(ph2==''){
+                    $('#phst2_e').css(bck,clr);
+                  }
+                } else{ 
+                  if(isNaN(ph2)){
+                    console.log('phone 2 is not number');
+                    $('#esf').addClass('alert alert-danger');
+                    $('#esf').html('Phone must only be number!');
+                    $('#phst2_e').css(bck,clr);
+                  } else{ 
+                    if($('#student3_e').css('display')==='block'){
+                      if(cn3==''||ad3==''||db3==''||ph3==''){ 
+                        console.log('student 3 is not complete');
+                        $('#esf').addClass('alert alert-danger');
+                        $('#esf').html('Please fill out all required fields!');
+                        if(cn3==''){
+                          $('#cnst3_e').css(bck,clr);
+                        }
+                        if(ad3==''){
+                          $('#adrst3_e').css(bck,clr);
+                        }
+                        if(db3==''){
+                          $('#dbst3_e').css(bck,clr);
+                        }
+                        if(ph3==''){
+                          $('#phst3_e').css(bck,clr);
+                        }
+                      } else{ 
+                        if(isNaN(ph3)){
+                          console.log('phone 3 is not number');
+                          $('#esf').addClass('alert alert-danger');
+                          $('#esf').html('Phone must only be number!');
+                          $('#phst3_e').css(bck,clr);
+                        } else{ 
+                          if($('#student4_e').css('display')==='block'){ 
+                            if(cn4==''||ad4==''||db4==""||ph4==''){ 
+                              console.log('student four not complete');
+                              $('#esf').addClass('alert alert-danger');
+                              $('#esf').html('Please fill out all required fields!');
+                              if(cn4==''){
+                                $('#cnst4_e').css(bck,clr);
+                              }
+                              if(ad4==''){
+                                $('#adrst4_e').css(bck,clr);
+                              }
+                              if(db4==''){
+                                $('#dbst4_e').css(bck,clr);
+                              }
+                              if(ph4==''){
+                                $('#phst4_e').css(bck,clr);
+                              }
+                            } else { 
+                              if(isNaN(ph4)){ 
+                                console.log('phone 4 is not number');
+                                $('#esf').addClass('alert alert-danger');
+                                $('#esf').html('Phone must only be number!');
+                                $('#phst4_e').css(bck,clr);
+                              } else { 
+                                console.log('submit four students');
+                                update_student(pn,cn,nn,ad,pb,db,ph,grp,cn2,nn2,ad2,pb2,db2,ph2,cn3,nn3,ad3,pb3,db3,ph3,cn4,nn4,ad4,pb4,db4,ph4,pr,pd,sd,re,ta,di,bg,si,wp,ap,fsp);
+                              }
+                            }
+                          } else { 
+                            cn4 = nn4 = pb4 = ad4 = ph4 = db4 = '';
+                            console.log('submit 3 students');
+                           update_student(pn,cn,nn,ad,pb,db,ph,grp,cn2,nn2,ad2,pb2,db2,ph2,cn3,nn3,ad3,pb3,db3,ph3,cn4,nn4,ad4,pb4,db4,ph4,pr,pd,sd,re,ta,di,bg,si,wp,ap,fsp);
+                          } 
+                        }
+                      }
+                    } else { 
+                      cn3=nn3=pb3=ad3=ph3=db3=cn4=nn4=pb4=ad4=ph4=db4='';
+                      console.log('submit 2 students');
+                     update_student(pn,cn,nn,ad,pb,db,ph,grp,cn2,nn2,ad2,pb2,db2,ph2,cn3,nn3,ad3,pb3,db3,ph3,cn4,nn4,ad4,pb4,db4,ph4,pr,pd,sd,re,ta,di,bg,si,wp,ap,fsp);
+                    }
+                  }
+                }
+              } else { 
+                cn2=nn2=pb2=ad2=ph2=db2=cn3=nn3=pb3=ad3=ph3=db3=cn4=nn4=pb4=ad4=ph4=db4='';
+                console.log('submit the student');
+               update_student(pn,cn,nn,ad,pb,db,ph,grp,cn2,nn2,ad2,pb2,db2,ph2,cn3,nn3,ad3,pb3,db3,ph3,cn4,nn4,ad4,pb4,db4,ph4,pr,pd,sd,re,ta,di,bg,si,wp,ap,fsp);
+              }
+            }
+          }
+        }
+      });
+         function update_student(pn,cn,nn,ad,pb,db,ph,grp,cn2,nn2,ad2,pb2,db2,ph2,cn3,nn3,ad3,pb3,db3,ph3,cn4,nn4,ad4,pb4,db4,ph4,pr,pd,sd,re,ta,di,bg,si,wp,ap,fsp)
+        {
+          $.ajax({
+            type : "post",
+            url: "<?php echo site_url('student/update');?>",
+            dataType : "json",
+            data : {pn:pn,cn:cn,nn:nn,ad:ad,pb:pb,db:db,ph:ph,grp,cn2:cn2,nn2:nn2,ad2:ad2,pb2:pb2,db2:db2,ph2:ph2,cn3:cn3,nn3:nn3,ad3:ad3,pb3:pb3,db3:db3,ph3:ph3,cn4:cn4,nn4:nn4,ad4:ad4,pb4:pb4,db4:db4,ph4:ph4,pr:pr,pd:pd,sd:sd,re:re,ta:ta,di:di,bg:bg,si:si,wp:wp,ap:ap,fsp:fsp},
+            success : function(data){
+              console.log('updated');
+              $('#esm').modal('hide');
+              $('#mystudents').DataTable().ajax.reload();
+              get_student_detail();
+            }
+          });
+           
+        }
+        /*$('#student_info_div').on('click', '.student_info_edit', function(){
           var a=$(this).data('pin'),  b=$(this).data('cmn'), c=$(this).data('ncn'), d=$(this).data('adr'), e=$(this).data('pob'), f=$(this).data('dob'), g=$(this).data('pho'), h=$(this).data('prg'), i=$(this).data('prd'), j=$(this).data('std'), k=$(this).data('rea'), l=$(this).data('trg'), m=$(this).data('dff'), n=$(this).data('bgrr'), o=$(this).data('sin'), p=$(this).data('wep'),  q=$(this).data('acp'), fsp = $(this).data('fsp'), fsp_button = '<input type="checkbox" name="fsp" id="fsp"' ;
           $('#edit_student_modal').modal('show');
           $('[name="pn2"]').val(a);
@@ -1432,8 +1633,8 @@
             fsp_button += '> <label for="fsp">Final Speaking Performance</label>';
           }
           $('#fsp_button').html(fsp_button);
-        });
-        $('#btn_update_student').on('click',function(){
+        }); */
+      /*  $('#btn_update_student').on('click',function(){
           var bcg = 'background-color', clr = '#fbe2e6', pn=$('#pn2').val(), cn=$('#cn2').val(),   nn=$('#nn2').val(), ad=$('#ad2').val(), pb=$('#pb2').val(), db=$('#db2').val(), ph=$('#ph2').val(), pr=$('#pr2').val(), pd=$('#pd2').val(),  sd=$('#sd2').val(), re=$('#re2').val(), ta=$('#ta2').val(), di=$('#di2').val(), bg=$('#bg2').val(), si=$('#si2').val(), wp=$('#wp2').val(), ap=$('#ap2').val(), fsp = '';
           if ($('#fsp').is(':checked')){
             fsp = 'yes';
@@ -1511,7 +1712,7 @@
               }
           }
           return false;
-        });
+        }); */
         /* get course */
         $('#mycourse').DataTable({
           responsive : true,

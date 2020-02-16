@@ -1,3 +1,10 @@
+.student_header {
+    font-weight: 600;
+    font-style: oblique;
+    font-size: larger;
+    background-color: darkkhaki;
+    color: whitesmoke;
+}
 /*#group_name,#group_name_e{ */
 #group_name{
   display:none;

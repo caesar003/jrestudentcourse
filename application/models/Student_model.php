@@ -659,6 +659,7 @@ class Student_model extends CI_Model{
     $this->db->set('self_introduction', $self_introduction);
     $this->db->set('weakness_point', $weakness_point);
     $this->db->set('action_plan', $action_plan);
+    $this->db->set('fsp',$fsp);
     $this->db->where('pin', $pin);
     $result=$this->db->update('students');
     return $result;

@@ -1992,14 +1992,61 @@
                   }
                 }
               }, 
-              {"data" : "address"},
               {
-                "data" : "date_of_birth",
+                "data" : {address:"address",adrst2:"adrst2",adrst3:"adrst3",adrst4:"adrst4"},
+                "render":function(data,type,row){
+                  if(data.adrst2==''){
+                    return data.address;
+                  } else{
+                    if(data.adrst3==''){
+                      return '<span title="'+data.address+' || '+data.adrst2+'">'+data.address.substr(0,15)+'.....</span>';
+                    } else {
+                      if (data.adrst4==''){
+                        return '<span title="'+data.address+' || '+data.adrst2+' || '+data.adrst3+'">'+data.address.substr(0,15)+'.....</span>';
+                      } else {
+                        return '<span title="'+data.address+' || '+data.adrst2+' || '+ data.adrst3+' || '+data.adrst4+'">'+data.address.substr(0,15)+'.....</span>';
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "data" :{cnst2:"cnst2",cnst3:"cnst3",cnst4:"cnst4",date_of_birth:"date_of_birth",dobst2:"dobst2",dobst3:"dobst3",dobst4:"dobst4",},
                 "render" : function (data, type, row){
+                  if(data.cnst2==''){
+                    return $.format.date(data.date_of_birth, "MMM/dd/yyyy");
+                  } else {
+                    if(data.cnst3==''){
+                      return $.format.date(data.date_of_birth, "MMM/dd/yyyy")+' - '+$.format.date(data.dobst2, "MMM/dd/yyyy");
+                    } else {
+                      if(data.cnst4==''){
+                        return $.format.date(data.date_of_birth, "MMM/dd/yyyy")+' - '+$.format.date(data.dobst2, "MMM/dd/yyyy")+' - '+$.format.date(data.dobst3, "MMM/dd/yyyy");
+                      } else {
+                        return $.format.date(data.date_of_birth, "MMM/dd/yyyy")+' - '+$.format.date(data.dobst2, "MMM/dd/yyyy")+' - '+$.format.date(data.dobst3, "MMM/dd/yyyy")+' - '+$.format.date(data.dobst4, "MMM/dd/yyyy") ;
+                      }
+                    }
+                  }
                   return $.format.date(data, "MMM/dd/yyyy");
                 }
               },
-              {"data" : "phone"},
+              {
+                "data" : {phone:"phone",phst2:"phst2",phst3:"phst3",phst4:"phst4"},
+                "render": function(data,type,row){
+                  if(data.phst2==''){
+                    return data.phone;
+                  } else{
+                    if(data.phst3==''){
+                      return data.phone+' - '+data.phst2;
+                    } else {
+                      if(data.phst4==''){
+                        return data.phone+' - '+data.phst2+' - '+data.phst3;
+                      } else {
+                        return data.phone+' - '+data.phst2+' - '+data.phst3+' -'+data.phst4;
+                      }
+                    }
+                  }
+                }
+              },
               {"data" : "program"},
               {
                 "data" : "starting_date",
