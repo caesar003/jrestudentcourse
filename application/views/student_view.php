@@ -2607,7 +2607,7 @@
           }
           return false;
         });
-        function check_pin(grp,pn,cn,nn,ad,pb,db,ph,cn2,nn2,ad2,pb2,db2,ph2,cn3,nn3,ad3,pb3,db3,ph3,cn4,nn4,ad4,pb4,db4,ph4,pr,pd,sd,re,ta,di,bg,si,wp,ap){
+        function check_pin(grp, pn, cn, nn, ad, pb, db, ph, cn2, nn2, ad2, pb2, db2, ph2, cn3, nn3, ad3, pb3, db3, ph3, cn4, nn4, ad4, pb4, db4, ph4, pr, pd, sd, re, ta, di, bg, si, wp, ap){
           var bck = 'background-color',
               clr ='#fbe2e6';
           $.ajax({
@@ -2777,22 +2777,7 @@
         });
         $('#update_student_btn').on('click', function(){
         var bck = 'background-color',clr = '#fbe2e6',
-            pn=$('#pn_e').val(),
-            cn=$('#cn_e').val(),nn=$('#nn_e').val(),ad=$('#ad_e').val(),pb=$('#pb_e').val(),db=$('#db_e').val(),ph=$('#ph_e').val(),
-            grp=$('#grp_e').val(),
-            
-            cn2=$('#cnst2_e').val(),nn2=$('#nnst2_e').val(),ad2=$('#adrst2_e').val(),pb2=$('#pbst2_e').val(),          db2=$('#dbst2_e').val(),ph2=$('#phst2_e').val(),
-            cn3=$('#cnst3_e').val(),nn3=$('#nnst3_e').val(),
-          ad3=$('#adrst3_e').val(),pb3=$('#pbst3_e').val(),
-          db3=$('#dbst3_e').val(),ph3=$('#phst3_e').val(),
-          cn4=$('#cnst4_e').val(),nn4=$('#nnst4_e').val(),
-          ad4=$('#adrst4_e').val(),pb4=$('#pbst4_e').val(),
-          db4=$('#dbst4_e').val(),ph4=$('#phst4_e').val(),
-          pr=$('#pr2').val(),pd=$('#pd2').val(),
-          sd=$('#sd2').val(),re=$('#re2').val(),
-          ta=$('#ta2').val(),di=$('#di2').val(),
-          bg=$('#bg2').val(),si=$('#si2').val(),
-          wp=$('#wp2').val(),ap=$('#ap2').val(),
+            pn=$('#pn_e').val(), cn=$('#cn_e').val(), nn=$('#nn_e').val(), ad=$('#ad_e').val(), pb=$('#pb_e').val(), db=$('#db_e').val(), ph=$('#ph_e').val(), grp=$('#grp_e').val(), cn2=$('#cnst2_e').val(), nn2=$('#nnst2_e').val(), ad2=$('#adrst2_e').val(), pb2=$('#pbst2_e').val(),          db2=$('#dbst2_e').val(), ph2=$('#phst2_e').val(),             cn3=$('#cnst3_e').val(), nn3=$('#nnst3_e').val(),           ad3=$('#adrst3_e').val(), pb3=$('#pbst3_e').val(),           db3=$('#dbst3_e').val(), ph3=$('#phst3_e').val(),           cn4=$('#cnst4_e').val(), nn4=$('#nnst4_e').val(),           ad4=$('#adrst4_e').val(), pb4=$('#pbst4_e').val(),           db4=$('#dbst4_e').val(), ph4=$('#phst4_e').val(),           pr=$('#pr2').val(), pd=$('#pd2').val(),          sd=$('#sd2').val(), re=$('#re2').val(),           ta=$('#ta2').val(), di=$('#di2').val(),           bg=$('#bg2').val(), si=$('#si2').val(),           wp=$('#wp2').val(), ap=$('#ap2').val(),
             fsp='';
         if ($('#fsp').is(':checked')){fsp='yes';}else{fsp='';}
         if(cn==''|| ad==''|| db==''|| ph==''|| pr==''|| pd==''){ 
@@ -2917,9 +2902,7 @@
           }
         }
       });
-        
-        
-        function update_student(pn,cn,nn,ad,pb,db,ph,grp,cn2,nn2,ad2,pb2,db2,ph2,cn3,nn3,ad3,pb3,db3,ph3,cn4,nn4,ad4,pb4,db4,ph4,pr,pd,sd,re,ta,di,bg,si,wp,ap,fsp)
+        function update_student(pn, cn, nn, ad, pb, db, ph, grp,cn2, nn2, ad2, pb2, db2, ph2, cn3, nn3, ad3, pb3, db3,ph3, cn4, nn4, ad4, pb4, db4, ph4, pr, pd, sd, re, ta, di, bg, si, wp, ap, fsp)
         {
           $.ajax({
             type : "post",
@@ -2931,11 +2914,8 @@
               $('#esm').modal('hide');
               $('#mystudents').DataTable().ajax.reload();
             }
-          });
-           
+          });  
         }
-      
-      
       }); 
     </script> 
     <script>

@@ -1035,7 +1035,7 @@
                  '"data-cnst3="'+data[i].cnst3+'"data-nnst3="'+data[i].nnst3+'"data-adrst3="'+data[i].adrst3+'"data-pobst3="'+data[i].pobst3+'"data-dobst3="'+($.format.date(data[i].dobst3, "yyyy-MM-dd"))+'"data-phst3="'+data[i].phst3+
                 
                  '"data-cnst4="'+data[i].cnst4+'"data-nnst4="'+data[i].nnst4+'"data-adrst4="'+data[i].adrst4+'"data-pobst4="'+data[i].pobst4+'"data-dobst4="'+($.format.date(data[i].dobst4, "yyyy-MM-dd"))+'"data-phst4="'+data[i].phst4+
-                 '"data-pr="'+data[i].program+'"data-pd="'+data[i].program_duration+'"data-sd="'+($.format.date(data[i].starting_date, "yyyy-MM-dd"))+'"data-re="'+data[i].reason+'"data-ta="'+data[i].target+'" data-di="'+data[i].difficulties+'"data-bg="'+data[i].bground+'"data-si="'+data[i].self_introduction+'" data-wp="'+data[i].weakness_point+'"data-ap="'+data[i].action_plan+'" data-fsp=""><i class="fas fa-user-edit fa-fw"></i></a>'; 
+                 '"data-pr="'+data[i].program+'"data-pd="'+data[i].program_duration+'"data-sd="'+($.format.date(data[i].starting_date, "yyyy-MM-dd"))+'"data-re="'+data[i].reason+'"data-ta="'+data[i].target+'" data-di="'+data[i].difficulties+'"data-bg="'+data[i].bground+'"data-si="'+data[i].self_introduction+'" data-wp="'+data[i].weakness_point+'"data-ap="'+data[i].action_plan+'" data-fsp="'+data[i].fsp+'"><i class="fas fa-user-edit fa-fw"></i></a>'; 
                 
                 if(data[i].grp!=''){
                   html += '<li class="list-group-item tooltip-bottom" title="Group study" style="background-color:gray;color:white;"><span style="font-variant-caps: all-small-caps;font-size: x-large;">'+data[i].grp+'</span></li>';
@@ -1226,7 +1226,7 @@
           $('[name="wp2"]').val(wp);
           $('[name="ap2"]').val(ap);
           if(cnst2==''){
-            $('#group_name_e,#student2_e,#student3_e,#student4_e').css('display', 'none');
+            $('#group_name_e, #student2_e, #student3_e, #student4_e').css('display', 'none');
           } else {
             if(cnst3==''){ 
               $('#group_name_e,#student2_e').css('display', 'block');
