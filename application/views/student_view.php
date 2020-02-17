@@ -2918,10 +2918,6 @@
         }
       }); 
     </script> 
-    <script>
-        
-        //alert("Happy birthday, Ms Febri.. ;-)");
-    </script>
     <?php endif;?>
 </body> 
 </html>
