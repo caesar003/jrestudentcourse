@@ -14,7 +14,7 @@ class Student_single_model extends CI_Model{
   function get_course(){
     $pin = $this->input->get('pin');
     $course_table = "s_".$pin;
-    $this->db->order_by('meeting', 'DESC');
+    $this->db->order_by('meeting', 'ASC');
     $result=$this->db->get($course_table);
     return $result->result();
   }
