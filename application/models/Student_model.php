@@ -626,6 +626,7 @@ class Student_model extends CI_Model{
     $fsp             = $this->input->post('fsp');
     
     $this->db->set('complete_name', $complete_name);
+    $this->db->set('grp', $grp);
     $this->db->set('cnst2',$cnst2);
     $this->db->set('cnst3',$cnst3);
     $this->db->set('cnst4',$cnst4);
