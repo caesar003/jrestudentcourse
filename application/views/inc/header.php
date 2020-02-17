@@ -1,7 +1,6 @@
 <?php $user=$this->session->userdata('username');?>
 <!DOCTYPE html>
 <html lang="en-us">
-  <!-- this is a comment -->
     <head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"> 
       <?php include 'styles.php';?>
     </head> 
@@ -21,6 +20,9 @@
                 <a class="dropdown-item" href="<?php echo site_url('login/logout');?>"><i class="fas fa-sign-out-alt"></i> Sign Out</a> 
                 <a class="dropdown-item" href="<?php echo site_url('reset_password');?>"><i class="fas fa-key"></i> Reset Password</a> 
               </div>
+            </li>
+            <li class="nav-item">
+              <a href="after_teaching" class="nav-link">After Teaching </a>
             </li>
           </ul> 
         </div>
