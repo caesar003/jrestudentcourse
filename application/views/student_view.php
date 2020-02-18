@@ -1320,7 +1320,7 @@
           var str = $(this).text(),
               d = $('#schedule_date').val();
           $('#str').val(str);
-          console.log(d);
+         
         });
         $('#note').on('focusout',function(){
           $(this).removeClass('editMode');
@@ -1708,14 +1708,13 @@
           });
         $('#btn_delete_student').on('click', function(){
              var pin = $('#pin_delete').val();
-             console.log(pin);
              $.ajax({
                 type: "post",
                 url: "<?php echo site_url('student/delete_student');?>",
                 dataType : "json",
                 data : {pin: pin},
                 success : function(data){
-                    console.log('student deleted');
+                    
                     $('#mystudents').DataTable().ajax.reload();
                     $('#myaft').DataTable().ajax.reload();
                     $('#delete_student_modal').modal('hide');
@@ -1862,14 +1861,12 @@
                     if(cn2 == ''||ad2==''||db2==''||ph2==''){ 
                       $('#nsf').addClass('alert alert-danger');
                       $('#nsf').html('Please fill out all required fields');
-                      console.log('student 2 incomplete');
                       if(cn2==''){$('#cnst2').css(bck,clr);}
                       if(ad2==''){$('#adrst2').css(bck,clr);}
                       if(db2==''){$('#dbst2').css(bck,clr);}
                       if(ph2==''){$('#phst2').css(bck,clr);}
                     } else {
                       if(isNaN(ph2)){
-                        console.log('phone 2 is not number');
                         $('#nsf').addClass('alert alert-danger');
                         $('#nsf').html('Phone must only be numbers');
                         $('#phst2').css(bck,clr);
@@ -1878,14 +1875,12 @@
                           if(cn3 == ''||ad3==''||db3==''||ph3==''){
                             $('#nsf').addClass('alert alert-danger');
                             $('#nsf').html('Please fill out all required fields');
-                            console.log('student 3 incomplete');
                             if(cn3==''){$('#cnst3').css(bck,clr);}
                             if(ad3==''){$('#adrst3').css(bck,clr);}
                             if(db3==''){$('#dbst3').css(bck,clr);}
                             if(ph3==''){$('#phst3').css(bck,clr);}
                           } else {
                             if(isNaN(ph3)){
-                              console.log('phone 3 is not number');
                               $('#nsf').addClass('alert alert-danger');
                               $('#nsf').html('Phone must only be numbers');
                               $('#phst3').css(bck,clr);
@@ -1894,32 +1889,27 @@
                                 if(cn4 == ''||ad4==''||db4==''||ph4==''){
                                   $('#nsf').addClass('alert alert-danger');
                                   $('#nsf').html('Please fill out all required fields');
-                                  console.log('student 4 incomplete');
                                   if(cn4==''){$('#cnst4').css(bck,clr);}
                                   if(ad4==''){$('#adrst4').css(bck,clr);}
                                   if(db4==''){$('#dbst4').css(bck,clr);}
                                   if(ph4==''){$('#phst4').css(bck,clr);}
                                 } else {
                                   if(isNaN(ph4)){
-                                    console.log('phone 4 is not number');
                                     $('#nsf').addClass('alert alert-danger');
                                     $('#nsf').html('Phone must only be numbers');
                                     $('#phst4').css(bck,clr);
                                   } else{
-                                    console.log('submit four students');
                                     check_pin(grp,pn,cn,nn,ad,pb,db,ph,cn2,nn2,ad2,pb2,db2,ph2,cn3,nn3,ad3,pb3,db3,ph3,cn4,nn4,ad4,pb4,db4,ph4,pr,pd,sd,re,ta,di,bg,si,wp,ap);
                                     }
                                 }
                               } else {
                                 cn4=nn4=ad4=pb4=db4=ph4='';
-                                console.log('submit three students');
                                 check_pin(grp,pn,cn,nn,ad,pb,db,ph,cn2,nn2,ad2,pb2,db2,ph2,cn3,nn3,ad3,pb3,db3,ph3,cn4,nn4,ad4,pb4,db4,ph4,pr,pd,sd,re,ta,di,bg,si,wp,ap);
                               }
                             }
                           }
                         } else{
                           cn3=nn3=ad3=pb3=db3=ph3=cn4=nn4=ad4=pb4=db4=ph4='';
-                          console.log('submit two students');
                           check_pin(grp,pn,cn,nn,ad,pb,db,ph,cn2,nn2,ad2,pb2,db2,ph2,cn3,nn3,ad3,pb3,db3,ph3,cn4,nn4,ad4,pb4,db4,ph4,pr,pd,sd,re,ta,di,bg,si,wp,ap);
                         }
                       }
@@ -1927,7 +1917,6 @@
                   } else{
                     cn2=nn2=ad2=pb2=db2=ph2=cn3=nn3=ad3=pb3=db3=ph3=cn4=nn4=ad4=pb4=db4=ph4='';
                     check_pin(grp,pn,cn,nn,ad,pb,db,ph,cn2,nn2,ad2,pb2,db2,ph2,cn3,nn3,ad3,pb3,db3,ph3,cn4,nn4,ad4,pb4,db4,ph4,pr,pd,sd,re,ta,di,bg,si,wp,ap);
-                     console.log('submitted one student');
                   }
                 }
               }
@@ -1947,7 +1936,6 @@
                 $('#nsf').addClass('alert alert-danger'); 
                 $('#nsf').html('pin is already used');
                 $('#pn').css(bck, clr);
-                console.log('pin is taken');
               }else{
                submit_student(grp,pn,cn,nn,ad,pb,db,ph,cn2,nn2,ad2,pb2,db2,ph2,cn3,nn3,ad3,pb3,db3,ph3,cn4,nn4,ad4,pb4,db4,ph4,pr,pd,sd,re,ta,di,bg,si,wp,ap);
               }
@@ -2124,7 +2112,6 @@
             fsp='';
         if ($('#fsp').is(':checked')){fsp='yes';}else{fsp='';}
         if(cn==''|| ad==''|| db==''|| ph==''|| pr==''|| pd==''){ 
-         console.log('form incomplete');
           $('#esf').addClass('alert alert-danger');
           $('#esf').html('Please fill out all required fields');
           if(cn==''){$('#cn_e').css(bck, clr);}
@@ -2135,13 +2122,11 @@
           if(pd==''){$('#pd_e').css(bck, clr);}
         } else { 
           if(isNaN(ph)){ 
-            console.log('phone not number');
             $('#esf').addClass('alert alert-danger');
             $('#esf').html('Phone must only be number!');
             $('#ph_e').css(bck, clr);
           } else { 
             if(isNaN(pd)){ 
-              console.log('duration not number');
               $('#esf').addClass('alert alert-danger');
               $('#esf').html('Program duration must only be number!');
               $('#pd_e').css(bck, clr);
@@ -2150,7 +2135,6 @@
                 if(cn2==''||ad2==''||db2==''||ph2==''){
                   $('#esf').addClass('alert alert-danger');
                   $('#esf').html('Please fill out all required fields!');
-                  console.log('student 2 incomplete');
                   if(cn2==''){
                     $('#cnst2_e').css(bck,clr);
                   }
@@ -2165,14 +2149,12 @@
                   }
                 } else{ 
                   if(isNaN(ph2)){
-                    console.log('phone 2 is not number');
                     $('#esf').addClass('alert alert-danger');
                     $('#esf').html('Phone must only be number!');
                     $('#phst2_e').css(bck,clr);
                   } else{ 
                     if($('#student3_e').css('display')==='block'){
                       if(cn3==''||ad3==''||db3==''||ph3==''){ 
-                        console.log('student 3 is not complete');
                         $('#esf').addClass('alert alert-danger');
                         $('#esf').html('Please fill out all required fields!');
                         if(cn3==''){
@@ -2189,14 +2171,12 @@
                         }
                       } else{ 
                         if(isNaN(ph3)){
-                          console.log('phone 3 is not number');
                           $('#esf').addClass('alert alert-danger');
                           $('#esf').html('Phone must only be number!');
                           $('#phst3_e').css(bck,clr);
                         } else{ 
                           if($('#student4_e').css('display')==='block'){ 
                             if(cn4==''||ad4==''||db4==""||ph4==''){ 
-                              console.log('student four not complete');
                               $('#esf').addClass('alert alert-danger');
                               $('#esf').html('Please fill out all required fields!');
                               if(cn4==''){
@@ -2213,32 +2193,27 @@
                               }
                             } else { 
                               if(isNaN(ph4)){ 
-                                console.log('phone 4 is not number');
                                 $('#esf').addClass('alert alert-danger');
                                 $('#esf').html('Phone must only be number!');
                                 $('#phst4_e').css(bck,clr);
                               } else { 
-                                console.log('submit four students');
                                 update_student(pn,cn,nn,ad,pb,db,ph,grp,cn2,nn2,ad2,pb2,db2,ph2,cn3,nn3,ad3,pb3,db3,ph3,cn4,nn4,ad4,pb4,db4,ph4,pr,pd,sd,re,ta,di,bg,si,wp,ap,fsp);
                               }
                             }
                           } else { 
                             cn4 = nn4 = pb4 = ad4 = ph4 = db4 = '';
-                            console.log('submit 3 students');
                            update_student(pn,cn,nn,ad,pb,db,ph,grp,cn2,nn2,ad2,pb2,db2,ph2,cn3,nn3,ad3,pb3,db3,ph3,cn4,nn4,ad4,pb4,db4,ph4,pr,pd,sd,re,ta,di,bg,si,wp,ap,fsp);
                           } 
                         }
                       }
                     } else { 
                       cn3=nn3=pb3=ad3=ph3=db3=cn4=nn4=pb4=ad4=ph4=db4='';
-                      console.log('submit 2 students');
                      update_student(pn,cn,nn,ad,pb,db,ph,grp,cn2,nn2,ad2,pb2,db2,ph2,cn3,nn3,ad3,pb3,db3,ph3,cn4,nn4,ad4,pb4,db4,ph4,pr,pd,sd,re,ta,di,bg,si,wp,ap,fsp);
                     }
                   }
                 }
               } else { 
                 cn2=nn2=pb2=ad2=ph2=db2=cn3=nn3=pb3=ad3=ph3=db3=cn4=nn4=pb4=ad4=ph4=db4='';
-                console.log('submit the student');
                update_student(pn,cn,nn,ad,pb,db,ph,grp,cn2,nn2,ad2,pb2,db2,ph2,cn3,nn3,ad3,pb3,db3,ph3,cn4,nn4,ad4,pb4,db4,ph4,pr,pd,sd,re,ta,di,bg,si,wp,ap,fsp);
               }
             }
@@ -2253,7 +2228,6 @@
             dataType : "json",
             data : {pn:pn,cn:cn,nn:nn,ad:ad,pb:pb,db:db,ph:ph,grp,cn2:cn2,nn2:nn2,ad2:ad2,pb2:pb2,db2:db2,ph2:ph2,cn3:cn3,nn3:nn3,ad3:ad3,pb3:pb3,db3:db3,ph3:ph3,cn4:cn4,nn4:nn4,ad4:ad4,pb4:pb4,db4:db4,ph4:ph4,pr:pr,pd:pd,sd:sd,re:re,ta:ta,di:di,bg:bg,si:si,wp:wp,ap:ap,fsp:fsp},
             success : function(data){
-              console.log('updated');
               $('#esm').modal('hide');
               $('#mystudents').DataTable().ajax.reload();
             }
@@ -2534,14 +2508,12 @@
                     if(cn2 == ''||ad2==''||db2==''||ph2==''){ 
                       $('#nsf').addClass('alert alert-danger');
                       $('#nsf').html('Please fill out all required fields');
-                      console.log('student 2 incomplete');
                       if(cn2==''){$('#cnst2').css(bck,clr);}
                       if(ad2==''){$('#adrst2').css(bck,clr);}
                       if(db2==''){$('#dbst2').css(bck,clr);}
                       if(ph2==''){$('#phst2').css(bck,clr);}
                     } else {
                       if(isNaN(ph2)){
-                        console.log('phone 2 is not number');
                         $('#nsf').addClass('alert alert-danger');
                         $('#nsf').html('Phone must only be numbers');
                         $('#phst2').css(bck,clr);
@@ -2550,14 +2522,12 @@
                           if(cn3 == ''||ad3==''||db3==''||ph3==''){
                             $('#nsf').addClass('alert alert-danger');
                             $('#nsf').html('Please fill out all required fields');
-                            console.log('student 3 incomplete');
                             if(cn3==''){$('#cnst3').css(bck,clr);}
                             if(ad3==''){$('#adrst3').css(bck,clr);}
                             if(db3==''){$('#dbst3').css(bck,clr);}
                             if(ph3==''){$('#phst3').css(bck,clr);}
                           } else {
                             if(isNaN(ph3)){
-                              console.log('phone 3 is not number');
                               $('#nsf').addClass('alert alert-danger');
                               $('#nsf').html('Phone must only be numbers');
                               $('#phst3').css(bck,clr);
@@ -2566,32 +2536,27 @@
                                 if(cn4 == ''||ad4==''||db4==''||ph4==''){
                                   $('#nsf').addClass('alert alert-danger');
                                   $('#nsf').html('Please fill out all required fields');
-                                  console.log('student 4 incomplete');
                                   if(cn4==''){$('#cnst4').css(bck,clr);}
                                   if(ad4==''){$('#adrst4').css(bck,clr);}
                                   if(db4==''){$('#dbst4').css(bck,clr);}
                                   if(ph4==''){$('#phst4').css(bck,clr);}
                                 } else {
                                   if(isNaN(ph4)){
-                                    console.log('phone 4 is not number');
                                     $('#nsf').addClass('alert alert-danger');
                                     $('#nsf').html('Phone must only be numbers');
                                     $('#phst4').css(bck,clr);
                                   } else{
-                                    console.log('submit four students');
                                     check_pin(grp,pn,cn,nn,ad,pb,db,ph,cn2,nn2,ad2,pb2,db2,ph2,cn3,nn3,ad3,pb3,db3,ph3,cn4,nn4,ad4,pb4,db4,ph4,pr,pd,sd,re,ta,di,bg,si,wp,ap);
                                     }
                                 }
                               } else {
                                 cn4=nn4=ad4=pb4=db4=ph4='';
-                                console.log('submit three students');
                                 check_pin(grp,pn,cn,nn,ad,pb,db,ph,cn2,nn2,ad2,pb2,db2,ph2,cn3,nn3,ad3,pb3,db3,ph3,cn4,nn4,ad4,pb4,db4,ph4,pr,pd,sd,re,ta,di,bg,si,wp,ap);
                               }
                             }
                           }
                         } else{
                           cn3=nn3=ad3=pb3=db3=ph3=cn4=nn4=ad4=pb4=db4=ph4='';
-                          console.log('submit two students');
                           check_pin(grp,pn,cn,nn,ad,pb,db,ph,cn2,nn2,ad2,pb2,db2,ph2,cn3,nn3,ad3,pb3,db3,ph3,cn4,nn4,ad4,pb4,db4,ph4,pr,pd,sd,re,ta,di,bg,si,wp,ap);
                         }
                       }
@@ -2599,7 +2564,6 @@
                   } else{
                     cn2=nn2=ad2=pb2=db2=ph2=cn3=nn3=ad3=pb3=db3=ph3=cn4=nn4=ad4=pb4=db4=ph4='';
                     check_pin(grp,pn,cn,nn,ad,pb,db,ph,cn2,nn2,ad2,pb2,db2,ph2,cn3,nn3,ad3,pb3,db3,ph3,cn4,nn4,ad4,pb4,db4,ph4,pr,pd,sd,re,ta,di,bg,si,wp,ap);
-                     console.log('submitted one student');
                   }
                 }
               }
@@ -2619,7 +2583,6 @@
                 $('#nsf').addClass('alert alert-danger'); 
                 $('#nsf').html('pin is already used');
                 $('#pn').css(bck, clr);
-                console.log('pin is taken');
               }else{
                submit_student(grp,pn,cn,nn,ad,pb,db,ph,cn2,nn2,ad2,pb2,db2,ph2,cn3,nn3,ad3,pb3,db3,ph3,cn4,nn4,ad4,pb4,db4,ph4,pr,pd,sd,re,ta,di,bg,si,wp,ap);
               }
@@ -2781,7 +2744,6 @@
             fsp='';
         if ($('#fsp').is(':checked')){fsp='yes';}else{fsp='';}
         if(cn==''|| ad==''|| db==''|| ph==''|| pr==''|| pd==''){ 
-         console.log('form incomplete');
           $('#esf').addClass('alert alert-danger');
           $('#esf').html('Please fill out all required fields');
           if(cn==''){$('#cn_e').css(bck, clr);}
@@ -2792,13 +2754,11 @@
           if(pd==''){$('#pd_e').css(bck, clr);}
         } else { 
           if(isNaN(ph)){ 
-            console.log('phone not number');
             $('#esf').addClass('alert alert-danger');
             $('#esf').html('Phone must only be number!');
             $('#ph_e').css(bck, clr);
           } else { 
             if(isNaN(pd)){ 
-              console.log('duration not number');
               $('#esf').addClass('alert alert-danger');
               $('#esf').html('Program duration must only be number!');
               $('#pd_e').css(bck, clr);
@@ -2807,7 +2767,6 @@
                 if(cn2==''||ad2==''||db2==''||ph2==''){
                   $('#esf').addClass('alert alert-danger');
                   $('#esf').html('Please fill out all required fields!');
-                  console.log('student 2 incomplete');
                   if(cn2==''){
                     $('#cnst2_e').css(bck,clr);
                   }
@@ -2822,14 +2781,12 @@
                   }
                 } else{ 
                   if(isNaN(ph2)){
-                    console.log('phone 2 is not number');
                     $('#esf').addClass('alert alert-danger');
                     $('#esf').html('Phone must only be number!');
                     $('#phst2_e').css(bck,clr);
                   } else{ 
                     if($('#student3_e').css('display')==='block'){
                       if(cn3==''||ad3==''||db3==''||ph3==''){ 
-                        console.log('student 3 is not complete');
                         $('#esf').addClass('alert alert-danger');
                         $('#esf').html('Please fill out all required fields!');
                         if(cn3==''){
@@ -2846,14 +2803,12 @@
                         }
                       } else{ 
                         if(isNaN(ph3)){
-                          console.log('phone 3 is not number');
                           $('#esf').addClass('alert alert-danger');
                           $('#esf').html('Phone must only be number!');
                           $('#phst3_e').css(bck,clr);
                         } else{ 
                           if($('#student4_e').css('display')==='block'){ 
                             if(cn4==''||ad4==''||db4==""||ph4==''){ 
-                              console.log('student four not complete');
                               $('#esf').addClass('alert alert-danger');
                               $('#esf').html('Please fill out all required fields!');
                               if(cn4==''){
@@ -2870,32 +2825,27 @@
                               }
                             } else { 
                               if(isNaN(ph4)){ 
-                                console.log('phone 4 is not number');
                                 $('#esf').addClass('alert alert-danger');
                                 $('#esf').html('Phone must only be number!');
                                 $('#phst4_e').css(bck,clr);
                               } else { 
-                                console.log('submit four students');
                                 update_student(pn,cn,nn,ad,pb,db,ph,grp,cn2,nn2,ad2,pb2,db2,ph2,cn3,nn3,ad3,pb3,db3,ph3,cn4,nn4,ad4,pb4,db4,ph4,pr,pd,sd,re,ta,di,bg,si,wp,ap,fsp);
                               }
                             }
                           } else { 
                             cn4 = nn4 = pb4 = ad4 = ph4 = db4 = '';
-                            console.log('submit 3 students');
                            update_student(pn,cn,nn,ad,pb,db,ph,grp,cn2,nn2,ad2,pb2,db2,ph2,cn3,nn3,ad3,pb3,db3,ph3,cn4,nn4,ad4,pb4,db4,ph4,pr,pd,sd,re,ta,di,bg,si,wp,ap,fsp);
                           } 
                         }
                       }
                     } else { 
                       cn3=nn3=pb3=ad3=ph3=db3=cn4=nn4=pb4=ad4=ph4=db4='';
-                      console.log('submit 2 students');
                      update_student(pn,cn,nn,ad,pb,db,ph,grp,cn2,nn2,ad2,pb2,db2,ph2,cn3,nn3,ad3,pb3,db3,ph3,cn4,nn4,ad4,pb4,db4,ph4,pr,pd,sd,re,ta,di,bg,si,wp,ap,fsp);
                     }
                   }
                 }
               } else { 
                 cn2=nn2=pb2=ad2=ph2=db2=cn3=nn3=pb3=ad3=ph3=db3=cn4=nn4=pb4=ad4=ph4=db4='';
-                console.log('submit the student');
                update_student(pn,cn,nn,ad,pb,db,ph,grp,cn2,nn2,ad2,pb2,db2,ph2,cn3,nn3,ad3,pb3,db3,ph3,cn4,nn4,ad4,pb4,db4,ph4,pr,pd,sd,re,ta,di,bg,si,wp,ap,fsp);
               }
             }
@@ -2910,7 +2860,6 @@
             dataType : "json",
             data : {pn:pn,cn:cn,nn:nn,ad:ad,pb:pb,db:db,ph:ph,grp,cn2:cn2,nn2:nn2,ad2:ad2,pb2:pb2,db2:db2,ph2:ph2,cn3:cn3,nn3:nn3,ad3:ad3,pb3:pb3,db3:db3,ph3:ph3,cn4:cn4,nn4:nn4,ad4:ad4,pb4:pb4,db4:db4,ph4:ph4,pr:pr,pd:pd,sd:sd,re:re,ta:ta,di:di,bg:bg,si:si,wp:wp,ap:ap,fsp:fsp},
             success : function(data){
-              console.log('updated');
               $('#esm').modal('hide');
               $('#mystudents').DataTable().ajax.reload();
             }

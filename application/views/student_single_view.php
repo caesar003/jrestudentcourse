@@ -45,6 +45,15 @@
               <div class="table-responsive tab-pane fade show active" id="pills-course" role="tabpanel" aria-labelledby="pills-course-tab">
                 <h3><small>Student </small>Course</h3>
                 <p>This is the list of recorded session. Hit the little pencil button <a href="javascript:void(0);" id="edit_course_title"><i style="font-size:small;background-color:#9954BB;color:white;padding-right:3px;padding-left:3px;padding-top:2px;padding-bottom:2px;border-radius:20%;" class="fas fa-pencil-alt"></i></a> on the last column of every row to make changes, or plus button <a href="javascript:void(0);" id="add_course_title"><i style="font-size:small;color:white;background-color:black;padding-right:3px;padding-left:3px;padding-top:2px;padding-bottom:2px;border-radius:20%;" class="fas fa-plus"></i></a> at the top of the Student Information to add a new one.</p>
+                <br>
+                <div class="card">
+                  <div class="card-body">
+                    <h5 class="card-title">Note: </h5>
+                    <p class="card-text" id="teacher_note"></p>
+                    
+                  </div>
+                </div>
+                <br>
                 <table class="table table-bordered table-striped table-sm" id="mycourse">
                   <thead class="bg-dark text-light">
                     <tr>
@@ -123,7 +132,7 @@
       </div>
     </div>
     <?php include 'inc/footer.php';?>
-  <!-- EDIT SYLLABUS -->
+    <!-- EDIT SYLLABUS -->
     <form>
       <div class="modal fade" id="edit_syllabus_modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg" role="document">
@@ -190,7 +199,7 @@
         </div>
       </div>
     </form> <!-- END NEW FSP ITEM -->
-  <!-- EDIT FSP ITEM -->
+    <!-- EDIT FSP ITEM -->
     <form>
       <div class="modal fade" id="edit_fsp_modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg" role="document">
@@ -530,7 +539,6 @@
                 </div>
               </div>
               <div id="test_check_edit"></div>
-              <div id="after_teaching_div"></div>
             </div>
             <div class="modal-footer">
               <span class="ffb" id="esef"></span>
@@ -1026,16 +1034,50 @@
             success : function(data){
               var html = '',
                   syllabus = '', 
-                  edit_student_button= '', 
-                  after_teaching_button = '<input type="checkbox" name="after_teaching" id="after_teaching"', 
+                  edit_student_button= '',
+                  teacher_note='',
                   i;
               for(i=0;i<data.length;i++){
                 syllabus += '<small>Syllabus for </small>' + data[i].program;
-              edit_student_button += '<a title="Edit" href="javascript:void(0);" class="btn btn-info tooltip-bottom student_info_edit" data-grp="'+data[i].grp+'" data-pn="'+data[i].pin+'" data-cn="'+data[i].complete_name+'" data-nn="'+data[i].nick_name+'" data-ad="'+data[i].address+'" data-pb="'+data[i].place_of_birth+'" data-db="'+($.format.date(data[i].date_of_birth, "yyyy-MM-dd"))+'" data-ph="'+data[i].phone+'"data-cnst2="'+data[i].cnst2+'"data-nnst2="'+data[i].nnst2+'"data-adrst2="'+data[i].adrst2+'"data-pobst2="'+data[i].pobst2+'"data-dobst2="'+($.format.date(data[i].dobst2, "yyyy-MM-dd"))+'"data-phst2="'+data[i].phst2+
-                 '"data-cnst3="'+data[i].cnst3+'"data-nnst3="'+data[i].nnst3+'"data-adrst3="'+data[i].adrst3+'"data-pobst3="'+data[i].pobst3+'"data-dobst3="'+($.format.date(data[i].dobst3, "yyyy-MM-dd"))+'"data-phst3="'+data[i].phst3+
-                
-                 '"data-cnst4="'+data[i].cnst4+'"data-nnst4="'+data[i].nnst4+'"data-adrst4="'+data[i].adrst4+'"data-pobst4="'+data[i].pobst4+'"data-dobst4="'+($.format.date(data[i].dobst4, "yyyy-MM-dd"))+'"data-phst4="'+data[i].phst4+
-                 '"data-pr="'+data[i].program+'"data-pd="'+data[i].program_duration+'"data-sd="'+($.format.date(data[i].starting_date, "yyyy-MM-dd"))+'"data-re="'+data[i].reason+'"data-ta="'+data[i].target+'" data-di="'+data[i].difficulties+'"data-bg="'+data[i].bground+'"data-si="'+data[i].self_introduction+'" data-wp="'+data[i].weakness_point+'"data-ap="'+data[i].action_plan+'" data-fsp="'+data[i].fsp+'"><i class="fas fa-user-edit fa-fw"></i></a>'; 
+                edit_student_button += '<a title="Edit" href="javascript:void(0);" '+
+                  'class="btn btn-info tooltip-bottom student_info_edit"'+
+                  'data-grp="'+data[i].grp+'" '+
+                  'data-pn="'+data[i].pin+'" '+
+                  'data-cn="'+data[i].complete_name+'" '+
+                  'data-nn="'+data[i].nick_name+'" '+
+                  'data-ad="'+data[i].address+'" '+
+                  'data-pb="'+data[i].place_of_birth+'" '+
+                  'data-db="'+($.format.date(data[i].date_of_birth, "yyyy-MM-dd"))+'" '+
+                  'data-ph="'+data[i].phone+'"'+
+                 'data-cnst2="'+data[i].cnst2+'"'+
+                 'data-nnst2="'+data[i].nnst2+'"'+
+                  'data-adrst2="'+data[i].adrst2+'"'+
+                  'data-pobst2="'+data[i].pobst2+'"'+
+                  'data-dobst2="'+($.format.date(data[i].dobst2, "yyyy-MM-dd"))+'"'+
+                  'data-phst2="'+data[i].phst2+'"'+
+                  'data-cnst3="'+data[i].cnst3+'"'+
+                  'data-nnst3="'+data[i].nnst3+'"'+
+                  'data-adrst3="'+data[i].adrst3+'"'+
+                  'data-pobst3="'+data[i].pobst3+'"'+
+                  'data-dobst3="'+($.format.date(data[i].dobst3, "yyyy-MM-dd"))+'"'+
+                  'data-phst3="'+data[i].phst3+'"'+
+                  'data-cnst4="'+data[i].cnst4+'"'+
+                  'data-nnst4="'+data[i].nnst4+'"'+
+                  'data-adrst4="'+data[i].adrst4+'"'+
+                  'data-pobst4="'+data[i].pobst4+'"'+
+                  'data-dobst4="'+($.format.date(data[i].dobst4, "yyyy-MM-dd"))+'"'+
+                  'data-phst4="'+data[i].phst4+'"'+
+                  'data-pr="'+data[i].program+'"'+
+                  'data-pd="'+data[i].program_duration+'"'+
+                  'data-sd="'+($.format.date(data[i].starting_date, "yyyy-MM-dd"))+'"'+
+                  'data-re="'+data[i].reason+'"'+
+                  'data-ta="'+data[i].target+'" '+
+                  'data-di="'+data[i].difficulties+'"'+
+                  'data-bg="'+data[i].bground+'"'+
+                  'data-si="'+data[i].self_introduction+'" '+
+                  'data-wp="'+data[i].weakness_point+'"'+
+                  'data-ap="'+data[i].action_plan+'" '+
+                  'data-fsp="'+data[i].fsp+'"><i class="fas fa-user-edit fa-fw"></i></a>'; 
                 
                 if(data[i].grp!=''){
                   html += '<li class="list-group-item tooltip-bottom" title="Group study" style="background-color:gray;color:white;"><span style="font-variant-caps: all-small-caps;font-size: x-large;">'+data[i].grp+'</span></li>';
@@ -1128,27 +1170,22 @@
                         '<li class="list-group-item tooltip-bottom" title="Action Plan">' + 
                           '<i style="color:rgb(0,120,80);" class="fa fa-wrench fa-fw fa-lg"></i>' + data[i].action_plan + 
                         '</li>';
+                teacher_note += data[i].note;
                 if (data[i].fsp == 'yes'){
                   $('#fsp_tab').css('display','block');
                   get_fsp();
                  
                 }
-                if (data[i].after_teaching == 'yes') {
-                  after_teaching_button += '';
-                } else {
-                  after_teaching_button += 'checked disabled';
-                }
-                after_teaching_button += '> <label for="after_teaching">Remove from after teaching list.</label>';
               }
               $('#student_info').html(html);
               $('#syllabus_tab_header').html(syllabus);
               $('#edit_student_span').html(edit_student_button);
-               $('#after_teaching_div').html(after_teaching_button);
+              $('#teacher_note').html(teacher_note);
             }
           });
         }
-      $('#edit_student_span').on('click','.student_info_edit', function(){
-        var grp=$(this).data('grp'),
+        $('#edit_student_span').on('click','.student_info_edit', function(){
+          var grp=$(this).data('grp'),
               pn=$(this).data('pn'),
               cn=$(this).data('cn'),
               nn=$(this).data('nn'),
@@ -1186,8 +1223,8 @@
               ap=$(this).data('ap'),
               fsp = $(this).data('fsp'),
               fsp_button = '<input type="checkbox" name="fsp" id="fsp"' ;
-          
-          
+
+
           $('#esm').modal('show');
           $('[name="pn_e"]').val(pn);
           $('[name="cn_e"]').val(cn);
@@ -1270,141 +1307,118 @@
         });
         
         $('#update_student_btn').on('click', function(){
-        var bck = 'background-color',clr = '#fbe2e6',
-            pn=$('#pn_e').val(),
-            cn=$('#cn_e').val(),nn=$('#nn_e').val(),ad=$('#ad_e').val(),pb=$('#pb_e').val(),db=$('#db_e').val(),ph=$('#ph_e').val(),
-            grp=$('#grp_e').val(),
-            
-            cn2=$('#cnst2_e').val(),nn2=$('#nnst2_e').val(),ad2=$('#adrst2_e').val(),pb2=$('#pbst2_e').val(),          db2=$('#dbst2_e').val(),ph2=$('#phst2_e').val(),
-            cn3=$('#cnst3_e').val(),nn3=$('#nnst3_e').val(),
-          ad3=$('#adrst3_e').val(),pb3=$('#pbst3_e').val(),
-          db3=$('#dbst3_e').val(),ph3=$('#phst3_e').val(),
-          cn4=$('#cnst4_e').val(),nn4=$('#nnst4_e').val(),
-          ad4=$('#adrst4_e').val(),pb4=$('#pbst4_e').val(),
-          db4=$('#dbst4_e').val(),ph4=$('#phst4_e').val(),
-          pr=$('#pr2').val(),pd=$('#pd2').val(),
-          sd=$('#sd2').val(),re=$('#re2').val(),
-          ta=$('#ta2').val(),di=$('#di2').val(),
-          bg=$('#bg2').val(),si=$('#si2').val(),
-          wp=$('#wp2').val(),ap=$('#ap2').val(),
-            fsp='';
-        if ($('#fsp').is(':checked')){fsp='yes';}else{fsp='';}
-        if(cn==''|| ad==''|| db==''|| ph==''|| pr==''|| pd==''){ 
-         console.log('form incomplete');
-          $('#esf').addClass('alert alert-danger');
-          $('#esf').html('Please fill out all required fields');
-          if(cn==''){$('#cn_e').css(bck, clr);}
-          if(ad==''){$('#ad_e').css(bck, clr);}
-          if(db==''){$('#db_e').css(bck, clr);}
-          if(ph==''){$('#ph_e').css(bck, clr);}
-          if(pr==''){$('#pr_e').css(bck, clr);}
-          if(pd==''){$('#pd_e').css(bck, clr);}
-        } else { 
-          if(isNaN(ph)){ 
-            console.log('phone not number');
+          var bck = 'background-color', clr = '#fbe2e6', pn=$('#pn_e').val(), cn=$('#cn_e').val(), nn=$('#nn_e').val(), ad=$('#ad_e').val(), pb=$('#pb_e').val(), db=$('#db_e').val(), ph=$('#ph_e').val(), grp=$('#grp_e').val(), cn2=$('#cnst2_e').val(), nn2=$('#nnst2_e').val(), ad2=$('#adrst2_e').val(), pb2=$('#pbst2_e').val(), db2=$('#dbst2_e').val(), ph2=$('#phst2_e').val(), cn3=$('#cnst3_e').val(), nn3=$('#nnst3_e').val(), ad3=$('#adrst3_e').val(), pb3=$('#pbst3_e').val(), db3=$('#dbst3_e').val(), ph3=$('#phst3_e').val(), cn4=$('#cnst4_e').val(), nn4=$('#nnst4_e').val(), ad4=$('#adrst4_e').val(), pb4=$('#pbst4_e').val(), db4=$('#dbst4_e').val(), ph4=$('#phst4_e').val(), pr=$('#pr2').val(), pd=$('#pd2').val(), sd=$('#sd2').val(), re=$('#re2').val(), ta=$('#ta2').val(), di=$('#di2').val(), bg=$('#bg2').val(), si=$('#si2').val(), wp=$('#wp2').val(), ap=$('#ap2').val(), fsp='';
+          if ($('#fsp').is(':checked')){fsp='yes';}else{fsp='';}
+          if(cn==''|| ad==''|| db==''|| ph==''|| pr==''|| pd==''){ 
             $('#esf').addClass('alert alert-danger');
-            $('#esf').html('Phone must only be number!');
-            $('#ph_e').css(bck, clr);
+            $('#esf').html('Please fill out all required fields');
+            if(cn==''){$('#cn_e').css(bck, clr);}
+            if(ad==''){$('#ad_e').css(bck, clr);}
+            if(db==''){$('#db_e').css(bck, clr);}
+            if(ph==''){$('#ph_e').css(bck, clr);}
+            if(pr==''){$('#pr_e').css(bck, clr);}
+            if(pd==''){$('#pd_e').css(bck, clr);}
           } else { 
-            if(isNaN(pd)){ 
-              console.log('duration not number');
+            if(isNaN(ph)){ 
               $('#esf').addClass('alert alert-danger');
-              $('#esf').html('Program duration must only be number!');
-              $('#pd_e').css(bck, clr);
+              $('#esf').html('Phone must only be number!');
+              $('#ph_e').css(bck, clr);
             } else { 
-              if($('#student2_e').css('display')==='block'){ 
-                if(cn2==''||ad2==''||db2==''||ph2==''){
-                  $('#esf').addClass('alert alert-danger');
-                  $('#esf').html('Please fill out all required fields!');
-                  console.log('student 2 incomplete');
-                  if(cn2==''){
-                    $('#cnst2_e').css(bck,clr);
-                  }
-                  if(ad2==''){
-                    $('#adrst2_e').css(bck,clr);
-                  }
-                  if(db2==''){
-                    $('#dbst2_e').css(bck,clr);
-                  }
-                  if(ph2==''){
-                    $('#phst2_e').css(bck,clr);
-                  }
-                } else{ 
-                  if(isNaN(ph2)){
-                    console.log('phone 2 is not number');
+              if(isNaN(pd)){ 
+                $('#esf').addClass('alert alert-danger');
+                $('#esf').html('Program duration must only be number!');
+                $('#pd_e').css(bck, clr);
+              } else { 
+                if($('#student2_e').css('display')==='block'){ 
+                  if(cn2==''||ad2==''||db2==''||ph2==''){
                     $('#esf').addClass('alert alert-danger');
-                    $('#esf').html('Phone must only be number!');
-                    $('#phst2_e').css(bck,clr);
+                    $('#esf').html('Please fill out all required fields!');
+                    if(cn2==''){
+                      $('#cnst2_e').css(bck,clr);
+                    }
+                    if(ad2==''){
+                      $('#adrst2_e').css(bck,clr);
+                    }
+                    if(db2==''){
+                      $('#dbst2_e').css(bck,clr);
+                    }
+                    if(ph2==''){
+                      $('#phst2_e').css(bck,clr);
+                    }
                   } else{ 
-                    if($('#student3_e').css('display')==='block'){
-                      if(cn3==''||ad3==''||db3==''||ph3==''){ 
-                        $('#esf').addClass('alert alert-danger');
-                        $('#esf').html('Please fill out all required fields!');
-                        if(cn3==''){
-                          $('#cnst3_e').css(bck,clr);
-                        }
-                        if(ad3==''){
-                          $('#adrst3_e').css(bck,clr);
-                        }
-                        if(db3==''){
-                          $('#dbst3_e').css(bck,clr);
-                        }
-                        if(ph3==''){
-                          $('#phst3_e').css(bck,clr);
-                        }
-                      } else{ 
-                        if(isNaN(ph3)){
+                    if(isNaN(ph2)){
+                      $('#esf').addClass('alert alert-danger');
+                      $('#esf').html('Phone must only be number!');
+                      $('#phst2_e').css(bck,clr);
+                    } else{ 
+                      if($('#student3_e').css('display')==='block'){
+                        if(cn3==''||ad3==''||db3==''||ph3==''){ 
                           $('#esf').addClass('alert alert-danger');
-                          $('#esf').html('Phone must only be number!');
-                          $('#phst3_e').css(bck,clr);
+                          $('#esf').html('Please fill out all required fields!');
+                          if(cn3==''){
+                            $('#cnst3_e').css(bck,clr);
+                          }
+                          if(ad3==''){
+                            $('#adrst3_e').css(bck,clr);
+                          }
+                          if(db3==''){
+                            $('#dbst3_e').css(bck,clr);
+                          }
+                          if(ph3==''){
+                            $('#phst3_e').css(bck,clr);
+                          }
                         } else{ 
-                          if($('#student4_e').css('display')==='block'){ 
-                            if(cn4==''||ad4==''||db4==""||ph4==''){ 
-                              $('#esf').addClass('alert alert-danger');
-                              $('#esf').html('Please fill out all required fields!');
-                              if(cn4==''){
-                                $('#cnst4_e').css(bck,clr);
-                              }
-                              if(ad4==''){
-                                $('#adrst4_e').css(bck,clr);
-                              }
-                              if(db4==''){
-                                $('#dbst4_e').css(bck,clr);
-                              }
-                              if(ph4==''){
-                                $('#phst4_e').css(bck,clr);
+                          if(isNaN(ph3)){
+                            $('#esf').addClass('alert alert-danger');
+                            $('#esf').html('Phone must only be number!');
+                            $('#phst3_e').css(bck,clr);
+                          } else{ 
+                            if($('#student4_e').css('display')==='block'){ 
+                              if(cn4==''||ad4==''||db4==""||ph4==''){ 
+                                $('#esf').addClass('alert alert-danger');
+                                $('#esf').html('Please fill out all required fields!');
+                                if(cn4==''){
+                                  $('#cnst4_e').css(bck,clr);
+                                }
+                                if(ad4==''){
+                                  $('#adrst4_e').css(bck,clr);
+                                }
+                                if(db4==''){
+                                  $('#dbst4_e').css(bck,clr);
+                                }
+                                if(ph4==''){
+                                  $('#phst4_e').css(bck,clr);
+                                }
+                              } else { 
+                                if(isNaN(ph4)){ 
+                                  $('#esf').addClass('alert alert-danger');
+                                  $('#esf').html('Phone must only be number!');
+                                  $('#phst4_e').css(bck,clr);
+                                } else { 
+                                  update_student(pn, cn, nn, ad, pb, db, ph, grp, cn2, nn2, ad2, pb2, db2, ph2, cn3, nn3, ad3, pb3, db3, ph3, cn4, nn4, ad4, pb4, db4, ph4, pr, pd, sd, re, ta, di, bg, si, wp, ap, fsp);
+                                }
                               }
                             } else { 
-                              if(isNaN(ph4)){ 
-                                $('#esf').addClass('alert alert-danger');
-                                $('#esf').html('Phone must only be number!');
-                                $('#phst4_e').css(bck,clr);
-                              } else { 
-                                update_student(pn,cn,nn,ad,pb,db,ph,grp,cn2,nn2,ad2,pb2,db2,ph2,cn3,nn3,ad3,pb3,db3,ph3,cn4,nn4,ad4,pb4,db4,ph4,pr,pd,sd,re,ta,di,bg,si,wp,ap,fsp);
-                              }
-                            }
-                          } else { 
-                            cn4 = nn4 = pb4 = ad4 = ph4 = db4 = '';
-                           update_student(pn,cn,nn,ad,pb,db,ph,grp,cn2,nn2,ad2,pb2,db2,ph2,cn3,nn3,ad3,pb3,db3,ph3,cn4,nn4,ad4,pb4,db4,ph4,pr,pd,sd,re,ta,di,bg,si,wp,ap,fsp);
-                          } 
+                              cn4 = nn4 = pb4 = ad4 = ph4 = db4 = '';
+                             update_student(pn, cn, nn, ad, pb, db, ph, grp, cn2, nn2, ad2, pb2, db2, ph2, cn3, nn3, ad3, pb3, db3, ph3, cn4, nn4, ad4, pb4, db4, ph4, pr, pd, sd, re, ta, di, bg, si, wp, ap, fsp);
+                            } 
+                          }
                         }
+                      } else { 
+                        cn3=nn3=pb3=ad3=ph3=db3=cn4=nn4=pb4=ad4=ph4=db4='';
+                       update_student(pn, cn, nn, ad,pb, db, ph, grp, cn2, nn2, ad2, pb2, db2, ph2, cn3, nn3, ad3, pb3, db3, ph3, cn4, nn4, ad4, pb4, db4, ph4, pr, pd, sd, re, ta, di, bg, si, wp, ap, fsp);
                       }
-                    } else { 
-                      cn3=nn3=pb3=ad3=ph3=db3=cn4=nn4=pb4=ad4=ph4=db4='';
-                     update_student(pn,cn,nn,ad,pb,db,ph,grp,cn2,nn2,ad2,pb2,db2,ph2,cn3,nn3,ad3,pb3,db3,ph3,cn4,nn4,ad4,pb4,db4,ph4,pr,pd,sd,re,ta,di,bg,si,wp,ap,fsp);
                     }
                   }
+                } else { 
+                  cn2 = nn2 = pb2 = ad2 = ph2 = db2 = cn3 = nn3 = pb3 = ad3 = ph3 = db3 = cn4 = nn4 = pb4 = ad4= ph4= db4='';
+                 update_student(pn, cn, nn, ad, pb, db, ph, grp, cn2, nn2, ad2, pb2, db2, ph2, cn3, nn3, ad3, pb3, db3, ph3, cn4, nn4, ad4, pb4, db4, ph4, pr, pd, sd,re, ta, di, bg, si, wp, ap, fsp);
                 }
-              } else { 
-                cn2=nn2=pb2=ad2=ph2=db2=cn3=nn3=pb3=ad3=ph3=db3=cn4=nn4=pb4=ad4=ph4=db4='';
-               update_student(pn,cn,nn,ad,pb,db,ph,grp,cn2,nn2,ad2,pb2,db2,ph2,cn3,nn3,ad3,pb3,db3,ph3,cn4,nn4,ad4,pb4,db4,ph4,pr,pd,sd,re,ta,di,bg,si,wp,ap,fsp);
               }
             }
           }
-        }
-      });
-         function update_student(pn,cn,nn,ad,pb,db,ph,grp,cn2,nn2,ad2,pb2,db2,ph2,cn3,nn3,ad3,pb3,db3,ph3,cn4,nn4,ad4,pb4,db4,ph4,pr,pd,sd,re,ta,di,bg,si,wp,ap,fsp)
-        {
+        });
+        function update_student(pn, cn, nn, ad, pb, db, ph, grp, cn2, nn2, ad2, pb2, db2, ph2, cn3, nn3, ad3, pb3, db3, ph3, cn4, nn4, ad4, pb4, db4, ph4, pr, pd, sd, re, ta, di, bg, si, wp, ap, fsp) {
           $.ajax({
             type : "post",
             url: "<?php echo site_url('student/update');?>",
@@ -1415,8 +1429,7 @@
               $('#mystudents').DataTable().ajax.reload();
               get_student_detail();
             }
-          });
-           
+          });   
         }
         /* get course */
         $('#mycourse').DataTable({
@@ -1892,15 +1905,11 @@
               tn = $('#tn2').val(),
               otn = $('#otn2').val(),
               ot = $('#ot2').val(),
-              after_teaching = '',
+              
               bgc = 'background-color',
               clr = 'pink';
           if(tn!=''){if(tn!='Remedial'){test=tnu+" "+tn;}else{test=tnu+" "+tn+" of "+otn+" "+ot;}}else{test='';}
-          if($('#after_teaching').is(':checked')){
-            after_teaching='no';
-          }else{
-            after_teaching='yes';
-          }
+          
           if(cd==''||tc==''||du==''||ma==''||ev==''){
             if(tc==''){$('#tc2').css(bgc,clr);}
             if(cd==''){$('#cd2').css(bgc,clr);}
@@ -1946,7 +1955,7 @@
                               $('#esef').html("This test has been conducted in meeting "+data[0].meeting);
                             } else {
                               create_test_table(p,m);
-                              update_course(p,m,cd,tc,du,ma,ev,w,s,test,tnu,tn,otn,ot,after_teaching);
+                              update_course(p,m,cd,tc,du,ma,ev,w,s,test,tnu,tn,otn,ot);
                             }
                           }
                         });
@@ -1974,7 +1983,7 @@
                                   $('#esef').html("This remedial has been conducted in meeting "+data[0].meeting);
                                 } else {
                                   create_test_table(p,m);
-                                  update_course(p,m,cd,tc,du,ma,ev,w,s,test,tnu,tn,otn,ot,after_teaching);
+                                  update_course(p,m,cd,tc,du,ma,ev,w,s,test,tnu,tn,otn,ot);
                                 }
                               }
                             });
@@ -1984,14 +1993,14 @@
                     }
                   }
                 } else {
-                  update_course(p,m,cd,tc,du,ma,ev,w,s,test,tnu,tn,otn,ot,after_teaching);
+                  update_course(p,m,cd,tc,du,ma,ev,w,s,test,tnu,tn,otn,ot);
                 }
               }
             }
           }
           return false;
         });
-        function update_course(p,m,cd,tc,du,ma,ev,w,s,test,tnu,tn,otn,ot,after_teaching){
+        function update_course(p,m,cd,tc,du,ma,ev,w,s,test,tnu,tn,otn,ot){
           $.ajax({
             type:"POST",
             url:"<?php echo site_url('student_single/update_course')?>",
@@ -2000,7 +2009,7 @@
             success:function(data){
               $('#edit_session_modal').modal('hide');
               $('#mycourse').DataTable().ajax.reload();
-              set_aft(p,after_teaching);
+              
             }
           });
         }
@@ -2156,7 +2165,6 @@
               dataType : "JSON",
               data : {section: section, topic: topic, assign: assign, pin : pin},
               success : function(data){
-                console.log('topic '+section+'.'+topic+' assigned to '+assign);
                 get_all_syllabus();
                 show_syllabus();
               }
@@ -2178,14 +2186,12 @@
           var id = $(this).data('id'),
               stat = $(this).data('stat'),
               pin = "<?php echo $pin;?>";
-          console.log('pin is '+pin+', id is ' +id+ 'and status is '+ stat);
           $.ajax({
             type: "POST",
             url : "<?php echo site_url('student_single/check_syllabus');?>",
             dataType : "JSON",
             data : {id : id, stat: stat, pin : pin},
             success : function(data){
-              console.log('Updated');
               show_syllabus();
             }
           })
@@ -2204,7 +2210,6 @@
             $('#nff').html('Topic can\'t be empty!');
             $('#fsp_topic').css('background-color', 'pink');
           } else {
-            console.log("topic ="+ topic +", comment =" +comment+ "result = "+fsp_result);
            $.ajax({
               type : "POST",
               url : "<?php echo site_url('student_single/add_fsp');?>",
@@ -2248,12 +2253,10 @@
                 fsp_result = $('input[name="fsp_result_edit"]:checked').val();
           }
           if(topic == ''){
-            console.log('topic empty');
             $('#nff').addClass('alert alert-danger'); 
             $('#nff').html('Topic can\'t be empty!');
             $('#fsp_topic').css('background-color', 'pink');
           } else {
-            console.log(pin + " "+ id+"  " + topic + " "+ fsp_result + " " + comment);
             $.ajax({
               type : "POST",
               url : "<?php echo site_url('student_single/update_fsp');?>",
@@ -2262,7 +2265,6 @@
                 pin: pin, id: id, topic: topic, fsp_result: fsp_result, comment: comment
               },
               success: function(data){
-                console.log('updated');
                 $('#edit_fsp_modal').modal('hide');
                 get_fsp();
               }

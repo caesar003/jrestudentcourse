@@ -13,4 +13,19 @@ class After_teaching_model extends CI_Model{
     $query = $this->db->get($course_table);
     return $query->result();
   }
+  function remove(){
+    $pin = $this->input->post('pin');
+    $this->db->where('pin', $pin);
+    $this->db->set('after_teaching','');
+    $query = $this->db->update('students');
+    return $query;
+  }
+  function update_note(){
+    $pin = $this->input->post('pin');
+    $str = $this->input->post('str');
+    $this->db->where('pin', $pin);
+    $this->db->set('note', $str);
+    $query = $this->db->update('students');
+    return $query;
+  }
 }

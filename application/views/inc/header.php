@@ -1,7 +1,8 @@
 <?php $user=$this->session->userdata('username');?>
 <!DOCTYPE html>
 <html lang="en-us">
-    <head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"> 
+    <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8"> 
       <?php include 'styles.php';?>
     </head> 
     <body>
@@ -22,7 +23,7 @@
               </div>
             </li>
             <li class="nav-item">
-              <a href="after_teaching" class="nav-link">After Teaching </a>
+              <a href="<?php echo site_url('after_teaching');?>" class="nav-link">After Teaching </a>
             </li>
           </ul> 
         </div>

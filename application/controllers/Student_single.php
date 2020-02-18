@@ -18,7 +18,7 @@ class Student_single extends CI_Controller{
     } else {
         $data['title'] = "Not found!";
         $data['pin'] = $pin;
-        $this->load->view('pin_not_exists.php',$data);
+        $this->load->view('pin_not_exists',$data);
     }
   }
   function get_student_info(){
