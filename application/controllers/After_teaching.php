@@ -11,12 +11,12 @@ class After_teaching extends CI_Controller{
   /* Initiated as the page loaded */
   function index(){
     
-    if($this->session->userdata('level')!==17){
+    if($this->session->userdata('level')==17){
       $data['title'] = "After Teaching | JRE Online Student Course";
-      $this->load->view('unauthorized', $data);
+      $this->load->view('after_teaching_view', $data);
     } else {
       $data['title'] =  "Access forbidden";
-      $this->load->view('after_teaching_view', $data);
+      $this->load->view('unauthorized', $data);
     }
     
   }

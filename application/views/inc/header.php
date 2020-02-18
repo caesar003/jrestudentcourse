@@ -22,9 +22,11 @@
                 <a class="dropdown-item" href="<?php echo site_url('reset_password');?>"><i class="fas fa-key"></i> Reset Password</a> 
               </div>
             </li>
+            <?php if($this->session->userdata('level')==17):?>
             <li class="nav-item">
               <a href="<?php echo site_url('after_teaching');?>" class="nav-link">After Teaching </a>
             </li>
+            <?php endif;?>
           </ul> 
         </div>
       </nav>
