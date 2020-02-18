@@ -160,7 +160,7 @@
                           '<div class="card-body">'+
                             '<span class="student_info_item"> Name:</span> '+ cnst4+' - '+ nnst4+'<br>' +
                             '<span class="student_info_item"> Address:</span> ' + adrst4 +'<br>' +
-                            '<span class="student_info_item"> PDOB:</span> '+ pobst4+', '+ dobst4+''+
+                            '<span class="student_info_item"> PDOB:</span> '+ pobst4+', '+ dobst4+'<br>'+
                             '<span class="student_info_item"> Phone:</span> '+ phst4 +'<br>'+
                           '</div>'+
                         '</div>'+
