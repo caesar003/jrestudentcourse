@@ -12,4 +12,12 @@ class After_teaching extends CI_Controller{
     $data['title'] = "After Teaching | JRE Online Student Course";
     $this->load->view('after_teaching_view', $data);
   }
+  function get_list(){
+    $data = $this->after_teaching_model->get_list();
+    echo json_encode($data);
+  }
+  function get_course(){
+    $data = $this->after_teaching_model->get_course();
+    echo json_encode($data);
+  }
 }

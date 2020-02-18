@@ -1,3 +1,27 @@
+span.student_detail_header {
+    font-size: larger;
+    font-weight: 600;
+    background-color: antiquewhite;
+    padding: 4px;
+    border-radius: 4px;
+}
+.student_detail_item:hover {
+    font-size: large;
+    background-color: brown;
+    color: white;
+    cursor: pointer;
+    padding: 4px;
+    border-radius: 10%;
+}
+.aft_list_item:hover {
+    color: green;
+    font-size: larger;
+    background-color: aquamarine;
+}
+
+.aft_list_item {
+    cursor: pointer;
+}
 .student_header {
     font-weight: 600;
     font-style: oblique;
