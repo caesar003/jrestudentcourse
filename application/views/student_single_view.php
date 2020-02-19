@@ -39,7 +39,7 @@
               <li class="nav-item" id="fsp_tab">
                 <a class="nav-link" id="pills-fsp-tab" data-toggle="pill" href="#pills-fsp" role="tab" aria-controls="pills-fsp" aria-selected="false">FSP</a>
               </li>
-            </ul><!-- END TABS -->
+            </ul><!-- END TABS --> <!-- this is a comment -->
             <!-- TABS CONTENTS -->
             <div class="tab-content" id="pills-tabContent">
               <!-- COURSE -->
