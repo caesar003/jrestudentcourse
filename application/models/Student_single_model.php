@@ -20,17 +20,45 @@ class Student_single_model extends CI_Model{
   }
   function get_syllabus(){
     $pin = $this->input->post('pin');
-    $syllabus_table = "syll_".$pin;
+    $prg = $this->input->post('prg');
+    if($prg == 1){
+      $syllabus_master = "syll_kids";
+    } else if($prg == 2) {
+      $syllabus_master = "syll_elementary";
+    } else if($prg == 3){
+      $syllabus_master = "syll_junior";
+    } else if($prg == 4){
+      $syllabus_master = "syll_senior";
+    } else{
+      $syllabus_master = "syll_general";
+    }
+    $syllabus_table = "sl_".$pin;
     
     $this->db->select('*');
     $this->db->from($syllabus_table);
-    $this->db->where('assign', '1');
-    $this->db->join('syllabus_master', 'syllabus_master.id = '.$syllabus_table.'.id');
+    $this->db->where('assigned', '1');
+    $this->db->join($syllabus_master, $syllabus_master.'.id = '.$syllabus_table.'.id');
     $this->db->order_by('section', 'asc');
     $this->db->order_by('topic', 'asc');
     $this->db->order_by('ind', 'asc');
     $result = $this->db->get();
     return $result->result();
+  }
+  function get_syll(){
+    $id = $this->input->post('id');
+    if($id == 1){
+      $syllabus = "syll_kids";
+    } else if($id==2){
+      $syllabus = "syll_elementary";
+    } else if($id==3){
+      $syllabus = "syll_junior";
+    } else if($id==4){
+      $syllabus = "syll_senior";
+    } else {
+      $syllabus = "syll_general";
+    }
+    $query = $this->db->get($syllabus);
+    return $query->result();
   }
   function get_tests(){
     $pin = $this->input->get('pin');

@@ -33,6 +33,10 @@ class Student_single extends CI_Controller{
     $data = $this->student_single_model->get_syllabus();
     echo json_encode($data);
   }
+  function get_syll(){
+    $data = $this->student_single_model->get_syll();
+    echo json_encode($data);
+  }
   function get_tests(){
     $data= $this->student_single_model->get_tests();
     echo json_encode($data);

@@ -1,3 +1,14 @@
+.highlighted {
+    background-color: beige;
+    color: gray;
+    font-weight: 500;
+}
+span.select_syll_section:hover {
+    background-color: beige;
+    color: gray;
+    font-weight: 500;
+    cursor: pointer;
+}
 span.student_detail_header {
     font-size: larger;
     font-weight: 600;
@@ -33,7 +44,6 @@ span.student_info_item {
 .student_header {
     font-weight: 600;
     font-style: oblique;
-    font-size: larger;
     background-color: darkkhaki;
     color: whitesmoke;
 }
