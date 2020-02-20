@@ -1,3 +1,19 @@
+#show_topic ul {
+    padding-left: 0;
+  list-style: none;
+}
+.act{
+  color: whitesmoke;
+    background-color: #2d6157;
+}
+.syllabus_section:hover {
+    color: whitesmoke;
+    background-color: #2d6157;
+}
+.syllabus_section {
+    cursor: pointer;
+    font-weight: 400;
+}
 .syllabus-level{
   cursor:pointer;
 }
@@ -9,17 +25,6 @@
 .highlighted {
     font-size: medium;
     color: beige !important;
-    background-color: darkblue;
-    padding: 4px;
-    border-radius: 4px;
-}
-
-a.syllabus-section {
-    color: darkblue;
-}
-.syllabus-section:hover{
-    font-size: medium;
-    color: beige;
     background-color: darkblue;
     padding: 4px;
     border-radius: 4px;

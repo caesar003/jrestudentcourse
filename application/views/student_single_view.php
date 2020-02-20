@@ -1020,7 +1020,7 @@
     <?php include 'inc/chat_dialog.php';?>
     <?php include 'inc/scripts.php';?>
     <?php include 'inc/chat-script.php';?>
-    <script type="text/javascript">
+    <script type="text/javascript">/* script syllabus */
       $(document).ready(function(){
         syll();
         function syll(){
@@ -1113,117 +1113,6 @@
                     <div class="col-8">
                       Syllabus for this student is still empty. Click one of these on the left side to see what are under them.</em>
                     </div>`;
-          //alert('no syllabus');
-         /* var msg =`<h3>There is nothing here yet, you might want check this one out. </h3>
-                    <div class="accordion col-4" id="level_selection">
-                      <div class="card">
-                        <div class="card-header" id="heading_kids">
-                          <h2 class="mb-0">
-                            <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapse_kids" aria-expanded="true" aria-controls="collapse_kids">
-                              Elementary - Kids
-                            </button>
-                          </h2>
-                        </div>
-                        <div id="collapse_kids" class="collapse" aria-labelledby="heading_kids" data-parent="#level_selection">
-                          <div class="card-body">
-                            <a class="syllabus-section" data-level="1" data-section="1" href="javascript:void(0);">INTRODUCTION </a> <br>
-                            <a class="syllabus-section" data-level="1" data-section="2" href="javascript:void(0);">SIMPLE COMMUNICATION</a> <br>
-                            <a class="syllabus-section" data-level="1" data-section="3" href="javascript:void(0);">PRACTICAL GRAMMAR</a> <br>
-                            <a class="syllabus-section" data-level="1" data-section="4" href="javascript:void(0);">PRE INTERMEDIATE</a> <br>
-                            <a class="syllabus-section" data-level="1" data-section="5" href="javascript:void(0);">EVERYDAY CONVERSATION </a> <br>
-                            <a class="syllabus-section" data-level="1" data-section="6" href="javascript:void(0);">INTERMEDIATE</a> <br>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="card">
-                        <div class="card-header" id="heading_elementary">
-                          <h2 class="mb-0">
-                            <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapse_elementary" aria-expanded="false" aria-controls="collapse_elementary">
-                              Elementary Student
-                            </button>
-                            <div class="float-right">
-                            <button type="button" class="btn btn-sm btn-info"><i class="fas fa-check-square"></i></button></div>
-                          </h2>
-                        </div>
-                        <div id="collapse_elementary" class="collapse" aria-labelledby="heading_elementary" data-parent="#level_selection">
-                          <div class="card-body">
-                            <a class="syllabus-section" data-level="2" data-section="1" href="javascript:void(0);"> INTRODUCTION </a><br>
-                            <a class="syllabus-section" data-level="2" data-section="2" href="javascript:void(0);"> SIMPLE COMMUNICATION </a><br>
-                            <a class="syllabus-section" data-level="2" data-section="3" href="javascript:void(0);"> PRACTICAL GRAMMAR </a><br>
-                            <a class="syllabus-section" data-level="2" data-section="4" href="javascript:void(0);"> PRE INTERMEDIATE </a><br>
-                            <a class="syllabus-section" data-level="2" data-section="5" href="javascript:void(0);"> EVERYDAY CONVERSATION </a><br>
-                            <a class="syllabus-section" data-level="2" data-section="6" href="javascript:void(0);"> INTERMEDIATE </a><br>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="card">
-                        <div class="card-header" id="heading_junior">
-                          <h2 class="mb-0">
-                            <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collpase_junior" aria-expanded="false" aria-controls="collpase_junior">
-                              Junior Student
-                            </button>
-                          </h2>
-                        </div>
-                        <div id="collpase_junior" class="collapse" aria-labelledby="heading_junior" data-parent="#level_selection">
-                          <div class="card-body">
-                            <a class="syllabus-section" data-level="3" data-section="1" href="javascript:void(0);"> INTRODUCTION</a><br>
-                            <a class="syllabus-section" data-level="3" data-section="2" href="javascript:void(0);"> SIMPLE COMMUNICATION</a><br>
-                            <a class="syllabus-section" data-level="3" data-section="3" href="javascript:void(0);"> PRACTICAL GRAMMAR 1 </a><br>
-                            <a class="syllabus-section" data-level="3" data-section="4" href="javascript:void(0);"> SIMPLE COMMUNICATION 2</a><br>
-                            <a class="syllabus-section" data-level="3" data-section="5" href="javascript:void(0);"> DAILY CONVERSATION 2</a><br>
-                            <a class="syllabus-section" data-level="3" data-section="6" href="javascript:void(0);"> PRACTICAL GRAMMAR 2</a><br>
-                            <a class="syllabus-section" data-level="3" data-section="7" href="javascript:void(0);"> PRACTICAL GRAMMAR 3</a><br>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="card">
-                        <div class="card-header" id="heading_senior">
-                          <h2 class="mb-0">
-                            <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapse_senior" aria-expanded="false" aria-controls="collapse_senior">
-                              Senior Student
-                            </button>
-                          </h2>
-                        </div>
-                        <div id="collapse_senior" class="collapse" aria-labelledby="heading_senior" data-parent="#level_selection">
-                          <div class="card-body">
-                            <a class="syllabus-section" data-level="4" data-section="1" href="javascript:void(0);"> INTRODUCTION </a><br>
-                            <a class="syllabus-section" data-level="4" data-section="2" href="javascript:void(0);"> VOCABULARY</a><br>
-                            <a class="syllabus-section" data-level="4" data-section="3" href="javascript:void(0);"> PRACTICAL GRAMMAR </a><br>
-                            <a class="syllabus-section" data-level="4" data-section="4" href="javascript:void(0);"> SIMPLE COMMUNICATION</a><br>
-                            <a class="syllabus-section" data-level="4" data-section="5" href="javascript:void(0);"> EVERYDAY CONVERSATION </a><br>
-                            <a class="syllabus-section" data-level="4" data-section="6" href="javascript:void(0);"> UPPER ENGLISH</a><br>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="card">
-                        <div class="card-header" id="heading_general">
-                          <h2 class="mb-0">
-                            <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapse_general" aria-expanded="false" aria-controls="collapse_general">
-                              General
-                            </button>
-                          </h2>
-                        </div>
-                        <div id="collapse_general" class="collapse" aria-labelledby="heading_general" data-parent="#level_selection">
-                          <div class="card-body">
-                            <a class="syllabus-section" data-level="5" data-section="1" href="javascript:void(0);">INTRODUCTION </a><br>
-                            <a class="syllabus-section" data-level="5" data-section="2" href="javascript:void(0);">VOCABULARY   </a><br>
-                            <a class="syllabus-section" data-level="5" data-section="3" href="javascript:void(0);">PRACTICAL GRAMMAR </a><br>
-                            <a class="syllabus-section" data-level="5" data-section="4" href="javascript:void(0);">SIMPLE COMMUNICATION </a><br>
-                            <a class="syllabus-section" data-level="5" data-section="5" href="javascript:void(0);">EVERYDAY CONVERSATION </a><br>
-                            <a class="syllabus-section" data-level="5" data-section="6" href="javascript:void(0);">UPPER ENGLISH </a><br>
-                            <a class="syllabus-section" data-level="5" data-section="7" href="javascript:void(0);">FORMAL ENGLISH </a><br>
-                            <a class="syllabus-section" data-level="5" data-section="8" href="javascript:void(0);">ESP (ENGLISH FOR SPECIFIC PURPOSE)</a><br>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col-8">
-                      <div id="topics" class="container">
-Syllabus for this student is still empty. Pick one or more sections from the same level then continue with the little button below. You may click on them to see what every sections of every level contains. <strong>Note: </strong><em>You may not take sections from two or more different level. </em>
-                      </div>
-                      <div class="container">
-<div class="float-right"><button type="button" class="btn btn-success btn-md">Proceed</button></div></div>
-                    </div>`; */
           $('#syllabus_tab_header').html(header);
           $('#show_syllabus').html(msg);
         }
@@ -1251,18 +1140,109 @@ Syllabus for this student is still empty. Pick one or more sections from the sam
               var msg =`<div class="col-4">
                           <ul class="list-group">`, i;
               for (i=0;i<data.length;i++){
-                msg += `<li class="list-group-item">${data[i].indicator}</li>`;
+                msg += `<li class="list-group-item syllabus_section" data-level="${level}" data-section="${data[i].sections}">${data[i].sections}. ${data[i].indicator} <span class="float-right"><input name="section_${data[i].sections}" id="section_${data[i].sections}" type="checkbox"></span></li>`;
               }
-              msg += `</ul>
-                      <button class="btn btn-sm btn-info go_back_btn" type="button">Go Back</button>
+              msg += `</ul> 
                     </div>
                     <div class="col-8">
+                      <div class="container">
+                        <input type="hidden" name="level" id="level" value="${level}">
+                        <button class="btn btn-sm btn-success go_back_btn" type="button">Go Back</button> 
+                        <button class="btn btn-sm btn-primary proceed_btn" id="proceed_btn" type="button">Continue</button>
+                      </div>
+                      <br>
+                      <div class="container" id="show_topic">
+                        Click on each item to see what are under them, and tick the little checkbox to continue. (Or you can simply leave 'em all unchecked and customize them at anytime you wish.)
+                      </div>
                     </div>`;
               $('#show_syllabus').html(msg);
               $('#syllabus_tab_header').html(header);
             }
           });
         });
+        $('#show_syllabus').on('click', '.syllabus_section', function(){
+          $(this).siblings().removeClass('act');
+          $(this).addClass('act');
+          var level = $(this).data('level'),
+              section = $(this).data('section');
+          $.ajax({
+            url:"<?php echo site_url('syllabus/get_topics');?>",
+            type : "post",
+            dataType : "json",
+            data : {level:level,section:section},
+            success : function(data){
+              var i, 
+                  html = '<ul>';
+              for(i=0;i<data.length;i++){
+                html += '<li>'+data[i].sections+'.'+data[i].topics+' - '+data[i].indicator+'</li>';
+              }
+              html += '</ul>';
+              $('#show_topic').html(html);
+            }
+          });
+        });
+        
+        $('#show_syllabus').on('click', '.proceed_btn', function(){
+          /* 1 el = 6
+             2 kid = 6 
+             3 junior 7
+             4 sen = 6
+             5 general = 8 
+           */
+          var level = $('#level').val(),
+              pin = "<?php echo $pin;?>";
+          if(level ==1||level==2||level==4){
+            var a = '',b ='', c ='', d ='', e ='', f ='';
+            if($('#section_1').is(':checked')){a =1;}
+            if($('#section_2').is(':checked')){b =2;}
+            if($('#section_3').is(':checked')){c =3;}
+            if($('#section_4').is(':checked')){d =4;}
+            if($('#section_5').is(':checked')){e =5;}
+            if($('#section_6').is(':checked')){f =6;}
+            $.ajax({
+              type : "post",
+              url : "<?php echo site_url('syllabus/insert');?>",
+              dataType : "<?php echo site_url();?>",
+              data : {pin:pin, level:level},
+              success : function(data){
+                console.log('syllabus inserted');
+              }
+            });
+            $.ajax({
+              type : "post",
+              url : "<?php echo site_url('syllabus/set_program');?>",
+              dataType : "json",
+              data : {pin:pin, level:level},
+              success : function(data){
+                console.log('program set');
+              }
+            });
+            $.ajax({
+              type : "post",
+              url : "<?php echo site_url('syllabus/assign');?>",
+              dataType : "json",
+              data : {pin: pin, section:section},
+              success : function(data){
+                console.log('section assigned');
+              }
+            });
+            var sections = [a,b,c,d,e,f];
+            var i;
+            for (i=0;i<sections.length;i++){
+              if(sections[i] != 0){
+                console.log(sections[i]);
+                // set program into students table
+                // set insert appropriate data sets to syllabus table
+                // assign the chosen sections
+              }
+            }
+          }/* else if(level==3){
+            
+          } else if(level==5){
+            
+          } */
+        });
+       
         $('#show_syllabus').on('click', '.go_back_btn',function(){
           console.log('go back');
           no_syllabus();
@@ -1291,8 +1271,6 @@ Syllabus for this student is still empty. Pick one or more sections from the sam
     <script type = "text/javascript" >
       $(document).ready(function() {
         get_student_detail();
-        //show_syllabus();
-        //get_all_syllabus();
         function get_student_detail(){
           var pin = "<?php echo $pin;?>";
           $.ajax({
@@ -1302,12 +1280,10 @@ Syllabus for this student is still empty. Pick one or more sections from the sam
             data : {pin:pin},
             success : function(data){
               var html = '',
-                  //syllabus = '', 
                   edit_student_button= '',
                   teacher_note='',
                   i;
               for(i=0;i<data.length;i++){
-                //syllabus += '<small>Syllabus for </small>' + data[i].program;
                 edit_student_button += '<a title="Edit" href="javascript:void(0);" '+
                   'class="btn btn-info tooltip-bottom student_info_edit"'+
                   'data-grp="'+data[i].grp+'" '+
@@ -1447,7 +1423,6 @@ Syllabus for this student is still empty. Pick one or more sections from the sam
                 }
               }
               $('#student_info').html(html);
-              //$('#syllabus_tab_header').html(syllabus);
               $('#edit_student_span').html(edit_student_button);
               $('#teacher_note').html(teacher_note);
             }
@@ -1732,19 +1707,7 @@ Syllabus for this student is still empty. Pick one or more sections from the sam
               }
             }
           ]
-        });        
-        /* SYLLABUS */
-        /*
-        -- Check if syllabus exists
-            --if yes
-              display it
-              put a button to customize it
-            -- if not 
-              show 'syllabus not exist'
-              show all the functionalities to create one.
-        */
-        
-       
+        });
         /* get tests */
         $('#my_tests').DataTable({
           responsive: true,
@@ -1830,9 +1793,17 @@ Syllabus for this student is still empty. Pick one or more sections from the sam
                 } else {
                   html += '<td></td>';
                 }
-                  html += '<td>'+data[i].comment+'</td>'+
-                          '<td><a class="fsp_item_edit btn btn-warning btn-sm" href="javascript:void(0);" data-id="'+data[i].id+'" data-fsp_result="'+data[i].fsp_result+'" data-material="'+data[i].material+'" data-comment="'+data[i].comment+'"><i class="fas fa-pencil-alt fa-fw"></i></a></td>'+
-                        '</tr>';
+                  html += `<td>${data[i].comment}</td>
+                            <td>
+                              <a class="fsp_item_edit btn btn-warning btn-sm" href="javascript:void(0);" 
+                                data-id="${data[i].id}"
+                                data-fsp_result="${data[i].fsp_result}"
+                                data-material="${data[i].material}"
+                                data-comment="${data[i].comment}">
+                                <i class="fas fa-pencil-alt fa-fw"></i>
+                              </a>
+                            </td>
+                          </tr>`;
               }
               $('#fsp_data').html(html);
             }

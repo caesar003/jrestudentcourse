@@ -39,7 +39,7 @@ class Syllabus_model extends CI_Model{
     $result = $this->db->get();
     return $result->result();
   }
- function get_sections(){
+  function get_sections(){
    $id= $this->input->post('level');
     //$section = $this->input->post('section')
     if($id == 1){
@@ -87,6 +87,14 @@ class Syllabus_model extends CI_Model{
     $this->db->where('id', $id);
     $result = $this->db->update($syllabus_table);
     return $result;
+  }
+  function set_program(){
+    $pin = $this->input->post('pin');
+    $program = $this->input->post('level');
+    $this->db->where('pin',$pin);
+    $this->db->set('prg', $program);
+    $query = $this->db->update('students');
+    return $query;
   }
   function check(){
     $pin = $this->input->post('pin');
