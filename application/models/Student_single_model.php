@@ -120,17 +120,7 @@ class Student_single_model extends CI_Model{
     $result=$this->db->insert($course_table, $data);
     return $result;
   }
-  function check_syllabus(){
-    $pin = $this->input->post('pin');
-    $id = $this->input->post('id');
-    $stat = $this->input->post('stat');
-    $syllabus_table = "syll_".$pin;
-    
-    $this->db->set('status', $stat);
-    $this->db->where('id', $id);
-    $result = $this->db->update($syllabus_table);
-    return $result;
-  }
+  
   function create_test(){
     $pin = $this->input->post('pin');
     $meeting = $this->input->post('meeting');

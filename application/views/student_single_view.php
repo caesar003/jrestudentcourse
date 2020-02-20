@@ -78,9 +78,9 @@
                 <h3>
                   <span id="syllabus_tab_header"></span>
                 </h3>
-                <p>work!.</p>
-                <div class="row" id="show_syllabus">
                 
+                <div class="row" id="show_syllabus">
+                  
                 </div>
               </div> <!-- END SYLLABUS -->
               <!-- TEST -->
@@ -1020,12 +1020,216 @@
     <?php include 'inc/chat_dialog.php';?>
     <?php include 'inc/scripts.php';?>
     <?php include 'inc/chat-script.php';?>
+    <script type="text/javascript">
+      $(document).ready(function(){
+        syll();
+        function syll(){
+          var pin = "<?php echo $pin;?>",
+              prg = "<?php echo $program_id;?>";
+          if(prg!=''){
+            show_syllabus(pin,prg);
+          } else {
+            no_syllabus();
+          }
+        } 
+        // show syllabus 
+        function show_syllabus(pin,prg) {
+          $.ajax({
+            type: 'post',
+            url: '<?php echo site_url('syllabus/get_syllabus')?>',
+            dataType: 'json',
+            data :{pin:pin, prg:prg},
+            success: function(data) {
+              var html = '', i;
+              for (i = 0; i < data.length; i++) {
+                if (data[i].topic == 0 && data[i].ind == 0) {
+                  html += '<div class="col-2 syll_section">' + 
+                            data[i].section + 
+                          '</div>' + 
+                          '<div class="col-10 syll_section">' +
+                            data[i].indicator+ 
+                          '</div>';
+                } else if (data[i].topic != 0 && data[i].ind == 0) { 
+                  html += '<div class="col-2 syll_topic">' + 
+                            data[i].section + '.' + data[i].topic + 
+                          '</div>' + 
+                          '<div class="col-10 syll_topic">' + 
+                            data[i].indicator + 
+                          '</div>';
+                } else { 
+                  if (data[i].status == 1) { 
+                    html += '<div class="col-2 syll_ind"><span class="topic_discussed">' + 
+                              data[i].section + '.' + data[i].topic + '.' + data[i].ind + 
+                            '</span></div>' + 
+                            '<div class="col-8 syll_ind">'+
+                              '<span class="topic_discussed">' + data[i].indicator + '</span>'+
+                            '</div>' + 
+                            '<div class="col-2 syll_ind">'+
+                            '<a href="javascript:void(0);" data-stat="0" data-id="'+data[i].id+'" class="btn btn-default btn-sm topic_check"><i class="fa fa-check-square fa-2x"></i></a>'+
+                            '</div>';
+                  } else {
+                    html += '<div class="col-2 syll_ind">' + 
+                              data[i].section + '.' + data[i].topic + '.' + data[i].ind + 
+                            '</div>' + 
+                            '<div class="col-8 syll_ind">' + 
+                              data[i].indicator + 
+                            '</div>' + 
+                            '<div class="col-2 syll_ind">'+
+                            '<a href="javascript:void(0);" data-stat="1" data-id="'+data[i].id+'" class="btn btn-default btn-sm topic_check"><i class="fa fa-square fa-2x"></i></a>'+
+                            '</div>';
+                  }
+                }
+              }
+              $('#show_syllabus').html(html);
+            }
+          });
+        }
+        /* check discussed topics */
+        $('#show_syllabus').on('click', '.topic_check', function(){
+          var id = $(this).data('id'),
+              stat = $(this).data('stat'),
+              pin = "<?php echo $pin;?>";
+          $.ajax({
+            type: "POST",
+            url : "<?php echo site_url('syllabus/check');?>",
+            dataType : "JSON",
+            data : {id : id, stat: stat, pin : pin},
+            success : function(data){
+              //show_syllabus();
+            }
+          })
+        });
+        function no_syllabus(){
+          //alert('no syllabus');
+          var msg =`<div class="accordion col-4" id="level_selection">
+                      <div class="card">
+                        <div class="card-header" id="heading_kids">
+                          <h2 class="mb-0">
+                            <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapse_kids" aria-expanded="true" aria-controls="collapse_kids">
+                              Elementary - Kids
+                            </button>
+                          </h2>
+                        </div>
+                        <div id="collapse_kids" class="collapse" aria-labelledby="heading_kids" data-parent="#level_selection">
+                          <div class="card-body">
+                            <a class="syllabus-section" data-level="1" data-section="1" href="javascript:void(0);">INTRODUCTION </a> <br>
+                            <a class="syllabus-section" data-level="1" data-section="2" href="javascript:void(0);">SIMPLE COMMUNICATION</a> <br>
+                            <a class="syllabus-section" data-level="1" data-section="3" href="javascript:void(0);">PRACTICAL GRAMMAR</a> <br>
+                            <a class="syllabus-section" data-level="1" data-section="4" href="javascript:void(0);">PRE INTERMEDIATE</a> <br>
+                            <a class="syllabus-section" data-level="1" data-section="5" href="javascript:void(0);">EVERYDAY CONVERSATION </a> <br>
+                            <a class="syllabus-section" data-level="1" data-section="6" href="javascript:void(0);">INTERMEDIATE</a> <br>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="card">
+                        <div class="card-header" id="heading_elementary">
+                          <h2 class="mb-0">
+                            <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapse_elementary" aria-expanded="false" aria-controls="collapse_elementary">
+                              Elementary Student
+                            </button>
+                          </h2>
+                        </div>
+                        <div id="collapse_elementary" class="collapse" aria-labelledby="heading_elementary" data-parent="#level_selection">
+                          <div class="card-body">
+                            <a class="syllabus-section" data-level="2" data-section="1" href="javascript:void(0);"> INTRODUCTION </a><br>
+                            <a class="syllabus-section" data-level="2" data-section="2" href="javascript:void(0);"> SIMPLE COMMUNICATION </a><br>
+                            <a class="syllabus-section" data-level="2" data-section="3" href="javascript:void(0);"> PRACTICAL GRAMMAR </a><br>
+                            <a class="syllabus-section" data-level="2" data-section="4" href="javascript:void(0);"> PRE INTERMEDIATE </a><br>
+                            <a class="syllabus-section" data-level="2" data-section="5" href="javascript:void(0);"> EVERYDAY CONVERSATION </a><br>
+                            <a class="syllabus-section" data-level="2" data-section="6" href="javascript:void(0);"> INTERMEDIATE </a><br>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="card">
+                        <div class="card-header" id="heading_junior">
+                          <h2 class="mb-0">
+                            <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collpase_junior" aria-expanded="false" aria-controls="collpase_junior">
+                              Junior Student
+                            </button>
+                          </h2>
+                        </div>
+                        <div id="collpase_junior" class="collapse" aria-labelledby="heading_junior" data-parent="#level_selection">
+                          <div class="card-body">
+                            <a class="syllabus-section" data-level="3" data-section="1" href="javascript:void(0);"> INTRODUCTION</a><br>
+                            <a class="syllabus-section" data-level="3" data-section="2" href="javascript:void(0);"> SIMPLE COMMUNICATION</a><br>
+                            <a class="syllabus-section" data-level="3" data-section="3" href="javascript:void(0);"> PRACTICAL GRAMMAR 1 </a><br>
+                            <a class="syllabus-section" data-level="3" data-section="4" href="javascript:void(0);"> SIMPLE COMMUNICATION 2</a><br>
+                            <a class="syllabus-section" data-level="3" data-section="5" href="javascript:void(0);"> DAILY CONVERSATION 2</a><br>
+                            <a class="syllabus-section" data-level="3" data-section="6" href="javascript:void(0);"> PRACTICAL GRAMMAR 2</a><br>
+                            <a class="syllabus-section" data-level="3" data-section="7" href="javascript:void(0);"> PRACTICAL GRAMMAR 3</a><br>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="card">
+                        <div class="card-header" id="heading_senior">
+                          <h2 class="mb-0">
+                            <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapse_senior" aria-expanded="false" aria-controls="collapse_senior">
+                              Senior Student
+                            </button>
+                          </h2>
+                        </div>
+                        <div id="collapse_senior" class="collapse" aria-labelledby="heading_senior" data-parent="#level_selection">
+                          <div class="card-body">
+                            <a class="syllabus-section" data-level="4" data-section="1" href="javascript:void(0);"> INTRODUCTION </a><br>
+                            <a class="syllabus-section" data-level="4" data-section="2" href="javascript:void(0);"> VOCABULARY</a><br>
+                            <a class="syllabus-section" data-level="4" data-section="3" href="javascript:void(0);"> PRACTICAL GRAMMAR </a><br>
+                            <a class="syllabus-section" data-level="4" data-section="4" href="javascript:void(0);"> SIMPLE COMMUNICATION</a><br>
+                            <a class="syllabus-section" data-level="4" data-section="5" href="javascript:void(0);"> EVERYDAY CONVERSATION </a><br>
+                            <a class="syllabus-section" data-level="4" data-section="6" href="javascript:void(0);"> UPPER ENGLISH</a><br>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="card">
+                        <div class="card-header" id="heading_general">
+                          <h2 class="mb-0">
+                            <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapse_general" aria-expanded="false" aria-controls="collapse_general">
+                              General
+                            </button>
+                          </h2>
+                        </div>
+                        <div id="collapse_general" class="collapse" aria-labelledby="heading_general" data-parent="#level_selection">
+                          <div class="card-body">
+                            <a class="syllabus-section" data-level="5" data-section="1" href="javascript:void(0);">INTRODUCTION </a><br>
+                            <a class="syllabus-section" data-level="5" data-section="2" href="javascript:void(0);">VOCABULARY   </a><br>
+                            <a class="syllabus-section" data-level="5" data-section="3" href="javascript:void(0);">PRACTICAL GRAMMAR </a><br>
+                            <a class="syllabus-section" data-level="5" data-section="4" href="javascript:void(0);">SIMPLE COMMUNICATION </a><br>
+                            <a class="syllabus-section" data-level="5" data-section="5" href="javascript:void(0);">EVERYDAY CONVERSATION </a><br>
+                            <a class="syllabus-section" data-level="5" data-section="6" href="javascript:void(0);">UPPER ENGLISH </a><br>
+                            <a class="syllabus-section" data-level="5" data-section="7" href="javascript:void(0);">FORMAL ENGLISH </a><br>
+                            <a class="syllabus-section" data-level="5" data-section="8" href="javascript:void(0);">ESP (ENGLISH FOR SPECIFIC PURPOSE)</a><br>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div id="topics" class="col-8">some text</div>`;
+          $('#show_syllabus').html(msg);
+        }
+        $('#show_syllabus').on('click','.syllabus-section', function(){
+          $(this).siblings().removeClass('highlighted');
+          $(this).addClass('highlighted');
+          var level = $(this).data('level');
+          var section = $(this).data('section');
+          $.ajax({
+            url:"<?php echo site_url('syllabus/get_topics');?>",
+            type : "post",
+            dataType : "json",
+            data : {level:level,section:section},
+            success :function(data){
+              var i, html ="";
+              for (i=0;i<data.length;i++){
+                html += data[i].sections+'.'+data[i].topics+' - '+data[i].indicator+'<br>';
+              }
+              $('#topics').html(html);
+            }
+          });
+        });        
+      });
+    </script>
     <script type = "text/javascript" >
       $(document).ready(function() {
         get_student_detail();
         //show_syllabus();
         //get_all_syllabus();
-        syll();
         function get_student_detail(){
           var pin = "<?php echo $pin;?>";
           $.ajax({
@@ -1465,10 +1669,7 @@
               }
             }
           ]
-        });
-        
-        
-        
+        });        
         /* SYLLABUS */
         /*
         -- Check if syllabus exists
@@ -1480,138 +1681,7 @@
               show all the functionalities to create one.
         */
         
-        function syll(){
-          var pin = "<?php echo $pin;?>",
-              prg = "<?php echo $program_id;?>";
-          if(prg!=''){
-            show_syllabus(pin,prg);
-          } else {
-            no_syllabus();
-          }
-        }
-        // show syllabus 
-        function show_syllabus(pin,prg) {
-          $.ajax({
-            type: 'post',
-            url: '<?php echo site_url('student_single/get_syllabus')?>',
-            dataType: 'json',
-            data :{pin:pin, prg:prg},
-            success: function(data) {
-              var html = '', i;
-              for (i = 0; i < data.length; i++) {
-                if (data[i].topic == 0 && data[i].ind == 0) {
-                  html += '<div class="col-2 syll_section">' + 
-                            data[i].section + 
-                          '</div>' + 
-                          '<div class="col-10 syll_section">' +
-                            data[i].indicator+ 
-                          '</div>';
-                } else if (data[i].topic != 0 && data[i].ind == 0) { 
-                  html += '<div class="col-2 syll_topic">' + 
-                            data[i].section + '.' + data[i].topic + 
-                          '</div>' + 
-                          '<div class="col-10 syll_topic">' + 
-                            data[i].indicator + 
-                          '</div>';
-                } else { 
-                  if (data[i].status == 1) { 
-                    html += '<div class="col-2 syll_ind"><span class="topic_discussed">' + 
-                              data[i].section + '.' + data[i].topic + '.' + data[i].ind + 
-                            '</span></div>' + 
-                            '<div class="col-8 syll_ind">'+
-                              '<span class="topic_discussed">' + data[i].indicator + '</span>'+
-                            '</div>' + 
-                            '<div class="col-2 syll_ind">'+
-                            '<a href="javascript:void(0);" data-stat="0" data-id="'+data[i].id+'" class="btn btn-default btn-sm topic_check"><i class="fa fa-check-square fa-2x"></i></a>'+
-                            '</div>';
-                  } else {
-                    html += '<div class="col-2 syll_ind">' + 
-                              data[i].section + '.' + data[i].topic + '.' + data[i].ind + 
-                            '</div>' + 
-                            '<div class="col-8 syll_ind">' + 
-                              data[i].indicator + 
-                            '</div>' + 
-                            '<div class="col-2 syll_ind">'+
-                            '<a href="javascript:void(0);" data-stat="1" data-id="'+data[i].id+'" class="btn btn-default btn-sm topic_check"><i class="fa fa-square fa-2x"></i></a>'+
-                            '</div>';
-                  }
-                }
-              }
-              $('#show_syllabus').html(html);
-            }
-          });
-        }
-        /* check discussed topics */
-        $('#show_syllabus').on('click', '.topic_check', function(){
-          var id = $(this).data('id'),
-              stat = $(this).data('stat'),
-              pin = "<?php echo $pin;?>";
-          $.ajax({
-            type: "POST",
-            url : "<?php echo site_url('student_single/check_syllabus');?>",
-            dataType : "JSON",
-            data : {id : id, stat: stat, pin : pin},
-            success : function(data){
-              show_syllabus();
-            }
-          })
-        });
-        /* no syllabus */
-        function no_syllabus(){
-          var msg = '<div class="container">There no syllabus for this student yet, you might want to hit one of these buttons to give them one.</div> <br>'+
-              '<form>'+
-              '<div class="container">'+
-                  '<div class="btn-group" role="group" aria-label="Choose Syllabus">'+
-                    '<button type="button" class="btn btn-lg btn-primary select_syll_btn" data-id="1">Elementary - Kids</button>'+
-                    '<button type="button" class="btn btn-lg btn-secondary select_syll_btn" data-id="2">Elementary</button>'+
-                    '<button type="button" class="btn btn-lg btn-success select_syll_btn" data-id="3">Junior Student </button>'+
-                    '<button type="button" class="btn btn-lg btn-info select_syll_btn" data-id="4">Senior Student </button>'+
-                    '<button type="button" class="btn btn-lg btn-warning select_syll_btn" data-id="5">General English </button>'+
-                  '</div>'+
-                '</div>'
-              '</form>';
-          $('#show_syllabus').html(msg);
-          $('#syllabus_tab_header').html('There is nothing here')
-        }
-        $('#show_syllabus').on('click', '.select_syll_btn', function(){
-          var id=$(this).data('id');
-          console.log(id);
-          $.ajax({
-            url:"<?php echo site_url('student_single/get_syll');?>",
-            type : "post",
-            dataType : "json",
-            data : {id:id},
-            success : function(data){
-              var i,
-                  html ='<div class="container">';
-              for (i=0;i<data.length;i++){
-                if(data[i].topic==0&&data[i].ind==0){
-                  html += '<span class="select_syll_section" data-level="'+id+'" data-section="'+data[i].section+'"> | '+data[i].indicator+' | </span>';
-                }
-              }
-              html += '</div><div id="topics" class="container">some text</div>';
-              $('#show_syllabus').html(html);
-            }
-          });
-        });
-        $('#show_syllabus').on('click', '.select_syll_section', function(){
-          $(this).siblings().removeClass('highlighted');
-          $(this).addClass('highlighted');
-          //$('.select_syll_btn').removeClass('highlighted');
-          //$(this).addClass('highlighted');
-          var pin="<?php echo $pin;?>", level = $(this).data('level'),section=$(this).data('section');
-          console.log(level+' '+section);
-          $('#topics').html(level+' '+section+' '+pin);
-          $.ajax({
-            type : "post",
-            url : "<?php echo site_url();?>",
-            dataType : "json",
-            data : {pin:pin, level: level, section: section},
-            success : function(data){
-              
-            }
-          });
-        });
+       
         /* get tests */
         $('#my_tests').DataTable({
           responsive: true,

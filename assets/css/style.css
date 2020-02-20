@@ -1,13 +1,20 @@
 .highlighted {
-    background-color: beige;
-    color: gray;
-    font-weight: 500;
+    font-size: medium;
+    color: beige !important;
+    background-color: darkblue;
+    padding: 4px;
+    border-radius: 4px;
 }
-span.select_syll_section:hover {
-    background-color: beige;
-    color: gray;
-    font-weight: 500;
-    cursor: pointer;
+
+a.syllabus-section {
+    color: darkblue;
+}
+.syllabus-section:hover{
+    font-size: medium;
+    color: beige;
+    background-color: darkblue;
+    padding: 4px;
+    border-radius: 4px;
 }
 span.student_detail_header {
     font-size: larger;
