@@ -40,7 +40,7 @@ class Syllabus_model extends CI_Model{
     return $result->result();
   }
  function get_sections(){
-   $id= $this->input->post('id');
+   $id= $this->input->post('level');
     //$section = $this->input->post('section')
     if($id == 1){
       $syllabus_master = "syll_kids";

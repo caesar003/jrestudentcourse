@@ -1,3 +1,11 @@
+.syllabus-level{
+  cursor:pointer;
+}
+.syllabus-level:hover{
+  font-size: larger;
+  color:brown;
+  background-color: azure;
+}
 .highlighted {
     font-size: medium;
     color: beige !important;

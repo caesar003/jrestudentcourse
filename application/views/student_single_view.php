@@ -1100,8 +1100,22 @@
           })
         });
         function no_syllabus(){
+          var header='Choose the syllabus',
+              msg = `<div class="col-4">
+                      <ul class="list-group">
+                        <li class="list-group-item syllabus-level" data-level="1">Elementary - Kids</li>
+                        <li class="list-group-item syllabus-level" data-level="2">Elementary</li>
+                        <li class="list-group-item syllabus-level" data-level="3">Junior Student</li>
+                        <li class="list-group-item syllabus-level" data-level="4">Senior Student</li>
+                        <li class="list-group-item syllabus-level" data-level="5">General English</li>
+                      </ul>
+                    </div>
+                    <div class="col-8">
+                      Syllabus for this student is still empty. Click one of these on the left side to see what are under them.</em>
+                    </div>`;
           //alert('no syllabus');
-          var msg =`<div class="accordion col-4" id="level_selection">
+         /* var msg =`<h3>There is nothing here yet, you might want check this one out. </h3>
+                    <div class="accordion col-4" id="level_selection">
                       <div class="card">
                         <div class="card-header" id="heading_kids">
                           <h2 class="mb-0">
@@ -1127,6 +1141,8 @@
                             <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapse_elementary" aria-expanded="false" aria-controls="collapse_elementary">
                               Elementary Student
                             </button>
+                            <div class="float-right">
+                            <button type="button" class="btn btn-sm btn-info"><i class="fas fa-check-square"></i></button></div>
                           </h2>
                         </div>
                         <div id="collapse_elementary" class="collapse" aria-labelledby="heading_elementary" data-parent="#level_selection">
@@ -1201,9 +1217,56 @@
                         </div>
                       </div>
                     </div>
-                    <div id="topics" class="col-8">some text</div>`;
+                    <div class="col-8">
+                      <div id="topics" class="container">
+Syllabus for this student is still empty. Pick one or more sections from the same level then continue with the little button below. You may click on them to see what every sections of every level contains. <strong>Note: </strong><em>You may not take sections from two or more different level. </em>
+                      </div>
+                      <div class="container">
+<div class="float-right"><button type="button" class="btn btn-success btn-md">Proceed</button></div></div>
+                    </div>`; */
+          $('#syllabus_tab_header').html(header);
           $('#show_syllabus').html(msg);
         }
+        $('#show_syllabus').on('click','.syllabus-level', function(){
+          var level = $(this).data('level'),
+              a = '';
+          if(level == 1){
+            a = "English fo Kids";
+          } else if(level ==2){
+            a = "Elementary Student";
+          } else if(level == 3){
+            a = "Junior High School";
+          } else if(level == 4){
+            a = "Senior Student";
+          } else{
+            a = "General English";
+          }
+          header = "Syllabus for "+a;
+          $.ajax({
+            url : "<?php echo site_url('syllabus/get_sections');?>",
+            type : "post",
+            dataType : "json",
+            data : {level:level},
+            success : function(data){
+              var msg =`<div class="col-4">
+                          <ul class="list-group">`, i;
+              for (i=0;i<data.length;i++){
+                msg += `<li class="list-group-item">${data[i].indicator}</li>`;
+              }
+              msg += `</ul>
+                      <button class="btn btn-sm btn-info go_back_btn" type="button">Go Back</button>
+                    </div>
+                    <div class="col-8">
+                    </div>`;
+              $('#show_syllabus').html(msg);
+              $('#syllabus_tab_header').html(header);
+            }
+          });
+        });
+        $('#show_syllabus').on('click', '.go_back_btn',function(){
+          console.log('go back');
+          no_syllabus();
+        });
         $('#show_syllabus').on('click','.syllabus-section', function(){
           $(this).siblings().removeClass('highlighted');
           $(this).addClass('highlighted');
