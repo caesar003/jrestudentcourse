@@ -77,10 +77,11 @@
                 <!--do something here -->
                 <h3>
                   <span id="syllabus_tab_header"></span>
-                  <div id="syll_edit_div" class="float-right"></div>
+                  <div id="syll_edit_button_div" class="float-right"></div>
                 </h3>
-                
-                <div class="row" id="show_syllabus">
+                <div class="container" id="syllabus_tab_description">
+                </div> <br>
+                <div class="container row" id="show_syllabus">
                   
                 </div>
               </div> <!-- END SYLLABUS -->
@@ -98,7 +99,6 @@
                       <th>Material</th>
                       <th>Evaluation</th>
                       <th>Test</th>
-                      <!--th style="text-align: right;">Actions</th-->
                     </tr>
                   </thead>
                   <tbody id="show_alltest"></tbody>
@@ -571,7 +571,8 @@
           </div>
         </div>
       </div>
-    </form> <!-- END COURSE STUDENT -->
+    </form> <!-- END DELETE COURSE -->
+$('#').modal('show');
      <!-- EDIT STUDENT -->
     <form>
       <div class="modal fade" id="esm" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true"> 
@@ -1017,6 +1018,28 @@
         </div>
       </div>
     </form>
+  
+    <!-- CONFIRM SYLLABUS -->
+    <form>
+      <div class="modal fade" id="create_syllabus_confirm" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-md" role="document">
+          <div class="modal-content add">
+            <div class="modal-header">
+              <h5 class="modal-title">Confirmation</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            </div>
+            <div id="create_syllabus_msg" class="modal-body">
+                
+            </div>
+            <div class="modal-footer">
+              <input type="hidden" name="prg_id" id="prg_id">
+              <button type="button" class="btn btn-primary" data-dismiss="modal"><i class="fas fa-times fa-fw"></i> No</button>
+              <button type="button" id="btn_create_syllabus" class="btn btn-success"><i class="fa fa-angle-double-right fa-fw"></i> Yeah, proceed!</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form> <!-- END CONFIRM SYLLABUS -->
 
     <?php include 'inc/chat_dialog.php';?>
     <?php include 'inc/scripts.php';?>
@@ -1033,7 +1056,6 @@
             no_syllabus();
           }
         } 
-        // show syllabus 
         function show_syllabus(pin,prg) {
           $.ajax({
             type: 'post',
@@ -1044,7 +1066,8 @@
               var html = '',
                   i,
                   a,
-                  header = '';
+                  header = '',
+                  description = `Tick the black square on right side of every indicator to indicate discussed topics, or hit the pencil button on the top right to change topics for this student.`;
               if(prg == 1){
                 a = "English for Kids";
                 } else if(prg ==2){
@@ -1059,53 +1082,70 @@
               header = "<small>Syllabus for </small>"+a;
               for (i = 0; i < data.length; i++) {
                 if (data[i].topic == 0 && data[i].ind == 0) {
-                  html += '<div class="col-2 syll_section">' + 
-                            data[i].section + 
-                          '</div>' + 
-                          '<div class="col-10 syll_section">' +
-                            data[i].indicator+ 
-                          '</div>';
+                  html += `<div class="col-2 syll_section">${data[i].section}</div>
+                            <div class="col-10 syll_section">${data[i].indicator}
+                          </div>`;
+    
                 } else if (data[i].topic != 0 && data[i].ind == 0) { 
-                  html += '<div class="col-2 syll_topic">' + 
-                            data[i].section + '.' + data[i].topic + 
-                          '</div>' + 
-                          '<div class="col-10 syll_topic">' + 
-                            data[i].indicator + 
-                          '</div>';
+                  
+                  html += `<div class="col-2 syll_topic">
+                                ${data[i].section}.${data[i].topic}</div>
+                            <div class="col-10 syll_topic">${data[i].indicator}</div>`;
                 } else { 
                   if (data[i].status == 1) { 
-                    html += '<div class="col-2 syll_ind"><span class="topic_discussed">' + 
-                              data[i].section + '.' + data[i].topic + '.' + data[i].ind + 
-                            '</span></div>' + 
-                            '<div class="col-8 syll_ind">'+
-                              '<span class="topic_discussed">' + data[i].indicator + '</span>'+
-                            '</div>' + 
-                            '<div class="col-2 syll_ind">'+
-                            '<a href="javascript:void(0);" data-stat="0" data-id="'+data[i].id+'" class="btn btn-default btn-sm topic_check"><i class="fa fa-check-square fa-2x"></i></a>'+
-                            '</div>';
+                    html += `<div class="col-2 syll_ind">
+                               <span class="topic_discussed">${data[i].section}.${data[i].topic}.${data[i].ind}</span>
+                             </div>
+                             <div class="col-8 syll_ind">
+                               <span class="topic_discussed">${data[i].indicator}</span>
+                             </div>
+                             <div class="col-2 syll_ind">
+                              <a href="javascript:void(0);" data-stat="0" data-id="${data[i].id}" class="btn btn-default btn-sm topic_check"><i class="fa fa-check-square fa-2x"></i></a>
+                             </div>`;
                   } else {
-                    html += '<div class="col-2 syll_ind">' + 
-                              data[i].section + '.' + data[i].topic + '.' + data[i].ind + 
-                            '</div>' + 
-                            '<div class="col-8 syll_ind">' + 
-                              data[i].indicator + 
-                            '</div>' + 
-                            '<div class="col-2 syll_ind">'+
-                            '<a href="javascript:void(0);" data-stat="1" data-id="'+data[i].id+'" class="btn btn-default btn-sm topic_check"><i class="fa fa-square fa-2x"></i></a>'+
-                            '</div>';
+                    html += `<div class="col-2 syll_ind">
+                              ${data[i].section}.${data[i].topic}.${data[i].ind}
+                             </div>
+                             <div class="col-8 syll_ind">
+                              ${data[i].indicator}
+                              </div>
+                              <div class="col-2 syll_ind">
+                                <a href="javascript:void(0);" data-stat="1" data-id="${data[i].id}" class="btn btn-default btn-sm topic_check">
+                                  <i class="fa fa-square fa-2x"></i>
+                                </a>
+                              </div>`;
                   }
                 }
               }
+              $('#syllabus_tab_description').html(description);
               $('#show_syllabus').html(html);
               $('#syllabus_tab_header').html(header);
-              $('#syll_edit_div').html('<button class="btn btn-sm btn-info edit_syllabus">Edit</button>');
+              $('#syll_edit_button_div').html('<button class="btn btn-sm btn-info edit_syllabus"><i class="fas fa-pencil-alt fa-fw"></i> Edit</button>');
             }
           });
         }
-        $('#syll_edit_div').on('click', '.edit_syllabus', function(){
+        $('#show_syllabus').on('click', '.topic_check', function(){
+          var id = $(this).data('id'),
+              status = $(this).data('stat'),
+              pin = "<?php echo $pin;?>",
+              program = "<?php echo $program_id;?>";
+         $.ajax({
+            type: "POST",
+            url : "<?php echo site_url('syllabus/check');?>",
+            dataType : "JSON",
+            data : {pin : pin, id : id, status: status},
+            success : function(data){
+              show_syllabus(pin, program);
+            }
+          }) 
+        });
+        $('#syll_edit_button_div').on('click', '.edit_syllabus', function(){
           var pin = "<?php echo $pin;?>",
               prg = "<?php echo $program_id;?>";
-          console.log(pin);
+          get_all(pin,prg);
+          $('#edit_syllabus_modal').modal('show');
+        });
+        function get_all(pin,prg){
           $.ajax({
             type : "post",
             url : "<?php echo site_url('syllabus/get_all');?>",
@@ -1114,14 +1154,14 @@
             success : function(data){
               var html = '', i;
               for(i=0; i<data.length;i++){
-                if (data[i].topic == 0 && data[i].ind == 0) {
-                  if (data[i].assign == 1){
+                if (data[i].topic == 0 && data[i].ind == 0) { // it is a section header 
+                  if (data[i].assigned == 1){
                      html += '<div class="col-2 syll_section">' + 
                             data[i].section + 
                           '</div>' + 
                           '<div class="col-8 syll_section">' +data[i].indicator+'</div>'+
                     '<div class="col-2 syll_section">'+
-                      '<a href="javascript:void(0);" data-id="'+data[i].id+'" data-section="'+data[i].section+'" data-topic="'+data[i].topic+'" data-ind="'+data[i].ind+'" data-assign="0" class="syll_assign btn btn-default btn-sm"><i class="fas fa-check-square fa-2x"></i>'+
+                      '<a href="javascript:void(0);" data-id="'+data[i].id+'" data-section="'+data[i].section+'" data-topic="'+data[i].topic+'" data-ind="'+data[i].ind+'" data-assignto="0" class="syll_assign btn btn-default btn-sm"><i class="fas fa-check-square fa-2x"></i>'+
                       '</a>'+
                       '</div>';
                   } else {
@@ -1130,13 +1170,13 @@
                           '</div>' + 
                           '<div class="col-8 syll_section">' +data[i].indicator+'</div>'+
                     '<div class="col-2 syll_section">'+
-                      '<a href="javascript:void(0);" data-id="'+data[i].id+'" data-section="'+data[i].section+'" data-topic="'+data[i].topic+'" data-ind="'+data[i].ind+'" data-assign="1" class="syll_assign btn btn-default btn-sm"><i class="fas fa-square fa-2x"></i>'+
+                      '<a href="javascript:void(0);" data-id="'+data[i].id+'" data-section="'+data[i].section+'" data-topic="'+data[i].topic+'" data-ind="'+data[i].ind+'" data-assignto="1" class="syll_assign btn btn-default btn-sm"><i class="fas fa-square fa-2x"></i>'+
                       '</a>'+
                       '</div>';
                   }
                  
                 } else if (data[i].topic != 0 && data[i].ind == 0) {
-                  if(data[i].assign == 1){
+                  if(data[i].assigned == 1){
                     html += '<div class="col-2 syll_topic">' + 
                             data[i].section + '.' + data[i].topic + 
                           '</div>' + 
@@ -1144,7 +1184,7 @@
                             data[i].indicator + 
                           '</div>'+
                     '<div class="col-2 syll_topic">'+
-                      '<a href="javascript:void(0);" data-id="'+data[i].id+'" data-section="'+data[i].section+'" data-topic="'+data[i].topic+'" data-ind="'+data[i].ind+'" data-assign="0" class="syll_assign btn btn-default btn-sm"><i class="fas fa-check-square fa-2x"></i>'+
+                      '<a href="javascript:void(0);" data-id="'+data[i].id+'" data-section="'+data[i].section+'" data-topic="'+data[i].topic+'" data-ind="'+data[i].ind+'" data-assignto="0" class="syll_assign btn btn-default btn-sm"><i class="fas fa-check-square fa-2x"></i>'+
                       '</a>'+
                       '</div>';
                   } else {
@@ -1154,11 +1194,11 @@
                           '<div class="col-8 syll_topic">' + 
                             data[i].indicator + 
                           '</div>'+
-                    '<div class="col-2 syll_topic"><a href="javascript:void(0);" data-id="'+data[i].id+'" data-section="'+data[i].section+'" data-topic="'+data[i].topic+'" data-ind="'+data[i].ind+'" data-assign="1" class="syll_assign btn btn-default btn-sm"><i class="fas fa-square fa-2x"></i></a></div>';
+                    '<div class="col-2 syll_topic"><a href="javascript:void(0);" data-id="'+data[i].id+'" data-section="'+data[i].section+'" data-topic="'+data[i].topic+'" data-ind="'+data[i].ind+'" data-assignto="1" class="syll_assign btn btn-default btn-sm"><i class="fas fa-square fa-2x"></i></a></div>';
                   }
                   
-                } else {
-                  if (data[i].assign == 1) { 
+                } else { /* it is an indicator */
+                  if (data[i].assigned == 1) { 
                     html += '<div class="col-2 syll_ind">' + 
                               data[i].section + '.' + data[i].topic + '.' + data[i].ind + 
                             '</div>' + 
@@ -1166,9 +1206,9 @@
                               '<span class="assigned">' + data[i].indicator + '</span>'+
                             '</div>' + 
                             '<div class="col-2 syll_ind">'+
-                            '<a href="javascript:void(0);" data-id="'+data[i].id+'" data-section="'+data[i].section+'" data-topic="'+data[i].topic+'" data-ind="'+data[i].ind+'" data-assign="0" class="btn btn-default btn-sm syll_assign"><i class="fa fa-check-square fa-2x"></i></a>'+
+                            '<a href="javascript:void(0);" data-id="'+data[i].id+'" data-section="'+data[i].section+'" data-topic="'+data[i].topic+'" data-ind="'+data[i].ind+'" data-assignto="0" class="btn btn-default btn-sm syll_assign"><i class="fa fa-check-square fa-2x"></i></a>'+
                             '</div>';
-                  } else {
+                  } else { 
                     html += '<div class="col-2 syll_ind">' + 
                               data[i].section + '.' + data[i].topic + '.' + data[i].ind + 
                             '</div>' + 
@@ -1176,7 +1216,7 @@
                               data[i].indicator + 
                             '</div>' + 
                             '<div class="col-2 syll_ind">'+
-                            '<a href="javascript:void(0);" data-id="'+data[i].id+'" data-section="'+data[i].section+'" data-topic="'+data[i].topic+'" data-ind="'+data[i].ind+'" data-assign="1" class="btn btn-default btn-sm syll_assign"><i class="fa fa-square fa-2x"></i></a>'+
+                            '<a href="javascript:void(0);" data-id="'+data[i].id+'" data-section="'+data[i].section+'" data-topic="'+data[i].topic+'" data-ind="'+data[i].ind+'" data-assignto="1" class="btn btn-default btn-sm syll_assign"><i class="fa fa-square fa-2x"></i></a>'+
                             '</div>';
                   }
                 }
@@ -1185,23 +1225,60 @@
               $('#syllabus_edit_div').html(html);
             }
           });
-          $('#edit_syllabus_modal').modal('show');
+        }
+        $('#syllabus_edit_div').on('click', '.syll_assign', function(){
+          var pin = "<?php echo $pin;?>",
+              program = "<?php echo $program_id;?>",
+              id = $(this).data('id'),
+              section = $(this).data('section'),
+              topic = $(this).data('topic'),
+              ind = $(this).data('ind'),
+              assign = $(this).data('assignto');
+          if(topic==0){
+            assign_section(pin, section, assign, program);
+          } else if(topic != 0&& ind==0){
+            assign_topic(pin, section, topic, assign, program);
+          } else {
+            assign_indicator(pin, id, assign, program);
+          }
         });
-        /* check discussed topics */
-        $('#show_syllabus').on('click', '.topic_check', function(){
-          var id = $(this).data('id'),
-              stat = $(this).data('stat'),
-              pin = "<?php echo $pin;?>";
+        function assign_section(pin, section, assign, program){
           $.ajax({
-            type: "POST",
-            url : "<?php echo site_url('syllabus/check');?>",
-            dataType : "JSON",
-            data : {id : id, stat: stat, pin : pin},
+            url: "<?php echo site_url('syllabus/assign_section');?>",
+            type : "post",
+            dataType : "json",
+            data : {pin:pin,section:section, assign:assign},
             success : function(data){
-              //show_syllabus();
+              get_all(pin,program);
+              show_syllabus(pin,program);
             }
-          })
-        });
+          });
+        }
+        function assign_topic(pin, section, topic, assign, program){
+          $.ajax({
+            url: "<?php echo site_url('syllabus/assign_topic');?>",
+            type : "post",
+            dataType : "json",
+            data : {pin:pin, section:section, topic:topic, assign:assign},
+            success : function(data){
+              get_all(pin,program);
+              show_syllabus(pin,program);
+            }
+          });
+        }
+        function assign_indicator(pin, id, assign, program){
+          $.ajax({
+            url: "<?php echo site_url('syllabus/assign_indicator');?>",
+            type : "post",
+            dataType : "json",
+            data : {pin:pin, id:id, assign:assign},
+            success : function(data){
+              get_all(pin,program);
+              show_syllabus(pin,program);
+            }
+          });
+        }
+        
         function no_syllabus(){
           var header='Choose the syllabus',
               msg = `<div class="col-4">
@@ -1214,7 +1291,7 @@
                       </ul>
                     </div>
                     <div class="col-8">
-                      Syllabus for this student is still empty. Click one of these on the left side to see what are under them.</em>
+                      Syllabus for this student is still empty. Click on one of these on the left side to see what each of them consists of.</em>
                     </div>`;
           $('#syllabus_tab_header').html(header);
           $('#show_syllabus').html(msg);
@@ -1234,7 +1311,6 @@
             a = "General English";
           }
           header = "Syllabus for "+a;
-          btn = '<button class="btn btn-sm btn-info ">click</button>'
           $.ajax({
             url : "<?php echo site_url('syllabus/get_sections');?>",
             type : "post",
@@ -1251,8 +1327,8 @@
                     <div class="col-8">
                       <div class="container">
                         <input type="hidden" name="level" id="level" value="${level}">
-                        <button class="btn btn-sm btn-success go_back_btn" type="button">Go Back</button> 
-                        <button class="btn btn-sm btn-primary proceed_btn" id="proceed_btn" type="button">Continue</button>
+                        <button class="btn btn-sm btn-success go_back_btn" type="button"><i class="fas fa-angle-double-left fa-fw"></i> Go Back</button> 
+                        <button class="btn btn-sm btn-primary proceed_btn" id="proceed_btn" type="button">Continue <i class="fas fa-angle-double-right fa-fw"></i></button>
                       </div>
                       <br>
                       <div class="container" id="show_topic">
@@ -1288,21 +1364,43 @@
         
         $('#show_syllabus').on('click', '.proceed_btn', function(){
           var level = $('#level').val(),
-              pin = "<?php echo $pin;?>";
-         $.ajax({
+              pin = "<?php echo $pin;?>",
+              program = '';
+          if (level==1){
+            program = 'Elementary Kids';
+          } else if(level == 2){
+            program = 'Elementary';
+          } else if(level == 3){
+            program = 'Junior';
+          } else if(level == 4){
+            program = 'Senior';
+          } else{
+            program = 'General English';
+          }
+          var msg = `<p>You would like to create <strong>${program}</strong> for <strong>${pin}</strong>.<br>Continue?</p>`;
+          $('#create_syllabus_confirm').modal('show');
+          $('#create_syllabus_msg').html(msg);
+          $('#prg_id').val(level);          
+        });
+        
+        $('#btn_create_syllabus').on('click', function(){
+          var level = $('#prg_id').val();
+          create_syllabus(level);
+        });
+        function create_syllabus(level){
+          var pin = "<?php echo $pin;?>";
+          $.ajax({
             type : "post",
             url : "<?php echo site_url('syllabus/create');?>",
             dataType : "json",
             data : {pin:pin},
             success:function(data){
-              console.log('syllabus_created');
               $.ajax({
                 type : "post",
                 url : "<?php echo site_url('syllabus/insert');?>",
                 dataType : "json",
                 data : {pin:pin, level:level},
                 success : function(data){
-                  console.log('syllabus inserted');
                   if(level ==1||level==2||level==4){
                     var a = 0,b =0, c =0, d =0, e =0, f =0;
                     if($('#section_1').is(':checked')){a =1;}
@@ -1315,7 +1413,6 @@
                     var i;
                     for (i=0;i<sections.length;i++){
                       if(sections[i] != 0){
-                        console.log('section is ='+sections[i]);
                         assign_syllabus(pin, sections[i]);
                       }
                     }
@@ -1332,7 +1429,6 @@
                     var i;
                     for (i=0;i<sections.length;i++){
                       if(sections[i] != 0){
-                        console.log(sections[i]);
                         assign_syllabus(pin, sections[i]);
                         
                       }
@@ -1351,18 +1447,17 @@
                     var i;
                     for (i=0;i<sections.length;i++){
                       if(sections[i] != 0){
-                        console.log(sections[i]);
                         assign_syllabus(pin, sections[i]);
-                        
                       }
                     }
                   } // end syllabus assignment
                   set_program(pin, level);
+                  $('#create_syllabus_confirm').modal('hide');
                 } 
               }); 
             }
           });
-        });
+        }
         function set_program(pin,level){
           $.ajax({
             url:"<?php echo site_url('syllabus/set_program');?>",
@@ -1370,7 +1465,6 @@
             dataType : "json",
             data : {pin:pin,level:level},
             success : function(data){
-              console.log('program set');
               show_syllabus(pin,level);
             }
           });

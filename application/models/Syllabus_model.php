@@ -77,15 +77,16 @@ class Syllabus_model extends CI_Model{
     $query = $this->db->get($syllabus_master);
     return $query->result();
   }
-  function check_syllabus(){
-    $pin = $this->input->get('pin');
-    $id = $this->input->get('id');
-    $syllabus_table = "syllabus_".$pin;
+  function check(){
+    $pin            = $this->input->post('pin');
+    $id             = $this->input->post('id');
+    $status         = $this->input->post('status');
+    $syllabus_table = "sl_".$pin;
     
-    $this->db->set('status', 1);
     $this->db->where('id', $id);
-    $result = $this->db->update($syllabus_table);
-    return $result;
+    $this->db->set('status', $status);
+    $query = $this->db->update($syllabus_table);
+    return $query;
   }
   function set_program(){
     $pin = $this->input->post('pin');
@@ -95,7 +96,7 @@ class Syllabus_model extends CI_Model{
     $query = $this->db->update('students');
     return $query;
   }
-  function check(){
+  /*function check(){
     $pin = $this->input->post('pin');
     $id = $this->input->post('id');
     $stat = $this->input->post('stat');
@@ -105,7 +106,7 @@ class Syllabus_model extends CI_Model{
     $this->db->where('id', $id);
     $result = $this->db->update($syllabus_table);
     return $result;
-  }
+  } */
   function uncheck_syllabus(){
     $pin = $this->input->get('pin');
     $id = $this->input->get('id');
@@ -1464,19 +1465,66 @@ class Syllabus_model extends CI_Model{
   function get_all(){
     $pin = $this->input->post('pin');
     $prg = $this->input->post('prg');
-    $syllabus_table = "sl_".$pin;
-    if($id == 1){
+    if($prg == 1){
       $syllabus_master = "syll_kids";
-    } else if($id ==2){
+    } else if($prg == 2) {
       $syllabus_master = "syll_elementary";
-    } else if($id == 3){
+    } else if($prg == 3){
       $syllabus_master = "syll_junior";
-    } else if($id == 4){
+    } else if($prg == 4){
       $syllabus_master = "syll_senior";
-    } else {
+    } else{
       $syllabus_master = "syll_general";
     }
+    $syllabus_table = "sl_".$pin;
     
-    $this->db->
+    $this->db->select('*');
+    $this->db->from($syllabus_table);
+    //$this->db->where('assigned', '1');
+    $this->db->join($syllabus_master, $syllabus_master.'.id = '.$syllabus_table.'.id');
+    $this->db->order_by('section', 'asc');
+    $this->db->order_by('topic', 'asc');
+    $this->db->order_by('ind', 'asc');
+    $result = $this->db->get();
+    return $result->result();
+  }
+  function assign_section(){
+    $pin = $this->input->post('pin');
+    $section = $this->input->post('section');
+    $assign = $this->input->post('assign');
+    
+    $syllabus_table = "sl_".$pin;
+    
+    $this->db->where('section', $section);
+    $this->db->set('assigned', $assign);
+    $query = $this->db->update($syllabus_table);
+    return $query;
+  }
+  function assign_topic(){
+    $pin = $this->input->post('pin');
+    $section = $this->input->post('section');
+    $topic = $this->input->post('topic');
+    $assign = $this->input->post('assign');
+    
+    $syllabus_table = "sl_".$pin;
+    
+    $this->db->where('section', $section);
+    $this->db->where('topic', $topic);
+    $this->db->set('assigned', $assign);
+    $query = $this->db->update($syllabus_table);
+    return $query;
+  }
+  function assign_indicator(){
+    $pin = $this->input->post('pin');
+    $id = $this->input->post('id');
+    $assign = $this->input->post('assign');
+    
+    $syllabus_table = "sl_".$pin;
+    
+    $this->db->where('id', $id);
+    $this->db->set('assigned', $assign);
+    $query = $this->db->update($syllabus_table);
+    return $query;
+    
   }
 } 

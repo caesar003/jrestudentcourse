@@ -34,7 +34,6 @@ class Syllabus extends CI_Controller{
     echo json_encode($data);
   }
   function assign(){
-    echo 'hello';
     $data = $this->syllabus_model->assign();
     echo json_encode($data);
     /*$pin = $this->input->post('pin');
@@ -52,6 +51,22 @@ class Syllabus extends CI_Controller{
   }
   function get_all(){
     $data = $this->syllabus_model->get_all();
+    echo json_encode($data);
+  }
+  function assign_section(){
+    $data = $this->syllabus_model->assign_section();
+    echo json_encode($data);
+  }
+  function assign_topic(){
+    $data = $this->syllabus_model->assign_topic();
+    echo json_encode($data);
+  }
+  /*function assign_section(){
+    $data = $this->syllabus_model->assign_section();
+    echo json_encode($data);
+  } */
+  function assign_indicator(){
+    $data = $this->syllabus_model->assign_indicator();
     echo json_encode($data);
   }
 }
