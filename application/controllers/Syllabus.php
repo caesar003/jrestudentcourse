@@ -25,8 +25,13 @@ class Syllabus extends CI_Controller{
     $data = $this->syllabus_model->set_program();
     echo json_encode($data);
   }
+  function create(){
+    $data = $this->syllabus_model->create();
+    echo json_encode($data);
+  }
   function insert(){
-    echo 'hello';
+    $data = $this->syllabus_model->insert();
+    echo json_encode($data);
   }
   function assign(){
     echo 'hello';

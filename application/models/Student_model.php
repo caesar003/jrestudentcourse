@@ -187,9 +187,9 @@ class Student_model extends CI_Model{
     return $result;
   }
   function insert_into_syllabus(){
-     $pin 			= $this->input->post('pn');
+    $pin 			= $this->input->post('pn');
     $syllabus_table = "syll_".$pin;
-    $query = $this->db->query("INSERT INTO `$syllabus_table` 
+    $query          = $this->db->query("INSERT INTO `$syllabus_table` 
       (`id`, `section`, `topic`, `ind`, `status`, `assign`) 
       VALUES
       (100, 1, 0, 0, '', 0),

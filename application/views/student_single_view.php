@@ -1183,80 +1183,105 @@
         });
         
         $('#show_syllabus').on('click', '.proceed_btn', function(){
-          /* 1 el = 6
-             2 kid = 6 
-             3 junior 7
-             4 sen = 6
-             5 general = 8 
-           */
-          /*
-          steps :
-          a create the table -> insert the corresponding data -> assign selected topics -> set program to the students page.
-          
-          */
           var level = $('#level').val(),
               pin = "<?php echo $pin;?>";
-          if(level ==1||level==2||level==4){
-            var a = '',b ='', c ='', d ='', e ='', f ='';
-            if($('#section_1').is(':checked')){a =1;}
-            if($('#section_2').is(':checked')){b =2;}
-            if($('#section_3').is(':checked')){c =3;}
-            if($('#section_4').is(':checked')){d =4;}
-            if($('#section_5').is(':checked')){e =5;}
-            if($('#section_6').is(':checked')){f =6;}
-            $.ajax({
-              type : "post",
-              url : "<?php echo site_url('syllabus/create');?>",
-              dataType : "json",
-              data : {pin:pin},
-              success:function(data){
-                
-              }
-            });
-            $.ajax({
-              type : "post",
-              url : "<?php echo site_url('syllabus/insert');?>",
-              dataType : "<?php echo site_url();?>",
-              data : {pin:pin, level:level},
-              success : function(data){
-                console.log('syllabus inserted');
-              }
-            });
-            $.ajax({
-              type : "post",
-              url : "<?php echo site_url('syllabus/set_program');?>",
-              dataType : "json",
-              data : {pin:pin, level:level},
-              success : function(data){
-                console.log('program set');
-              }
-            });
-            $.ajax({
-              type : "post",
-              url : "<?php echo site_url('syllabus/assign');?>",
-              dataType : "json",
-              data : {pin: pin, section:section},
-              success : function(data){
-                console.log('section assigned');
-              }
-            });
-            var sections = [a,b,c,d,e,f];
-            var i;
-            for (i=0;i<sections.length;i++){
-              if(sections[i] != 0){
-                console.log(sections[i]);
-                // set program into students table
-                // set insert appropriate data sets to syllabus table
-                // assign the chosen sections
-              }
+         $.ajax({
+            type : "post",
+            url : "<?php echo site_url('syllabus/create');?>",
+            dataType : "json",
+            data : {pin:pin},
+            success:function(data){
+              console.log('syllabus_created');
+              $.ajax({
+                type : "post",
+                url : "<?php echo site_url('syllabus/insert');?>",
+                dataType : "json",
+                data : {pin:pin, level:level},
+                success : function(data){
+                  console.log('syllabus inserted');
+                  if(level ==1||level==2||level==4){
+                    var a = 0,b =0, c =0, d =0, e =0, f =0;
+                    if($('#section_1').is(':checked')){a =1;}
+                    if($('#section_2').is(':checked')){b =2;}
+                    if($('#section_3').is(':checked')){c =3;}
+                    if($('#section_4').is(':checked')){d =4;}
+                    if($('#section_5').is(':checked')){e =5;}
+                    if($('#section_6').is(':checked')){f =6;}
+                    var sections = [a,b,c,d,e,f];
+                    var i;
+                    for (i=0;i<sections.length;i++){
+                      if(sections[i] != 0){
+                        console.log('section is ='+sections[i]);
+                        assign_syllabus(pin, sections[i]);
+                      }
+                    }
+                  } else if(level==3){
+                    var a = 0,b =0, c =0, d =0, e =0, f =0, g=0;
+                    if($('#section_1').is(':checked')){a =1;}
+                    if($('#section_2').is(':checked')){b =2;}
+                    if($('#section_3').is(':checked')){c =3;}
+                    if($('#section_4').is(':checked')){d =4;}
+                    if($('#section_5').is(':checked')){e =5;}
+                    if($('#section_6').is(':checked')){f =6;}
+                    if($('#section_7').is(':checked')){g =7;}
+                    var sections = [a,b,c,d,e,f,g];
+                    var i;
+                    for (i=0;i<sections.length;i++){
+                      if(sections[i] != 0){
+                        console.log(sections[i]);
+                        assign_syllabus(pin, sections[i]);
+                        
+                      }
+                    }
+                  } else if(level == 5){
+                    var a = 0,b =0, c =0, d =0, e =0, f =0, g=0, h=0;
+                    if($('#section_1').is(':checked')){a =1;}
+                    if($('#section_2').is(':checked')){b =2;}
+                    if($('#section_3').is(':checked')){c =3;}
+                    if($('#section_4').is(':checked')){d =4;}
+                    if($('#section_5').is(':checked')){e =5;}
+                    if($('#section_6').is(':checked')){f =6;}
+                    if($('#section_7').is(':checked')){g =7;}
+                    if($('#section_8').is(':checked')){h =8;}
+                    var sections = [a,b,c,d,e,f,g,h];
+                    var i;
+                    for (i=0;i<sections.length;i++){
+                      if(sections[i] != 0){
+                        console.log(sections[i]);
+                        assign_syllabus(pin, sections[i]);
+                        
+                      }
+                    }
+                  } // end syllabus assignment
+                  set_program(pin, level);
+                } 
+              }); 
             }
-          }/* else if(level==3){
-            
-          } else if(level==5){
-            
-          } */
+          });
         });
-       
+        function set_program(pin,level){
+          $.ajax({
+            url:"<?php echo site_url('syllabus/set_program');?>",
+            type : "post",
+            dataType : "json",
+            data : {pin:pin,level:level},
+            success : function(data){
+              console.log('program set');
+              show_syllabus(pin,level);
+            }
+          });
+        }
+        function assign_syllabus(pin, sections){
+          $.ajax({ /* assign */
+            type : "post",
+            url : "<?php echo site_url('syllabus/assign');?>",
+            dataType : "json",
+            data : {pin: pin, section:sections},
+            success : function(data){
+              console.log('section assigned');
+            }
+          }); /* end assign */
+        }
         $('#show_syllabus').on('click', '.go_back_btn',function(){
           console.log('go back');
           no_syllabus();
