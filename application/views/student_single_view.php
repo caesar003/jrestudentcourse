@@ -77,6 +77,7 @@
                 <!--do something here -->
                 <h3>
                   <span id="syllabus_tab_header"></span>
+                  <div id="syll_edit_div" class="float-right"></div>
                 </h3>
                 
                 <div class="row" id="show_syllabus">
@@ -1040,7 +1041,22 @@
             dataType: 'json',
             data :{pin:pin, prg:prg},
             success: function(data) {
-              var html = '', i;
+              var html = '',
+                  i,
+                  a,
+                  header = '';
+              if(prg == 1){
+                a = "English for Kids";
+                } else if(prg ==2){
+                  a = "Elementary Student";
+                } else if(prg == 3){
+                  a = "Junior High School";
+                } else if(prg == 4){
+                  a = "Senior Student";
+                } else{
+                  a = "General English";
+                }
+              header = "<small>Syllabus for </small>"+a;
               for (i = 0; i < data.length; i++) {
                 if (data[i].topic == 0 && data[i].ind == 0) {
                   html += '<div class="col-2 syll_section">' + 
@@ -1081,9 +1097,25 @@
                 }
               }
               $('#show_syllabus').html(html);
+              $('#syllabus_tab_header').html(header);
+              $('#syll_edit_div').html('<button class="btn btn-sm btn-info edit_syllabus">Edit</button>');
             }
           });
         }
+        $('#syll_edit_div').on('click', '.edit_syllabus', function(){
+          var pin = "<?php echo $pin;?>";
+          console.log(pin);
+          $.ajax({
+            type : "post",
+            url : "<?php echo site_url('syllabus/get_all');?>",
+            dataType : "json",
+            data : {pin:pin},
+            success : function(data){
+              
+            }
+          });
+          $('#edit_syllabus_modal').modal('show');
+        });
         /* check discussed topics */
         $('#show_syllabus').on('click', '.topic_check', function(){
           var id = $(this).data('id'),
@@ -1120,7 +1152,7 @@
           var level = $(this).data('level'),
               a = '';
           if(level == 1){
-            a = "English fo Kids";
+            a = "English for Kids";
           } else if(level ==2){
             a = "Elementary Student";
           } else if(level == 3){
@@ -1131,6 +1163,7 @@
             a = "General English";
           }
           header = "Syllabus for "+a;
+          btn = '<button class="btn btn-sm btn-info ">click</button>'
           $.ajax({
             url : "<?php echo site_url('syllabus/get_sections');?>",
             type : "post",
@@ -1896,121 +1929,124 @@
         });             
         /* save course */
         $('#btn_save').on('click', function(){
-        var p="<?php echo $pin;?>",
-            m=$('#me').val(),
-            cd=$('#cd').val(),
-            tc=$('#tc').val(),
-            du=$('#du').val(), 
-            ma=$('#ma').val(),
-            ev=$('#ev').val(), 
-            w = $('#wr').val(),
-            s=$('#sp').val(),
-            test = '', 
-            tnu = $('#tnu').val(), 
-            tn = $('#tn').val(), 
-            otn = $('#otn').val(), 
-            ot = $('#ot').val(), 
-            after_teaching = 'yes', 
-            bgc = 'background-color', 
-            clr = 'pink';
-        if (m==''||cd==''||tc==''||du==''||ma==''||ev==''){
-          if(m==''){$('#me').css(bgc,clr);}
-          if(cd==''){$('#cd').css(bgc,clr);}
-          if(tc==''){$('#tc').css(bgc,clr);}
-          if(du==''){$('#du').css(bgc,clr);}
-          if(ma==''){$('#ma').css(bgc,clr);}
-          if(ev==''){$('#ev').css(bgc,clr);}
-          $('#nsef').addClass('alert alert-danger');
-          $('#nsef').html("Please fill out all required fields!");
-        }else{
-          if(isNaN(m)){$('#me').css(bgc,clr);$('#nsef').addClass('alert alert-danger');$('#nsef').html("Meeting field must only be numbers!");
+          var p="<?php echo $pin;?>",
+              m=$('#me').val(),
+              cd=$('#cd').val(),
+              tc=$('#tc').val(),
+              du=$('#du').val(), 
+              ma=$('#ma').val(),
+              ev=$('#ev').val(), 
+              w = $('#wr').val(),
+              s=$('#sp').val(),
+              test = '', 
+              tnu = $('#tnu').val(), 
+              tn = $('#tn').val(), 
+              otn = $('#otn').val(), 
+              ot = $('#ot').val(), 
+              after_teaching = 'yes', 
+              bgc = 'background-color', 
+              clr = 'pink';
+          if (m==''||cd==''||tc==''||du==''||ma==''||ev==''){
+            if(m==''){$('#me').css(bgc,clr);}
+            if(cd==''){$('#cd').css(bgc,clr);}
+            if(tc==''){$('#tc').css(bgc,clr);}
+            if(du==''){$('#du').css(bgc,clr);}
+            if(ma==''){$('#ma').css(bgc,clr);}
+            if(ev==''){$('#ev').css(bgc,clr);}
+            $('#nsef').addClass('alert alert-danger');
+            $('#nsef').html("Please fill out all required fields!");
           }else{
-            if(isNaN(w)){$('#wr').css(bgc,clr);$('#nsef').addClass('alert alert-danger'); $('#nsef').html("Assessment must only be numbers!");
+            if(isNaN(m)){
+              $('#me').css(bgc,clr);$('#nsef').addClass('alert alert-danger');$('#nsef').html("Meeting field must only be numbers!");
             }else{
-              if(isNaN(s)){$('#sp').css(bgc,clr);$('#nsef').addClass('alert alert-danger');$('#nsef').html("Assessment must only be numbers!");
+              if(isNaN(w)){
+                $('#wr').css(bgc,clr);$('#nsef').addClass('alert alert-danger'); $('#nsef').html("Assessment must only be numbers!");
               }else{
-                $.ajax({
-                  type: "post",
-                  url: "<?php echo site_url('student_single/meeting_avail')?>",
-                  data: {p: p, m: m},
-                  success: function (response){
-                    if (response == 'true'){
-                      $('#me').css(bgc,clr);
-                      $('#nsef').addClass('alert alert-danger');
-                      $('#nsef').html('Meeting with this number has already been conducted before!');
-                    } else {
-                      if ($('#test').is(':checked')){
-                        if(tnu == ''){
-                          $('#nsef').addClass('alert alert-danger');
-                          $('#nsef').html("Please complete test details!");
-                          $('#tnu').css(bgc,clr);
-                        } else { 
-                          if (tn == ''){
+                if(isNaN(s)){
+                  $('#sp').css(bgc,clr);$('#nsef').addClass('alert alert-danger');$('#nsef').html("Assessment must only be numbers!");
+                }else{
+                  $.ajax({
+                    type: "post",
+                    url: "<?php echo site_url('student_single/meeting_avail')?>",
+                    data: {p: p, m: m},
+                    success: function (response){
+                      if (response == 'true'){
+                        $('#me').css(bgc,clr);
+                        $('#nsef').addClass('alert alert-danger');
+                        $('#nsef').html('Meeting with this number has already been conducted before!');
+                      } else {
+                        if ($('#test').is(':checked')){
+                          if(tnu == ''){
                             $('#nsef').addClass('alert alert-danger');
                             $('#nsef').html("Please complete test details!");
-                            $('#tn').css(bgc,clr);
+                            $('#tnu').css(bgc,clr);
                           } else { 
-                            if (tn != 'Remedial'){
-                              test = tnu+" "+tn;
-                              $.ajax({
-                                type: "post",
-                                url:"<?php echo site_url('student_single/test_avail'); ?>",
-                                data:{p :p, test: test},
-                                success : function (response){
-                                  if(response=='true'){
-                                    $('#nsef').addClass('alert alert-danger');
-                                    $('#nsef').html('<em>'+test+'</em> has been conducted before!');
-                                    $('#tnu, #tn').css(bgc,clr);
-                                  } else {
-                                    submit_course(p, m, cd, tc, du, ma, ev, w, s, test, tnu, tn, otn, ot, after_teaching);
-                                    create_test_table(p, m);
-                                  }
-                                }
-                              })
+                            if (tn == ''){
+                              $('#nsef').addClass('alert alert-danger');
+                              $('#nsef').html("Please complete test details!");
+                              $('#tn').css(bgc,clr);
                             } else { 
-                              if (otn == ''){
-                                $('#nsef').addClass('alert alert-danger');
-                                $('#nsef').html('Please complete the test details!');
-                                $('#otn').css(bgc,clr);
-                              } else {
-                                if (ot == ''){
+                              if (tn != 'Remedial'){
+                                test = tnu+" "+tn;
+                                $.ajax({
+                                  type: "post",
+                                  url:"<?php echo site_url('student_single/test_avail'); ?>",
+                                  data:{p :p, test: test},
+                                  success : function (response){
+                                    if(response=='true'){
+                                      $('#nsef').addClass('alert alert-danger');
+                                      $('#nsef').html('<em>'+test+'</em> has been conducted before!');
+                                      $('#tnu, #tn').css(bgc,clr);
+                                    } else {
+                                      submit_course(p, m, cd, tc, du, ma, ev, w, s, test, tnu, tn, otn, ot, after_teaching);
+                                      create_test_table(p, m);
+                                    }
+                                  }
+                                })
+                              } else { 
+                                if (otn == ''){
                                   $('#nsef').addClass('alert alert-danger');
                                   $('#nsef').html('Please complete the test details!');
-                                  $('#ot').css(bgc,clr);
+                                  $('#otn').css(bgc,clr);
                                 } else {
-                                  test = tnu+" "+tn+" of "+otn+" "+ot;
-                                  $.ajax({
-                                    type : 'post',
-                                    url : "<?php echo site_url('student_single/test_avail');?>",
-                                    data: {p: p, test : test},
-                                    success : function(response){
-                                      if(response == 'true'){
-                                        $('#nsef').addClass('alert alert-danger');
-                                        $('#nsef').html('<em>'+test+'</em> has been conducted before!');
-                                        $('#tnu, #tn, #otn, #ot').css(bgc,clr);
-                                      } else {
-                                        submit_course(p, m, cd, tc, du, ma, ev, w, s, test, tnu, tn, otn, ot, after_teaching);
-                                        create_test_table(p, m);
+                                  if (ot == ''){
+                                    $('#nsef').addClass('alert alert-danger');
+                                    $('#nsef').html('Please complete the test details!');
+                                    $('#ot').css(bgc,clr);
+                                  } else {
+                                    test = tnu+" "+tn+" of "+otn+" "+ot;
+                                    $.ajax({
+                                      type : 'post',
+                                      url : "<?php echo site_url('student_single/test_avail');?>",
+                                      data: {p: p, test : test},
+                                      success : function(response){
+                                        if(response == 'true'){
+                                          $('#nsef').addClass('alert alert-danger');
+                                          $('#nsef').html('<em>'+test+'</em> has been conducted before!');
+                                          $('#tnu, #tn, #otn, #ot').css(bgc,clr);
+                                        } else {
+                                          submit_course(p, m, cd, tc, du, ma, ev, w, s, test, tnu, tn, otn, ot, after_teaching);
+                                          create_test_table(p, m);
              
+                                        }
                                       }
-                                    }
-                                  });
+                                    });
+                                  }
                                 }
                               }
                             }
                           }
+                        } else {
+                          submit_course(p, m, cd, tc, du, ma, ev, w, s, test, tnu, tn, otn, ot, after_teaching);
                         }
-                      } else {
-                        submit_course(p, m, cd, tc, du, ma, ev, w, s, test, tnu, tn, otn, ot, after_teaching);
                       }
                     }
-                  }
-                });
+                  });
+                }
               }
             }
           }
-        }
-      });
+        });
         function submit_course(a,b,c,d,e,f,g,h,i,j,k,l,m,n, after_teaching){
           $.ajax({
             type: "POST",
