@@ -1461,4 +1461,22 @@ class Syllabus_model extends CI_Model{
     $query = $this->db->update($syllabus_table);
     return $query;
   }
+  function get_all(){
+    $pin = $this->input->post('pin');
+    $prg = $this->input->post('prg');
+    $syllabus_table = "sl_".$pin;
+    if($id == 1){
+      $syllabus_master = "syll_kids";
+    } else if($id ==2){
+      $syllabus_master = "syll_elementary";
+    } else if($id == 3){
+      $syllabus_master = "syll_junior";
+    } else if($id == 4){
+      $syllabus_master = "syll_senior";
+    } else {
+      $syllabus_master = "syll_general";
+    }
+    
+    $this->db->
+  }
 } 

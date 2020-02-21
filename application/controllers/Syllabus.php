@@ -50,4 +50,8 @@ class Syllabus extends CI_Controller{
     $data = $this->syllabus_model->get_topics();
     echo json_encode($data);
   }
+  function get_all(){
+    $data = $this->syllabus_model->get_all();
+    echo json_encode($data);
+  }
 }

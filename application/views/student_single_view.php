@@ -1103,15 +1103,86 @@
           });
         }
         $('#syll_edit_div').on('click', '.edit_syllabus', function(){
-          var pin = "<?php echo $pin;?>";
+          var pin = "<?php echo $pin;?>",
+              prg = "<?php echo $program_id;?>";
           console.log(pin);
           $.ajax({
             type : "post",
             url : "<?php echo site_url('syllabus/get_all');?>",
             dataType : "json",
-            data : {pin:pin},
+            data : {pin:pin, prg:prg},
             success : function(data){
-              
+              var html = '', i;
+              for(i=0; i<data.length;i++){
+                if (data[i].topic == 0 && data[i].ind == 0) {
+                  if (data[i].assign == 1){
+                     html += '<div class="col-2 syll_section">' + 
+                            data[i].section + 
+                          '</div>' + 
+                          '<div class="col-8 syll_section">' +data[i].indicator+'</div>'+
+                    '<div class="col-2 syll_section">'+
+                      '<a href="javascript:void(0);" data-id="'+data[i].id+'" data-section="'+data[i].section+'" data-topic="'+data[i].topic+'" data-ind="'+data[i].ind+'" data-assign="0" class="syll_assign btn btn-default btn-sm"><i class="fas fa-check-square fa-2x"></i>'+
+                      '</a>'+
+                      '</div>';
+                  } else {
+                     html += '<div class="col-2 syll_section">' + 
+                            data[i].section + 
+                          '</div>' + 
+                          '<div class="col-8 syll_section">' +data[i].indicator+'</div>'+
+                    '<div class="col-2 syll_section">'+
+                      '<a href="javascript:void(0);" data-id="'+data[i].id+'" data-section="'+data[i].section+'" data-topic="'+data[i].topic+'" data-ind="'+data[i].ind+'" data-assign="1" class="syll_assign btn btn-default btn-sm"><i class="fas fa-square fa-2x"></i>'+
+                      '</a>'+
+                      '</div>';
+                  }
+                 
+                } else if (data[i].topic != 0 && data[i].ind == 0) {
+                  if(data[i].assign == 1){
+                    html += '<div class="col-2 syll_topic">' + 
+                            data[i].section + '.' + data[i].topic + 
+                          '</div>' + 
+                          '<div class="col-8 syll_topic">' + 
+                            data[i].indicator + 
+                          '</div>'+
+                    '<div class="col-2 syll_topic">'+
+                      '<a href="javascript:void(0);" data-id="'+data[i].id+'" data-section="'+data[i].section+'" data-topic="'+data[i].topic+'" data-ind="'+data[i].ind+'" data-assign="0" class="syll_assign btn btn-default btn-sm"><i class="fas fa-check-square fa-2x"></i>'+
+                      '</a>'+
+                      '</div>';
+                  } else {
+                    html += '<div class="col-2 syll_topic">' + 
+                            data[i].section + '.' + data[i].topic + 
+                          '</div>' + 
+                          '<div class="col-8 syll_topic">' + 
+                            data[i].indicator + 
+                          '</div>'+
+                    '<div class="col-2 syll_topic"><a href="javascript:void(0);" data-id="'+data[i].id+'" data-section="'+data[i].section+'" data-topic="'+data[i].topic+'" data-ind="'+data[i].ind+'" data-assign="1" class="syll_assign btn btn-default btn-sm"><i class="fas fa-square fa-2x"></i></a></div>';
+                  }
+                  
+                } else {
+                  if (data[i].assign == 1) { 
+                    html += '<div class="col-2 syll_ind">' + 
+                              data[i].section + '.' + data[i].topic + '.' + data[i].ind + 
+                            '</div>' + 
+                            '<div class="col-8 syll_ind">'+
+                              '<span class="assigned">' + data[i].indicator + '</span>'+
+                            '</div>' + 
+                            '<div class="col-2 syll_ind">'+
+                            '<a href="javascript:void(0);" data-id="'+data[i].id+'" data-section="'+data[i].section+'" data-topic="'+data[i].topic+'" data-ind="'+data[i].ind+'" data-assign="0" class="btn btn-default btn-sm syll_assign"><i class="fa fa-check-square fa-2x"></i></a>'+
+                            '</div>';
+                  } else {
+                    html += '<div class="col-2 syll_ind">' + 
+                              data[i].section + '.' + data[i].topic + '.' + data[i].ind + 
+                            '</div>' + 
+                            '<div class="col-8 syll_ind">' + 
+                              data[i].indicator + 
+                            '</div>' + 
+                            '<div class="col-2 syll_ind">'+
+                            '<a href="javascript:void(0);" data-id="'+data[i].id+'" data-section="'+data[i].section+'" data-topic="'+data[i].topic+'" data-ind="'+data[i].ind+'" data-assign="1" class="btn btn-default btn-sm syll_assign"><i class="fa fa-square fa-2x"></i></a>'+
+                            '</div>';
+                  }
+                }
+                
+              }
+              $('#syllabus_edit_div').html(html);
             }
           });
           $('#edit_syllabus_modal').modal('show');
