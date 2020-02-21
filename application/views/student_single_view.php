@@ -572,7 +572,6 @@
         </div>
       </div>
     </form> <!-- END DELETE COURSE -->
-$('#').modal('show');
      <!-- EDIT STUDENT -->
     <form>
       <div class="modal fade" id="esm" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true"> 
