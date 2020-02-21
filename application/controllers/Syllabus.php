@@ -3,6 +3,7 @@ class Syllabus extends CI_Controller{
   function __construct(){
     parent::__construct();
     $this->load->model('syllabus_model');
+     $this->load->dbforge();
     if($this->session->userdata('logged_in') !== TRUE){
       redirect('login');
     }
@@ -29,14 +30,16 @@ class Syllabus extends CI_Controller{
   }
   function assign(){
     echo 'hello';
-    $pin = $this->input->post('pin');
+    $data = $this->syllabus_model->assign();
+    echo json_encode($data);
+    /*$pin = $this->input->post('pin');
     $section = $this->input->post('section');
     //$assign = $this->input->post('assign');
     $syllabus_table = "sl_".$pin;
     $this->db->where('section', $section);
     $this->db->set('assigned', 1);
     $query = $this->db->update($syllabus_table);
-    $return $query;
+    $return $query; */
   }
   function get_topics(){
     $data = $this->syllabus_model->get_topics();

@@ -1189,6 +1189,11 @@
              4 sen = 6
              5 general = 8 
            */
+          /*
+          steps :
+          a create the table -> insert the corresponding data -> assign selected topics -> set program to the students page.
+          
+          */
           var level = $('#level').val(),
               pin = "<?php echo $pin;?>";
           if(level ==1||level==2||level==4){
@@ -1199,6 +1204,15 @@
             if($('#section_4').is(':checked')){d =4;}
             if($('#section_5').is(':checked')){e =5;}
             if($('#section_6').is(':checked')){f =6;}
+            $.ajax({
+              type : "post",
+              url : "<?php echo site_url('syllabus/create');?>",
+              dataType : "json",
+              data : {pin:pin},
+              success:function(data){
+                
+              }
+            });
             $.ajax({
               type : "post",
               url : "<?php echo site_url('syllabus/insert');?>",
