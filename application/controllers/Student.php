@@ -39,7 +39,7 @@ class Student extends CI_Controller{
     $data['save_student']=$this->student_model->save_student();
     $data['course_table']=$this->student_model->create_course_table();
     $data['syllabus_table']=$this->student_model->create_syllabus_table();
-    $data['syllabus_insert']=$this->student_model->insert_into_syllabus();
+    //$data['syllabus_insert']=$this->student_model->insert_into_syllabus();
     $data['student_directory']=$this->student_model->create_student_directories();
     echo json_encode($data);
   }	

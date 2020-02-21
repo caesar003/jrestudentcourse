@@ -90,7 +90,7 @@ class Schedule_model extends CI_Model{
       ),
       '_9' => array(
         'type' => 'varchar',
-        'constraint' => '8',
+        'constraint' => '24',
         'default' => ''
       ),
       '_9r' => array(
@@ -105,7 +105,7 @@ class Schedule_model extends CI_Model{
       ),
       '_10' => array(
         'type' => 'varchar',
-        'constraint' => '8',
+        'constraint' => '24',
         'default' => ''
       ),
       '_10r' => array(
@@ -120,7 +120,7 @@ class Schedule_model extends CI_Model{
       ),
       '_11' => array(
         'type' => 'varchar',
-        'constraint' => '8',
+        'constraint' => '24',
         'default' => ''
       ),
       '_11r' => array(
@@ -135,7 +135,7 @@ class Schedule_model extends CI_Model{
       ),
       '_12' => array(
         'type' => 'varchar',
-        'constraint' => '8',
+        'constraint' => '24',
         'default' => ''
       ),
       '_12r' => array(
@@ -150,7 +150,7 @@ class Schedule_model extends CI_Model{
       ),
       '_13' => array(
         'type' => 'varchar',
-        'constraint' => '8',
+        'constraint' => '24',
         'default' => ''
       ),
       '_13r' => array(
@@ -165,7 +165,7 @@ class Schedule_model extends CI_Model{
       ),
       '_14' => array(
         'type' => 'varchar',
-        'constraint' => '8',
+        'constraint' => '24',
         'default' => ''
       ),
       '_14r' => array(
@@ -180,7 +180,7 @@ class Schedule_model extends CI_Model{
       ),
       '_15' => array(
         'type' => 'varchar',
-        'constraint' => '8',
+        'constraint' => '24',
         'default' => ''
       ),
       '_15r' => array(
@@ -195,7 +195,7 @@ class Schedule_model extends CI_Model{
       ),
       '_16' => array(
         'type' => 'varchar',
-        'constraint' => '8',
+        'constraint' => '24',
         'default' => ''
       ),
       '_16r' => array(
@@ -225,7 +225,7 @@ class Schedule_model extends CI_Model{
       ),
       '_18' => array(
         'type' => 'varchar',
-        'constraint' => '8',
+        'constraint' => '24',
         'default' => ''
       ),
       '_18r' => array(
@@ -240,7 +240,7 @@ class Schedule_model extends CI_Model{
       ),
       '_19' => array(
         'type' => 'varchar',
-        'constraint' => '8',
+        'constraint' => '24',
         'default' => ''
       ),
       '_19r' => array(
@@ -255,7 +255,7 @@ class Schedule_model extends CI_Model{
       ),
       '_20' => array(
         'type' => 'varchar',
-        'constraint' => '8',
+        'constraint' => '24',
         'default' => ''
       ),
       '_20r' => array(
