@@ -18,10 +18,11 @@
       <div class="row">
         <!-- STUDENT INFO -->
         <div class="col-md-3 col-lg-3" id="student_info_div">
-          <span><a id="new_session_btn" title="New Session" class="btn btn-secondary tooltip-right" href="javascript:void(0);"><span class="fa fa-plus"></span></a></span>
-          <span id="edit_student_span"></span>
+          <!--span><a id="new_session_btn" title="New Session" class="btn btn-secondary tooltip-right" href="javascript:void(0);"><span class="fa fa-plus"></span></a></span-->
+          <!--span id="edit_student_span"></span-->
           <h3 class="page-header"><small>Student </small>Information </h3>
-          <ul class="list-group" id="student_info"></ul>
+          <!-- <ul class="list-group" id="student_info"></ul> -->
+          <div class="accordion" id="student_info"></div>
         </div><!-- END STUDENT INFO -->
         <div class="col-md-9 col-lg-9">
           <div class="container">
@@ -36,8 +37,12 @@
               <li class="nav-item">
                 <a class="nav-link" id="pills-test-tab" data-toggle="pill" href="#pills-test" role="tab" aria-controls="pills-test" aria-selected="false">Tests</a>
               </li>
+              
               <li class="nav-item" id="fsp_tab">
-                <a class="nav-link" id="pills-fsp-tab" data-toggle="pill" href="#pills-fsp" role="tab" aria-controls="pills-fsp" aria-selected="false">FSP</a>
+                <a  class="nav-link" id="pills-fsp-tab" data-toggle="pill" href="#pills-fsp" role="tab" aria-controls="pills-fsp" aria-selected="false">FSP</a>
+              </li>
+              <li class="nav-item" id="new_session_tab">
+                <a href="javascript:void(0);" class="nav-link" id="new_session_btn"><i class="fas fa-plus"></i> Add New</a>
               </li>
             </ul><!-- END TABS --> <!-- this is a comment -->
             <!-- TABS CONTENTS -->
@@ -1507,6 +1512,7 @@
     <script type = "text/javascript" >
       $(document).ready(function() {
         get_student_detail();
+        // get student detail 
         function get_student_detail(){
           var pin = "<?php echo $pin;?>";
           $.ajax({
@@ -1521,7 +1527,7 @@
                   i;
               for(i=0;i<data.length;i++){
                 edit_student_button += '<a title="Edit" href="javascript:void(0);" '+
-                  'class="btn btn-info tooltip-bottom student_info_edit"'+
+                  'class="btn btn-info btn-sm tooltip-bottom student_info_edit"'+
                   'data-grp="'+data[i].grp+'" '+
                   'data-pn="'+data[i].pin+'" '+
                   'data-cn="'+data[i].complete_name+'" '+
@@ -1530,8 +1536,8 @@
                   'data-pb="'+data[i].place_of_birth+'" '+
                   'data-db="'+($.format.date(data[i].date_of_birth, "yyyy-MM-dd"))+'" '+
                   'data-ph="'+data[i].phone+'"'+
-                 'data-cnst2="'+data[i].cnst2+'"'+
-                 'data-nnst2="'+data[i].nnst2+'"'+
+                  'data-cnst2="'+data[i].cnst2+'"'+
+                  'data-nnst2="'+data[i].nnst2+'"'+
                   'data-adrst2="'+data[i].adrst2+'"'+
                   'data-pobst2="'+data[i].pobst2+'"'+
                   'data-dobst2="'+($.format.date(data[i].dobst2, "yyyy-MM-dd"))+'"'+
@@ -1558,8 +1564,10 @@
                   'data-si="'+data[i].self_introduction+'" '+
                   'data-wp="'+data[i].weakness_point+'"'+
                   'data-ap="'+data[i].action_plan+'" '+
+                  
                   'data-fsp="'+data[i].fsp+'"><i class="fas fa-user-edit fa-fw"></i></a>'; 
-                html += '<li style="background-color:black;color:white;" class="list-group-item">PERSONAL INFORMATION</li>';
+                
+               /* html += '<li style="background-color:black;color:white;" class="list-group-item">PERSONAL INFORMATION</li>';
                 if(data[i].grp!=''){
                   html += '<li class="list-group-item tooltip-bottom" title="Group study" style="background-color:gray;color:white;">'+data[i].grp+'</li>';
                 } else {
@@ -1650,7 +1658,116 @@
                         '</li>' + 
                         '<li class="list-group-item tooltip-bottom" title="Action Plan">' + 
                           '<i style="color:rgb(0,120,80);" class="fa fa-wrench fa-fw fa-lg"></i>' + data[i].action_plan + 
-                        '</li>';
+                        '</li>'; */
+                
+               html += `  <div class="card">
+                            <div class="card-header" id="heading_student">
+                              <h2 class="mb-0">
+                                <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapse_student" aria-expanded="true" aria-controls="collapse_student">
+                                  PERSONAL INFORMATION
+                                </button>
+                              <span class="float-right" id="edit_student_span"></span>
+                              </h2>
+                            </div>
+
+                            <div id="collapse_student" class="collapse show" aria-labelledby="heading_student" data-parent="#student_info">
+                              <div class="card-body">`;
+                if(data[i].grp!=''){
+                  html += `<li class="list-group-item tooltip-bottom" title="Group study" style="background-color:gray;color:white;">${data[i].grp}</li>`;
+                } else {
+                  html += ``;
+                } 
+                
+                html +=   `<span class="student_info_item"> PIN :</span>${data[i].pin}<br>
+                              <span class="student_info_item"> Name:</span>  ${data[i].complete_name}, ${data[i].nick_name}<br>
+                              <span class="student_info_item">   Address:</span>${data[i].address} <br>
+                              <span class="student_info_item">   PDoB:</span>${data[i].place_of_birth}, ${($.format.date(data[i].date_of_birth, "yyyy-MM-dd"))} <br>
+                              <span class="student_info_item">   Phone:</span> ${data[i].phone}<br>
+                              </div>
+                            </div>
+                          </div>`;
+                if(data[i].cnst2 !=''){
+                  html += `<div class="card">
+                        <div class="card-header" id="heading_student2">
+                          <h2 class="mb-0">
+                            <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapse_student2" aria-expanded="true" aria-controls="collapse_student2">
+                            Student 2 
+                            </button>
+                          </h2>
+                        </div>
+                        <div id="collapse_student2" class="collapse" aria-labelledby="heading_student2" data-parent="#student_info">
+                          <div class="card-body">
+                            <span class="student_info_item"> Name :</span> ${data[i].cnst2 }, ${data[i].nnst2 }<br>
+                            <span class="student_info_item"> Address:</span> ${data[i].adrst2 }<br>
+                            <span class="student_info_item"> PDoB:</span> ${data[i].pobst2}, ${($.format.date(data[i].dobst2, "yyyy-MM-dd"))}<br>
+                            <span class="student_info_item"> Phone:</span> ${data[i].phst2}<br>
+                          </div>
+                        </div>
+                      </div>` ;
+                }
+                if(data[i].cnst3 !=''){
+                  html += `<div class="card">
+                        <div class="card-header" id="heading_student3">
+                          <h2 class="mb-0">
+                            <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapse_student3" aria-expanded="true" aria-controls="collapse_student3">
+                            Student 3 
+                            </button>
+                          </h2>
+                        </div>
+                        <div id="collapse_student3" class="collapse" aria-labelledby="heading_student3" data-parent="#student_info">
+                          <div class="card-body">
+                            <span class="student_info_item"> Name :</span> ${data[i].cnst3}, ${data[i].nnst3 }<br>
+                            <span class="student_info_item"> Address:</span> ${data[i].adrst3 }<br>
+                            <span class="student_info_item"> PDoB:</span> ${data[i].pobst3}, ${($.format.date(data[i].dobst3, "yyyy-MM-dd"))}<br>
+                            <span class="student_info_item"> Phone:</span> ${data[i].phst3}<br>
+                          </div>
+                        </div>
+                      </div>` ;
+                }
+                 if(data[i].cnst4 !=''){
+                  html += `<div class="card">
+                        <div class="card-header" id="heading_student4">
+                          <h2 class="mb-0">
+                            <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapse_student4" aria-expanded="true" aria-controls="collapse_student4">
+                            Student 4
+                            </button>
+                          </h2>
+                        </div>
+                        <div id="collapse_student4" class="collapse" aria-labelledby="heading_student4" data-parent="#student_info">
+                          <div class="card-body">
+                            <span class="student_info_item"> Name :</span> ${data[i].cnst3}, ${data[i].nnst3}<br>
+                            <span class="student_info_item"> Address:</span> ${data[i].adrst3}<br>
+                            <span class="student_info_item"> PDoB:</span> ${data[i].pobst3}, ${($.format.date(data[i].dobst3, "yyyy-MM-dd"))}<br>
+                            <span class="student_info_item"> Phone:</span> ${data[i].phst3}<br>
+                          </div>
+                        </div>
+                      </div>`;
+                }
+                //html += `</div>`;
+                html += `<div class="card">
+                            <div class="card-header" id="heading_course_detail">
+                              <h2 class="mb-0">
+                                <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapse_course_detail" aria-expanded="true" aria-controls="collapse_course_detail">
+                                  COURSE DETAIL
+                                </button>
+                              </h2>
+                            </div>
+
+                            <div id="collapse_course_detail" class="collapse" aria-labelledby="heading_course_detail" data-parent="#student_info">
+                              <div class="card-body">
+                          <span class="student_info_item"> Program:</span>${data[i].program}<br>
+                          <span class="student_info_item"> Program duration: </span>${data[i].program_duration}<br>
+                          <span class="student_info_item"> Started on:</span>${($.format.date(data[i].starting_date, "MMM,dd yyyy"))} <br
+                          <span class="student_info_item"> Reason:</span> ${data[i].reason}<br>
+                          <span class="student_info_item"> Target:</span> ${data[i].target}<br>
+                          <span class="student_info_item"> Difficulties:</span> ${data[i].difficulties}<br>
+                          <span class="student_info_item"> Background:</span> ${data[i].bground}<br>
+                          <span class="student_info_item"> Self Introduction:</span> ${data[i].weakness_point}<br>
+                          <span class="student_info_item"> Weakness points: </span>  ${data[i].action_plan}<br>
+
+                              </div>
+                            </div>
+                          </div>`;
                 teacher_note += data[i].note;
                 if (data[i].fsp == 'yes'){
                   $('#fsp_tab').css('display','block');
@@ -1664,7 +1781,10 @@
             }
           });
         }
-        $('#edit_student_span').on('click','.student_info_edit', function(){
+        $('#student_info').on('click','.student_info_edit',function(){
+      /*    console.log('clicked');
+        });
+        $('#edit_student_span').on('click','.student_info_edit', function(){ */
           var grp=$(this).data('grp'),
               pn=$(this).data('pn'),
               cn=$(this).data('cn'),

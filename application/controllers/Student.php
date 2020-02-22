@@ -38,8 +38,6 @@ class Student extends CI_Controller{
   function save(){
     $data['save_student']=$this->student_model->save_student();
     $data['course_table']=$this->student_model->create_course_table();
-    $data['syllabus_table']=$this->student_model->create_syllabus_table();
-    //$data['syllabus_insert']=$this->student_model->insert_into_syllabus();
     $data['student_directory']=$this->student_model->create_student_directories();
     echo json_encode($data);
   }	
@@ -47,14 +45,7 @@ class Student extends CI_Controller{
     $data=$this->student_model->create_course_table();
     echo json_encode($data);
   }
-  function syllabus_table(){
-    $data=$this->student_model->create_syllabus_table();
-    echo json_encode($data);
-  }
-  function syllabus_insert(){
-    $data=$this->student_model->insert_into_syllabus();
-    echo json_encode($data);
-  }
+ 
   function student_directories(){
     $data=$this->student_model->create_student_directories();
     echo json_encode($data);
