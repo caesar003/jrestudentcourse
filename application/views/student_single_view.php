@@ -18,8 +18,7 @@
       <div class="row">
         <!-- STUDENT INFO -->
         <div class="col-md-3 col-lg-3" id="student_info_div">
-          <!--span><a id="new_session_btn" title="New Session" class="btn btn-secondary tooltip-right" href="javascript:void(0);"><span class="fa fa-plus"></span></a></span-->
-          <!--span id="edit_student_span"></span-->
+        
           <h3 class="page-header"><small>Student </small>Information </h3>
           <!-- <ul class="list-group" id="student_info"></ul> -->
           <div class="accordion" id="student_info"></div>
@@ -35,14 +34,14 @@
                 <a class="nav-link" id="pills-syllabus-tab" data-toggle="pill" href="#pills-syllabus" role="tab" aria-controls="pills-syllabus" aria-selected="false">Syllabus</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" id="pills-test-tab" data-toggle="pill" href="#pills-test" role="tab" aria-controls="pills-test" aria-selected="false">Tests</a>
+                <a class="nav-link" id="pills-test-tab" data-toggle="pill" href="#pills-test" role="tab" aria-controls="pills-test" aria-selected="false"><i class="fas fa-question-circle fa-fw"></i> Tests</a>
               </li>
               
               <li class="nav-item" id="fsp_tab">
                 <a  class="nav-link" id="pills-fsp-tab" data-toggle="pill" href="#pills-fsp" role="tab" aria-controls="pills-fsp" aria-selected="false">FSP</a>
               </li>
               <li class="nav-item" id="new_session_tab">
-                <a href="javascript:void(0);" class="nav-link" id="new_session_btn"><i class="fas fa-plus"></i> Add New</a>
+                <a href="javascript:void(0);" class="nav-link tooltip-bottom" title="New Session" id="new_session_btn"><i class="fas fa-plus"></i> Add New</a>
               </li>
             </ul><!-- END TABS --> <!-- this is a comment -->
             <!-- TABS CONTENTS -->
@@ -1094,7 +1093,10 @@
                   
                   html += `<div class="col-2 syll_topic">
                                 ${data[i].section}.${data[i].topic}</div>
-                            <div class="col-10 syll_topic">${data[i].indicator}</div>`;
+                            <div class="col-8 syll_topic">${data[i].indicator}</div>
+                            <div class="col-2 syll_topic">
+                              <a href="javascript:void(0);" data-stat="0" data-id="${data[i].id}" class="btn btn-default btn-sm topic_check"><i class="fa fa-check-square fa-2x"></i></a>
+                            </div>`;
                 } else { 
                   if (data[i].status == 1) { 
                     html += `<div class="col-2 syll_ind">
@@ -1526,7 +1528,7 @@
                   teacher_note='',
                   i;
               for(i=0;i<data.length;i++){
-                edit_student_button += '<a title="Edit" href="javascript:void(0);" '+
+                edit_student_button += '<a title="Edit student and course detail" href="javascript:void(0);" '+
                   'class="btn btn-info btn-sm tooltip-bottom student_info_edit"'+
                   'data-grp="'+data[i].grp+'" '+
                   'data-pn="'+data[i].pin+'" '+
