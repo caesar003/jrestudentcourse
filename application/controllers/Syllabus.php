@@ -13,8 +13,13 @@ class Syllabus extends CI_Controller{
     $data = $this->syllabus_model->get_syllabus();
     echo json_encode($data);
   }
-  function check(){
-    $data=$this->syllabus_model->check();
+  
+  function check_topic(){
+    $data=$this->syllabus_model->check_topic();
+    echo json_encode($data);
+  }
+  function check_ind(){
+    $data=$this->syllabus_model->check_ind();
     echo json_encode($data);
   }
   function get_sections(){
@@ -61,10 +66,6 @@ class Syllabus extends CI_Controller{
     $data = $this->syllabus_model->assign_topic();
     echo json_encode($data);
   }
-  /*function assign_section(){
-    $data = $this->syllabus_model->assign_section();
-    echo json_encode($data);
-  } */
   function assign_indicator(){
     $data = $this->syllabus_model->assign_indicator();
     echo json_encode($data);

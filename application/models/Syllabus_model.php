@@ -77,13 +77,27 @@ class Syllabus_model extends CI_Model{
     $query = $this->db->get($syllabus_master);
     return $query->result();
   }
-  function check(){
+  function check_ind(){
     $pin            = $this->input->post('pin');
     $id             = $this->input->post('id');
     $status         = $this->input->post('status');
     $syllabus_table = "sl_".$pin;
     
     $this->db->where('id', $id);
+    $this->db->set('status', $status);
+    $query = $this->db->update($syllabus_table);
+    return $query;
+  }
+  function check_topic(){
+    $pin = $this->input->post('pin');
+    $section = $this->input->post('section');
+    $topic = $this->input->post('topic');
+    $status = $this->input->post('status');
+    
+    $syllabus_table = "sl_".$pin;
+    
+    $this->db->where('section', $section);
+    $this->db->where('topic', $topic);
     $this->db->set('status', $status);
     $query = $this->db->update($syllabus_table);
     return $query;
