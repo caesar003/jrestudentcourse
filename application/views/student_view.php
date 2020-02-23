@@ -1623,9 +1623,9 @@
                   if(data.cnst2!=''){
                     if(data.cnst3!=''){
                       if(data.cnst4!=''){ /* four students */
-                        return `<a href="<?php echo site_url('student_single?pin');?>${data.pin}"> ${data.nick_name} -${data.nick_name} - ${data.nnst2} - ${data.cnst3} - ${data.cnst4} </a>`;
+                        return `<a href="<?php echo site_url('student_single?pin=');?>${data.pin}"> ${data.nick_name} -${data.nick_name} - ${data.nnst2} - ${data.cnst3} - ${data.cnst4} </a>`;
                       } else { /* three students */
-                        return `<a href="<?php echo site_url('student_single?pin'); ?>${data.pin}"> ${data.nick_name} - ${data.nnst2}- ${data.nnst3} </a>`;
+                        return `<a href="<?php echo site_url('student_single?pin='); ?>${data.pin}"> ${data.nick_name} - ${data.nnst2}- ${data.nnst3} </a>`;
                       }
                     }else { /* two students */
                       return `<a href="<?php echo site_url('student_single?pin=')?>${data.pin}"> ${data.nick_name} - ${data.nnst2} </a>`;
@@ -1783,9 +1783,9 @@
                   if(data.cnst2!=''){
                     if(data.cnst3!=''){
                       if(data.cnst4!=''){ /* four students */
-                        return `<a href="<?php echo site_url('student_single?pin');?>${data.pin}"> ${data.nick_name} -${data.nick_name} - ${data.nnst2} - ${data.cnst3} - ${data.cnst4} </a>`;
+                        return `<a href="<?php echo site_url('student_single?pin=');?>${data.pin}"> ${data.nick_name} -${data.nick_name} - ${data.nnst2} - ${data.cnst3} - ${data.cnst4} </a>`;
                       } else { /* three students */
-                        return `<a href="<?php echo site_url('student_single?pin'); ?>${data.pin}"> ${data.nick_name} - ${data.nnst2}- ${data.nnst3} </a>`;
+                        return `<a href="<?php echo site_url('student_single?pin='); ?>${data.pin}"> ${data.nick_name} - ${data.nnst2}- ${data.nnst3} </a>`;
                       }
                     }else { /* two students */
                       return `<a href="<?php echo site_url('student_single?pin=')?>${data.pin}"> ${data.nick_name} - ${data.nnst2} </a>`;
@@ -2409,9 +2409,9 @@
                   if(data.cnst2!=''){
                     if(data.cnst3!=''){
                       if(data.cnst4!=''){ /* four students */
-                        return `<a href="<?php echo site_url('student_single?pin');?>${data.pin}"> ${data.nick_name} -${data.nick_name} - ${data.nnst2} - ${data.cnst3} - ${data.cnst4} </a>`;
+                        return `<a href="<?php echo site_url('student_single?pin=');?>${data.pin}"> ${data.nick_name} -${data.nick_name} - ${data.nnst2} - ${data.cnst3} - ${data.cnst4} </a>`;
                       } else { /* three students */
-                        return `<a href="<?php echo site_url('student_single?pin'); ?>${data.pin}"> ${data.nick_name} - ${data.nnst2}- ${data.nnst3} </a>`;
+                        return `<a href="<?php echo site_url('student_single?pin='); ?>${data.pin}"> ${data.nick_name} - ${data.nnst2}- ${data.nnst3} </a>`;
                       }
                     }else { /* two students */
                       return `<a href="<?php echo site_url('student_single?pin=')?>${data.pin}"> ${data.nick_name} - ${data.nnst2} </a>`;
@@ -2549,9 +2549,9 @@
                   if(data.cnst2!=''){
                     if(data.cnst3!=''){
                       if(data.cnst4!=''){ /* four students */
-                        return `<a href="<?php echo site_url('student_single?pin');?>${data.pin}"> ${data.nick_name} -${data.nick_name} - ${data.nnst2} - ${data.cnst3} - ${data.cnst4} </a>`;
+                        return `<a href="<?php echo site_url('student_single?pin=');?>${data.pin}"> ${data.nick_name} -${data.nick_name} - ${data.nnst2} - ${data.cnst3} - ${data.cnst4} </a>`;
                       } else { /* three students */
-                        return `<a href="<?php echo site_url('student_single?pin'); ?>${data.pin}"> ${data.nick_name} - ${data.nnst2}- ${data.nnst3} </a>`;
+                        return `<a href="<?php echo site_url('student_single?pin='); ?>${data.pin}"> ${data.nick_name} - ${data.nnst2}- ${data.nnst3} </a>`;
                       }
                     }else { /* two students */
                       return `<a href="<?php echo site_url('student_single?pin=')?>${data.pin}"> ${data.nick_name} - ${data.nnst2} </a>`;

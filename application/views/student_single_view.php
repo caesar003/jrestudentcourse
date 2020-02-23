@@ -1335,7 +1335,7 @@
         $('#show_syllabus').on('click','.syllabus-level', function(){
           var level = $(this).data('level'),
               a = '',
-              desc = `message here`;
+              desc = `Select the suitable sections for the student (or you can simply leave all unchecked and customize them later), then click continue.`;
           if(level == 1){
             a = "English for Kids";
           } else if(level ==2){
@@ -1624,7 +1624,6 @@
                         </div>
                       </div>`;
                 }
-                //html += `</div>`;
                 html += `<div class="card">
                             <div class="card-header" id="heading_course_detail">
                               <h2 class="mb-0">
@@ -1663,9 +1662,6 @@
           });
         }
         $('#student_info').on('click','.student_info_edit',function(){
-      /*    console.log('clicked');
-        });
-        $('#edit_student_span').on('click','.student_info_edit', function(){ */
           var grp=$(this).data('grp'),
               pn=$(this).data('pn'),
               cn=$(this).data('cn'),
@@ -1704,7 +1700,6 @@
               ap=$(this).data('ap'),
               fsp = $(this).data('fsp'),
               fsp_button = '<input type="checkbox" name="fsp" id="fsp"' ;
-console.log(db);
 
           $('#esm').modal('show');
           $('[name="pn_e"]').val(pn);
