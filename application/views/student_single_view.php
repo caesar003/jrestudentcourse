@@ -1936,7 +1936,7 @@
             {
               "data" : {meeting:"meeting", course_date: "course_date", teacher: "teacher", duration: "duration", material: "material", w:"w", s: "s", test:"test", test_number: "test_number", test_name: "test_name", of_test_number: "of_test_number", of_test: "of_test" },
               "render" : function(data, type, row, meta){
-                return '<a title="Edit" href="javascript:void(0);" class="btn btn-info btn-sm item_edit tooltip-right" data-m="'+data.meeting+'" data-cd="'+data.course_date+'" data-tc="'+data.teacher+'" data-du="'+data.duration+'" data-ma="'+data.material+'" data-ev="'+data.evaluation+'" data-w="'+data.w+'" data-s="'+data.s+'" data-test="'+data.test+'" data-tnu="'+data.test_number+'" data-tn="'+data.test_name+'" data-otn="'+data.of_test_number+'" data-ot="'+data.of_test+'"><i class="fas fa-pencil-alt fa-fw"></i></a> <a href="javascript:void(0);" title="delete" class="btn btn-danger btn-sm item_delete tooltip-bottom" data-m="'+data.meeting+'" data-test="'+data.test+'"><i class="fas fa-trash fa-fw"></i></a>';
+               return `<a title="Edit" href="javascript:void(0);" class="btn btn-info btn-sm item_edit tooltip-right" data-m="${data.meeting}" data-cd="${data.course_date}" data-tc="${data.teacher}" data-du="${data.duration}" data-ma="${data.material}" data-ev="${data.evaluation}" data-w="${data.w}" data-s="${data.s}" data-test="${data.test}" data-tnu="${data.test_number}" data-tn="${data.test_name}" data-otn="${data.of_test_number}" data-ot="${data.of_test}"><i class="fas fa-pencil-alt fa-fw"></i></a> <a href="javascript:void(0);" title="delete" class="btn btn-danger btn-sm item_delete tooltip-bottom" data-m="${data.meeting}" data-test="${data.test}"><i class="fas fa-trash fa-fw"></i></a>`;
               }
             }
           ]
@@ -1948,50 +1948,50 @@
             "url": "<?php echo site_url('student_single/get_tests?pin='.$pin);?>",
             "dataSrc" :""
           },
-          "columns" :[
+           "columns" :[
             {
               "data" : "meeting",
               "render" : function (data,type, row,meta){
-                return '<a target="_blank" href="test?pin=<?php echo $pin;?>&meeting='+data+'">'+data+'</a>';
+                return `<a target="_blank" href="test?pin=<?php echo $pin;?>&meeting=${data}">${data}</a>`;
               }
             },
             {
               "data" : {course_date :"course_date", meeting: "meeting"},
               "render" : function (data, type, row){
-                return '<a target="_blank" href="test?pin=<?php echo $pin;?>&meeting='+data.meeting+'">'+$.format.date(data.course_date, "E, MMM/dd/yy, H:mm")+'</a>';
+                return `<a target="_blank" href="test?pin=<?php echo $pin;?>&meeting=${data.meeting}">${$.format.date(data.course_date, "E, MMM/dd/yy, H:mm")}</a>`;
               }
             },
             {
               "data" : {teacher: "teacher", meeting: "meeting"},
               "render" : function (data, type, row, meta){
-                return '<a target="_blank" href="test?pin=<?php echo $pin;?>&meeting='+data.meeting+'">'+data.teacher+'</a>';
+                return `<a target="_blank" href="test?pin=<?php echo $pin;?>&meeting=${data.meeting}">${data.teacher}</a>`;
               }
             },
             {
               "data" : {duration:"duration", meeting: "meeting"},
               "render" : function (data, type, row, meta){
-                return '<a target="_blank" href="test?pin=<?php echo $pin;?>&meeting='+data.meeting+'">'+data.duration+' minutes</a>';
+                return `<a target="_blank" href="test?pin=<?php echo $pin;?>&meeting=${data.meeting}">${data.duration} minutes</a>`;
               }
             },
             {
               "data" : {material:"material", meeting:"meeting"},
               "render" : function (data, type, row, meta){
-                return '<a target="_blank" href="test?pin=<?php echo $pin;?>&meeting='+data.meeting+'">'+data.material+'</a>';
+                return `<a target="_blank" href="test?pin=<?php echo $pin;?>&meeting=${data.meeting}">${data.material}</a>`;
               }
             },
             {
               "data" : {evaluation:"evaluation", meeting:"meeting"},
               "render" : function (data, type, row, meta){
-                return '<a target="_blank" href="test?pin=<?php echo $pin;?>&meeting='+data.meeting+'">'+data.evaluation+'</a>';
+                return `<a target="_blank" href="test?pin=<?php echo $pin;?>&meeting=${data.meeting}">${data.evaluation}</a>`;
               }
             },
             {
               "data" : {test:"test",test_name:"test_name", meeting: "meeting"},
               "render" : function (data, type, row, meta){
                 if(data.test_name == "Pre Spoken" || data.test_name == "Pre Written"){
-                  return '<a target="_blank" href="test?pin=<?php echo $pin;?>&meeting='+data.meeting+'">'+data.test_name+'</a>';
+                  return `<a target="_blank" href="test?pin=<?php echo $pin;?>&meeting=${data.meeting}">${data.test_name}</a>`;
                 } else {
-                  return '<a target="_blank" href="test?pin=<?php echo $pin;?>&meeting='+data.meeting+'">'+data.test+'</a>';
+                  return `<a target="_blank" href="test?pin=<?php echo $pin;?>&meeting=${data.meeting}">${data.test}</a>`;
                 }
               }
             },
