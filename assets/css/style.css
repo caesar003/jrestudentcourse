@@ -1,10 +1,10 @@
-#mystudents a{
+#mystudents a, #myaft a{
   color:black;
 }
-#mystudents a:hover{
-  color: darkslategrey;
+#mystudents a:hover, #myaft a:hover{
+  color: blueviolet;
   text-decoration: none;
-}
+} 
 #show_topic ul {
     padding-left: 0;
   list-style: none;
