@@ -1572,7 +1572,7 @@
                         <div class="card-header" id="heading_student2">
                           <h2 class="mb-0">
                             <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapse_student2" aria-expanded="true" aria-controls="collapse_student2">
-                            Student 2 
+                            STUDENT 2 
                             </button>
                           </h2>
                         </div>
@@ -1591,7 +1591,7 @@
                         <div class="card-header" id="heading_student3">
                           <h2 class="mb-0">
                             <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapse_student3" aria-expanded="true" aria-controls="collapse_student3">
-                            Student 3 
+                            STUDENT 3 
                             </button>
                           </h2>
                         </div>
@@ -1610,7 +1610,7 @@
                         <div class="card-header" id="heading_student4">
                           <h2 class="mb-0">
                             <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapse_student4" aria-expanded="true" aria-controls="collapse_student4">
-                            Student 4
+                            STUDENT 4
                             </button>
                           </h2>
                         </div>
@@ -1637,13 +1637,14 @@
                               <div class="card-body">
                           <span class="student_info_item"> Program:</span>${data[i].program}<br>
                           <span class="student_info_item"> Program duration: </span>${data[i].program_duration}<br>
-                          <span class="student_info_item"> Started on:</span>${($.format.date(data[i].starting_date, "MMM,dd yyyy"))} <br
+                          <span class="student_info_item"> Started on:</span>${($.format.date(data[i].starting_date, "MMM,dd yyyy"))} <br>
                           <span class="student_info_item"> Reason:</span> ${data[i].reason}<br>
                           <span class="student_info_item"> Target:</span> ${data[i].target}<br>
                           <span class="student_info_item"> Difficulties:</span> ${data[i].difficulties}<br>
                           <span class="student_info_item"> Background:</span> ${data[i].bground}<br>
-                          <span class="student_info_item"> Self Introduction:</span> ${data[i].weakness_point}<br>
+                          <span class="student_info_item"> Self Introduction:</span> ${data[i].self_introduction}<br>
                           <span class="student_info_item"> Weakness points: </span>  ${data[i].action_plan}<br>
+                          <span class="student_info_item"> Action Plan: </span> ${data[i].action_plan}
 
                               </div>
                             </div>

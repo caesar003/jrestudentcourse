@@ -59,6 +59,11 @@ span.student_info_item {
     padding: 6px;
     border-radius: 4px;
 }
+.aft_list_selected{
+  color: green;
+    font-size: larger;
+    background-color: aquamarine;
+}
 .aft_list_item:hover {
     color: green;
     font-size: larger;

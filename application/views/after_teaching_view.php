@@ -41,45 +41,7 @@
                 l = 'There is nothing here, everything seems to be checked out.';
               } else {
                 for (i=0;i<data.length;i++){
-                  l += `<li class="list-group-item aft_list_item" 
-data-grp="${data[i].grp}" 
-data-pn="${data[i].pin}" 
-data-cn="${data[i].complete_name}" 
-data-nn="${data[i].nick_name}" 
-data-ad="${data[i].address}"
-data-pb="${data[i].place_of_birth}"
-data-db="${($.format.date(data[i].date_of_birth, "yyyy-MM-dd"))}"
-data-ph="${data[i].phone}"
-data-cnst2="${data[i].cnst2}"
-data-nnst2="${data[i].nnst2}"
-data-adrst2="${data[i].adrst2}"
-data-pobst2="${data[i].pobst2}"
-data-dobst2="${($.format.date(data[i].dobst2, "yyyy-MM-dd"))}"
-data-phst2="${data[i].phst2}"
-data-cnst3="${data[i].cnst3}"
-data-nnst3="${data[i].nnst3}"
-data-adrst3="${data[i].adrst3}"
-data-pobst3="${data[i].pobst3}"
-data-dobst3="${($.format.date(data[i].dobst3, "yyyy-MM-dd"))}"
-data-phst3="${data[i].phst3}"
-data-cnst4="${data[i].cnst4}"
-data-nnst4="${data[i].nnst4}"
-data-adrst4="${data[i].adrst4}"
-data-pobst4="${data[i].pobst4}"
-data-dobst4="${($.format.date(data[i].dobst4, "yyyy-MM-dd"))}"
-data-phst4="${data[i].phst4}"
-data-pr="${data[i].program}"
-data-pd="${data[i].program_duration}"
-data-sd="${($.format.date(data[i].starting_date, "yyyy-MM-dd"))}"
-data-re="${data[i].reason}"
-data-ta="${data[i].target}"
-data-di="${data[i].difficulties}"
-data-bg="${data[i].bground}"
-data-si="${data[i].self_introduction}"
-data-wp="${data[i].weakness_point}"
-data-ap="${data[i].action_plan}"
-data-fsp="${data[i].fsp}"
-data-note="${data[i].note}">${data[i].pin} - ${data[i].nick_name}</li>`;
+                  l += `<li class="list-group-item aft_list_item"  data-grp="${data[i].grp}"  data-pn="${data[i].pin}"  data-cn="${data[i].complete_name}"  data-nn="${data[i].nick_name}"  data-ad="${data[i].address}" data-pb="${data[i].place_of_birth}" data-db="${($.format.date(data[i].date_of_birth, "yyyy-MM-dd"))}" data-ph="${data[i].phone}" data-cnst2="${data[i].cnst2}" data-nnst2="${data[i].nnst2}" data-adrst2="${data[i].adrst2}" data-pobst2="${data[i].pobst2}" data-dobst2="${($.format.date(data[i].dobst2, "yyyy-MM-dd"))}" data-phst2="${data[i].phst2}" data-cnst3="${data[i].cnst3}" data-nnst3="${data[i].nnst3}" data-adrst3="${data[i].adrst3}" data-pobst3="${data[i].pobst3}" data-dobst3="${($.format.date(data[i].dobst3, "yyyy-MM-dd"))}" data-phst3="${data[i].phst3}" data-cnst4="${data[i].cnst4}" data-nnst4="${data[i].nnst4}" data-adrst4="${data[i].adrst4}" data-pobst4="${data[i].pobst4}" data-dobst4="${($.format.date(data[i].dobst4, "yyyy-MM-dd"))}" data-phst4="${data[i].phst4}" data-pr="${data[i].program}" data-pd="${data[i].program_duration}" data-sd="${($.format.date(data[i].starting_date, "yyyy-MM-dd"))}" data-re="${data[i].reason}" data-ta="${data[i].target}" data-di="${data[i].difficulties}" data-bg="${data[i].bground}" data-si="${data[i].self_introduction}" data-wp="${data[i].weakness_point}" data-ap="${data[i].action_plan}" data-fsp="${data[i].fsp}" data-note="${data[i].note}">${data[i].pin} - ${data[i].nick_name}</li>`;
                 }
               }
               $('#aft_list').html(l);
@@ -88,6 +50,8 @@ data-note="${data[i].note}">${data[i].pin} - ${data[i].nick_name}</li>`;
         }
         /* item selected */
         $('#aft_list').on('click', '.aft_list_item', function(){
+          $(this).siblings().removeClass('aft_list_selected');
+          $(this).addClass('aft_list_selected');
           var grp=$(this).data('grp'),
               pn=$(this).data('pn'),
               cn=$(this).data('cn'),
@@ -135,7 +99,7 @@ data-note="${data[i].note}">${data[i].pin} - ${data[i].nick_name}</li>`;
                         <div class="card-header" id="heading_personal_detail">
                           <h2 class="mb-0">
                             <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapse_personal_detail" aria-expanded="true" aria-controls="collapse_personal_detail">
-                              Personal Information 
+                              PERSONAL INFORMATION
                             </button>
                           </h2>
                         </div>
@@ -156,7 +120,7 @@ data-note="${data[i].note}">${data[i].pin} - ${data[i].nick_name}</li>`;
                         <div class="card-header" id="heading_${pn}st2">
                           <h2 class="mb-0">
                             <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapse_${pn}st2" aria-expanded="true" aria-controls="collapse_${pn}st2">
-                            Student 2 
+                            STUDENT 2 
                             </button>
                           </h2>
                         </div>
@@ -175,7 +139,7 @@ data-note="${data[i].note}">${data[i].pin} - ${data[i].nick_name}</li>`;
                         <div class="card-header" id="heading_${pn}st3">
                           <h2 class="mb-0">
                             <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapse_${pn}st3" aria-expanded="true" aria-controls="collapse_${pn}st3">
-                            Student 3 
+                            STUDENT 3 
                             </button>
                           </h2>
                         </div>
@@ -194,7 +158,7 @@ data-note="${data[i].note}">${data[i].pin} - ${data[i].nick_name}</li>`;
                           <div class="card-header" id="heading_${pn}st4">
                             <h2 class="mb-0">
                               <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapse_${pn}st4" aria-expanded="true" aria-controls="collapse_${pn}st4">
-                                Student 4 
+                                STUDENT 4 
                               </button>
                             </h2>
                           </div>
@@ -212,7 +176,7 @@ data-note="${data[i].note}">${data[i].pin} - ${data[i].nick_name}</li>`;
                       <div class="card-header" id="heading_${pn}_course_detail">
                         <h2 class="mb-0">
                           <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapse_${pn}_course_detail" aria-expanded="true" aria-controls="collapse_${pn}_course_detail">
-                            Course Detail 
+                            COURSE DETAIL 
                           </button>
                         </h2>
                       </div>
