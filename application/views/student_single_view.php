@@ -1161,7 +1161,6 @@
               pin = "<?php echo $pin;?>",
               program = $('#program_id').val();
           if(ind==0){
-            console.log('check the topic');
             $.ajax({
               type : "post",
               url : "<?php echo site_url('syllabus/check_topic');?>",
@@ -1172,7 +1171,6 @@
               }
             });
           } else {
-            console.log('check the indicator');
             $.ajax({
               type: "POST",
               url : "<?php echo site_url('syllabus/check_ind');?>",
@@ -1543,140 +1541,7 @@
                   teacher_note='',
                   i;
               for(i=0;i<data.length;i++){
-                edit_student_button += '<a title="Edit student and course detail" href="javascript:void(0);" '+
-                  'class="btn btn-info btn-sm tooltip-bottom student_info_edit"'+
-                  'data-grp="'+data[i].grp+'" '+
-                  'data-pn="'+data[i].pin+'" '+
-                  'data-cn="'+data[i].complete_name+'" '+
-                  'data-nn="'+data[i].nick_name+'" '+
-                  'data-ad="'+data[i].address+'" '+
-                  'data-pb="'+data[i].place_of_birth+'" '+
-                  'data-db="'+($.format.date(data[i].date_of_birth, "yyyy-MM-dd"))+'" '+
-                  'data-ph="'+data[i].phone+'"'+
-                  'data-cnst2="'+data[i].cnst2+'"'+
-                  'data-nnst2="'+data[i].nnst2+'"'+
-                  'data-adrst2="'+data[i].adrst2+'"'+
-                  'data-pobst2="'+data[i].pobst2+'"'+
-                  'data-dobst2="'+($.format.date(data[i].dobst2, "yyyy-MM-dd"))+'"'+
-                  'data-phst2="'+data[i].phst2+'"'+
-                  'data-cnst3="'+data[i].cnst3+'"'+
-                  'data-nnst3="'+data[i].nnst3+'"'+
-                  'data-adrst3="'+data[i].adrst3+'"'+
-                  'data-pobst3="'+data[i].pobst3+'"'+
-                  'data-dobst3="'+($.format.date(data[i].dobst3, "yyyy-MM-dd"))+'"'+
-                  'data-phst3="'+data[i].phst3+'"'+
-                  'data-cnst4="'+data[i].cnst4+'"'+
-                  'data-nnst4="'+data[i].nnst4+'"'+
-                  'data-adrst4="'+data[i].adrst4+'"'+
-                  'data-pobst4="'+data[i].pobst4+'"'+
-                  'data-dobst4="'+($.format.date(data[i].dobst4, "yyyy-MM-dd"))+'"'+
-                  'data-phst4="'+data[i].phst4+'"'+
-                  'data-pr="'+data[i].program+'"'+
-                  'data-pd="'+data[i].program_duration+'"'+
-                  'data-sd="'+($.format.date(data[i].starting_date, "yyyy-MM-dd"))+'"'+
-                  'data-re="'+data[i].reason+'"'+
-                  'data-ta="'+data[i].target+'" '+
-                  'data-di="'+data[i].difficulties+'"'+
-                  'data-bg="'+data[i].bground+'"'+
-                  'data-si="'+data[i].self_introduction+'" '+
-                  'data-wp="'+data[i].weakness_point+'"'+
-                  'data-ap="'+data[i].action_plan+'" '+
-                  
-                  'data-fsp="'+data[i].fsp+'"><i class="fas fa-user-edit fa-fw"></i></a>'; 
-                
-               /* html += '<li style="background-color:black;color:white;" class="list-group-item">PERSONAL INFORMATION</li>';
-                if(data[i].grp!=''){
-                  html += '<li class="list-group-item tooltip-bottom" title="Group study" style="background-color:gray;color:white;">'+data[i].grp+'</li>';
-                } else {
-                  html += '';
-                } 
-                html += '<li class="list-group-item tooltip-bottom" title="Pin number">' + 
-                          '<i style="color:green;" class="fas fa-barcode fa-fw fa-lg"></i> ' + data[i].pin + 
-                        '</li>' +
-                        '<li class="list-group-item tooltip-right" title="Name">'+
-                          '<i style="color:red;" class="fa fa-user-circle fa-fw fa-lg"></i> ' + data[i].complete_name+' - '+ data[i].nick_name +
-                        '</li>' + 
-                        '<li class="list-group-item tooltip-bottom" title="Address">' + 
-                          '<i style="color:blue;" class="fa fa-home fa-fw fa-lg"></i> ' + data[i].address + 
-                        '</li>' + 
-                        '<li class="list-group-item tooltip-bottom" title="Place, date or birth">' + '<i style="color:rgb(120,50,255);" class="fa fa-gift fa-fw fa-lg"></i> '+ data[i].place_of_birth +', '+ ($.format.date(data[i].date_of_birth,  "MMM, dd yyyy")) + 
-                        '</li>' + 
-                        '<li class="list-group-item tooltip-bottom" title="Phone, click to call">' + 
-                        '<i style="color:navy;" class="fa fa-phone-square fa-fw fa-lg"></i><a style="text-decoration:none;" target="_blank" href="https://wa.me/' + data[i].phone + '"> ' + data[i].phone + '</a>' + 
-                        '</li>';
-                if(data[i].cnst2!==''){
-                  html += '<li class="list-group-item student_header">Student Two</li>'+
-                        '<li class="list-group-item tooltip-right" title="Complete name">'+
-                          '<i style="color:red;" class="fa fa-user-circle fa-fw fa-lg"></i> '+ data[i].cnst2 +' - '+ data[i].nnst2 +  
-                        '</li>' + 
-                        '<li class="list-group-item tooltip-bottom" title="Address">' + 
-                          '<i style="color:blue;" class="fa fa-home fa-fw fa-lg"></i> ' + data[i].adrst2 + 
-                        '</li>' + 
-                        '<li class="list-group-item tooltip-bottom" title="Place, dates of birth">' + '<i style="color:grey;" class="fa fa-map-marker fa-fw fa-lg"></i> ' + data[i].pobst2 +', '+ ($.format.date(data[i].dobst2, "MMM, dd yyyy")) +
-                        '</li>' + 
-                        '<li class="list-group-item tooltip-bottom" title="Phone,click to call">' + 
-                        '<i style="color:navy;" class="fa fa-phone-square fa-fw fa-lg"></i><a style="text-decoration:none;" target="_blank" href="https://wa.me/' + data[i].phst2 + '">' + data[i].phst2 + '</a>' + 
-                        '</li>';
-                }
-                if(data[i].cnst3!==''){
-                  html += '<li class="list-group-item student_header">Student Three</li>'+
-                        '<li class="list-group-item tooltip-right" title="Nick name">' + 
-                          '<i style="color:rgb(70,0,90);" class="fa fa-user-circle fa-fw fa-lg"></i> ' +  data[i].cnst3 +' - '+ data[i].nnst3 + 
-                        '</li>' + 
-                        '<li class="list-group-item tooltip-bottom" title="Address">' + 
-                          '<i style="color:blue;" class="fa fa-home fa-fw fa-lg"></i> ' + data[i].adrst3 + 
-                        '</li>' + 
-                        '<li class="list-group-item tooltip-bottom" title="Date or birth">' + '<i style="color:rgb(120,50,255);" class="fa fa-gift fa-fw fa-lg"></i> ' + data[i].pobst3+', '+ ($.format.date(data[i].dobst3, "MMM, dd yyyy")) + 
-                        '</li>' + 
-                        '<li class="list-group-item tooltip-bottom" title="Phone,click to call">' + 
-                        '<i style="color:navy;" class="fa fa-phone-square fa-fw fa-lg"></i><a style="text-decoration:none;" target="_blank" href="https://wa.me/' + data[i].phst3 + '">' + data[i].phst3 + '</a>' + 
-                        '</li>';
-                }
-                if(data[i].cnst4!==''){
-                  html += '<li class="list-group-item student_header">Student Four</li>'+
-                        '<li class="list-group-item tooltip-right" title="Nick name"> ' + 
-                          '<i style="color:rgb(70,0,90);" class="fa fa-user-circle fa-fw fa-lg"></i> '  + data[i].cnst4 +' - '+ data[i].nnst4 + 
-                        '</li>' + 
-                        '<li class="list-group-item tooltip-bottom" title="Address">' + 
-                          '<i style="color:blue;" class="fa fa-home fa-fw fa-lg"></i> ' + data[i].adrst4 + 
-                        '</li>' + 
-                        '<li class="list-group-item tooltip-bottom" title="Date or birth">' + 
-                        '<i style="color:rgb(120,50,255);" class="fa fa-gift fa-fw fa-lg"></i> ' + 
-                        data[i].pobst4 +', '+($.format.date(data[i].dobst4, "MMM,dd yyyy")) + 
-                        
-                        '</li>' + 
-                        '<li class="list-group-item tooltip-bottom" title="Phone,click to call">' + 
-                        '<i style="color:navy;" class="fa fa-phone-square fa-fw fa-lg"></i> <a style="text-decoration:none;" target="_blank" href="https://wa.me/' + data[i].phst4+'">' + data[i].phst4 + '</a>' + 
-                        '</li>';
-                }
-                html += '<li style="background-color:black;color:white;" class="list-group-item">COURSE DETAIL</li>'+
-                        '<li class="list-group-item tooltip-bottom" title="Study Program">' + 
-                          '<i style="color:rgb(162,255,20);" class="fa fa-list-ul fa-fw fa-lg"></i>' + data[i].program + 
-                        '</li>' + 
-                        '<li class="list-group-item tooltip-bottom" title="Program Duration">' + 
-                          '<i style="color:rgb(80,83,210);" class="fa fa-hourglass-end fa-fw fa-lg"></i>' + data[i].program_duration + 
-                        ' meetings</li>' + 
-                        '<li class="list-group-item tooltip-bottom" title="Starting date">' + 
-                          '<i style="color:rgb(80,170,243);" class="fa fa-flag fa-fw fa-lg"></i>' + ($.format.date(data[i].starting_date, "MMM,dd yyyy")) + 
-                        '</li>' + 
-                        '<li class="list-group-item tooltip-bottom" title="Reason for studying">' + '<i style="color:rgb(80,255,20);" class="fa fa-question-circle fa-fw fa-lg"></i>' + data[i].reason + '</li>' + 
-                        '<li class="list-group-item tooltip-bottom" title="Target at the completion">' + 
-                          '<i style="color: rgb(190,110,27);" class="fa fa-crosshairs fa-fw fa-lg"></i>' + data[i].target + 
-                        '</li>' + 
-                        '<li class="list-group-item tooltip-bottom" title="Difficulties">' + 
-                          '<i style="color:rgb(255,0,255);" class="fa fa-thumbs-down fa-fw fa-lg"></i>' + data[i].difficulties + '</li>' + 
-                        '<li class="list-group-item tooltip-bottom" title="Background">' + 
-                          '<i style="color:rgb(100,120,190);" class="fa fa-graduation-cap fa-fw fa-lg"></i>' + data[i].bground + '</li>' + 
-                        '<li class="list-group-item tooltip-bottom" title="Self Introduction">' + 
-                          '<i style="color:rgb(70,210,155);" class="fa fa-info-circle fa-fw fa-lg"></i>' + data[i].self_introduction + 
-                        '</li>' + 
-                        '<li class="list-group-item tooltip-bottom" title="Weakness Points">' + 
-                          '<i style="color:rgb(255,20,60);" class="fa fa-exclamation-triangle fa-fw fa-lg"></i>' + data[i].weakness_point + 
-                        '</li>' + 
-                        '<li class="list-group-item tooltip-bottom" title="Action Plan">' + 
-                          '<i style="color:rgb(0,120,80);" class="fa fa-wrench fa-fw fa-lg"></i>' + data[i].action_plan + 
-                        '</li>'; */
-                
+                edit_student_button += `<a title="Edit student and course detail" href="javascript:void(0);" class="btn btn-info btn-sm tooltip-bottom student_info_edit" data-grp="${data[i].grp}" data-pn="${data[i].pin}" data-cn="${data[i].complete_name}" data-nn="${data[i].nick_name}" data-ad="${data[i].address}" data-pb="${data[i].place_of_birth}" data-db="${$.format.date(data[i].date_of_birth, "yyyy-MM-dd")}" data-ph="${data[i].phone}" data-cnst2="${data[i].cnst2}" data-nnst2="${data[i].nnst2}" data-adrst2="${data[i].adrst2}" data-pobst2="${data[i].pobst2}" data-dobst2="${($.format.date(data[i].dobst2, "yyyy-MM-dd"))}" data-phst2="${data[i].phst2}" data-cnst3="${data[i].cnst3}" data-nnst3="${data[i].nnst3}" data-adrst3="${data[i].adrst3}" data-pobst3="${data[i].pobst3}" data-dobst3="${($.format.date(data[i].dobst3, "yyyy-MM-dd"))}" data-phst3="${data[i].phst3}" data-cnst4="${data[i].cnst4}" data-nnst4="${data[i].nnst4}" data-adrst4="${data[i].adrst4}" data-pobst4="${data[i].pobst4}" data-dobst4="${($.format.date(data[i].dobst4, "yyyy-MM-dd"))}" data-phst4="${data[i].phst4}" data-pr="${data[i].program}" data-pd="${data[i].program_duration}" data-sd="${($.format.date(data[i].starting_date, "yyyy-MM-dd"))}" data-re="${data[i].reason}" data-ta="${data[i].target}" data-di="${data[i].difficulties}" data-bg="${data[i].bground}" data-si="${data[i].self_introduction}" data-wp="${data[i].weakness_point}" data-ap="${data[i].action_plan}" data-fsp="${data[i].fsp} "><i class="fas fa-user-edit fa-fw"></i></a>`; 
                html += `  <div class="card">
                             <div class="card-header" id="heading_student">
                               <h2 class="mb-0">
@@ -1694,7 +1559,6 @@
                 } else {
                   html += ``;
                 } 
-                
                 html +=   `<span class="student_info_item"> PIN :</span>${data[i].pin}<br>
                               <span class="student_info_item"> Name:</span>  ${data[i].complete_name}, ${data[i].nick_name}<br>
                               <span class="student_info_item">   Address:</span>${data[i].address} <br>
@@ -1840,7 +1704,7 @@
               ap=$(this).data('ap'),
               fsp = $(this).data('fsp'),
               fsp_button = '<input type="checkbox" name="fsp" id="fsp"' ;
-
+console.log(db);
 
           $('#esm').modal('show');
           $('[name="pn_e"]').val(pn);
