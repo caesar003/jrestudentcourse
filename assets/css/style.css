@@ -1,3 +1,10 @@
+#mystudents a{
+  color:black;
+}
+#mystudents a:hover{
+  color: darkslategrey;
+  text-decoration: none;
+}
 #show_topic ul {
     padding-left: 0;
   list-style: none;
