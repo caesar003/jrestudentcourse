@@ -22,6 +22,21 @@ class Syllabus extends CI_Controller{
     $data=$this->syllabus_model->check_ind();
     echo json_encode($data);
   }
+  /*function get_this_topic(){
+    if ($this->syllabus_model->get_this_topic()){
+      echo 'true';
+    } else {
+      echo 'false';
+    }
+  } */
+  function get_this_topic(){
+    $data = $this->syllabus_model->get_this_topic();
+    echo json_encode($data);
+  }
+  function check_topic_header(){
+    $data = $this->syllabus_model->check_topic_header();
+    echo json_encode($data);
+  }
   function get_sections(){
     $data = $this->syllabus_model->get_sections();
     echo json_encode($data);

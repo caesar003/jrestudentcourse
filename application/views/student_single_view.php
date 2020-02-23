@@ -1169,7 +1169,37 @@
               dataType : "JSON",
               data : {pin : pin, id : id, status: status},
               success : function(data){
-                show_syllabus(pin, program);
+                $.ajax({
+                  type : "post",
+                  url : "<?php echo site_url('syllabus/get_this_topic'); ?>",
+                  dataType : "json",
+                  data : {pin:pin, section:section, topic:topic, ind:ind, status:status},
+                  success : function(data){
+                    if(data.length==0){
+                      $.ajax({
+                        type : "post",
+                        url : "<?php echo site_url('syllabus/check_topic');?>",
+                        dataType : "json",
+                        data : {pin:pin, section:section, topic:topic, status:status},
+                        success :function(data){
+                          show_syllabus(pin, program);
+                        }
+                      });
+                    } else {
+                     
+                        $.ajax({
+                          type : "post",
+                          url : "<?php echo site_url('syllabus/check_topic_header');?>",
+                          dataType : "json",
+                          data : {pin:pin, section: section, topic: topic},
+                          success : function(data){
+                            show_syllabus(pin, program);
+                          }
+                        });
+                    }
+                  }
+                });
+               
               }
             });
           }
