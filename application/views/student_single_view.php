@@ -1204,7 +1204,7 @@
         });
         $('#syll_edit_button_div').on('click', '.edit_syllabus', function(){
           var pin = "<?php echo $pin;?>",
-              prg = "<?php echo $program_id;?>";
+              prg = $('#program_id').val();//"<?php echo $program_id;?>";
           get_all(pin,prg);
           $('#edit_syllabus_modal').modal('show');
         });
