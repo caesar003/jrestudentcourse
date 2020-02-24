@@ -102,6 +102,11 @@ class Student_model extends CI_Model{
         'type' => 'VARCHAR',
         'constraint' => '2000',
       ),
+      'co' => array(
+          'type' => 'int',
+          'constraint' => 11,
+          'after' => 'material'
+        ),
       'evaluation' => array(
         'type' => 'varchar',
         'constraint' => '2500',

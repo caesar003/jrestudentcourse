@@ -309,14 +309,21 @@
                         </select>
                       </div>
                     </div>
-                    <div class="form-group col-6">
+                    <div class="form-group col-5">
                       <label for="ma">Material <sup>&lowast;</sup></label>
                       <div class="input-group">
                         <div class="input-group-prepend"><span class="input-group-text"><i class="fa fa-book fa-fw"></i></span></div>
                         <textarea name="ma" id="ma" class="form-control" placeholder="(1.1 - 1-3) Greeting..."></textarea>
                       </div>
                     </div>
-                    <div class="form-group col-6">
+                    <div class="form-group col-2">
+                      <label for="co">Counter </label>
+                      <div class="input-group">
+                        <div class="input-group-prepend"><span class="input-group-text"><i class="fa fa-book fa-fw"></i></span></div>
+                        <textarea title="Put a number here to see if it is the time to prepare test for this student" name="co" id="co" class="form-control" placeholder="6"></textarea>
+                      </div>
+                    </div>
+                    <div class="form-group col-5">
                       <label for="ev">Evaluation <sup>&lowast;</sup></label>
                       <div class="input-group">
                         <div class="input-group-prepend"><span class="input-group-text"><i class="fa fa-list-ul fa-fw"></i></span>
@@ -460,7 +467,7 @@
                         </select>
                       </div>
                     </div>
-                    <div class="form-group col-6">
+                    <div class="form-group col-5">
                       <label for="ma2">Material <sup>&lowast;</sup></label>
                       <div class="input-group">
                         <div class="input-group-prepend"><span class="input-group-text"><i class="fa fa-book fa-fw"></i></span>
@@ -468,7 +475,14 @@
                         <textarea name="ma2" id="ma2" class="form-control" required></textarea>
                       </div>
                     </div>
-                    <div class="form-group col-6">
+                    <div class="form-group col-2">
+                      <label for="co2">Counter </label>
+                      <div class="input-group">
+                        <div class="input-group-prepend"><span class="input-group-text"><i class="fa fa-book fa-fw"></i></span></div>
+                        <textarea title="Put a number here to see if it is the time to prepare test for this student" name="co2" id="co2" class="form-control" placeholder="6"></textarea>
+                      </div>
+                    </div>
+                    <div class="form-group col-5">
                       <label for="ev2">Evaluation <sup>&lowast;</sup></label>
                       <div class="input-group">
                         <div class="input-group-prepend">
@@ -1951,14 +1965,24 @@
                 return data+' minutes';
               }
             },
-            {"data" : "material"},
+            {
+              "data" : {material:"material", co:"co"},
+              "render" : function(data,type,row){
+                if(data.co==null){
+                  return data.material;
+                } else {
+                  return `${data.material}<br><br><span class="badge badge-pill badge-warning">${data.co}</span>`;
+                }
+                
+              }
+            },
             {"data" : "evaluation"},
             {"data" : "w"},
             {"data" : "s"},
             {
-              "data" : {meeting:"meeting", course_date: "course_date", teacher: "teacher", duration: "duration", material: "material", w:"w", s: "s", test:"test", test_number: "test_number", test_name: "test_name", of_test_number: "of_test_number", of_test: "of_test" },
+              "data" : {meeting:"meeting", course_date: "course_date", teacher: "teacher", duration: "duration", material: "material", co:"co", evaluation:"evaluation", w:"w", s: "s", test:"test", test_number: "test_number", test_name: "test_name", of_test_number: "of_test_number", of_test: "of_test" },
               "render" : function(data, type, row, meta){
-               return `<a title="Edit" href="javascript:void(0);" class="btn btn-info btn-sm item_edit tooltip-right" data-m="${data.meeting}" data-cd="${data.course_date}" data-tc="${data.teacher}" data-du="${data.duration}" data-ma="${data.material}" data-ev="${data.evaluation}" data-w="${data.w}" data-s="${data.s}" data-test="${data.test}" data-tnu="${data.test_number}" data-tn="${data.test_name}" data-otn="${data.of_test_number}" data-ot="${data.of_test}"><i class="fas fa-pencil-alt fa-fw"></i></a> <a href="javascript:void(0);" title="delete" class="btn btn-danger btn-sm item_delete tooltip-bottom" data-m="${data.meeting}" data-test="${data.test}"><i class="fas fa-trash fa-fw"></i></a>`;
+               return `<a title="Edit" href="javascript:void(0);" class="btn btn-info btn-sm item_edit tooltip-right" data-m="${data.meeting}" data-cd="${data.course_date}" data-tc="${data.teacher}" data-du="${data.duration}" data-ma="${data.material}" data-co="${data.co}" data-ev="${data.evaluation}" data-w="${data.w}" data-s="${data.s}" data-test="${data.test}" data-tnu="${data.test_number}" data-tn="${data.test_name}" data-otn="${data.of_test_number}" data-ot="${data.of_test}"><i class="fas fa-pencil-alt fa-fw"></i></a> <a href="javascript:void(0);" title="delete" class="btn btn-danger btn-sm item_delete tooltip-bottom" data-m="${data.meeting}" data-test="${data.test}"><i class="fas fa-trash fa-fw"></i></a>`;
               }
             }
           ]
@@ -2118,6 +2142,7 @@
               tc=$('#tc').val(),
               du=$('#du').val(), 
               ma=$('#ma').val(),
+              co=$('#co').val(),
               ev=$('#ev').val(), 
               w = $('#wr').val(),
               s=$('#sp').val(),
@@ -2181,7 +2206,7 @@
                                       $('#nsef').html('<em>'+test+'</em> has been conducted before!');
                                       $('#tnu, #tn').css(bgc,clr);
                                     } else {
-                                      submit_course(p, m, cd, tc, du, ma, ev, w, s, test, tnu, tn, otn, ot, after_teaching);
+                                      submit_course(p, m, cd, tc, du, ma, co, ev, w, s, test, tnu, tn, otn, ot, after_teaching);
                                       create_test_table(p, m);
                                     }
                                   }
@@ -2208,7 +2233,7 @@
                                           $('#nsef').html('<em>'+test+'</em> has been conducted before!');
                                           $('#tnu, #tn, #otn, #ot').css(bgc,clr);
                                         } else {
-                                          submit_course(p, m, cd, tc, du, ma, ev, w, s, test, tnu, tn, otn, ot, after_teaching);
+                                          submit_course(p, m, cd, tc, du, ma, co, ev, w, s, test, tnu, tn, otn, ot, after_teaching);
                                           create_test_table(p, m);
              
                                         }
@@ -2220,7 +2245,7 @@
                             }
                           }
                         } else {
-                          submit_course(p, m, cd, tc, du, ma, ev, w, s, test, tnu, tn, otn, ot, after_teaching);
+                          submit_course(p, m, cd, tc, du, ma, co, ev, w, s, test, tnu, tn, otn, ot, after_teaching);
                         }
                       }
                     }
@@ -2230,17 +2255,18 @@
             }
           }
         });
-        function submit_course(a,b,c,d,e,f,g,h,i,j,k,l,m,n, after_teaching){
+        function submit_course(p,m,cd,tc,du,ma,co,ev,w,s,test,tnu,tn,otn,ot, after_teaching){
           $.ajax({
             type: "POST",
             url: "<?php echo site_url('student_single/save_course')?>",
             dataType: "JSON",
-            data: {p : a, m: b, cd: c, tc: d,du: e, ma: f,ev: g,w: h,s: i,test: j, tnu: k,tn : l,otn : m, ot : n},
+            data: {p : p, m: m, cd: cd, tc: tc,du: du, ma: ma,co:co, ev: ev,w: w,s: s,test: test, tnu: tnu,tn : tn,otn : otn, ot : ot},
             success: function(data) {
               $('[name="me"]').val("");
               $('[name="tc"]').val("");
               $('[name="du"]').val("");
               $('[name="ma"]').val("");
+              $('[name="co"]').val("");
               $('[name="ev"]').val("");
               $('[name="wr"]').val("");
               $('[name="sp"]').val("");
@@ -2251,7 +2277,7 @@
               $('[name="ot"]').val(""); 
               $('#new_session_modal').modal('hide');           
               $('#mycourse').DataTable().ajax.reload();
-              set_aft(a, after_teaching);            
+              set_aft(p, after_teaching);            
             }
           });
         }
@@ -2284,6 +2310,7 @@
               d=$(this).data('tc'),
               e=$(this).data('du'),
               f=$(this).data('ma'),
+              co = $(this).data('co'),
               g=$(this).data('ev'),
               w=$(this).data('w'),
               s=$(this).data('s'),
@@ -2299,6 +2326,7 @@
           $('[name="tc2"]').val(d);
           $('[name="du2"]').val(e);
           $('[name="ma2"]').val(f);
+          $('[name="co2"]').val(co);
           $('[name="ev2"]').val(g);
           $('[name="wr2"]').val(w);
           $('[name="sp2"]').val(s);
@@ -2337,6 +2365,7 @@
             }
           }); 
         });
+        
         $('select[name="tn2"]').on('change', function(){ /* test name */
           var test=$(this).val();
           if(test == 'Remedial'){
@@ -2353,6 +2382,7 @@
               tc = $('#tc2').val(),
               du = $('#du2').val(),
               ma = $('#ma2').val(),
+              co = $('#co2').val(),
               ev = $('#ev2').val(),
               w = $('#wr2').val(),
               s = $('#sp2').val(),
@@ -2411,7 +2441,7 @@
                               $('#esef').html("This test has been conducted in meeting "+data[0].meeting);
                             } else {
                               create_test_table(p,m);
-                              update_course(p,m,cd,tc,du,ma,ev,w,s,test,tnu,tn,otn,ot);
+                              update_course(p,m,cd,tc,du,ma,co,ev,w,s,test,tnu,tn,otn,ot);
                             }
                           }
                         });
@@ -2439,7 +2469,7 @@
                                   $('#esef').html("This remedial has been conducted in meeting "+data[0].meeting);
                                 } else {
                                   create_test_table(p,m);
-                                  update_course(p,m,cd,tc,du,ma,ev,w,s,test,tnu,tn,otn,ot);
+                                  update_course(p,m,cd,tc,du,ma,co,ev,w,s,test,tnu,tn,otn,ot);
                                 }
                               }
                             });
@@ -2449,19 +2479,19 @@
                     }
                   }
                 } else {
-                  update_course(p,m,cd,tc,du,ma,ev,w,s,test,tnu,tn,otn,ot);
+                  update_course(p,m,cd,tc,du,ma,co, ev,w,s,test,tnu,tn,otn,ot);
                 }
               }
             }
           }
           return false;
         });
-        function update_course(p,m,cd,tc,du,ma,ev,w,s,test,tnu,tn,otn,ot){
+        function update_course(p,m,cd,tc,du,ma,co, ev,w,s,test,tnu,tn,otn,ot){
           $.ajax({
             type:"POST",
             url:"<?php echo site_url('student_single/update_course')?>",
             dataType:"JSON",
-            data:{p:p,m:m,cd:cd,tc:tc,du:du,ma:ma,ev:ev,w:w,s:s,test:test,tnu:tnu,tn:tn,otn:otn,ot:ot},
+            data:{p:p,m:m,cd:cd,tc:tc,du:du,ma:ma,co:co,ev:ev,w:w,s:s,test:test,tnu:tnu,tn:tn,otn:otn,ot:ot},
             success:function(data){
               $('#edit_session_modal').modal('hide');
               $('#mycourse').DataTable().ajax.reload();

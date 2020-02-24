@@ -108,6 +108,7 @@ class Student_single_model extends CI_Model{
       'teacher'     => $this->input->post('tc'),
       'duration'    => $this->input->post('du'),
       'material'	  => $this->input->post('ma'),
+      'co'            => $this->input->post('co'),
       'evaluation'  => $this->input->post('ev'),
       'w'			  => $this->input->post('w'),
       's'			  => $this->input->post('s'),
@@ -169,6 +170,7 @@ class Student_single_model extends CI_Model{
     $teacher      = $this->input->post('tc');
     $duration     = $this->input->post('du');
     $material	  = $this->input->post('ma');
+    $co = $this->input->post('co');
     $evaluation   = $this->input->post('ev');
     $w			  = $this->input->post('w');
     $s			  = $this->input->post('s');
@@ -182,6 +184,7 @@ class Student_single_model extends CI_Model{
     $this->db->set('teacher', $teacher);
     $this->db->set('duration', $duration);
     $this->db->set('material', $material);
+    $this->db->set('co', $co);
     $this->db->set('evaluation', $evaluation);
     $this->db->set('w', $w);
     $this->db->set('s', $s);

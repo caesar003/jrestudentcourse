@@ -1432,8 +1432,8 @@
         });
       });
     </script>
-    <?php else: ?>
-    <script>
+    <?php else: ?> 
+    <script> /* schedule user */
       $(document).ready(function(){
         show_schedule();
         setInterval(function(){
@@ -1466,21 +1466,28 @@
             success : function(data){
               var html = ``,
                   schd_head = `<small>Schedule for</small> ${$.format.date(dtf, "ddd, MMM D, yyyy")}`,
-                  stl = "<?php echo site_url(`student_single?pin=`);?>",
+                  stl = "<?php echo site_url('student_single?pin=');?>",
                   i,
                   c=0;
               for (i=0;i<data.length;i++){
                 c = c+1;
-                html += `<tr><td style="text-align:right;">${c}</td><td style="text-align:left;">${data[i].name}</td>`;
+                html += `<tr>
+                            <td style="text-align:right;">${c}</td>
+                            <td style="text-align:left;">${data[i].name}</td>`;
+                
                 if(isNaN(data[i]._9)){
                     html += `<td class="tc_break">${data[i]._9}</td>`;
+                  
                 } else if(data[i]._9p == `a`){
                   html += `<td class="abs""><a href="${stl+data[i]._9}">${data[i]._9} <span class="req">${data[i]._9r}</span></a></td>`;
+                  
                 } else if(data[i]._9p == `p`){
                   html += `<td class="prst"><a href="${stl+data[i]._9}">${data[i]._9} <span class="req">${data[i]._9r}</span></a></td>`;
+                  
                 } else {
                   html += `<td><a href="${stl+data[i]._9}">${data[i]._9} <span class="req">${data[i]._9r}</span></a></td>`;
                 }
+                
                 if(isNaN(data[i]._10)){
                      html += `<td class="tc_break">${data[i]._10}</td>`;
                 } else if(data[i]._10p == `a`){
@@ -1490,6 +1497,7 @@
                 } else {
                   html += `<td><a href="${stl+data[i]._10}">${data[i]._10} <small><stronsg>${data[i]._10r}</span></a></td>`;
                 }
+                
                 if(isNaN(data[i]._11)){
                      html += `<td class="tc_break">${data[i]._11}</td>`;
                 } else if(data[i]._11p == `a`){
