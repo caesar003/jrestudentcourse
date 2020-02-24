@@ -57,7 +57,7 @@
             <?php endif;?>
     </div>
     <div class="container"> 
-      <?php if($this->session->userdata('level') == '21'): ?>
+      <?php if($this->session->userdata('level') == '21'): /* admin */?>
       <!-- SCHEDULE ADMIN -->
       <div class="row">
         <div class="card col-5">
@@ -85,7 +85,7 @@
           </ul>
         </div>
       </div>  <!-- END SCHEDULE ADMIN -->
-      <?php else: ?> 
+      <?php else: /* user */?> 
       <div class="container-fluid">
         <div class="row">
           <div class="card col-7">
@@ -1128,7 +1128,7 @@
     <?php endif;?>
     <?php include 'inc/scripts.php';?> 
     <?php include 'inc/chat-script.php';?>
-    <?php if($this->session->userdata('level') == '21'):?>
+    <?php if($this->session->userdata('level') == '21'):/* schedule admin */?>
     <script>
       $(document).ready(function(){
         get_schedules();
@@ -1393,7 +1393,7 @@
         });
       });
     </script>
-    <?php else: ?>
+    <?php else: /* schedule user */?>
     <script>
       $(document).ready(function(){
         show_schedule();
@@ -1564,9 +1564,9 @@
           });
         }
       });
-    </script> 
+    </script> <!-- end schedule user -->
     <?php endif;?>
-    <?php if($this->session->userdata('level') == '17'):?> 
+    <?php if($this->session->userdata('level') == '17'): /* script spv*/?> 
     <script type="text/javascript">
       $(document).ready(function(){
         var today = $.format.date(new Date(), "yyyy-MM-dd");
@@ -1582,11 +1582,11 @@
                   return `<a style="color:black;text-decoration:none;" href="<?php echo site_url('student_single?pin=') ;?>${data.pin}">${data.pin}</a> <a title="Edit" href="javascript:void(0);" class="item_edit tooltip-bottom" data-grp="${data.grp}" data-pn="${data.pin}" data-cn="${data.complete_name}"data-nn="${data.nick_name}" data-ad="${data.address}" data-pb="${data.place_of_birth}"data-db="${($.format.date(data.date_of_birth, "yyyy-MM-dd"))}"data-ph="${data.phone}"data-cnst2="${data.cnst2}"data-nnst2="${data.nnst2}"data-adrst2="${data.adrst2}"data-pobst2="${data.pobst2}"data-dobst2="${($.format.date(data.dobst2, "yyyy-MM-dd"))}"data-phst2="${data.phst2}"data-cnst3="${data.cnst3}"data-nnst3="${data.nnst3}"data-adrst3="${data.adrst3}"data-pobst3="${data.pobst3}"data-dobst3="${($.format.date(data.dobst3, "yyyy-MM-dd"))}"data-phst3="${data.phst3}"data-cnst4="${data.cnst4}"data-nnst4="${data.nnst4}"data-adrst4="${data.adrst4}"data-pobst4="${data.pobst4}"data-dobst4="${($.format.date(data.dobst4, "yyyy-MM-dd"))}"data-phst4="${data.phst4}"data-pr="${data.program}"data-pd="${data.program_duration}"data-sd="${($.format.date(data.starting_date, "yyyy-MM-dd"))}" data-re="${data.reason}"data-ta="${data.target}"data-di="${data.difficulties}"data-bg="${data.bground}"data-si="${data.self_introduction}"data-wp="${data.weakness_point}"data-ap="${data.action_plan}"data-fsp="${data.fsp}"><i style="font-size:14px;" class="fas fa-user-edit fa-fw"></i></a>
 <a href="javascript:void(0);" data-pin="${data.pin}" class="item_delete"><i style="color:red;" class="fas fa-trash fa-fw"></i> </a>`;
                 }
-              }, 
+              }, /* pin */
               {
                 "data" : {pin:"pin", grp:"grp", complete_name:"complete_name", cnst2:"cnst2", cnst3:"cnst3", cnst4:"cnst4"},
                 "render":function(data,type,row){
-                  if(data.grp!=''){ 
+                  if(data.grp!=''){ /* group name not empty*/
                    if(data.cnst2!=''&&data.cnst3!=''&&data.cnst4!=''){ 
                       return `<a href="<?php echo site_url('student_single?pin=');?>${data.pin}" class="tooltip-bottom" title="${data.complete_name} - ${data.cnst2} - ${data.cnst3} - ${data.cnst4}"> ${data.grp} </a>`;
                      
@@ -2342,7 +2342,7 @@
         }
       }); 
     </script> 
-    <?php else: ?>
+    <?php else: /* script user */?>
     <script type="text/javascript">
       $(document).ready(function(){
         var today = $.format.date(new Date(), "yyyy-MM-dd");
@@ -2538,7 +2538,7 @@
                     }else { 
                       return `<a href="<?php echo site_url('student_single?pin=')?>${data.pin}"> ${data.nick_name} - ${data.nnst2} </a>`;
                     }
-                  } else {
+                  } else { /* only one student */
                     return `<a href="<?php echo site_url('student_single?pin=')?>${data.pin}">${data.nick_name}</a>`;
                   }
                 }
@@ -2561,11 +2561,11 @@
                     }
                   }
                 }
-              }, 
+              }, /* address */
             {
                 "data" :{pin:"pin",cnst2:"cnst2",cnst3:"cnst3",cnst4:"cnst4",date_of_birth:"date_of_birth",dobst2:"dobst2",dobst3:"dobst3",dobst4:"dobst4",},
                 "render" : function (data, type, row){
-              
+                 // here
                   if(data.cnst2==''){
                     return `<a href="<?php echo site_url('student_single?pin=');?>${data.pin}">${$.format.date(data.date_of_birth, "MMM/dd/yyyy")}`;
                   } else {
@@ -2580,11 +2580,12 @@
                     }
                   }
                 }
-              }, 
+              }, /* date of birth */
           
             {
                 "data" : {pin:"pin",phone:"phone",phst2:"phst2",phst3:"phst3",phst4:"phst4"},
                 "render": function(data,type,row){
+                  // here
                   if(data.phst2==''){
                     return `<a href="<?php echo site_url('student_single?pin=');?>${data.pin}">${data.phone}`;
                   } else{
@@ -2599,21 +2600,21 @@
                     }
                   }
                 }
-              }, 
+              }, /* phone */
          
             {
                 "data" : {pin:"pin", program:"program"},
                 "render" : function(data, meta, row){
                   return `<a href="<?php echo site_url('student_single?pin=');?>${data.pin}">${data.program}</a>`
                 }
-              }, 
+              }, /* program */
            
             {
                 "data" : {pin:"pin", starting_date:"starting_date"},
                 "render" : function (data, type, row){
                   return `<a href="<?php echo site_url('student_single?pin=');?>${data.pin}">${$.format.date(data.starting_date, "MMM/dd/yyyy")}</a>`;
                 }
-              }, 
+              }, /* starting date */
             {
                 "data" : {pin:"pin", bground:"bground"},
                 "render" : function (data, type, row, meta){
@@ -2916,11 +2917,11 @@
           if(cnst2==''){
             $('#group_name_e,#student2_e,#student3_e,#student4_e').css('display', 'none');
           } else {
-            if(cnst3==''){ 
+            if(cnst3==''){ /*two students*/
               $('#group_name_e,#student2_e').css('display', 'block');
               $('#student3_e,#student4_e').css('display', 'none');
             } else {
-              if(cnst4 == ''){ 
+              if(cnst4 == ''){ /*three students*/
                 $('#group_name_e,#student2_e,#student3_e').css('display', 'block');
                 $('#student4_e').css('display','none');       
               } else{

@@ -1049,7 +1049,7 @@
     <?php include 'inc/chat_dialog.php';?>
     <?php include 'inc/scripts.php';?>
     <?php include 'inc/chat-script.php';?>
-    <script type="text/javascript">/* script syllabus */
+    <script type="text/javascript">
       $(document).ready(function(){
         syll();
         function syll(){
@@ -1061,7 +1061,6 @@
             no_syllabus();
           }
         }
-        /* SYLLABUS */
         function show_syllabus(pin,prg) {
           $.ajax({
             type: 'post',
@@ -1091,7 +1090,7 @@
                   html += `<div class="col-2 syll_section">${data[i].section}</div>
                             <div class="col-10 syll_section">${data[i].indicator}
                           </div>`;
-                } else if (data[i].topic != 0 && data[i].ind == 0) { /* topic */
+                } else if (data[i].topic != 0 && data[i].ind == 0) {
                   if(data[i].status == 1){
                     html += `<div class="col-2 syll_topic">
                                <span class="topic_discussed">${data[i].section}.${data[i].topic}</span>
@@ -1143,7 +1142,6 @@
             }
           });
         }
-        /* check discussed topics */
         $('#show_syllabus').on('click', '.topic_check', function(){
           var id = $(this).data('id'),
               section = $(this).data('section'),
@@ -1203,15 +1201,13 @@
               }
             });
           }
-        }); /* end check */
-        /* change topics */
+        });
         $('#syll_edit_button_div').on('click', '.edit_syllabus', function(){
           var pin = "<?php echo $pin;?>",
               prg = "<?php echo $program_id;?>";
           get_all(pin,prg);
           $('#edit_syllabus_modal').modal('show');
         });
-        /* get all topics */
         function get_all(pin,prg){
           $.ajax({
             type : "post",
@@ -1258,7 +1254,7 @@
                              </div>`; 
                   }
                   
-                } else { /* it is an indicator */
+                } else {
                   if (data[i].assigned == 1) { 
                     html+= `<div class="col-2 syll_ind">${data[i].section}.${data[i].topic}.${data[i].ind}</div>
                             <div class="col-8 syll_ind"><span class="assigned">${data[i].indicator}</span></div>
@@ -1283,7 +1279,6 @@
             }
           });
         }
-        /* assign topics keypress handler */
         $('#syllabus_edit_div').on('click', '.syll_assign', function(){
           var pin = "<?php echo $pin;?>",
               program = "<?php echo $program_id;?>",
@@ -1336,7 +1331,6 @@
             }
           });
         }
-        /* NO SYLLABUS */
         function no_syllabus(){
           var header='Choose the syllabus',
               msg = `<div class="col-md-4">
@@ -1534,7 +1528,7 @@
           });
         }
         function assign_syllabus(pin, sections){
-          $.ajax({ /* assign */
+          $.ajax({
             type : "post",
             url : "<?php echo site_url('syllabus/assign');?>",
             dataType : "json",
@@ -1928,7 +1922,6 @@
             }
           });   
         }
-        /* get course */
         $('#mycourse').DataTable({
           responsive : true,
           "ajax" :{
@@ -1962,7 +1955,6 @@
             }
           ]
         });
-        /* get tests */
         $('#my_tests').DataTable({
           responsive: true,
           "ajax" :{
@@ -2079,20 +2071,20 @@
             $('#new_session_btn').fadeIn('200');
         });
         $('#new_session_btn').on('click', function(){
-          var d = new Date(), /* variable declaration */
+          var d = new Date(), 
               teacher = "<?php echo $this->session->userdata('username');?>",
               curr_time = ($.format.date(d, "yyyy-MM-dd\THH:mm"));
-          $('#new_session_modal').modal('show'); /* opens the modal window */
-          $('[name="cd"]').val(curr_time); /* assigns values to the corresponding fields */
+          $('#new_session_modal').modal('show'); 
+          $('[name="cd"]').val(curr_time); 
           $('[name="tc"]').val(teacher);
           
-          $('#test').on('click', function(){ /* test button checkbox */
+          $('#test').on('click', function(){ 
             if ($(this).is(':checked')){
               $('#course_div').removeClass('col');
               $('#course_div').addClass('col-7');
               $('#test_div').addClass('col-5');
               $('#test_div').fadeIn('slow');
-              $('select[name="tn"]').on('change', function(){ /* test name */
+              $('select[name="tn"]').on('change', function(){ 
                 var test=$(this).val();
                 if(test == 'Remedial'){
                   $('select[name="otn"], select[name="ot"]').removeAttr('disabled');
@@ -2101,15 +2093,14 @@
                   $('select[name="otn"], select[name="ot"]').val('');
                 }
               });
-            } else { /* the field just hidden */
+            } else { 
               $('#course_div').removeClass('col-7');
               $('#course_div').addClass('col');
               $('#test_div').removeClass('col-5');
               $('#test_div').fadeOut('fast');
             }
           });        
-        });             
-        /* save course */
+        });
         $('#btn_save').on('click', function(){
           var p="<?php echo $pin;?>",
               m=$('#me').val(),
@@ -2276,7 +2267,6 @@
             }
           })
         }
-        /* edit course */
         $('#show_course').on('click', '.item_edit', function(){
           var b=$(this).data('m'),
               c=($.format.date($(this).data('cd'), "yyyy-MM-dd\THH:mm")),
@@ -2321,14 +2311,14 @@
             }
           }
           $('#test_check_edit').html(o);
-          $('#test_edit').on('click', function(){ /* test button checkbox */
+          $('#test_edit').on('click', function(){
             if ($(this).is(':checked')){
               $('#edit_course_div').removeClass('col');
               $('#edit_course_div').addClass('col-7');
               $('#edit_test_div').addClass('col-5');
               $('#edit_test_div').fadeIn('slow');
               
-            } else { /* the field just hidden */
+            } else { 
               $('#edit_course_div').removeClass('col-7');
               $('#edit_course_div').addClass('col');
               $('#edit_test_div').removeClass('col-5');
@@ -2336,7 +2326,7 @@
             }
           }); 
         });
-        $('select[name="tn2"]').on('change', function(){ /* test name */
+        $('select[name="tn2"]').on('change', function(){
           var test=$(this).val();
           if(test == 'Remedial'){
             $('select[name="otn2"], select[name="ot2"]').removeAttr('disabled');
@@ -2497,7 +2487,7 @@
             dataType : "json",
             data: {pin:pin, m:m_d},
             success : function(data){
-              console.log('test deleted');
+              console.log('');
             }
           });
         }
@@ -2508,11 +2498,10 @@
             dataType : "json",
             data: {pin:pin, m:m_d},
             success : function(data){
-              console.log('course deleted');
+              console.log('');
             }
           });
         }
-        /* edit fsp */
         $('#btn_save_fsp').on('click', function(){
           var pin = "<?php echo $pin;?>",
               topic = $('#fsp_topic').val(),
