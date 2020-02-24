@@ -1223,6 +1223,50 @@
                   c=0;
               for (i=0;i<data.length;i++){
                 c = c+1;
+                html += `<tr>
+<td style="text-align:right;"><div>${c}</div></td>
+<td style="text-align:left;"><div contentEditable="true" class="edit" data-id="${data[i].id}" data-col="name">${data[i].name}</div></td>
+<td><div contentEditable="true" class="edit" data-id="${data[i].id}" data-col="_9">${data[i]._9}</div></td>
+<td><div contentEditable="true" class="edit" data-id="${data[i].id}" data-col="_9r">${data[i]._9r}</div></td>
+<td><div contentEditable="true" class="edit" data-id="${data[i].id}" data-col="_9p">${data[i]._9p}</div></td>
+<td><div contentEditable="true" class="edit" data-id="${data[i].id}" data-col="_10">${data[i]._10}</div></td>
+<td><div contentEditable="true" class="edit" data-id="${data[i].id}" data-col="_10r">${data[i]._10r}</div></td>
+<td><div contentEditable="true" class="edit" data-id="${data[i].id}" data-col="_10p">${data[i]._10p}</div></td>
+<td><div contentEditable="true" class="edit" data-id="${data[i].id}" data-col="_11">${data[i]._11}</div></td>
+<td><div contentEditable="true" class="edit" data-id="${data[i].id}" data-col="_11r">${data[i]._11r}</div></td>
+<td><div contentEditable="true" class="edit" data-id="${data[i].id}" data-col="_11p">${data[i]._11p}</div></td>
+<td><div contentEditable="true" class="edit" data-id="${data[i].id}" data-col="_12">${data[i]._12}</div></td>
+<td><div contentEditable="true" class="edit" data-id="${data[i].id}" data-col="_12r">${data[i]._12r}</div></td>
+<td><div contentEditable="true" class="edit" data-id="${data[i].id}" data-col="_12p">${data[i]._12p}</div></td>
+<td><div contentEditable="true" class="edit" data-id="${data[i].id}" data-col="_13">${data[i]._13}</div></td>
+<td><div contentEditable="true" class="edit" data-id="${data[i].id}" data-col="_13r">${data[i]._13r}</div></td>
+<td><div contentEditable="true" class="edit" data-id="${data[i].id}" data-col="_13p">${data[i]._13p}</div></td>
+<td><div contentEditable="true" class="edit" data-id="${data[i].id}" data-col="_14">${data[i]._14}</div></td>
+<td><div contentEditable="true" class="edit" data-id="${data[i].id}" data-col="_14r">${data[i]._14r}</div></td>
+<td><div contentEditable="true" class="edit" data-id="${data[i].id}" data-col="_14p">${data[i]._14p}</div></td>
+<td><div contentEditable="true" class="edit" data-id="${data[i].id}" data-col="_15">${data[i]._15}</div></td>
+<td><div contentEditable="true" class="edit" data-id="${data[i].id}" data-col="_15r">${data[i]._15r}</div></td>
+<td><div contentEditable="true" class="edit" data-id="${data[i].id}" data-col="_15p">${data[i]._15p}</div></td>
+<td><div contentEditable="true" class="edit" data-id="${data[i].id}" data-col="_16">${data[i]._16}</div></td>
+<td><div contentEditable="true" class="edit" data-id="${data[i].id}" data-col="_16r">${data[i]._16r}</div></td>
+<td><div contentEditable="true" class="edit" data-id="${data[i].id}" data-col="_16p">${data[i]._16p}</div></td>
+<td><div contentEditable="true" class="edit" data-id="${data[i].id}" data-col="_17">${data[i]._17}</div></td>
+<td><div contentEditable="true" class="edit" data-id="${data[i].id}" data-col="_17r">${data[i]._17r}</div></td>
+<td><div contentEditable="true" class="edit" data-id="${data[i].id}" data-col="_17p">${data[i]._17p}</div></td>
+<td><div contentEditable="true" class="edit" data-id="${data[i].id}" data-col="_18">${data[i]._18}</div></td>
+<td><div contentEditable="true" class="edit" data-id="${data[i].id}" data-col="_18r">${data[i]._18r}</div></td>
+<td><div contentEditable="true" class="edit" data-id="${data[i].id}" data-col="_18p">${data[i]._18p}</div></td>
+<td><div contentEditable="true" class="edit" data-id="${data[i].id}" data-col="_19">${data[i]._19}</div></td>
+<td><div contentEditable="true" class="edit"  data-id="${data[i].id}" data-col="_19r">${data[i]._19r}</div></td>
+<td><div contentEditable="true" class="edit"  data-id="${data[i].id}" data-col="_19p">${data[i]._19p}</div></td>
+<td><div contentEditable="true" class="edit"  data-id="${data[i].id}" data-col="_20">${data[i]._20}</div></td>
+<td><div contentEditable="true" class="edit" data-id="${data[i].id}" data-col="_20r">${data[i]._20r}</div></td>
+<td><div contentEditable="true" class="edit" data-id="${data[i].id}" data-col="_20p">${data[i]._20p}</div></td>
+<td><a data-id="${data[i].id}" class="btn-sm teacher_delete" href="javascript:void(0);"><i style="color:red;" class="fas fa-trash"></i></a></td>
+  </tr>`;
+              }
+              /*for (i=0;i<data.length;i++){
+                c = c+1;
                 html += '<tr>'+
                           '<td style="text-align:right;"><div>'+c+'</div></td>'+
                           '<td style="text-align:left;"><div contentEditable="true" class="edit" data-id="'+data[i].id+'" data-col="name">'+data[i].name+'</div></td>'+
@@ -1264,7 +1308,7 @@
                           '<td><div contentEditable="true" class="edit" data-id="'+data[i].id+'" data-col="_20p">'+data[i]._20p+'</div></td>'+
                           '<td><a data-id="'+data[i].id+'" class="btn-sm teacher_delete" href="javascript:void(0);"><i style="color:red;" class="fas fa-trash"></i></a></td>'+
                   '</tr>';
-              }
+              }*/
               $('#my_schedule').html(html);
               $('#schedule_header').html(schd_head);
               get_schedules();
@@ -1419,7 +1463,6 @@
             type: "ajax",
             url: "<?php echo site_url('schedule/get_schedule?d=');?>"+d,
             dataType : "JSON",
-            // here
             success : function(data){
               var html = ``,
                   schd_head = `<small>Schedule for</small> ${$.format.date(dtf, "ddd, MMM D, yyyy")}`,
