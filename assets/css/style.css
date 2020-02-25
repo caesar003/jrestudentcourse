@@ -1,3 +1,16 @@
+.toolbar_item{
+  color:azure;
+  cursor: pointer;
+}
+.toolbar_item:hover{
+  color:aqua;
+}
+.toolbar {
+  
+    padding: 4px;
+    background-color: black;
+    border-radius: 4px;
+}
 #mystudents a, #myaft a{
   color:black;
 }
