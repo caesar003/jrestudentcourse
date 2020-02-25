@@ -2,7 +2,8 @@
       <title><?php echo $title;?></title>
      
       <!--link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.4.1/cosmo/bootstrap.min.css"-->
-     <link rel="stylesheet" href="<?php echo base_url('assets/css/bootstrap.min.css');?>">
+     <!--link rel="stylesheet" href="<?php echo base_url('assets/css/bootstrap.min.css');?>"-->
+         <link rel="stylesheet" href="<?php echo base_url('assets/css/cosmo-bootstrap.min.css');?>">
       <!--link rel="stylesheet" type="text/css" href="<?php echo base_url().'assets/fontawesome-5.12.0/css/fontawesome.css'?>">
         <link rel="stylesheet" type="text/css" href="<?php echo base_url().'assets/fontawesome-5.12.0/css/brands.css'?>">
         <link rel="stylesheet" type="text/css" href="<?php echo base_url().'assets/fontawesome-5.12.0/css/regular.css'?>">

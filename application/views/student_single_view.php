@@ -1968,7 +1968,7 @@
             {
               "data" : {material:"material", co:"co"},
               "render" : function(data,type,row){
-                if(data.co==null){
+                if(data.co==null||data.co==0){
                   return data.material;
                 } else {
                   return `${data.material}<br><br><span class="badge badge-pill badge-warning">${data.co}</span>`;
