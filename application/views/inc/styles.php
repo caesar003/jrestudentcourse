@@ -14,7 +14,5 @@
       <!--link rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css"-->
       
       <link rel="stylesheet" type="text/css" href="<?php echo base_url().'assets/css/style.css'?>">
-      <link rel="shortcut icon" type="image/x-icon" href="<?php echo base_url().'favicon.ico'?>"> 
-       <link rel="stylesheet" href="<?php echo base_url('assets/EasyAutocomplete/easy-autocomplete.min.css')?>">
-    <link rel="stylesheet" href="<?php echo base_url('assets/EasyAutocomplete/easy-autocomplete.themes.min.css')?>">
+      <link rel="shortcut icon" type="image/x-icon" href="<?php echo base_url().'favicon.ico'?>">
       

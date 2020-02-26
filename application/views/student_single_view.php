@@ -2158,17 +2158,7 @@
           $('#new_session_modal').modal('show'); /* opens the modal window */
           $('[name="cd"]').val(curr_time); /* assigns values to the corresponding fields */
           $('[name="tc"]').val(teacher);
-          /*$('#ma').on('keyup', function(){
-            var str = $(this).val();
-            $('#preview').html(str);
-            $(this).on('blur', function(){
-              $('#preview').fadeOut('slow');
-            });
-            $('#ital').on('click', function(){
-              var str = $('#ma').getSelection();
-              console.log(str);
-            });
-          }); */
+          
           /* material field */
           $('#ma').bind('updateInfo keyup mousedown mousemove mouseup', function(event) {
            // $('#ma_tool').fadeIn('slow');
@@ -2178,9 +2168,6 @@
               return;
             }
             var range = $(this).textrange();
-           // $(this).on('mouseout', function(){
-           //   $('#ma_tool').fadeOut('slow');
-           // });
           });
           
           $('#italic').click(function() {
@@ -2210,16 +2197,16 @@
           $('#ul').click(function() {
             var arr = $('#ma').textrange(),
                 text = arr['text'],
-                newList = text.replace(/\r\n|\n|\r/gm,"</li>\n<li>"),
-                wrapper = "<ul>\n<li>"+newList+"</li>\n</ul>"; 
+                newList = text.replace(/\r\n|\n|\r/gm,"</li><li>"),
+                wrapper = "<ul><li>"+newList+"</li></ul>"; 
             $('#ma').textrange('replace', wrapper).trigger('updateInfo').focus();
           });
           
           $('#ol').click(function() {
             var arr = $('#ma').textrange(),
                 text = arr['text'],
-                newList = text.replace(/\r\n|\n|\r/gm,"</li>\n<li>"),
-                wrapper = "<ol>\n<li>"+newList+"</li>\n</ol>";
+                newList = text.replace(/\r\n|\n|\r/gm,"</li><li>"),
+                wrapper = "<ol><li>"+newList+"</li></ol>";
             $('#ma').textrange('replace', wrapper).trigger('updateInfo').focus();
           });
           
@@ -2244,16 +2231,13 @@
            /* end material field */
           /* evaluation field */
           $('#ev').bind('updateInfo keyup mousedown mousemove mouseup', function(event) {
-           // $('#ev_tool').fadeIn('slow');
             var str = $(this).val();
             $('#preview').html(str);
             if (document.activeElement !== $(this)[0]) {
               return;
             }
             var range = $(this).textrange();
-           // $(this).on('blur', function(){
-           //   $('#ev_tool').fadeOut('slow');
-            //});
+         
           });
           
           $('#ev_italic').click(function() {
@@ -2283,16 +2267,16 @@
           $('#ev_ul').click(function() {
             var arr = $('#ev').textrange(),
                 text = arr['text'],
-                newList = text.replace(/\r\n|\n|\r/gm,"</li>\n<li>"),
-                wrapper = "<ul>\n<li>"+newList+"</li>\n</ul>"; 
+                newList = text.replace(/\r\n|\n|\r/gm,"</li><li>"),
+                wrapper = "<ul><li>"+newList+"</li></ul>"; 
             $('#ev').textrange('replace', wrapper).trigger('updateInfo').focus();
           });
           
           $('#ev_ol').click(function() {
             var arr = $('#ev').textrange(),
                 text = arr['text'],
-                newList = text.replace(/\r\n|\n|\r/gm,"</li>\n<li>"),
-                wrapper = "<ol>\n<li>"+newList+"</li>\n</ol>";
+                newList = text.replace(/\r\n|\n|\r/gm,"</li><li>"),
+                wrapper = "<ol><li>"+newList+"</li></ol>";
             $('#ev').textrange('replace', wrapper).trigger('updateInfo').focus();
           });
           
@@ -2315,7 +2299,6 @@
             } 
           });
            /* end evaluation field */
-          
           $('#test').on('click', function(){ /* test button checkbox */
             if ($(this).is(':checked')){
               $('#course_div').removeClass('col');
