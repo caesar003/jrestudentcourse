@@ -2285,7 +2285,7 @@
                 text = arr['text'],
                 newList = text.replace(/\r\n|\n|\r/gm,"</li>\n<li>"),
                 wrapper = "<ul>\n<li>"+newList+"</li>\n</ul>"; 
-            $('#ma').textrange('replace', wrapper).trigger('updateInfo').focus();
+            $('#ev').textrange('replace', wrapper).trigger('updateInfo').focus();
           });
           
           $('#ev_ol').click(function() {
@@ -2685,7 +2685,7 @@
                 text = arr['text'],
                 newList = text.replace(/\r\n|\n|\r/gm,"</li>\n<li>"),
                 wrapper = "<ul>\n<li>"+newList+"</li>\n</ul>"; 
-            $('#ma2').textrange('replace', wrapper).trigger('updateInfo').focus();
+            $('#ev2').textrange('replace', wrapper).trigger('updateInfo').focus();
           });
           
           $('#ev_ol2').click(function() {
