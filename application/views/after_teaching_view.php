@@ -227,15 +227,20 @@ See more </a> <a title="Remove this student" data-pin="${pn}"href="javascript:vo
         <tbody>`;
               for(i=0;i<data.length;i++){
                 crsm += `<tr>
-        <td>${data[i].meeting}</td>
-        <td>${data[i].course_date}</td>
-        <td>${data[i].teacher}</td>
-        <td>${data[i].duration}</td>
-        <td>${data[i].material}</td>
-        <td>${data[i].evaluation}</td>
-        <td>${data[i].w}</td>
-        <td>${data[i].s}</td>
-        </tr>`;
+                          <td>${data[i].meeting}</td>
+                          <td>${data[i].course_date}</td>
+                          <td>${data[i].teacher}</td>
+                          <td>${data[i].duration}</td>`;
+                if(data[i].co==''||data[i].co==0||data[i].co==null){
+                  crsm += `<td>${data[i].material}</td>`;
+                } else {
+                  crsm += `<td>${data[i].material}<br><span class="badge badge-warning">${data[i].co}</span></td>`;
+                }
+        
+        crsm += `<td>${data[i].evaluation}</td>
+                  <td>${data[i].w}</td>
+                  <td>${data[i].s}</td>
+                </tr>`;
               }
               crsm += '</tbody>'+
                 '</table>';
