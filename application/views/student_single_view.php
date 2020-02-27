@@ -329,7 +329,7 @@
                     <div class="form-group col-2">
                       <label for="co">Counter </label>
                       <div class="input-group">
-                        <div class="input-group-prepend"><span class="input-group-text"><i class="fa fa-book fa-fw"></i></span></div>
+                        <div class="input-group-prepend"><span class="input-group-text"><i class="fa fa-stopwatch fa-fw"></i></span></div>
                         <textarea title="Put a number here to see if it is the time to prepare test for this student" name="co" id="co" class="form-control" placeholder="6"></textarea>
                       </div>
                     </div>
@@ -512,7 +512,7 @@
                     <div class="form-group col-2">
                       <label for="co2">Counter </label>
                       <div class="input-group">
-                        <div class="input-group-prepend"><span class="input-group-text"><i class="fa fa-book fa-fw"></i></span></div>
+                        <div class="input-group-prepend"><span class="input-group-text"><i class="fa fa-stopwatch fa-fw"></i></span></div>
                         <textarea title="Put a number here to see if it is the time to prepare test for this student" name="co2" id="co2" class="form-control" placeholder="6"></textarea>
                       </div>
                     </div>
