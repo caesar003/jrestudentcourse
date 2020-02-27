@@ -1,3 +1,7 @@
+.toolbar{
+  display: none;
+}
+
 span.note_date {
     font-size: small;
     font-weight: 700;

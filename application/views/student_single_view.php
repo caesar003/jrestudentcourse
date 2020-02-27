@@ -49,15 +49,7 @@
               <!-- COURSE -->
               <div class="table-responsive tab-pane fade show active" id="pills-course" role="tabpanel" aria-labelledby="pills-course-tab">
                 <h3><small>Student </small>Course</h3>
-                <p>This is the list of recorded session. Hit the little pencil button <a href="javascript:void(0);" id="edit_course_title"><i style="font-size:small;background-color:#9954BB;color:white;padding-right:3px;padding-left:3px;padding-top:2px;padding-bottom:2px;border-radius:20%;" class="fas fa-pencil-alt"></i></a> on the last column of every row to make changes, or plus button <a href="javascript:void(0);" id="add_course_title"><i style="font-size:small;color:white;background-color:black;padding-right:3px;padding-left:3px;padding-top:2px;padding-bottom:2px;border-radius:20%;" class="fas fa-plus"></i></a> at the top of the Student Information to add a new one.</p>
-                <br>
-                <div class="card">
-                  <div class="card-body">
-                    <h5 class="card-title">Note: </h5>
-                    <p class="card-text" id="teacher_note"></p>
-                    
-                  </div>
-                </div>
+                <p>This is the list of recorded session. Hit the little pencil button <a href="javascript:void(0);" id="edit_course_title"><i style="font-size:small;background-color:#9954BB;color:white;padding-right:3px;padding-left:3px;padding-top:2px;padding-bottom:2px;border-radius:20%;" class="fas fa-pencil-alt"></i></a> on the last column of every row to make changes, or plus button <a href="javascript:void(0);" id="add_course_title"><i style="font-size:small;color:white;background-color:black;padding-right:3px;padding-left:3px;padding-top:2px;padding-bottom:2px;border-radius:20%;" class="fas fa-plus"></i></a> above to add a new one.</p>
                 <br>
                 <table class="table table-bordered table-striped table-sm" id="mycourse">
                   <thead class="bg-dark text-light">
@@ -315,16 +307,7 @@
                         <div class="input-group-prepend"><span class="input-group-text"><i class="fa fa-book fa-fw"></i></span></div>
                         <textarea name="ma" id="ma" class="form-control" placeholder="(1.1 - 1-3) Greeting..."></textarea>
                       </div>
-                      <div id="ma_tool" class="toolbar">
-                        <i title="Italic text" id="italic" class="fas fa-italic fa-fw toolbar_item"></i>
-                        <i title="Bold" id="bold" class="fas fa-bold fa-fw toolbar_item"></i>
-                        <i title="Strikethrough" id="strike" class="fas fa-strikethrough fa-fw toolbar_item"></i>
-                        <i title="Unordered list" id="ul" class="fas fa-list-ul fa-fw toolbar_item"></i>
-                        <i title="Numbered list" id="ol" class="fas fa-list-ol fa-fw toolbar_item"></i>
-                        <i title="New line" id="newline" class="fas fa-fw toolbar_item">¶</i>
-                        <i title="Red color" id="red" style="color:red; toolbar_item" class="fas fa-square fa-fw toolbar_item"></i>
-                        <i title="Green color" id="green" style="color:green;" class="fas fa-square fa-fw toolbar_item"></i>
-                      </div>
+                      
                     </div>
                     <div class="form-group col-2">
                       <label for="co">Counter </label>
@@ -340,15 +323,28 @@
                         </div>
                         <textarea name="ev" id="ev" class="form-control" placeholder="He was now able to ..."></textarea>
                       </div>
+                      
+                    </div>
+                    <div class="col-12">
+                      <div id="ma_tool" class="toolbar">
+                        <i title="Italic text" id="italic" data-format="italic" class="fas fa-italic fa-fw toolbar_item"></i>
+                        <i title="Bold" id="bold" data-format="bold" class="fas fa-bold fa-fw toolbar_item"></i>
+                        <i title="Strikethrough" id="strike" data-format="strike" class="fas fa-strikethrough fa-fw toolbar_item"></i>
+                        <i title="Unordered list" id="ul" data-format="ulist" class="fas fa-list-ul fa-fw toolbar_item"></i>
+                        <i title="Numbered list" id="ol" data-format="olist" class="fas fa-list-ol fa-fw toolbar_item"></i>
+                        <i title="New line" id="newline" data-format="newline" class="fas fa-fw toolbar_item">¶</i>
+                        <i title="Red color" id="red" data-format="red" style="color:red; toolbar_item" class="fas fa-square fa-fw toolbar_item"></i>
+                        <i title="Green color" id="green" data-format="green" style="color:green;" class="fas fa-square fa-fw toolbar_item"></i>
+                      </div>
                       <div id="ev_tool" class="toolbar">
-                        <i title="Italic text" id="ev_italic" class="fas fa-italic fa-fw toolbar_item"></i>
-                        <i title="Bold" id="ev_bold" class="fas fa-bold fa-fw toolbar_item"></i>
-                        <i title="Strikethrough" id="ev_strike" class="fas fa-strikethrough fa-fw toolbar_item"></i>
-                        <i title="Unordered list" id="ev_ul" class="fas fa-list-ul fa-fw toolbar_item"></i>
-                        <i title="Numbered list" id="ev_ol" class="fas fa-list-ol fa-fw toolbar_item"></i>
-                        <i title="New line" id="ev_newline" class="fas fa-fw toolbar_item">¶</i>
-                        <i title="Red color" id="ev_red" style="color:red; toolbar_item" class="fas fa-square fa-fw toolbar_item"></i>
-                        <i title="Green color" id="ev_green" style="color:green;" class="fas fa-square fa-fw toolbar_item"></i>
+                        <i title="Italic text" id="ev_italic" data-format="italic" class="fas fa-italic fa-fw toolbar_item"></i>
+                        <i title="Bold" id="ev_bold" data-format="bold" class="fas fa-bold fa-fw toolbar_item"></i>
+                        <i title="Strikethrough" id="ev_strike" data-format="strike" class="fas fa-strikethrough fa-fw toolbar_item"></i>
+                        <i title="Unordered list" id="ev_ul" data-format="ulist" class="fas fa-list-ul fa-fw toolbar_item"></i>
+                        <i title="Numbered list" id="ev_ol" data-format="olist" class="fas fa-list-ol fa-fw toolbar_item"></i>
+                        <i title="New line" id="ev_newline" data-format="newline" class="fas fa-fw toolbar_item">¶</i>
+                        <i title="Red color" id="ev_red" data-format="red" style="color:red; toolbar_item" class="fas fa-square fa-fw toolbar_item"></i>
+                        <i title="Green color" id="ev_green" data-format="green" style="color:green;" class="fas fa-square fa-fw toolbar_item"></i>
                       </div>
                     </div>
                     <div class="form-group col">
@@ -496,18 +492,8 @@
                         <div class="input-group-prepend"><span class="input-group-text"><i class="fa fa-book fa-fw"></i></span>
                         </div>
                         <textarea name="ma2" id="ma2" class="form-control" required></textarea>
-                        
                       </div>
-                      <div id="ma2_tool" class="toolbar">
-                        <i title="Italic text" id="italic2" class="fas fa-italic fa-fw toolbar_item"></i>
-                        <i title="Bold" id="bold2" class="fas fa-bold fa-fw toolbar_item"></i>
-                        <i title="Strikethrough" id="strike2" class="fas fa-strikethrough fa-fw toolbar_item"></i>
-                        <i title="Unordered list" id="ul2" class="fas fa-list-ul fa-fw toolbar_item"></i>
-                        <i title="Numbered list" id="ol2" class="fas fa-list-ol fa-fw toolbar_item"></i>
-                        <i title="New line" id="newline2" class="fas fa-fw toolbar_item">¶</i>
-                        <i title="Red color" id="red2" style="color:red; toolbar_item" class="fas fa-square fa-fw toolbar_item"></i>
-                        <i title="Green color" id="green2" style="color:green;" class="fas fa-square fa-fw toolbar_item"></i>
-                      </div>
+                      
                     </div>
                     <div class="form-group col-2">
                       <label for="co2">Counter </label>
@@ -523,15 +509,28 @@
                           <span class="input-group-text"><i class="fa fa-list-ul fa-fw"></i></span></div>
                         <textarea name="ev2" id="ev2" class="form-control" required></textarea>
                       </div>
-                      <div id="ev_tool2" class="toolbar">
-                        <i title="Italic text" id="ev_italic2" class="fas fa-italic fa-fw toolbar_item"></i>
-                        <i title="Bold" id="ev_bold2" class="fas fa-bold fa-fw toolbar_item"></i>
-                        <i title="Strikethrough" id="ev_strike2" class="fas fa-strikethrough fa-fw toolbar_item"></i>
-                        <i title="Unordered list" id="ev_ul2" class="fas fa-list-ul fa-fw toolbar_item"></i>
-                        <i title="Numbered list" id="ev_ol2" class="fas fa-list-ol fa-fw toolbar_item"></i>
-                        <i title="New line" id="ev_newline2" class="fas fa-fw toolbar_item">¶</i>
-                        <i title="Red color" id="ev_red2" style="color:red; toolbar_item" class="fas fa-square fa-fw toolbar_item"></i>
-                        <i title="Green color" id="ev_green2" style="color:green;" class="fas fa-square fa-fw toolbar_item"></i>
+                      
+                    </div>
+                    <div class="col-12">
+                      <div id="ma2_tool" class="toolbar">
+                        <i title="Italic text" id="italic2" data-format="italic" class="fas fa-italic fa-fw toolbar_item"></i>
+                        <i title="Bold" id="bold2" data-format="bold" class="fas fa-bold fa-fw toolbar_item"></i>
+                        <i title="Strikethrough" id="strike2" data-format="strike" class="fas fa-strikethrough fa-fw toolbar_item"></i>
+                        <i title="Unordered list" id="ul2" data-format="ulist" class="fas fa-list-ul fa-fw toolbar_item"></i>
+                        <i title="Numbered list" id="ol2" data-format="olist" class="fas fa-list-ol fa-fw toolbar_item"></i>
+                        <i title="New line" id="newline2" data-format="newline" class="fas fa-fw toolbar_item">¶</i>
+                        <i title="Red color" id="red2" data-format="red" style="color:red; toolbar_item" class="fas fa-square fa-fw toolbar_item"></i>
+                        <i title="Green color" id="green2" data-format="green" style="color:green;" class="fas fa-square fa-fw toolbar_item"></i>
+                      </div>
+                      <div id="ev2_tool" class="toolbar">
+                        <i title="Italic text" id="ev_italic2" data-format="italic" class="fas fa-italic fa-fw toolbar_item"></i>
+                        <i title="Bold" id="ev_bold2" data-format="bold" class="fas fa-bold fa-fw toolbar_item"></i>
+                        <i title="Strikethrough" id="ev_strike2" data-format="strike" class="fas fa-strikethrough fa-fw toolbar_item"></i>
+                        <i title="Unordered list" id="ev_ul2" data-format="ulist" class="fas fa-list-ul fa-fw toolbar_item"></i>
+                        <i title="Numbered list" id="ev_ol2" data-format="olist" class="fas fa-list-ol fa-fw toolbar_item"></i>
+                        <i title="New line" id="ev_newline2" data-format="newline" class="fas fa-fw toolbar_item">¶</i>
+                        <i title="Red color" id="ev_red2" data-format="red" style="color:red; toolbar_item" class="fas fa-square fa-fw toolbar_item"></i>
+                        <i title="Green color" id="ev_green2" data-format="green" style="color:green;" class="fas fa-square fa-fw toolbar_item"></i>
                       </div>
                     </div>
                     <div class="form-group col">
@@ -1622,7 +1621,6 @@
             success : function(data){
               var html = '',
                   edit_student_button= '',
-                  teacher_note='',
                   i;
               for(i=0;i<data.length;i++){
                 edit_student_button += `<a title="Edit student and course detail" href="javascript:void(0);" class="btn btn-info btn-sm tooltip-bottom student_info_edit" data-grp="${data[i].grp}" data-pn="${data[i].pin}" data-cn="${data[i].complete_name}" data-nn="${data[i].nick_name}" data-ad="${data[i].address}" data-pb="${data[i].place_of_birth}" data-db="${$.format.date(data[i].date_of_birth, "yyyy-MM-dd")}" data-ph="${data[i].phone}" data-cnst2="${data[i].cnst2}" data-nnst2="${data[i].nnst2}" data-adrst2="${data[i].adrst2}" data-pobst2="${data[i].pobst2}" data-dobst2="${($.format.date(data[i].dobst2, "yyyy-MM-dd"))}" data-phst2="${data[i].phst2}" data-cnst3="${data[i].cnst3}" data-nnst3="${data[i].nnst3}" data-adrst3="${data[i].adrst3}" data-pobst3="${data[i].pobst3}" data-dobst3="${($.format.date(data[i].dobst3, "yyyy-MM-dd"))}" data-phst3="${data[i].phst3}" data-cnst4="${data[i].cnst4}" data-nnst4="${data[i].nnst4}" data-adrst4="${data[i].adrst4}" data-pobst4="${data[i].pobst4}" data-dobst4="${($.format.date(data[i].dobst4, "yyyy-MM-dd"))}" data-phst4="${data[i].phst4}" data-pr="${data[i].program}" data-pd="${data[i].program_duration}" data-sd="${($.format.date(data[i].starting_date, "yyyy-MM-dd"))}" data-re="${data[i].reason}" data-ta="${data[i].target}" data-di="${data[i].difficulties}" data-bg="${data[i].bground}" data-si="${data[i].self_introduction}" data-wp="${data[i].weakness_point}" data-ap="${data[i].action_plan}" data-fsp="${data[i].fsp} "><i class="fas fa-user-edit fa-fw"></i></a>`; 
@@ -1733,7 +1731,7 @@
                               </div>
                             </div>
                           </div>`;
-                teacher_note += data[i].note;
+                
                 if (data[i].fsp == 'yes'){
                   $('#fsp_tab').css('display','block');
                   get_fsp();
@@ -1742,7 +1740,6 @@
               }
               $('#student_info').html(html);
               $('#edit_student_span').html(edit_student_button);
-              $('#teacher_note').html(teacher_note);
             }
           });
         }
@@ -2151,6 +2148,7 @@
             $('#new_session_btn').fadeOut('100');
             $('#new_session_btn').fadeIn('200');
         });
+        /* NEW SESSION */
         $('#new_session_btn').on('click', function(){
           var d = new Date(), /* variable declaration */
               teacher = "<?php echo $this->session->userdata('username');?>",
@@ -2161,142 +2159,81 @@
           
           /* material field */
           $('#ma').bind('updateInfo keyup mousedown mousemove mouseup', function(event) {
-           // $('#ma_tool').fadeIn('slow');
             var str = $(this).val();
             $('#preview').html(str);
+            //$('#ev_tool').fadeOut('fast');
+            //$('#ma_tool').fadeIn('fast');
+            $('#ev_tool').hide();
+            $('#ma_tool').show();
             if (document.activeElement !== $(this)[0]) {
               return;
             }
-            var range = $(this).textrange();
           });
-          
-          $('#italic').click(function() {
-            var arr = $('#ma').textrange(),
+          $('#ma_tool').on('click', '.toolbar_item', function(){
+            var format = $(this).data('format'),
+                arr = $('#ma').textrange(),
                 text = arr['text'];
-            if(text !=''){
+            if(format == 'italic'){
               $('#ma').textrange('replace', "<em>"+text+"</em>").trigger('updateInfo').focus();
-            } 
-          });
-          
-          $('#bold').click(function() {
-            var arr = $('#ma').textrange(),
-                text = arr['text'];
-            if(text !=''){
+            } else if(format=='bold'){
               $('#ma').textrange('replace', "<strong>"+text+"</strong>").trigger('updateInfo').focus();
-            } 
-          });
-          
-          $('#strike').click(function() {
-            var arr = $('#ma').textrange(),
-                text = arr['text'];
-            if(text !=''){
+            } else if(format=='strike'){
               $('#ma').textrange('replace', "<del>"+text+"</del>").trigger('updateInfo').focus();
-            } 
-          });
-          
-          $('#ul').click(function() {
-            var arr = $('#ma').textrange(),
-                text = arr['text'],
-                newList = text.replace(/\r\n|\n|\r/gm,"</li><li>"),
-                wrapper = "<ul><li>"+newList+"</li></ul>"; 
-            $('#ma').textrange('replace', wrapper).trigger('updateInfo').focus();
-          });
-          
-          $('#ol').click(function() {
-            var arr = $('#ma').textrange(),
-                text = arr['text'],
-                newList = text.replace(/\r\n|\n|\r/gm,"</li><li>"),
-                wrapper = "<ol><li>"+newList+"</li></ol>";
-            $('#ma').textrange('replace', wrapper).trigger('updateInfo').focus();
-          });
-          
-          $('#newline').click(function(){
-            $('#ma').textrange('replace', "<br>").trigger('updateInfo').focus();
-          });
-          $('#red').click(function(){
-            var arr = $('#ma').textrange(),
-                text = arr['text'];
-            if(text !=''){
+            } else if(format=='ulist'){
+              var newList = text.replace(/\r\n|\n|\r/gm,"</li>\n<li>"),
+                  wrapper = "<ul>\n<li>"+newList+"</li>\n</ul>"; 
+              $('#ma').textrange('replace', wrapper).trigger('updateInfo').focus();
+            } else if(format=='olist'){
+              var newList = text.replace(/\r\n|\n|\r/gm,"</li>\n<li>"),
+                  wrapper = "<ol>\n<li>"+newList+"</li>\n</ol>";
+              $('#ma').textrange('replace', wrapper).trigger('updateInfo').focus();
+            } else if(format=='newline'){
+              $('#ma').textrange('replace', "<br>").trigger('updateInfo').focus();
+            } else if(format=='red'){
               $('#ma').textrange('replace', "<span style='color:red;'>"+text+"</span>").trigger('updateInfo').focus();
-            } 
-          });
-          
-          $('#green').click(function(){
-             var arr = $('#ma').textrange(),
-                text = arr['text'];
-            if(text !=''){
+            } else if(format=='green'){
               $('#ma').textrange('replace', "<span style='color:green;'>"+text+"</span>").trigger('updateInfo').focus();
-            } 
+            }
           });
            /* end material field */
           /* evaluation field */
           $('#ev').bind('updateInfo keyup mousedown mousemove mouseup', function(event) {
             var str = $(this).val();
             $('#preview').html(str);
+            $('#ev_tool').show();
+            $('#ma_tool').hide();
+            
             if (document.activeElement !== $(this)[0]) {
               return;
             }
             var range = $(this).textrange();
          
           });
-          
-          $('#ev_italic').click(function() {
+          $('#ev_tool').on('click', '.toolbar_item', function(){
+            var format = $(this).data('format');
             var arr = $('#ev').textrange(),
                 text = arr['text'];
-            if(text !=''){
+            if(format == 'italic'){
               $('#ev').textrange('replace', "<em>"+text+"</em>").trigger('updateInfo').focus();
-            } 
-          });
-          
-          $('#ev_bold').click(function() {
-            var arr = $('#ev').textrange(),
-                text = arr['text'];
-            if(text !=''){
+            } else if(format=='bold'){
               $('#ev').textrange('replace', "<strong>"+text+"</strong>").trigger('updateInfo').focus();
-            } 
-          });
-          
-          $('#ev_strike').click(function() {
-            var arr = $('#ev').textrange(),
-                text = arr['text'];
-            if(text !=''){
+            } else if(format=='strike'){
               $('#ev').textrange('replace', "<del>"+text+"</del>").trigger('updateInfo').focus();
-            } 
-          });
-          
-          $('#ev_ul').click(function() {
-            var arr = $('#ev').textrange(),
-                text = arr['text'],
-                newList = text.replace(/\r\n|\n|\r/gm,"</li><li>"),
-                wrapper = "<ul><li>"+newList+"</li></ul>"; 
-            $('#ev').textrange('replace', wrapper).trigger('updateInfo').focus();
-          });
-          
-          $('#ev_ol').click(function() {
-            var arr = $('#ev').textrange(),
-                text = arr['text'],
-                newList = text.replace(/\r\n|\n|\r/gm,"</li><li>"),
-                wrapper = "<ol><li>"+newList+"</li></ol>";
-            $('#ev').textrange('replace', wrapper).trigger('updateInfo').focus();
-          });
-          
-          $('#ev_newline').click(function(){
-            $('#ev').textrange('replace', "<br>").trigger('updateInfo').focus();
-          });
-          $('#ev_red').click(function(){
-            var arr = $('#ev').textrange(),
-                text = arr['text'];
-            if(text !=''){
+            } else if(format=='ulist'){
+              var newList = text.replace(/\r\n|\n|\r/gm,"</li>\n<li>"),
+                  wrapper = "<ul>\n<li>"+newList+"</li>\n</ul>"; 
+              $('#ev').textrange('replace', wrapper).trigger('updateInfo').focus();
+            } else if(format=='olist'){
+              var newList = text.replace(/\r\n|\n|\r/gm,"</li>\n<li>"),
+                  wrapper = "<ol>\n<li>"+newList+"</li>\n</ol>";
+              $('#ev').textrange('replace', wrapper).trigger('updateInfo').focus();
+            } else if(format=='newline'){
+              $('#ev').textrange('replace', "<br>").trigger('updateInfo').focus();
+            } else if(format=='red'){
               $('#ev').textrange('replace', "<span style='color:red;'>"+text+"</span>").trigger('updateInfo').focus();
-            } 
-          });
-          
-          $('#ev_green').click(function(){
-             var arr = $('#ev').textrange(),
-                text = arr['text'];
-            if(text !=''){
+            } else if(format=='green'){
               $('#ev').textrange('replace', "<span style='color:green;'>"+text+"</span>").trigger('updateInfo').focus();
-            } 
+            }
           });
            /* end evaluation field */
           $('#test').on('click', function(){ /* test button checkbox */
@@ -2554,150 +2491,75 @@
           });
             /* material field */
           $('#ma2').bind('updateInfo keyup mousedown mousemove mouseup', function(event) {
-           // $('#ma_tool').fadeIn('slow');
             var str = $(this).val();
             $('#preview2').html(str);
+            $('#ma2_tool').show();
+            $('#ev2_tool').hide();
             if (document.activeElement !== $(this)[0]) {
               return;
             }
-            var range = $(this).textrange();
-           // $(this).on('mouseout', function(){
-           //   $('#ma_tool').fadeOut('slow');
-           // });
           });
-          
-          $('#italic2').click(function() {
-            var arr = $('#ma2').textrange(),
+          $('#ma2_tool').on('click', '.toolbar_item', function(){
+            var format = $(this).data('format'),
+                arr = $('#ma2').textrange(),
                 text = arr['text'];
-            if(text !=''){
+            if(format == 'italic'){
               $('#ma2').textrange('replace', "<em>"+text+"</em>").trigger('updateInfo').focus();
-            } 
-          });
-          
-          $('#bold2').click(function() {
-            var arr = $('#ma2').textrange(),
-                text = arr['text'];
-            if(text !=''){
+            } else if(format=='bold'){
               $('#ma2').textrange('replace', "<strong>"+text+"</strong>").trigger('updateInfo').focus();
-            } 
-          });
-          
-          $('#strike2').click(function() {
-            var arr = $('#ma2').textrange(),
-                text = arr['text'];
-            if(text !=''){
+            } else if(format=='strike'){
               $('#ma2').textrange('replace', "<del>"+text+"</del>").trigger('updateInfo').focus();
-            } 
-          });
-          
-          $('#ul2').click(function() {
-            var arr = $('#ma2').textrange(),
-                text = arr['text'],
-                newList = text.replace(/\r\n|\n|\r/gm,"</li><li>"),
-                wrapper = "<ul><li>"+newList+"</li></ul>"; 
-            $('#ma2').textrange('replace', wrapper).trigger('updateInfo').focus();
-          });
-          
-          $('#ol2').click(function() {
-            var arr = $('#ma2').textrange(),
-                text = arr['text'],
-                newList = text.replace(/\r\n|\n|\r/gm,"</li><li>"),
-                wrapper = "<ol><li>"+newList+"</li></ol>";
-            $('#ma2').textrange('replace', wrapper).trigger('updateInfo').focus();
-          });
-          
-          $('#newline2').click(function(){
-            $('#ma2').textrange('replace', "<br>").trigger('updateInfo').focus();
-          });
-          $('#red2').click(function(){
-            var arr = $('#ma2').textrange(),
-                text = arr['text'];
-            if(text !=''){
+            } else if(format=='ulist'){
+              var newList = text.replace(/\r\n|\n|\r/gm,"</li>\n<li>"),
+                  wrapper = "<ul>\n<li>"+newList+"</li>\n</ul>"; 
+              $('#ma2').textrange('replace', wrapper).trigger('updateInfo').focus();
+            } else if(format=='olist'){
+              var newList = text.replace(/\r\n|\n|\r/gm,"</li>\n<li>"),
+                  wrapper = "<ol>\n<li>"+newList+"</li>\n</ol>";
+              $('#ma2').textrange('replace', wrapper).trigger('updateInfo').focus();
+            } else if(format=='newline'){
+              $('#ma2').textrange('replace', "<br>").trigger('updateInfo').focus();
+            } else if(format=='red'){
               $('#ma2').textrange('replace', "<span style='color:red;'>"+text+"</span>").trigger('updateInfo').focus();
-            } 
-          });
-          
-          $('#green2').click(function(){
-             var arr = $('#ma2').textrange(),
-                text = arr['text'];
-            if(text !=''){
+            } else if(format=='green'){
               $('#ma2').textrange('replace', "<span style='color:green;'>"+text+"</span>").trigger('updateInfo').focus();
-            } 
+            }
           });
-           /* end material field */
-          /* evaluation field */
           $('#ev2').bind('updateInfo keyup mousedown mousemove mouseup', function(event) {
-           // $('#ev_tool').fadeIn('slow');
             var str = $(this).val();
             $('#preview2').html(str);
+            $('#ma2_tool').hide();
+            $('#ev2_tool').show();
             if (document.activeElement !== $(this)[0]) {
               return;
             }
-            var range = $(this).textrange();
-           // $(this).on('blur', function(){
-           //   $('#ev_tool').fadeOut('slow');
-            //});
           });
-          
-          $('#ev_italic2').click(function() {
+          $('#ev2_tool').on('click', '.toolbar_item', function(){
+            var format = $(this).data('format');
             var arr = $('#ev2').textrange(),
                 text = arr['text'];
-            if(text !=''){
+            if(format == 'italic'){
               $('#ev2').textrange('replace', "<em>"+text+"</em>").trigger('updateInfo').focus();
-            } 
-          });
-          
-          $('#ev_bold2').click(function() {
-            var arr = $('#ev2').textrange(),
-                text = arr['text'];
-            if(text !=''){
+            } else if(format=='bold'){
               $('#ev2').textrange('replace', "<strong>"+text+"</strong>").trigger('updateInfo').focus();
-            } 
-          });
-          
-          $('#ev_strike2').click(function() {
-            var arr = $('#ev2').textrange(),
-                text = arr['text'];
-            if(text !=''){
+            } else if(format=='strike'){
               $('#ev2').textrange('replace', "<del>"+text+"</del>").trigger('updateInfo').focus();
-            } 
-          });
-          
-          $('#ev_ul2').click(function() {
-            var arr = $('#ev2').textrange(),
-                text = arr['text'],
-                newList = text.replace(/\r\n|\n|\r/gm,"</li><li>"),
-                wrapper = "<ul><li>"+newList+"</li></ul>"; 
-            $('#ev2').textrange('replace', wrapper).trigger('updateInfo').focus();
-          });
-          
-          $('#ev_ol2').click(function() {
-            var arr = $('#ev2').textrange(),
-                text = arr['text'],
-                newList = text.replace(/\r\n|\n|\r/gm,"</li><li>"),
-                wrapper = "<ol><li>"+newList+"</li></ol>";
-            $('#ev2').textrange('replace', wrapper).trigger('updateInfo').focus();
-          });
-          
-          $('#ev_newline2').click(function(){
-            $('#ev2').textrange('replace', "<br>").trigger('updateInfo').focus();
-          });
-          $('#ev_red2').click(function(){
-            var arr = $('#ev2').textrange(),
-                text = arr['text'];
-            if(text !=''){
+            } else if(format=='ulist'){
+              var newList = text.replace(/\r\n|\n|\r/gm,"</li>\n<li>"),
+                  wrapper = "<ul>\n<li>"+newList+"</li>\n</ul>"; 
+              $('#ev2').textrange('replace', wrapper).trigger('updateInfo').focus();
+            } else if(format=='olist'){
+              var newList = text.replace(/\r\n|\n|\r/gm,"</li>\n<li>"),
+                  wrapper = "<ol>\n<li>"+newList+"</li>\n</ol>";
+              $('#ev2').textrange('replace', wrapper).trigger('updateInfo').focus();
+            } else if(format=='newline'){
+              $('#ev2').textrange('replace', "<br>").trigger('updateInfo').focus();
+            } else if(format=='red'){
               $('#ev2').textrange('replace', "<span style='color:red;'>"+text+"</span>").trigger('updateInfo').focus();
-            } 
-          });
-          
-          $('#ev_green2').click(function(){
-             var arr = $('#ev2').textrange(),
-                text = arr['text'];
-            if(text !=''){
+            } else if(format=='green'){
               $('#ev2').textrange('replace', "<span style='color:green;'>"+text+"</span>").trigger('updateInfo').focus();
-            } 
+            }
           });
-           /* end evaluation field */
         });
         
         $('select[name="tn2"]').on('change', function(){ /* test name */
