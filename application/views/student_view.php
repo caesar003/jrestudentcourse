@@ -108,6 +108,11 @@
       <?php endif;?>
     </div>
     <hr>
+    <div class="container">
+      <h3>Other notes : </h3>
+      <div class="container" id="teacher_note"></div>      
+    </div>
+    <hr>
     <div class="container-fluid" id="student_list"> 
       <div class="row">
         <div class="col-12">
@@ -3129,5 +3134,24 @@
       }); 
     </script> 
     <?php endif;?>
+    <script>
+      $(document).ready(function(){
+        get_teacher_note();
+        function get_teacher_note(){
+          $.ajax({
+            type : "ajax",
+            url : "<?php echo site_url('after_teaching/get_note') ;?>",
+            dataType : "json",
+            success : function(data){
+              var note = '';
+              for(var i=0;i<data.length;i++){
+                note += `<p><span class="note_date">${$.format.date(data[i].created_date, "E, MMM/dd/yy, H:mm")}</span> | <span class="note">${data[i].note}</span></p>`;
+              }
+              $('#teacher_note').html(note);
+            }
+          });
+        }
+      });
+    </script>
 </body> 
 </html>

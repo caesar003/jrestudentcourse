@@ -6,15 +6,33 @@
           <ul class="list-group" id="aft_list"></ul>
         </div>
         <div class="col-md-9" id="main_content">
+          <div class="container">
+            <h3>Note here</h3>
+            <div class="container" id="note">
+            
+            </div>
+            <div class="container">
+              <form id="note_form" autocomplete="off">
+                <label for="note_input">New note</label>
+                <div class="input-group">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text"><i style="color: crimson;" class="fas fa-sticky-note fa-fw"></i></span> 
+                  </div>
+                  <input type="text" class="form-control" name="note_input" id="note_input" placeholder="Write something here...">
+                  <div class="input-group-append">
+                    <span id="submit_note" class="input-group-text"><i class="fas fa-check"></i></span>
+                  </div>
+                </div>                
+              </form>
+            </div>
+          </div>
+          <br>  
           <div class="container-fluid">
             <h3 id="aft_header">Choose one from the list on left.
             </h3>
             <br>
             <div class="accordion" id="stdinfo">
             </div>
-          </div>
-          <br>
-          <div class="card col-7" id="note">
           </div>
           <br>
           <div class="container-fluid" id="course_summary">
@@ -30,6 +48,60 @@
     <script>
       $(document).ready(function(){
         get_list();
+        get_note();
+        
+        $('#note_form').on('submit', function(e){
+          e.preventDefault();
+          var note = $('#note_input').val();
+          console.log(note);
+          submit_note(note);
+          
+        });
+        $('#submit_note').on('click', function(){
+          var note = $('#note_input').val();
+          if(note!=''){
+            console.log(note);
+            submit_note(note);
+            /* */
+          }
+        });
+        function submit_note(note){
+          $.ajax({
+            type : "post",
+            url : "<?php echo site_url('after_teaching/submit_note');?>",
+            data : {note:note},
+            success : function(data){
+              get_note();
+              $('#note_input').val("");
+            }
+          });
+        }
+        function get_note(){
+          $.ajax({
+            type : "ajax",
+            url : "<?php echo site_url('after_teaching/get_note') ;?>",
+            dataType : "json",
+            success : function(data){
+              var note = '';
+              for(var i=0;i<data.length;i++){
+                note += `<p><i data-id="${data[i].id}" class="rem_note fas fa-trash fa-fw"></i> <span class="note_date">${$.format.date(data[i].created_date, "E, MMM/dd/yy, H:mm")}</span> | <span class="note">${data[i].note}</span></p>`;
+              }
+              $('#note').html(note);
+            }
+          });
+        }
+        $('#note').on('click', '.rem_note', function(){
+          var id = $(this).data('id');
+          $.ajax({
+            type : "post",
+            url : "<?php echo site_url('after_teaching/remove_note');?>",
+            dataType : "json",
+            data : {id:id},
+            success : function(data){
+              get_note();
+            }
+          });
+        });
         function get_list(){
           $.ajax({
             url : "<?php echo site_url('after_teaching/get_list'); ?>",
@@ -90,10 +162,10 @@
               ap=$(this).data('ap'),
               fsp = $(this).data('fsp'),
               note= $(this).data('note'),
-              teacher_note= `<div class="card-body">
+              /*teacher_note= `<div class="card-body">
                             <h5 class="card-title">Note: </h5>
                             <p data-pin="${pn}" contenteditable="true" class="p_note card-text">${note}</p>
-                          </div>`,
+                          </div>`, */
               aft_header = '',
               stdinfo=`<div class="card">
                         <div class="card-header" id="heading_personal_detail">
@@ -198,10 +270,10 @@
         </div>
         </div>` ;
           aft_header += `Student Information 
-<div class="float-right">
-<a title="Visit student page" href="<?php echo site_url('student_single?pin=');?>${pn}" class="btn btn-info tooltip-bottom">
-<span class="fa fa-eye"></span> 
-See more </a> <a title="Remove this student" data-pin="${pn}"href="javascript:void(0);" class="btn btn-success tooltip-bottom remove_aft_button"> <span class="fa fa-trash"></span> Remove </a></div>`;
+            <div class="float-right">
+            <a title="Visit student page" href="<?php echo site_url('student_single?pin=');?>${pn}" class="btn btn-info tooltip-bottom">
+            <span class="fa fa-eye"></span> 
+            See more </a> <a title="Remove this student" data-pin="${pn}"href="javascript:void(0);" class="btn btn-success tooltip-bottom remove_aft_button"> <span class="fa fa-trash"></span> Remove </a></div>`;
           
           $.ajax({
             url : "<?php echo site_url('after_teaching/get_course');?>",
@@ -215,7 +287,7 @@ See more </a> <a title="Remove this student" data-pin="${pn}"href="javascript:vo
           <thead>
           <tr>
           <th title="meeting number"><i class="fa fa-hashtag fa-fw"></i></th>
-            <th title="Date, time" Date, time</th>
+            <th title="Date, time"> Date, time</th>
         <th title="Teacher">Teacher</th>
         <th title="Meeting duration"> Duration</th>
         <th title="Material"> Material</th>
@@ -245,7 +317,7 @@ See more </a> <a title="Remove this student" data-pin="${pn}"href="javascript:vo
               crsm += '</tbody>'+
                 '</table>';
               $('#main_content').fadeIn();
-              $('#note').html(teacher_note);
+              //$('#note').html(teacher_note);
               $('#stdinfo').html(stdinfo);
               $('#course_summary').html(crsm);
               $('#aft_header').html(aft_header);

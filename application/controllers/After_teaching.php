@@ -20,6 +20,18 @@ class After_teaching extends CI_Controller{
     }
     
   }
+  function get_note(){
+    $data = $this->after_teaching_model->get_note();
+    echo json_encode($data);
+  }
+  function submit_note(){
+    $data = $this->after_teaching_model->submit_note();
+    echo json_encode($data);
+  }
+  function remove_note(){
+    $data = $this->after_teaching_model->remove_note();
+    echo json_encode($data);
+  }
   function get_list(){
     $data = $this->after_teaching_model->get_list();
     echo json_encode($data);

@@ -1,3 +1,22 @@
+span.note_date {
+    font-size: small;
+    font-weight: 700;
+}
+.rem_note{
+  color :red;
+}
+.rem_note:hover {
+  color:deeppink;
+  cursor: pointer;
+}
+#submit_note{
+  color:darkcyan;
+  
+}
+#submit_note:hover{
+  background-color: aquamarine;
+  cursor: pointer;
+}
 .toolbar_item{
   color:azure;
   cursor: pointer;

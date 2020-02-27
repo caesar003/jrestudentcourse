@@ -1,5 +1,20 @@
 <?php
 class After_teaching_model extends CI_Model{
+  function get_note(){
+    $query = $this->db->get('teacher_note');
+    return $query->result();
+  }
+  function submit_note(){
+    $data = array('note' => $this->input->post('note'));
+    $query = $this->db->insert('teacher_note', $data);
+    return $query;
+  }
+  function remove_note(){
+    $id = $this->input->post('id');
+    $this->db->where('id', $id);
+    $query = $this->db->delete('teacher_note');
+    return $query;
+  }
   function get_list(){
     $this->db->where('after_teaching','yes');
     $query = $this->db->get('students');
