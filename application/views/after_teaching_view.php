@@ -53,16 +53,14 @@
         $('#note_form').on('submit', function(e){
           e.preventDefault();
           var note = $('#note_input').val();
-          console.log(note);
+         
           submit_note(note);
           
         });
         $('#submit_note').on('click', function(){
           var note = $('#note_input').val();
           if(note!=''){
-            console.log(note);
             submit_note(note);
-            /* */
           }
         });
         function submit_note(note){
@@ -162,10 +160,6 @@
               ap=$(this).data('ap'),
               fsp = $(this).data('fsp'),
               note= $(this).data('note'),
-              /*teacher_note= `<div class="card-body">
-                            <h5 class="card-title">Note: </h5>
-                            <p data-pin="${pn}" contenteditable="true" class="p_note card-text">${note}</p>
-                          </div>`, */
               aft_header = '',
               stdinfo=`<div class="card">
                         <div class="card-header" id="heading_personal_detail">
@@ -184,91 +178,93 @@
                              <span class="student_info_item"> Address:</span> ${ad}<br>
                              <span class="student_info_item"> PDoB:</span> ${pb}, ${db}<br>
                              <span class="student_info_item"> Phone:</span> ${ph} <br>
-                            </div>
+                           </div>
                           </div>
                         </div>` ;
           if(cnst2!=''){
             stdinfo += `<div class="card">
-                        <div class="card-header" id="heading_${pn}st2">
-                          <h2 class="mb-0">
-                            <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapse_${pn}st2" aria-expanded="true" aria-controls="collapse_${pn}st2">
-                            STUDENT 2 
-                            </button>
-                          </h2>
-                        </div>
-                        <div id="collapse_${pn}st2" class="collapse" aria-labelledby="heading_${pn}st2" data-parent="#stdinfo">
-                          <div class="card-body">
-                            <span class="student_info_item"> Name :</span>  ${cnst2}, ${nnst2}<br>
-                            <span class="student_info_item"> Address:</span>${adrst2}<br>
-                            <span class="student_info_item"> PDoB:</span>${pobst2}, ${dobst2 }<br>
-                            <span class="student_info_item"> Phone:</span> ${phst2}<br>
-                          </div>
-                        </div>
-                      </div>` ;
-          } 
-          if(cnst3!=''){
-            stdinfo += `<div class="card">
-                        <div class="card-header" id="heading_${pn}st3">
-                          <h2 class="mb-0">
-                            <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapse_${pn}st3" aria-expanded="true" aria-controls="collapse_${pn}st3">
-                            STUDENT 3 
-                            </button>
-                          </h2>
-                        </div>
-                        <div id="collapse_${pn}st3" class="collapse" aria-labelledby="heading_${pn}st3" data-parent="#stdinfo">
-                          <div class="card-body">
-                            <span class="student_info_item"> Name:</span> ${cnst3}, ${nnst3}<br> 
-                            <span class="student_info_item"> Address:</span> ${ adrst3 }<br>
-                            <span class="student_info_item"> PDoB: </span>${pobst3}, ${dobst3}<br>
-                            <span class="student_info_item"> Phone :</span>${phst3}<br>
-                          </div>
-                        </div>
-                      </div>` ;
-          }
-          if(cnst4!=''){
-            stdinfo += `<div class="card">
-                          <div class="card-header" id="heading_${pn}st4">
+                          <div class="card-header" id="heading_${pn}st2">
                             <h2 class="mb-0">
-                              <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapse_${pn}st4" aria-expanded="true" aria-controls="collapse_${pn}st4">
-                                STUDENT 4 
+                              <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapse_${pn}st2" aria-expanded="true" aria-controls="collapse_${pn}st2">
+                                STUDENT 2 
                               </button>
                             </h2>
                           </div>
-                          <div id="collapse_${pn}st4" class="collapse" aria-labelledby="heading_${pn}st4" data-parent="#stdinfo">
+                          <div id="collapse_${pn}st2" class="collapse" aria-labelledby="heading_${pn}st2" data-parent="#stdinfo">
                             <div class="card-body">
-                              <span class="student_info_item"> Name:</span> ${cnst4} - ${nnst4}<br>
-                              <span class="student_info_item"> Address:</span> ${adrst4 }<br>
-                              <span class="student_info_item"> PDOB:</span> ${pobst4}, ${dobst4}<br>
-                              <span class="student_info_item"> Phone:</span> ${phst4 }<br>
+                              <span class="student_info_item"> Name :</span>  ${cnst2}, ${nnst2}<br>
+                              <span class="student_info_item"> Address:</span>${adrst2}<br>
+                              <span class="student_info_item"> PDoB:</span>${pobst2}, ${dobst2 }<br>
+                              <span class="student_info_item"> Phone:</span> ${phst2}<br>
                             </div>
                           </div>
                         </div>` ;
+          } 
+          if(cnst3!=''){
+            stdinfo += `<div class="card">
+                          <div class="card-header" id="heading_${pn}st3">
+                            <h2 class="mb-0">
+                              <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapse_${pn}st3" aria-expanded="true" aria-controls="collapse_${pn}st3">
+                                STUDENT 3 
+                              </button>
+                             </h2>
+                           </div>
+                           <div id="collapse_${pn}st3" class="collapse" aria-labelledby="heading_${pn}st3" data-parent="#stdinfo">
+                             <div class="card-body">
+                               <span class="student_info_item"> Name:</span> ${cnst3}, ${nnst3}<br> 
+                               <span class="student_info_item"> Address:</span> ${ adrst3 }<br>
+                               <span class="student_info_item"> PDoB: </span>${pobst3}, ${dobst3}<br>
+                               <span class="student_info_item"> Phone :</span>${phst3}<br>
+                             </div>
+                           </div>
+                         </div>` ;
           }
-           stdinfo += `<div class="card">
-                      <div class="card-header" id="heading_${pn}_course_detail">
-                        <h2 class="mb-0">
-                          <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapse_${pn}_course_detail" aria-expanded="true" aria-controls="collapse_${pn}_course_detail">
-                            COURSE DETAIL 
-                          </button>
-                        </h2>
-                      </div>
-                        <div id="collapse_${pn}_course_detail" class="collapse" aria-labelledby="heading_${pn}_course_detail" data-parent="#stdinfo">
-                          <span class="student_info_item"> Program:</span> ${pr}<br>
-                          <span class="student_info_item"> Program duration: </span>${pd}<br>
-                          <span class="student_info_item"> Started on:</span> ${sd}<br>
-                          <span class="student_info_item"> Reason:</span> ${re}<br>
-                          <span class="student_info_item"> Target:</span> ${ta}<br>
-                          <span class="student_info_item"> Difficulties:</span> ${di}<br>
-                          <span class="student_info_item"> Background:</span> ${bg}<br>
-                          <span class="student_info_item"> Self Introduction:</span> ${si}<br>
-                          <span class="student_info_item"> Weakness points: </span>${wp}<br>
-                          <span class="student_info_item"> Action plan: </span>${ap}<br>`;
+          if(cnst4!=''){
+            stdinfo +=  `<div class="card">
+                           <div class="card-header" id="heading_${pn}st4">
+                             <h2 class="mb-0">
+                               <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapse_${pn}st4" aria-expanded="true" aria-controls="collapse_${pn}st4">
+                                 STUDENT 4 
+                               </button>
+                             </h2>
+                           </div>
+                           <div id="collapse_${pn}st4" class="collapse" aria-labelledby="heading_${pn}st4" data-parent="#stdinfo">
+                             <div class="card-body">
+                               <span class="student_info_item"> Name:</span> ${cnst4} - ${nnst4}<br>
+                               <span class="student_info_item"> Address:</span> ${adrst4 }<br>
+                               <span class="student_info_item"> PDOB:</span> ${pobst4}, ${dobst4}<br>
+                               <span class="student_info_item"> Phone:</span> ${phst4 }<br>
+                             </div>
+                           </div>
+                         </div>` ;
+          }
+           stdinfo +=   `<div class="card">
+                           <div class="card-header" id="heading_${pn}_course_detail">
+                             <h2 class="mb-0">
+                               <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapse_${pn}_course_detail" aria-expanded="true" aria-controls="collapse_${pn}_course_detail">
+                                 COURSE DETAIL 
+                               </button>
+                             </h2>
+                           </div>
+                         <div id="collapse_${pn}_course_detail" class="collapse" aria-labelledby="heading_${pn}_course_detail" data-parent="#stdinfo">
+                          <div class="card-body">
+                           <span class="student_info_item"> Program:</span> ${pr}<br>
+                           <span class="student_info_item"> Program duration: </span>${pd}<br>
+                           <span class="student_info_item"> Started on:</span> ${sd}<br>
+                           <span class="student_info_item"> Reason:</span> ${re}<br>
+                           <span class="student_info_item"> Target:</span> ${ta}<br>
+                           <span class="student_info_item"> Difficulties:</span> ${di}<br>
+                           <span class="student_info_item"> Background:</span> ${bg}<br>
+                           <span class="student_info_item"> Self Introduction:</span> ${si}<br>
+                           <span class="student_info_item"> Weakness points: </span>${wp}<br>
+                           <span class="student_info_item"> Action plan: </span>${ap}<br>`;
           if(fsp=='yes'){
             stdinfo += ' FSP : true <br>';
           }
-          stdinfo += `</div>
-        </div>
-        </div>` ;
+              stdinfo += `</div>
+                        </div>
+                      </div>` ;
+          
           aft_header += `Student Information 
             <div class="float-right">
             <a title="Visit student page" href="<?php echo site_url('student_single?pin=');?>${pn}" class="btn btn-info tooltip-bottom">
@@ -317,7 +313,6 @@
               crsm += '</tbody>'+
                 '</table>';
               $('#main_content').fadeIn();
-              //$('#note').html(teacher_note);
               $('#stdinfo').html(stdinfo);
               $('#course_summary').html(crsm);
               $('#aft_header').html(aft_header);
