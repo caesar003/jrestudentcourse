@@ -316,14 +316,14 @@
                         <textarea name="ma" id="ma" class="form-control" placeholder="(1.1 - 1-3) Greeting..."></textarea>
                       </div>
                       <div id="ma_tool" class="toolbar">
-                        <i title="Italic text" id="italic" class="fas fa-italic fa-fw toolbar_item"></i>
-                        <i title="Bold" id="bold" class="fas fa-bold fa-fw toolbar_item"></i>
-                        <i title="Strikethrough" id="strike" class="fas fa-strikethrough fa-fw toolbar_item"></i>
-                        <i title="Unordered list" id="ul" class="fas fa-list-ul fa-fw toolbar_item"></i>
-                        <i title="Numbered list" id="ol" class="fas fa-list-ol fa-fw toolbar_item"></i>
-                        <i title="New line" id="newline" class="fas fa-fw toolbar_item">¶</i>
-                        <i title="Red color" id="red" style="color:red; toolbar_item" class="fas fa-square fa-fw toolbar_item"></i>
-                        <i title="Green color" id="green" style="color:green;" class="fas fa-square fa-fw toolbar_item"></i>
+                        <i title="Italic text" id="italic" class="fas fa-italic fa-fw toolbar_item" data-format="italic"></i>
+                        <i title="Bold" id="bold" class="fas fa-bold fa-fw toolbar_item" data-format="bold"></i>
+                        <i title="Strikethrough" id="strike" class="fas fa-strikethrough fa-fw toolbar_item" data-format="strike"></i>
+                        <i title="Unordered list" id="ul" class="fas fa-list-ul fa-fw toolbar_item" data-format="ul"></i>
+                        <i title="Numbered list" id="ol" class="fas fa-list-ol fa-fw toolbar_item" data-format="ol"></i>
+                        <i title="New line" id="newline" class="fas fa-fw toolbar_item" data-format="linebreak">¶</i>
+                        <i title="Red color" id="red" style="color:red; toolbar_item" class="fas fa-square fa-fw toolbar_item" data-format="red"></i>
+                        <i title="Green color" id="green" style="color:green;" class="fas fa-square fa-fw toolbar_item" data-format="green"></i>
                       </div>
                     </div>
                     <div class="form-group col-2">
@@ -2161,7 +2161,6 @@
           
           /* material field */
           $('#ma').bind('updateInfo keyup mousedown mousemove mouseup', function(event) {
-           // $('#ma_tool').fadeIn('slow');
             var str = $(this).val();
             $('#preview').html(str);
             if (document.activeElement !== $(this)[0]) {
@@ -2169,8 +2168,12 @@
             }
             var range = $(this).textrange();
           });
-          
-          $('#italic').click(function() {
+          $('#ma_tool').on('click', '.toolbar_item', function(){
+            var format = $(this).data('format');
+            console.log(format);
+            format_text(8,"foo");
+          });
+          /*$('#italic').click(function() {
             var arr = $('#ma').textrange(),
                 text = arr['text'];
             if(text !=''){
@@ -2227,7 +2230,12 @@
             if(text !=''){
               $('#ma').textrange('replace', "<span style='color:green;'>"+text+"</span>").trigger('updateInfo').focus();
             } 
-          });
+          }); */
+          function format_text(format, range){
+            console.log('nothing');
+            console.log(format);
+            console.log(range);
+          }
            /* end material field */
           /* evaluation field */
           $('#ev').bind('updateInfo keyup mousedown mousemove mouseup', function(event) {
@@ -2554,16 +2562,13 @@
           });
             /* material field */
           $('#ma2').bind('updateInfo keyup mousedown mousemove mouseup', function(event) {
-           // $('#ma_tool').fadeIn('slow');
+         
             var str = $(this).val();
             $('#preview2').html(str);
             if (document.activeElement !== $(this)[0]) {
               return;
             }
             var range = $(this).textrange();
-           // $(this).on('mouseout', function(){
-           //   $('#ma_tool').fadeOut('slow');
-           // });
           });
           
           $('#italic2').click(function() {
@@ -2627,16 +2632,12 @@
            /* end material field */
           /* evaluation field */
           $('#ev2').bind('updateInfo keyup mousedown mousemove mouseup', function(event) {
-           // $('#ev_tool').fadeIn('slow');
             var str = $(this).val();
             $('#preview2').html(str);
             if (document.activeElement !== $(this)[0]) {
               return;
             }
             var range = $(this).textrange();
-           // $(this).on('blur', function(){
-           //   $('#ev_tool').fadeOut('slow');
-            //});
           });
           
           $('#ev_italic2').click(function() {
