@@ -1,3 +1,11 @@
+#new_session_form{
+  display: none;
+}
+#show_syllabus{
+  overflow-y: scroll;
+  max-height: 600px;
+}
+
 .toolbar{
   display: none;
 }

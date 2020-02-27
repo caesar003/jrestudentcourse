@@ -29,3 +29,12 @@ Test
         insert appropriate programs to the syllabus table
         asssign the sections selected.
 how to structure syllabus table
+
+## New form
+div above main tab, hidden by default, shown on either new session or edit session button.
+
+with a close button, which will hide it back
+
+syllabus items would be accompanied by data topics and indicator, in which, if clicked, would recognized which form is active, and put the corresponding id into the material field.
+
+## score on syllabus
