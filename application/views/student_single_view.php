@@ -2593,16 +2593,16 @@
           $('#ul2').click(function() {
             var arr = $('#ma2').textrange(),
                 text = arr['text'],
-                newList = text.replace(/\r\n|\n|\r/gm,"</li>\n<li>"),
-                wrapper = "<ul>\n<li>"+newList+"</li>\n</ul>"; 
+                newList = text.replace(/\r\n|\n|\r/gm,"</li><li>"),
+                wrapper = "<ul><li>"+newList+"</li></ul>"; 
             $('#ma2').textrange('replace', wrapper).trigger('updateInfo').focus();
           });
           
           $('#ol2').click(function() {
             var arr = $('#ma2').textrange(),
                 text = arr['text'],
-                newList = text.replace(/\r\n|\n|\r/gm,"</li>\n<li>"),
-                wrapper = "<ol>\n<li>"+newList+"</li>\n</ol>";
+                newList = text.replace(/\r\n|\n|\r/gm,"</li><li>"),
+                wrapper = "<ol><li>"+newList+"</li></ol>";
             $('#ma2').textrange('replace', wrapper).trigger('updateInfo').focus();
           });
           
@@ -2666,16 +2666,16 @@
           $('#ev_ul2').click(function() {
             var arr = $('#ev2').textrange(),
                 text = arr['text'],
-                newList = text.replace(/\r\n|\n|\r/gm,"</li>\n<li>"),
-                wrapper = "<ul>\n<li>"+newList+"</li>\n</ul>"; 
+                newList = text.replace(/\r\n|\n|\r/gm,"</li><li>"),
+                wrapper = "<ul><li>"+newList+"</li></ul>"; 
             $('#ev2').textrange('replace', wrapper).trigger('updateInfo').focus();
           });
           
           $('#ev_ol2').click(function() {
             var arr = $('#ev2').textrange(),
                 text = arr['text'],
-                newList = text.replace(/\r\n|\n|\r/gm,"</li>\n<li>"),
-                wrapper = "<ol>\n<li>"+newList+"</li>\n</ol>";
+                newList = text.replace(/\r\n|\n|\r/gm,"</li><li>"),
+                wrapper = "<ol><li>"+newList+"</li></ol>";
             $('#ev2').textrange('replace', wrapper).trigger('updateInfo').focus();
           });
           
