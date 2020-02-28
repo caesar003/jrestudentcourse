@@ -29,10 +29,8 @@
               <div class="card" id="new_session_form">
                 <div class="card-header">
                   <h5 class="card-title">New Session
-                  <button id="close_new_session" type="button" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                  </h5>
-                  <!--div id="close_new_div" class="float-right"><button type="button">text</button></div-->
-                  
+                  <button type="button" class="close close_new_session" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                  </h5>                  
                 </div>
                 <div class="card-body">
                   <div class="row">
@@ -201,12 +199,194 @@
                 </div>
                 <div class="card-footer">
                   <input type="hidden" name="pin" id="pin" value="<?php echo $pin;?>">
-                  <span class="ffb" id="nsef"></span>
-                  <button type="button" class="btn btn-secondary"><i class="fa fa-times"></i> Close </button>
+                  <button type="button" class="btn btn-secondary close_new_session"><i class="fa fa-times"></i> Close </button>
                   <button type="button" type="submit" id="btn_save" class="btn btn-primary"><i class="fa fa-check"></i>Save </button>
+                  <span class="ffb" id="nsef"></span>
                 </div>
               </div>
             </form> <!-- END NEW COURSE -->
+            <form id="edit_session">
+              <div class="card" id="edit_session_form">
+                <div class="card-header">
+                  <h5 class="card-title">Edit Recorded
+                    <button type="button" class="close close_edit_session" aria-label="Close"><span aria-hidden="true">&times; </span></button>
+                  </h5> 
+                </div>
+                <div class="card-body">
+                  <div class="row">
+                    <div id="edit_course_div">
+                      <div class="form-row">
+                        <div class="form-group col-6">
+                          <label for="me2">Meeting <sup>&lowast;</sup></label>
+                          <div class="input-group">
+                            <div class="input-group-prepend"><span class="input-group-text"><i class="fa fa-hashtag fa-fw" aria-hidden="true"></i></span>
+                            </div>
+                            <input class="form-control" type="text" name="me2" id="me2" placeholder="Meeting" readonly>
+                          </div>
+                        </div>
+                        <div class="form-group col-6">
+                          <label for="cd2">Date <sup>&lowast;</sup></label>
+                              <div class="input-group">
+                                <div class="input-group-prepend"><span class="input-group-text"><i class="fa fa-calendar fa-fw"></i></span></div>
+                                <input type="datetime-local" name="cd2" id="cd2" class="form-control" required>
+                              </div>
+                            </div>
+                            <div class="form-group col-6">
+                              <label for="tc2">Teacher <sup>&lowast;</sup></label>
+                              <div class="input-group">
+                                <div class="input-group-prepend"><span class="input-group-text"><i class="fa fa-user fa-fw"></i></span></div>
+                                <input type="text" name="tc2" id="tc2" class="form-control" placeholder="Put your name here" required>
+                              </div>
+                            </div>
+                            <div class="form-group col-6">
+                              <label for="du2">Duration <sup>&lowast;</sup></label>
+                              <div class="input-group">
+                                <div class="input-group-prepend"><span class="input-group-text"><i class="fas fa-clock fa-fw"></i></span>
+                                </div>
+                                <select class="form-control" name="du2" id="du2" required>
+                                  <option value="">How long?</option>
+                                  <option value="60">60 minutes</option>
+                                  <option value="55">55 minutes</option>
+                                  <option value="50">50 minutes</option>
+                                  <option value="45">45 minutes</option>
+                                  <option value="40">40 minutes</option>
+                                  <option value="35">35 minutes</option>
+                                  <option value="30">30 minutes</option>
+                                  <option value="25">25 minutes</option>
+                                  <option value="20">20 minutes</option>
+                                  <option value="<20">&lt;20 minutes</option>
+                                </select>
+                              </div>
+                            </div>
+                            <div class="form-group col-5">
+                              <label for="ma2">Material <sup>&lowast;</sup></label>
+                              <div class="input-group">
+                                <div class="input-group-prepend"><span class="input-group-text"><i class="fa fa-book fa-fw"></i></span>
+                                </div>
+                                <textarea name="ma2" id="ma2" class="form-control" required></textarea>
+                              </div>
+                            </div>
+                            <div class="form-group col-2">
+                              <label for="co2">Counter </label>
+                              <div class="input-group">
+                                <div class="input-group-prepend"><span class="input-group-text"><i class="fa fa-stopwatch fa-fw"></i></span></div>
+                                <textarea title="Put a number here to see if it is the time to prepare test for this student" name="co2" id="co2" class="form-control" placeholder="6"></textarea>
+                              </div>
+                            </div>
+                            <div class="form-group col-5">
+                              <label for="ev2">Evaluation <sup>&lowast;</sup></label>
+                              <div class="input-group">
+                                <div class="input-group-prepend">
+                                  <span class="input-group-text"><i class="fa fa-list-ul fa-fw"></i></span></div>
+                                <textarea name="ev2" id="ev2" class="form-control" required></textarea>
+                              </div>
+
+                            </div>
+                            <div class="col-12">
+                              <div id="ma2_tool" class="toolbar">
+                                <i title="Italic text" id="italic2" data-format="italic" class="fas fa-italic fa-fw toolbar_item"></i>
+                                <i title="Bold" id="bold2" data-format="bold" class="fas fa-bold fa-fw toolbar_item"></i>
+                                <i title="Strikethrough" id="strike2" data-format="strike" class="fas fa-strikethrough fa-fw toolbar_item"></i>
+                                <i title="Unordered list" id="ul2" data-format="ulist" class="fas fa-list-ul fa-fw toolbar_item"></i>
+                                <i title="Numbered list" id="ol2" data-format="olist" class="fas fa-list-ol fa-fw toolbar_item"></i>
+                                <i title="New line" id="newline2" data-format="newline" class="fas fa-fw toolbar_item">¶</i>
+                                <i title="Red color" id="red2" data-format="red" style="color:red; toolbar_item" class="fas fa-square fa-fw toolbar_item"></i>
+                                <i title="Green color" id="green2" data-format="green" style="color:green;" class="fas fa-square fa-fw toolbar_item"></i>
+                              </div>
+                              <div id="ev2_tool" class="toolbar">
+                                <i title="Italic text" id="ev_italic2" data-format="italic" class="fas fa-italic fa-fw toolbar_item"></i>
+                                <i title="Bold" id="ev_bold2" data-format="bold" class="fas fa-bold fa-fw toolbar_item"></i>
+                                <i title="Strikethrough" id="ev_strike2" data-format="strike" class="fas fa-strikethrough fa-fw toolbar_item"></i>
+                                <i title="Unordered list" id="ev_ul2" data-format="ulist" class="fas fa-list-ul fa-fw toolbar_item"></i>
+                                <i title="Numbered list" id="ev_ol2" data-format="olist" class="fas fa-list-ol fa-fw toolbar_item"></i>
+                                <i title="New line" id="ev_newline2" data-format="newline" class="fas fa-fw toolbar_item">¶</i>
+                                <i title="Red color" id="ev_red2" data-format="red" style="color:red; toolbar_item" class="fas fa-square fa-fw toolbar_item"></i>
+                                <i title="Green color" id="ev_green2" data-format="green" style="color:green;" class="fas fa-square fa-fw toolbar_item"></i>
+                              </div>
+                            </div>
+                            <div class="form-group col">
+                              <label for="wr2">Writing</label>
+                              <div class="input-group">
+                                <div class="input-group-prepend"><span class="input-group-text"><i class="fas fa-pencil-alt fa-fw"></i></span></div>
+                                <input type="text" name="wr2" id="wr2" class="form-control">
+                              </div>
+                            </div>
+                            <div class="form-group col">
+                              <label for="sp2">Speaking</label>
+                              <div class="input-group">
+                                <div class="input-group-prepend"><span class="input-group-text"><i class="fa fa-bullhorn fa-fw"></i></span>
+                                </div>
+                                <input type="text" name="sp2" id="sp2" class="form-control">
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div id="edit_test_div">
+                          <div class="form-group">
+                            <label for="tnu2">#</label>
+                            <div class="input-group">
+                              <select name="tnu2" id="tnu2" class="form-control">
+                                <option value="">Choose</option>
+                                <option value="1st">1<sup>st</sup></option>
+                                <option value="2nd">2<sup>nd</sup></option>
+                                <option value="3rd">3<sup>rd</sup></option>
+                                <option value="4th">4<sup>th</sup></option>
+                                <option value="5th">5<sup>th</sup></option>
+                              </select>
+                            </div>
+                          </div>
+                          <div class="form-group">
+                            <label for="tn2">Test</label>
+                            <div class="input-group">
+                              <select name="tn2" id="tn2" class="form-control">
+                                <option value="">Choose</option>
+                                <option value="Pre Written">Pre Written</option>
+                                <option value="Pre Spoken">Pre Spoken</option>
+                                <option value="Written">Written</option>
+                                <option value="Spoken">Spoken</option>
+                                <option value="Remedial">Remedial</option>
+                              </select>
+                            </div>
+                          </div>
+                          <div class="form-group">
+                            <label for="otn2">of</label>
+                            <div class="input-group">
+                              <select class="form-control" name="otn2" id="otn2" disabled>
+                                <option value="">Choose</option>
+                                <option value="1st">1<sup>st</sup></option>
+                                <option value="2nd">2<sup>nd</sup></option>
+                                <option value="3rd">3<sup>rd</sup></option>
+                                <option value="4th">4<sup>th</sup></option>
+                                <option value="5th">5<sup>th</sup></option>
+                              </select>
+                            </div>
+                          </div>
+                          <div class="form-group">
+                            <label for="ot2">Test</label>
+                            <div class="input-group">
+                              <select class="form-control" name="ot2" id="ot2" disabled>
+                                <option value="">Choose</option>
+                                <option value="written">Written</option>
+                                <option value="spoken">Spoken</option>
+                              </select>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-3" id="test_check_edit"></div>
+                        <div class="col-9" id="preview2"></div>
+                      </div>
+
+                    </div>
+                    <div class="card-footer">
+                      <button type="button" class="btn btn-secondary close_edit_session"><i class="fa fa-times"></i> Close </button>
+                      <button type="button" type="submit" id="btn_update" class="btn btn-primary"><i class="fa fa-check"></i> Update</button>
+                      <span class="ffb" id="esef"></span>
+                    </div>
+
+              </div>
+            </form><!-- END EDIT COURSE-->
           </div>
           <br>
           <div class="container">
@@ -226,7 +406,7 @@
                 <a  class="nav-link" id="pills-fsp-tab" data-toggle="pill" href="#pills-fsp" role="tab" aria-controls="pills-fsp" aria-selected="false">FSP</a>
               </li>
               <li class="nav-item" id="new_session_tab">
-                <a href="javascript:void(0);" class="nav-link tooltip-bottom" title="New Session" id="new_session_btn"><i class="fas fa-plus"></i> Add New</a>
+                <a href="javascript:void(0);" class="nav-link" title="New Session" id="new_session_btn"><i class="fas fa-plus"></i> Add New</a>
               </li>
             </ul><!-- END TABS --> <!-- this is a comment -->
             <!-- TABS CONTENTS -->
@@ -430,378 +610,6 @@
         </div>
       </div>
     </form> <!-- END EDIT FSP ITEM -->
-       <!-- NEW COURSE -->
-    <!--form>
-      <div class="modal fade" id="new_session_modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg" role="document">
-          <div class="modal-content add">
-            <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel">New Session</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            </div>
-            <div class="modal-body">
-              <div class="row">
-                <div class="col" id="course_div">
-                  <div class="form-row">
-                    <div class="form-group col-6">
-                      <label for="me">Meeting <sup>&lowast;</sup></label>
-                      <div class="input-group">
-                        <div class="input-group-prepend">
-                          <span class="input-group-text"><i class="fa fa-hashtag fa-fw"></i></span>
-                        </div>
-                        <input class="form-control" type="text" name="me" id="me" placeholder="Meeting">
-                      </div>
-                    </div>
-                    <div class="form-group col-6">
-                      <label for="cd">Date <sup>&lowast;</sup></label>
-                      <div class="input-group" id="course_date_div">
-                        <div class="input-group-prepend"><span class="input-group-text"><i class="fa fa-calendar fa-fw"></i></span>
-                        </div>
-                        <input type="datetime-local" name="cd" id="cd" class="form-control" required>
-                      </div>
-                    </div>
-                    <div class="form-group col-6">
-                      <label for="tc">Teacher <sup>&lowast;</sup></label>
-                      <div class="input-group">
-                        <div class="input-group-prepend"><span class="input-group-text"><i class="fa fa-user fa-fw"></i></span></div>
-                        <input type="text" name="tc" id="tc" class="form-control" placeholder="Put your name here" required value="<?php echo $this->session->userdata('username');?>">
-                      </div>
-                    </div>
-                    <div class="form-group col-6">
-                      <label for="du">Duration <sup>&lowast;</sup></label>
-                      <div class="input-group">
-                        <div class="input-group-prepend"><span class="input-group-text"><i class="fas fa-clock fa-fw"></i></span></div>
-                        <select class="form-control" name="du" id="du">
-                          <option value="">How long?</option>
-                          <option value="60">60 minutes</option>
-                          <option value="55">55 minutes</option>
-                          <option value="50">50 minutes</option>
-                          <option value="45">45 minutes</option>
-                          <option value="40">40 minutes</option>
-                          <option value="35">35 minutes</option>
-                          <option value="30">30 minutes</option>
-                          <option value="25">25 minutes</option>
-                          <option value="20">20 minutes</option>
-                          <option value="<20">&lt;20 minutes</option>
-                        </select>
-                      </div>
-                    </div>
-                    <div class="form-group col-5" id="ma_div">
-                      <label for="ma">Material <sup>&lowast;</sup></label>
-                      <div class="input-group">
-                        <div class="input-group-prepend"><span class="input-group-text"><i class="fa fa-book fa-fw"></i></span></div>
-                        <textarea name="ma" id="ma" class="form-control" placeholder="(1.1 - 1-3) Greeting..."></textarea>
-                      </div>
-                      
-                    </div>
-                    <div class="form-group col-2">
-                      <label for="co">Counter </label>
-                      <div class="input-group">
-                        <div class="input-group-prepend"><span class="input-group-text"><i class="fa fa-stopwatch fa-fw"></i></span></div>
-                        <textarea title="Put a number here to see if it is the time to prepare test for this student" name="co" id="co" class="form-control" placeholder="6"></textarea>
-                      </div>
-                    </div>
-                    <div class="form-group col-5">
-                      <label for="ev">Evaluation <sup>&lowast;</sup></label>
-                      <div class="input-group">
-                        <div class="input-group-prepend"><span class="input-group-text"><i class="fa fa-list-ul fa-fw"></i></span>
-                        </div>
-                        <textarea name="ev" id="ev" class="form-control" placeholder="He was now able to ..."></textarea>
-                      </div>
-                      
-                    </div>
-                    <div class="col-12">
-                      <div id="ma_tool" class="toolbar">
-                        <i title="Italic text" id="italic" data-format="italic" class="fas fa-italic fa-fw toolbar_item"></i>
-                        <i title="Bold" id="bold" data-format="bold" class="fas fa-bold fa-fw toolbar_item"></i>
-                        <i title="Strikethrough" id="strike" data-format="strike" class="fas fa-strikethrough fa-fw toolbar_item"></i>
-                        <i title="Unordered list" id="ul" data-format="ulist" class="fas fa-list-ul fa-fw toolbar_item"></i>
-                        <i title="Numbered list" id="ol" data-format="olist" class="fas fa-list-ol fa-fw toolbar_item"></i>
-                        <i title="New line" id="newline" data-format="newline" class="fas fa-fw toolbar_item">¶</i>
-                        <i title="Red color" id="red" data-format="red" style="color:red; toolbar_item" class="fas fa-square fa-fw toolbar_item"></i>
-                        <i title="Green color" id="green" data-format="green" style="color:green;" class="fas fa-square fa-fw toolbar_item"></i>
-                      </div>
-                      <div id="ev_tool" class="toolbar">
-                        <i title="Italic text" id="ev_italic" data-format="italic" class="fas fa-italic fa-fw toolbar_item"></i>
-                        <i title="Bold" id="ev_bold" data-format="bold" class="fas fa-bold fa-fw toolbar_item"></i>
-                        <i title="Strikethrough" id="ev_strike" data-format="strike" class="fas fa-strikethrough fa-fw toolbar_item"></i>
-                        <i title="Unordered list" id="ev_ul" data-format="ulist" class="fas fa-list-ul fa-fw toolbar_item"></i>
-                        <i title="Numbered list" id="ev_ol" data-format="olist" class="fas fa-list-ol fa-fw toolbar_item"></i>
-                        <i title="New line" id="ev_newline" data-format="newline" class="fas fa-fw toolbar_item">¶</i>
-                        <i title="Red color" id="ev_red" data-format="red" style="color:red; toolbar_item" class="fas fa-square fa-fw toolbar_item"></i>
-                        <i title="Green color" id="ev_green" data-format="green" style="color:green;" class="fas fa-square fa-fw toolbar_item"></i>
-                      </div>
-                    </div>
-                    <div class="form-group col">
-                      <label for="wr">Writing </label>
-                      <div class="input-group">
-                        <div class="input-group-prepend"><span class="input-group-text"><i class="fas fa-pencil-alt fa-fw"></i></span>
-                        </div>
-                        <input type="text" name="wr" id="wr" class="form-control">
-                      </div>
-                    </div>
-                    <div class="form-group col">
-                      <label for="sp">Speaking</label>
-                      <div class="input-group">
-                        <div class="input-group-prepend">
-                          <span class="input-group-text"><i class="fa fa-bullhorn fa-fw"></i></span>
-                        </div>
-                        <input type="text" name="sp" id="sp" class="form-control">
-                      </div>
-                    </div>
-                  </div>             
-                </div> <!-- end course div -->
-                <!--div id="test_div"> <!-- test div -
-                  <div class="form-group">
-                    <label for="tnu">#</label>
-                    <div class="input-group">
-                      <select name="tnu" id="tnu" class="form-control">
-                        <option value="">Choose</option>
-                        <option value="1st">1<sup>st</sup></option>
-                        <option value="2nd">2<sup>nd</sup></option>
-                        <option value="3rd">3<sup>rd</sup></option>
-                        <option value="4th">4<sup>th</sup></option>
-                        <option value="5th">5<sup>th</sup></option>
-                      </select>
-                    </div>
-                  </div>
-                  <div class="form-group">
-                    <label for="tn">Test</label>
-                    <div class="input-group">
-                      <select name="tn" id="tn" class="form-control">
-                        <option value="">Choose</option>
-                        <option value="Pre Written">Pre Written</option>
-                        <option value="Pre Spoken">Pre Spoken</option>
-                        <option value="Written">Written</option>
-                        <option value="Spoken">Spoken</option>
-                        <option value="Remedial">Remedial</option>
-                      </select>
-                    </div>
-                  </div>
-                  <div class="form-group">
-                    <label for="otn">of</label>
-                    <div class="input-group">
-                      <select name="otn" id="otn" class="form-control" disabled>
-                        <option value="">Choose</option>
-                        <option value="1st">1<sup>st</sup></option>
-                        <option value="2nd">2<sup>nd</sup></option>
-                        <option value="3rd">3<sup>rd</sup></option>
-                        <option value="4th">4<sup>th</sup></option>
-                        <option value="5th">5<sup>th</sup></option>
-                      </select>
-                    </div>
-                  </div>
-                  <div class="form-group">
-                    <label for="ot">Test</label>
-                      <select name="ot" id="ot" class="form-control" disabled>
-                        <option value="">Choose</option>
-                        <option value="written">Written</option>
-                        <option value="spoken">Spoken</option>
-                      </select>
-                  </div>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-3 test_check"><input type="checkbox" name="test" id="test"><label for="test">  Test</label></div>
-                <div class="col-9" id="preview"></div>
-              </div>
-            </div>
-            <div class="modal-footer">
-              <input type="hidden" name="pin" id="pin" value="<?php echo $pin;?>">
-              <span class="ffb" id="nsef"></span>
-              <button type="button" class="btn btn-secondary" data-dismiss="modal"><i class="fa fa-times"></i> Close </button>
-              <button type="button" type="submit" id="btn_save" class="btn btn-primary"><i class="fa fa-check"></i>Save </button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </form--> <!-- END NEW COURSE -->
-        <!-- EDIT COURSE -->
-    <form id="edit_session">
-      <div class="modal fade" id="edit_session_modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg" role="document">
-          <div class="modal-content edit">
-            <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel">Edit Recorded</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            </div>
-            <div class="modal-body" id="edit_session_body">
-              <div class="row">
-                <div id="edit_course_div">
-                  <div class="form-row">
-                    <div class="form-group col-6">
-                      <label for="me2">Meeting <sup>&lowast;</sup></label>
-                      <div class="input-group">
-                        <div class="input-group-prepend"><span class="input-group-text"><i class="fa fa-hashtag fa-fw" aria-hidden="true"></i></span>
-                        </div>
-                        <input class="form-control" type="text" name="me2" id="me2" placeholder="Meeting" readonly>
-                      </div>
-                    </div>
-                    <div class="form-group col-6">
-                      <label for="cd2">Date <sup>&lowast;</sup></label>
-                      <div class="input-group">
-                        <div class="input-group-prepend"><span class="input-group-text"><i class="fa fa-calendar fa-fw"></i></span></div>
-                        <input type="datetime-local" name="cd2" id="cd2" class="form-control" required>
-                      </div>
-                    </div>
-                    <div class="form-group col-6">
-                      <label for="tc2">Teacher <sup>&lowast;</sup></label>
-                      <div class="input-group">
-                        <div class="input-group-prepend"><span class="input-group-text"><i class="fa fa-user fa-fw"></i></span></div>
-                        <input type="text" name="tc2" id="tc2" class="form-control" placeholder="Put your name here" required>
-                      </div>
-                    </div>
-                    <div class="form-group col-6">
-                      <label for="du2">Duration <sup>&lowast;</sup></label>
-                      <div class="input-group">
-                        <div class="input-group-prepend"><span class="input-group-text"><i class="fas fa-clock fa-fw"></i></span>
-                        </div>
-                        <select class="form-control" name="du2" id="du2" required>
-                          <option value="">How long?</option>
-                          <option value="60">60 minutes</option>
-                          <option value="55">55 minutes</option>
-                          <option value="50">50 minutes</option>
-                          <option value="45">45 minutes</option>
-                          <option value="40">40 minutes</option>
-                          <option value="35">35 minutes</option>
-                          <option value="30">30 minutes</option>
-                          <option value="25">25 minutes</option>
-                          <option value="20">20 minutes</option>
-                          <option value="<20">&lt;20 minutes</option>
-                        </select>
-                      </div>
-                    </div>
-                    <div class="form-group col-5">
-                      <label for="ma2">Material <sup>&lowast;</sup></label>
-                      <div class="input-group">
-                        <div class="input-group-prepend"><span class="input-group-text"><i class="fa fa-book fa-fw"></i></span>
-                        </div>
-                        <textarea name="ma2" id="ma2" class="form-control" required></textarea>
-                      </div>
-                      
-                    </div>
-                    <div class="form-group col-2">
-                      <label for="co2">Counter </label>
-                      <div class="input-group">
-                        <div class="input-group-prepend"><span class="input-group-text"><i class="fa fa-stopwatch fa-fw"></i></span></div>
-                        <textarea title="Put a number here to see if it is the time to prepare test for this student" name="co2" id="co2" class="form-control" placeholder="6"></textarea>
-                      </div>
-                    </div>
-                    <div class="form-group col-5">
-                      <label for="ev2">Evaluation <sup>&lowast;</sup></label>
-                      <div class="input-group">
-                        <div class="input-group-prepend">
-                          <span class="input-group-text"><i class="fa fa-list-ul fa-fw"></i></span></div>
-                        <textarea name="ev2" id="ev2" class="form-control" required></textarea>
-                      </div>
-                      
-                    </div>
-                    <div class="col-12">
-                      <div id="ma2_tool" class="toolbar">
-                        <i title="Italic text" id="italic2" data-format="italic" class="fas fa-italic fa-fw toolbar_item"></i>
-                        <i title="Bold" id="bold2" data-format="bold" class="fas fa-bold fa-fw toolbar_item"></i>
-                        <i title="Strikethrough" id="strike2" data-format="strike" class="fas fa-strikethrough fa-fw toolbar_item"></i>
-                        <i title="Unordered list" id="ul2" data-format="ulist" class="fas fa-list-ul fa-fw toolbar_item"></i>
-                        <i title="Numbered list" id="ol2" data-format="olist" class="fas fa-list-ol fa-fw toolbar_item"></i>
-                        <i title="New line" id="newline2" data-format="newline" class="fas fa-fw toolbar_item">¶</i>
-                        <i title="Red color" id="red2" data-format="red" style="color:red; toolbar_item" class="fas fa-square fa-fw toolbar_item"></i>
-                        <i title="Green color" id="green2" data-format="green" style="color:green;" class="fas fa-square fa-fw toolbar_item"></i>
-                      </div>
-                      <div id="ev2_tool" class="toolbar">
-                        <i title="Italic text" id="ev_italic2" data-format="italic" class="fas fa-italic fa-fw toolbar_item"></i>
-                        <i title="Bold" id="ev_bold2" data-format="bold" class="fas fa-bold fa-fw toolbar_item"></i>
-                        <i title="Strikethrough" id="ev_strike2" data-format="strike" class="fas fa-strikethrough fa-fw toolbar_item"></i>
-                        <i title="Unordered list" id="ev_ul2" data-format="ulist" class="fas fa-list-ul fa-fw toolbar_item"></i>
-                        <i title="Numbered list" id="ev_ol2" data-format="olist" class="fas fa-list-ol fa-fw toolbar_item"></i>
-                        <i title="New line" id="ev_newline2" data-format="newline" class="fas fa-fw toolbar_item">¶</i>
-                        <i title="Red color" id="ev_red2" data-format="red" style="color:red; toolbar_item" class="fas fa-square fa-fw toolbar_item"></i>
-                        <i title="Green color" id="ev_green2" data-format="green" style="color:green;" class="fas fa-square fa-fw toolbar_item"></i>
-                      </div>
-                    </div>
-                    <div class="form-group col">
-                      <label for="wr2">Writing</label>
-                      <div class="input-group">
-                        <div class="input-group-prepend"><span class="input-group-text"><i class="fas fa-pencil-alt fa-fw"></i></span></div>
-                        <input type="text" name="wr2" id="wr2" class="form-control">
-                      </div>
-                    </div>
-                    <div class="form-group col">
-                      <label for="sp2">Speaking</label>
-                      <div class="input-group">
-                        <div class="input-group-prepend"><span class="input-group-text"><i class="fa fa-bullhorn fa-fw"></i></span>
-                        </div>
-                        <input type="text" name="sp2" id="sp2" class="form-control">
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div id="edit_test_div">
-                  <div class="form-group">
-                    <label for="tnu2">#</label>
-                    <div class="input-group">
-                      <select name="tnu2" id="tnu2" class="form-control">
-                        <option value="">Choose</option>
-                        <option value="1st">1<sup>st</sup></option>
-                        <option value="2nd">2<sup>nd</sup></option>
-                        <option value="3rd">3<sup>rd</sup></option>
-                        <option value="4th">4<sup>th</sup></option>
-                        <option value="5th">5<sup>th</sup></option>
-                      </select>
-                    </div>
-                  </div>
-                  <div class="form-group">
-                    <label for="tn2">Test</label>
-                    <div class="input-group">
-                      <select name="tn2" id="tn2" class="form-control">
-                        <option value="">Choose</option>
-                        <option value="Pre Written">Pre Written</option>
-                        <option value="Pre Spoken">Pre Spoken</option>
-                        <option value="Written">Written</option>
-                        <option value="Spoken">Spoken</option>
-                        <option value="Remedial">Remedial</option>
-                      </select>
-                    </div>
-                  </div>
-                  <div class="form-group">
-                    <label for="otn2">of</label>
-                    <div class="input-group">
-                      <select class="form-control" name="otn2" id="otn2" disabled>
-                        <option value="">Choose</option>
-                        <option value="1st">1<sup>st</sup></option>
-                        <option value="2nd">2<sup>nd</sup></option>
-                        <option value="3rd">3<sup>rd</sup></option>
-                        <option value="4th">4<sup>th</sup></option>
-                        <option value="5th">5<sup>th</sup></option>
-                      </select>
-                    </div>
-                  </div>
-                  <div class="form-group">
-                    <label for="ot2">Test</label>
-                    <div class="input-group">
-                      <select class="form-control" name="ot2" id="ot2" disabled>
-                        <option value="">Choose</option>
-                        <option value="written">Written</option>
-                        <option value="spoken">Spoken</option>
-                      </select>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-3" id="test_check_edit"></div>
-                <div class="col-9" id="preview2"></div>
-              </div>
-              
-            </div>
-            <div class="modal-footer">
-              <span class="ffb" id="esef"></span>
-              <button type="button" class="btn btn-secondary" data-dismiss="modal"><i class="fa fa-times"></i> Close </button>
-              <button type="button" type="submit" id="btn_update" class="btn btn-primary"><i class="fa fa-check"></i>Update</button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </form><!-- END EDIT COURSE-->
      <!-- DELETE  COURSE -->
     <form>
       <div class="modal fade" id="delete_session_modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -1337,12 +1145,12 @@
                   html += `<div class="col-2 syll_section">${data[i].section}</div>
                             <div class="col-10 syll_section">${data[i].indicator}
                           </div>`;
-                } else if (data[i].topic != 0 && data[i].ind == 0) { /* topic */
+                } else if (data[i].topic != 0 && data[i].ind == 0) { 
                   if(data[i].status == 1){
-                    html += `<div class="col-2 syll_topic">
+                    html += `<div class="col-2 syll_topic syll_item" data-ind="${data[i].indicator}">
                                <span class="topic_discussed">${data[i].section}.${data[i].topic}</span>
                              </div>
-                             <div class="col-8 syll_topic">
+                             <div class="col-8 syll_topic syll_item" data-ind="${data[i].indicator}">
                                <span class="topic_discussed">${data[i].indicator}</span>
                              </div>
                              <div class="col-2 syll_topic">
@@ -1351,28 +1159,30 @@
                                </a>
                              </div>`;
                   } else {
-                    html += `<div class="col-2 syll_topic">
+                    html += `<div class="col-2 syll_topic syll_item" data-ind="${data[i].indicator}">
                                 ${data[i].section}.${data[i].topic}</div>
-                            <div class="col-8 syll_topic">${data[i].indicator}</div>
+                            <div class="col-8 syll_topic syll_item" data-ind="${data[i].indicator}">${data[i].indicator}</div>
                             <div class="col-2 syll_topic">
                               <a href="javascript:void(0);" data-stat="1" data-id="${data[i].id}" data-section="${data[i].section}" data-topic="${data[i].topic}" data-ind="${data[i].ind}" class="btn btn-default btn-sm topic_check"><i class="fa fa-square fa-2x"></i></a>
                             </div>`;
                   }
                   
-                } else { /* end topic */
-                  if (data[i].status == 1) { /* indicator */
-                    html += `<div class="col-2 syll_ind">
+                } else { 
+                  if (data[i].status == 1) {
+                    html += `<div class="col-2 syll_ind syll_item" data-ind="${data[i].section}.${data[i].topic}.${data[i].ind}">
                                <span class="topic_discussed">${data[i].section}.${data[i].topic}.${data[i].ind}</span>
                              </div>
-                             <div class="col-8 syll_ind">
+                             <div class="col-8 syll_ind syll_item" data-ind="${data[i].section}.${data[i].topic}.${data[i].ind}">
                                <span class="topic_discussed">${data[i].indicator}</span>
                              </div>
                              <div class="col-2 syll_ind">
                               <a href="javascript:void(0);" data-stat="0" data-id="${data[i].id}" data-section="${data[i].section}" data-topic="${data[i].topic}" data-ind="${data[i].ind}" class="btn btn-default btn-sm topic_check"><i class="fa fa-check-square fa-2x"></i></a>
                              </div>`;
                   } else {
-                    html += `<div class="col-2 syll_ind"> ${data[i].section}.${data[i].topic}.${data[i].ind} </div>
-                             <div class="col-8 syll_ind"> ${data[i].indicator} </div>
+                    html += `<div class="col-2 syll_ind syll_item" data-ind="${data[i].section}.${data[i].topic}.${data[i].ind}">
+                                  ${data[i].section}.${data[i].topic}.${data[i].ind}
+                            </div>
+                             <div class="col-8 syll_ind syll_item" data-ind="${data[i].section}.${data[i].topic}.${data[i].ind}"> ${data[i].indicator} </div>
                               <div class="col-2 syll_ind">
                                 <a href="javascript:void(0);" data-stat="1" data-id="${data[i].id}" data-section="${data[i].section}" data-topic="${data[i].topic}" data-ind="${data[i].ind}" class="btn btn-default btn-sm topic_check">
                                   <i class="fa fa-square fa-2x"></i>
@@ -1389,6 +1199,18 @@
             }
           });
         }
+        $('#show_syllabus').on('click', '.syll_item', function(){
+          var ind = $(this).data('ind');
+          if($('#new_session_form').css('display')== 'block'){
+            var text = $('#ma').val(),
+                appended = text +" "+ind;
+            $('#ma').val(appended);
+          } else if($('#edit_session_form').css('display')=='block') {
+              var text = $('#ma2').val(),
+                appended = text +" "+ind;
+            $('#ma2').val(appended);
+          }
+        });
         /* check discussed topics */
         $('#show_syllabus').on('click', '.topic_check', function(){
           var id = $(this).data('id'),
@@ -2339,7 +2161,8 @@
               teacher = "<?php echo $this->session->userdata('username');?>",
               curr_time = ($.format.date(d, "yyyy-MM-dd\THH:mm"));
           //$('#new_session_modal').modal('show'); /* opens the modal window */
-          $('#new_session_form').fadeIn('slow');
+          $('#edit_session_form').hide();
+          $('#new_session_form').toggle('fast');
           $('[name="cd"]').val(curr_time); /* assigns values to the corresponding fields */
           $('[name="tc"]').val(teacher);
           
@@ -2347,8 +2170,6 @@
           $('#ma').bind('updateInfo keyup mousedown mousemove mouseup', function(event) {
             var str = $(this).val();
             $('#preview').html(str);
-            //$('#ev_tool').fadeOut('fast');
-            //$('#ma_tool').fadeIn('fast');
             $('#ev_tool').hide();
             $('#ma_tool').show();
             if (document.activeElement !== $(this)[0]) {
@@ -2361,6 +2182,11 @@
                 text = arr['text'];
             if(format == 'italic'){
               $('#ma').textrange('replace', "<em>"+text+"</em>").trigger('updateInfo').focus();
+              arr = '';
+              text = '';
+              console.log($('#ma').val());
+              console.log(arr);
+              console.log(text);
             } else if(format=='bold'){
               $('#ma').textrange('replace', "<strong>"+text+"</strong>").trigger('updateInfo').focus();
             } else if(format=='strike'){
@@ -2445,7 +2271,7 @@
               $('#test_div').fadeOut('fast');
             }
           });
-          $('#close_new_session').on('click', function(){
+          $('#new_session_form').on('click', '.close_new_session',function(){
             $('#new_session_form').fadeOut('slow');
           });
         });             
@@ -2635,7 +2461,9 @@
               m=$(this).data('otn'),
               n=$(this).data('ot'),
               o='';        
-          $('#edit_session_modal').modal('show');
+          //$('#edit_session_modal').modal('show');
+          $('#new_session_form').hide();
+          $('#edit_session_form').fadeIn('slow');
           $('[name="me2"]').val(b);
           $('[name="cd2"]').val(c);
           $('[name="tc2"]').val(d);
@@ -2749,6 +2577,9 @@
             } else if(format=='green'){
               $('#ev2').textrange('replace', "<span style='color:green;'>"+text+"</span>").trigger('updateInfo').focus();
             }
+          });
+          $('#edit_session_form').on('click', '.close_edit_session', function(){
+            $('#edit_session_form').fadeOut('slow');
           });
         });
         
@@ -2881,7 +2712,7 @@
             success:function(data){
               $('#edit_session_modal').modal('hide');
               $('#mycourse').DataTable().ajax.reload();
-              
+              $('#edit_session_form').fadeOut('slow');
             }
           });
         }

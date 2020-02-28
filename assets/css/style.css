@@ -1,3 +1,10 @@
+.syll_item:hover {
+  cursor: pointer;
+  color:dodgerblue;
+}
+#edit_session_form{
+  display: none;
+}
 #new_session_form{
   display: none;
 }
