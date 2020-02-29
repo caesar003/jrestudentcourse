@@ -5,7 +5,7 @@
 #edit_session_form{
   display: none;
 }
-#new_session_form{
+#course_form{
   display: none;
 }
 #show_syllabus{
@@ -30,7 +30,7 @@ span.note_date {
 }
 #submit_note{
   color:darkcyan;
-  
+
 }
 #submit_note:hover{
   background-color: aquamarine;
@@ -44,7 +44,7 @@ span.note_date {
   color:aqua;
 }
 .toolbar {
-  
+
     padding: 4px;
     background-color: black;
     border-radius: 4px;
@@ -55,7 +55,7 @@ span.note_date {
 #mystudents a:hover, #myaft a:hover{
   color: blueviolet;
   text-decoration: none;
-} 
+}
 #show_topic ul {
     padding-left: 0;
   list-style: none;
@@ -148,7 +148,7 @@ span.student_info_item {
   background-color: chartreuse;
 }
 .curr {
-    background-color: 
+    background-color:
     cadetblue;
 }
 .curr_a {
@@ -237,7 +237,7 @@ span#show_notification {
     z-index: 2;
   max-width: 420px;
     border: #adb5bd 1px solid;
-  
+
 }
 #chat_window_header {
     background-color: darkgray;
@@ -321,7 +321,7 @@ div#show_chat {
 }
 #atch_btn, #atch_label {
     cursor: pointer;
-    margin: auto; 
+    margin: auto;
 }
 #btn_upload {
   cursor: pointer;
@@ -351,7 +351,7 @@ span.received_message_sender{
 	background:linear-gradient(45deg,#199c9a,#9c4c4c00);
 	border-radius:4px;float:left
 	}
-/* end chat */ 
+/* end chat */
 /* document */
 .navbar{
   margin-bottom:20px
@@ -374,7 +374,7 @@ span.received_message_sender{
   color:#1e90ff;
   background-color:#dcdcdc;
   border-radius:12px
-} 
+}
 .syll_topic{
   font-size:18px;
   font-weight:600;
@@ -386,16 +386,16 @@ span.received_message_sender{
   font-family:monospace;
   font-size:inherit;
   font-weight:500
-} 
+}
 .schedule-form{
   width:fit-content
-} 
+}
 div.dataTables_wrapper div.dataTables_filter input{
   margin-left:.5em;
   display:inline-block;
   width:auto;
   border-radius:15px
-} 
+}
 div.dataTables_wrapper div.dataTables_length select{
   border-radius:15px
 }
@@ -410,11 +410,11 @@ div.dataTables_wrapper div.dataTables_length label{
   text-align:left;
   white-space:nowrap;
   font-family:serif
-} 
+}
 footer.footer{
   padding-top:5rem;
   padding-bottom:5rem
-} 
+}
 footer.footer .social-link{
   display:block;
   height:4rem;
