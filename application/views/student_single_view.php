@@ -238,16 +238,13 @@
               </div> <!-- END COURSE -->
               <!-- SYLLABUS -->
               <div class="tab-pane fade" id="pills-syllabus" role="tabpanel" aria-labelledby="pills-syllabus-tab">
-                <!--do something here -->
                 <h3>
                   <span id="syllabus_tab_header"></span>
                   <div id="syll_edit_button_div" class="float-right"></div>
                 </h3>
                 <div class="container" id="syllabus_tab_description">
                 </div> <br>
-
                 <div class="container row" id="show_syllabus">
-
                 </div>
                 <input type="hidden" id="program_id" name="program_id" value="<?php echo $program_id;?>">
               </div> <!-- END SYLLABUS -->
@@ -930,7 +927,12 @@
                   i,
                   a,
                   header = '',
-                  description = `Tick the black square on right side of every indicator (or topic) to indicate discussed topics, or hit the pencil button on the top right to change topics for this student.`;
+                  description = `<p class="lead">Here you can do the following: </p>
+                  <ul style="list-style-type: square;">
+                    <li>Click on any topic or indicator (with either new session or edit session opened) to automatically insert it to the field, </li>
+                    <li>Tick the black square on right side of every indicator (or topic) to indicate discussed topics, or </li>
+                    <li>Hit the purple pencil button on the top right to change topics for this student.</li>
+                  </ul>`;
               if(prg == 1){
                 a = "English for Kids";
                 } else if(prg ==2){
