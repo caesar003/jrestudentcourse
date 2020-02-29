@@ -1977,13 +1977,13 @@
               teacher = "<?php echo $this->session->userdata('username');?>",
               curr_time = ($.format.date(d, "yyyy-MM-dd\THH:mm")),
               header = "New Session";
-          $('#course_header').html(header);
+          $('#course_header').html(header); /* assigns values to the corresponding fields */
           $('#btn_update').hide();
           $('#btn_save').show();
           $('#new_session_form').toggle('fast');
-          $('[name="cd"]').val(curr_time); /* assigns values to the corresponding fields */
+          $('[name="cd"]').val(curr_time);
           $('[name="tc"]').val(teacher);
-          $('#me').val("");
+          $('#me').val(""); /* and reset the rest */
           $('#me').removeAttr('disabled');
           $('#du').val("");
           $('#ma').val("");
@@ -1992,6 +1992,10 @@
           $('#co').val("");
           $('#wr').val("");
           $('#sp').val("");
+          /*
+          * just in case it is checked before, 
+          * (like by editing session or previous submission)
+          */
           $('#test').removeAttr('checked');
           $('#course_div').removeClass('col-7');
           $('#course_div').addClass('col');
