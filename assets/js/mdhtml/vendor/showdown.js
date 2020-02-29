@@ -802,7 +802,12 @@ var _DoHeaders = function(text) {
 	text = text.replace(/^(\#{1,6})[ \t]*(.+?)[ \t]*\#*\n+/gm,
 		function(wholeMatch,m1,m2) {
 			var h_level = m1.length;
+			/*
 			return hashBlock("<h" + h_level + ' id="' + headerId(m2) + '">' + _RunSpanGamut(m2) + "</h" + h_level + ">");
+			* this is the original lines, i removed the 'id' attribute because my data attribute would
+			* have issue with that
+			*/
+			return hashBlock("<h"+h_level+">"+_RunSpanGamut(m2)+"</h"+h_level+">");
 		});
 
 	function headerId(m) {

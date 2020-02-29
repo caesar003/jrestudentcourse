@@ -14,7 +14,7 @@
 <script src="<?php echo base_url().'assets/js/tooltip-viewport.js'?>"></script>
 <script src="<?php echo base_url().'assets/js/jquery.form.min.js'?>"></script>
 <script src="<?php echo base_url().'assets/js/jquery-textrange.js'?>"></script>
-<script src="<?php echo base_url('assets/js/md/vendor/modernizer-2.6.2.min.js');?>"></script>
-<script src="<?php echo base_url('aseets/js/md/plugins.js');?>"></script>
-<script src="<?php echo base_url('assets/js/md/vendor/showdown.js');?>"></script>
-<script src="<?php echo base_url('assets/js/md/mdhtmlform.js');?>"></script>
+<script src="<?php echo base_url('assets/js/mdhtml/vendor/modernizr-2.6.2.min.js') ;?>"></script>
+<script src="<?php echo base_url('assets/js/mdhtml/plugins.js');?>"></script>
+<script src="<?php echo base_url('assets/js/mdhtml/vendor/showdown.js');?>"></script>
+<script src="<?php echo base_url('assets/js/mdhtml/mdhtmlform.js');?>"></script>
