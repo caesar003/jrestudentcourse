@@ -13,7 +13,7 @@ class Student_single extends CI_Controller{
     $pin = $this->input->get('pin',TRUE);
     if($this->student_model->pin_availability($pin)){
         $data['title'] = "Student - ".$pin;
-        $data['students'] = $this->student_single_model->get_student($pin); 
+        $data['students'] = $this->student_single_model->get_student($pin);
         $this->load->view('student_single_view', $data);
     } else {
         $data['title'] = "Not found!";
@@ -43,6 +43,10 @@ class Student_single extends CI_Controller{
   }
   function get_fsp(){
     $data = $this->student_single_model->get_fsp();
+    echo json_encode($data);
+  }
+  function get_meeting(){
+    $data = $this->student_single_model->get_meeting();
     echo json_encode($data);
   }
   /* new course */

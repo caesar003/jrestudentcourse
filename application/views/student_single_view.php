@@ -1957,7 +1957,8 @@
         });
         /* NEW SESSION */
         $('#new_session_btn').on('click', function(){
-          var d = new Date(), /* variable declaration */
+          var pin = "<?php echo $pin;?>",
+              d = new Date(), /* variable declaration */
               teacher = "<?php echo $this->session->userdata('username');?>",
               curr_time = ($.format.date(d, "yyyy-MM-dd\THH:mm")),
               header = "New Session";
@@ -1967,7 +1968,20 @@
           $('#course_form').toggle('fast');
           $('[name="cd"]').val(curr_time);
           $('[name="tc"]').val(teacher);
-          $('#me').val(""); /* and reset the rest */
+         /* and reset the rest */
+          $.ajax({
+            type : "post",
+            url : "<?php echo site_url('student_single/get_meeting');?>",
+            data : {pin:pin},
+            dataType : "json",
+            success : function(data){
+              var n = Number(data[0].meeting);
+              var n = n + 1;
+              $('#me').val(n);
+              console.log(n);
+            }
+          });
+
           $('#me').removeAttr('disabled');
           $('#du').val("");
           $('#ma').val("");

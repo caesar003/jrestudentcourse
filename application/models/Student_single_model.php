@@ -1,8 +1,8 @@
 <?php
-class Student_single_model extends CI_Model{  
+class Student_single_model extends CI_Model{
   function get_student($pin){
     $this->db->where('pin',$pin);
-    $result = $this->db->get('students', 1); 
+    $result = $this->db->get('students', 1);
     return $result;
   }
   function get_student2(){
@@ -33,7 +33,7 @@ class Student_single_model extends CI_Model{
       $syllabus_master = "syll_general";
     }
     $syllabus_table = "sl_".$pin;
-    
+
     $this->db->select('*');
     $this->db->from($syllabus_table);
     $this->db->where('assigned', '1');
@@ -72,6 +72,14 @@ class Student_single_model extends CI_Model{
     $fsp_table = "fsp_".$pin;
     $result = $this->db->get($fsp_table);
     return $result->result();
+  }
+  function get_meeting(){
+    $pin = $this->input->post('pin');
+    $student_table = "s_".$pin;
+    $this->db->order_by('meeting','desc');
+    $this->db->select('meeting');
+    $query = $this->db->get($student_table);
+    return $query->result();
   }
   function meeting_avail($meeting, $student_table){
     $this->db->where('meeting', $meeting);
@@ -121,7 +129,7 @@ class Student_single_model extends CI_Model{
     $result=$this->db->insert($course_table, $data);
     return $result;
   }
-  
+
   function create_test(){
     $pin = $this->input->post('pin');
     $meeting = $this->input->post('meeting');
@@ -179,7 +187,7 @@ class Student_single_model extends CI_Model{
     $test_name    = $this->input->post('tn');
     $of_test_number = $this->input->post('otn');
     $of_test        = $this->input->post('ot');
-    
+
     $this->db->set('course_date', $course_date);
     $this->db->set('teacher', $teacher);
     $this->db->set('duration', $duration);
@@ -215,14 +223,14 @@ class Student_single_model extends CI_Model{
   function get_all_syllabus(){
     $pin = $this->input->post('pin');
     $syllabus_table = "syll_".$pin;
-    
+
     $this->db->select('*');
     $this->db->from($syllabus_table);
     $this->db->join('syllabus_master', 'syllabus_master.id = '.$syllabus_table.'.id');
     $this->db->order_by('section', 'asc');
     $this->db->order_by('topic', 'asc');
     $this->db->order_by('ind', 'asc');
-    
+
     $query = $this->db->get();
     return $query->result();
   }
@@ -277,7 +285,7 @@ class Student_single_model extends CI_Model{
     $fsp_result = $this->input->post('fsp_result');
     $comment = $this->input->post('comment');
     $fsp_table = "fsp_".$pin;
-    
+
     $this->db->set('material', $topic);
     $this->db->set('comment', $comment);
     $this->db->set('fsp_result', $fsp_result);
@@ -285,4 +293,4 @@ class Student_single_model extends CI_Model{
     $result = $this->db->update($fsp_table);
     return $result;
   }
-} 
+}
