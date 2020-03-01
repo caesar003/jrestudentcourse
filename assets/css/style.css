@@ -1,4 +1,5 @@
-#ma_prev {
+.ta_prev {
+    display: none;
     background-color: ghostwhite;
     padding: 4px;
     border-radius: 4px;

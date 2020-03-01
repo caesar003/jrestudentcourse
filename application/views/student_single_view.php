@@ -91,7 +91,7 @@
                           <label for="ma">Material <sup>&lowast;</sup></label>
                           <div class="input-group">
                             <div class="input-group-prepend"><span class="input-group-text"><i class="fa fa-book fa-fw"></i></span></div>
-                            <textarea rows="6" name="ma" id="ma" class="form-control mdhtmlform-md" placeholder="(1.1 - 1-3) Greeting..."></textarea>
+                            <textarea rows="6" name="ma" id="ma" class="form-control mdhtmlform-md" data-mdhtmlform-group="0" placeholder="(1.1 - 1-3) Greeting..."></textarea>
                           </div>
                           <small class="form-text text-muted">When this window is open, you can click any topics or indicators on the syllabus to automatically insert them here.</small>
                         </div>
@@ -100,7 +100,7 @@
                           <div class="input-group">
                             <div class="input-group-prepend"><span class="input-group-text"><i class="fa fa-list-ul fa-fw"></i></span>
                             </div>
-                            <textarea rows="6" name="ev" id="ev" class="form-control" placeholder="He was now able to ..."></textarea>
+                            <textarea rows="6" name="ev" id="ev" class="form-control mdhtmlform-md" data-mdhtmlform-group="1" placeholder="He was now able to ..."></textarea>
                           </div>
                         </div>
                         <div class="form-group col">
@@ -175,8 +175,11 @@
                   <div class="row">
                     <div class="col-3 test_check"><input type="checkbox" name="test" id="test"> <label for="test">  Test</label></div>
                     <div class="col-9" id="preview">
-                      <div id="ma_prev" class="mdhtmlform-html"></div>
-                      <textarea style="display:none;" name="ma_html" id="ma_html" class="mdhtmlform-html"></textarea>
+                      <div id="ma_prev" class="mdhtmlform-html ta_prev" data-mdhtmlform-group="0"></div>
+                      <textarea  style="display:none;" name="ma_html" id="ma_html" class="mdhtmlform-html" data-mdhtmlform-group="0"></textarea>
+
+                      <div id="ev_prev" class="mdhtmlform-html ta_prev" data-mdhtmlform-group="1"></div>
+                      <textarea style="display:none;" name="ev_html" id="ev_html" class="mdhtmlform-html" data-mdhtmlform-group="1"></textarea>
                     </div>
                   </div>
                 </div>
@@ -1956,6 +1959,20 @@
             $('#new_session_btn').fadeIn('200');
         });
         /* NEW SESSION */
+        $('#ma').on('focus', function(){
+          $('#ma_prev').fadeIn('slow');
+          $('#ev_prev').fadeOut('fast');
+          $(this).on('blur', function(){
+            $('#ma_prev').fadeOut('fast');
+          });
+        });
+        $('#ev').on('focus', function(){
+          $('#ev_prev').fadeIn('slow');
+          $('#ma_prev').fadeOut('fast');
+          $(this).on('blur', function(){
+            $('#ev_prev').fadeOut('fast');
+          });
+        });
         $('#new_session_btn').on('click', function(){
           var pin = "<?php echo $pin;?>",
               d = new Date(), /* variable declaration */
@@ -1987,6 +2004,9 @@
           $('#ma').val("");
           $('#ma_prev').html("");
           $('#ma_html').val("");
+          $('#ev').val("");
+          $('#ev_prev').html("");
+          $('#ev_html').val("");
           $('#co').val("");
           $('#wr').val("");
           $('#sp').val("");
@@ -2034,7 +2054,8 @@
               du = $('#du').val(),
               ma = $('textarea.mdhtmlform-html').val();
               co = $('#co').val(),
-              ev = $('#ev').val(),
+              //ev = $('#ev').val(),
+              ev = $('#ev_html').val(),
               w = $('#wr').val(),
               s = $('#sp').val(),
               test = '',
@@ -2238,20 +2259,20 @@
            return html.replace(/[ \t]+\n|\s+$/g, '');
         }
         $('#show_course').on('click', '.item_edit', function(){
-          var me=$(this).data('m'),
-              cd=($.format.date($(this).data('cd'), "yyyy-MM-dd\THH:mm")),
-              tc=$(this).data('tc'),
-              du=$(this).data('du'),
-              ma=repl($(this).data('ma')),
+          var me =$(this).data('m'),
+              cd =($.format.date($(this).data('cd'), "yyyy-MM-dd\THH:mm")),
+              tc =$(this).data('tc'),
+              du =$(this).data('du'),
+              ma =repl($(this).data('ma')),
               co = $(this).data('co'),
-              ev=$(this).data('ev'),
-              w=$(this).data('w'),
-              s=$(this).data('s'),
-              j=$(this).data('test'),
-              tnu=$(this).data('tnu'),
-              tn=$(this).data('tn'),
-              otn=$(this).data('otn'),
-              ot=$(this).data('ot'),
+              ev = repl($(this).data('ev')),
+              w = $(this).data('w'),
+              s = $(this).data('s'),
+              j = $(this).data('test'),
+              tnu = $(this).data('tnu'),
+              tn = $(this).data('tn'),
+              otn = $(this).data('otn'),
+              ot = $(this).data('ot'),
               o='',
               header = "Edit Recorded Session";
           $('#btn_save').hide();
@@ -2266,6 +2287,8 @@
           $('[name="ma"]').val(ma);
           $('#ma_prev').html($(this).data('ma')),
           $('#ma_html').val($(this).data('ma')),
+          $('#ev_prev').html($(this).data('ev')),
+          $('#ev_html').val($(this).data('ev')),
           $('[name="co"]').val(co);
           $('[name="ev"]').val(ev);
           $('[name="wr"]').val(w);
@@ -2321,7 +2344,6 @@
             $('select[name="otn"], select[name="ot"]').removeAttr('disabled');
           } else {
             $('select[name="otn"], select[name="ot"]').attr('disabled', 'disabled');
-            //$('select[name="otn"], select[name="ot"]').val('');
           }
         });
         $('#btn_update').on('click', function() {
@@ -2333,7 +2355,7 @@
               du = $('#du').val(),
               ma = $('textarea.mdhtmlform-html').val(),
               co = $('#co').val(),
-              ev = $('#ev').val(),
+              ev = $('#ev_html').val(),
               w = $('#wr').val(),
               s = $('#sp').val(),
               test = '',
