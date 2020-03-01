@@ -1995,7 +1995,6 @@
               var n = Number(data[0].meeting);
               var n = n + 1;
               $('#me').val(n);
-              console.log(n);
             }
           });
 
