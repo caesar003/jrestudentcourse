@@ -979,10 +979,7 @@ that gives us this:
             dataType: 'json',
             data :{pin:pin, prg:prg},
             success: function(data) {
-              var html = '',
-                  i,
-                  a,
-                  header = '',
+              var html = '', i, a, header = '',
                   description = `<p class="lead">Here you can do the following: </p>
                   <ul style="list-style-type: square;">
                     <li>Click on any topic or indicator (with either new session or edit session opened) to automatically insert it to the field, </li>
@@ -1002,11 +999,11 @@ that gives us this:
                 }
               header = "<small>Syllabus for </small>"+a;
               for (i = 0; i < data.length; i++) {
-                if (data[i].topic == 0 && data[i].ind == 0) {
+                if (data[i].topic == 0 && data[i].ind == 0) { /* section */
                   html += `<div class="col-2 syll_section">${data[i].section}</div>
                             <div class="col-10 syll_section">${data[i].indicator}
                           </div>`;
-                } else if (data[i].topic != 0 && data[i].ind == 0) {
+                } else if (data[i].topic != 0 && data[i].ind == 0) { /* topic */
                   if(data[i].status == 1){
                     html += `<div class="col-2 syll_topic syll_item" data-ind="${data[i].indicator}">
                                <span class="topic_discussed">${data[i].section}.${data[i].topic}</span>
@@ -1027,23 +1024,22 @@ that gives us this:
                               <a href="javascript:void(0);" data-stat="1" data-id="${data[i].id}" data-section="${data[i].section}" data-topic="${data[i].topic}" data-ind="${data[i].ind}" class="btn btn-default btn-sm topic_check"><i class="fa fa-square fa-2x"></i></a>
                             </div>`;
                   }
-
-                } else {
+                } else { /* indicaor */
                   if (data[i].status == 1) {
-                    html += `<div class="col-2 syll_ind syll_item" data-ind="${data[i].section}.${data[i].topic}.${data[i].ind}">
+                    html += `<div class="col-2 syll_ind syll_item" data-ind="(${data[i].section}.${data[i].topic}.${data[i].ind})">
                                <span class="topic_discussed">${data[i].section}.${data[i].topic}.${data[i].ind}</span>
                              </div>
-                             <div class="col-8 syll_ind syll_item" data-ind="${data[i].section}.${data[i].topic}.${data[i].ind}">
+                             <div class="col-8 syll_ind syll_item" data-ind="(${data[i].section}.${data[i].topic}.${data[i].ind})">
                                <span class="topic_discussed">${data[i].indicator}</span>
                              </div>
                              <div class="col-2 syll_ind">
                               <a href="javascript:void(0);" data-stat="0" data-id="${data[i].id}" data-section="${data[i].section}" data-topic="${data[i].topic}" data-ind="${data[i].ind}" class="btn btn-default btn-sm topic_check"><i class="fa fa-check-square fa-2x"></i></a>
                              </div>`;
                   } else {
-                    html += `<div class="col-2 syll_ind syll_item" data-ind="${data[i].section}.${data[i].topic}.${data[i].ind}">
+                    html += `<div class="col-2 syll_ind syll_item" data-ind="(${data[i].section}.${data[i].topic}.${data[i].ind})">
                                   ${data[i].section}.${data[i].topic}.${data[i].ind}
                             </div>
-                             <div class="col-8 syll_ind syll_item" data-ind="${data[i].section}.${data[i].topic}.${data[i].ind}"> ${data[i].indicator} </div>
+                             <div class="col-8 syll_ind syll_item" data-ind="(${data[i].section}.${data[i].topic}.${data[i].ind})"> ${data[i].indicator} </div>
                               <div class="col-2 syll_ind">
                                 <a href="javascript:void(0);" data-stat="1" data-id="${data[i].id}" data-section="${data[i].section}" data-topic="${data[i].topic}" data-ind="${data[i].ind}" class="btn btn-default btn-sm topic_check">
                                   <i class="fa fa-square fa-2x"></i>
@@ -1066,6 +1062,9 @@ that gives us this:
             var text = $('#ma').val(),
                 appended = text +" "+ind;
             $('#ma').val(appended);
+            $('#ma_html').val(appended);
+            $('#ma_prev').html($('#ma_html').val());
+            $('#ma_prev').fadeIn('fast');
           }
         });
         /* check discussed topics */
@@ -2345,6 +2344,7 @@ that gives us this:
           $('[name="ma"]').val(ma);
           $('#ma_prev').html($(this).data('ma')),
           $('#ma_html').val($(this).data('ma')),
+          $('#ma_prev').show();
           $('#ev_prev').html($(this).data('ev')),
           $('#ev_html').val($(this).data('ev')),
           $('[name="co"]').val(co);
