@@ -19,8 +19,61 @@
         <!-- STUDENT INFO -->
         <div class="col-md-3 col-lg-3" id="student_info_div">
           <h3 class="page-header"><small>Student </small>Information </h3>
-          <!-- <ul class="list-group" id="student_info"></ul> -->
           <div class="accordion" id="student_info"></div>
+          <br>
+          <div style="display:none;" id="cheatsheet_box" class="alert alert-info">
+            <button id="cheatsheet_close" class="close" type="button" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+              <hr>
+              <span class="cheatsheet_section"> <code># + SPACE + text</code> for headers </span>
+<pre># header 1 =>  <h1 style="display:inline;"><small>header 1</small></h1></pre>
+<pre>## header 2 =>  <h2 style="display:inline;"><small>header 2</small></h2></pre>
+<pre>### header 3 =>  <h3 style="display:inline;"><small>header 3</small></h3></pre>
+<pre>#### header 4 =>  <h4 style="display:inline;"><small>header 4</small></h4></pre>
+<pre>##### header 5 =>  <h5 style="display:inline;"><small>header 5</small></h5></pre>
+<pre>###### header 6 =>  <h6 style="display:inline;"><small>header 6</small></h6></pre>
+              <hr>
+              <span class="cheatsheet_section">text formatting</span><br>
+              <pre>
+<code>_italic_</code>          => <em>italic</em>
+<code>*italic*</code>          => <em>italic</em>
+<code>**bold**</code>          => <strong>bold</strong>
+<code>**_bold italic_**</code> => <strong><em>bold italic</em></strong>
+<code>_**italic bold**_</code> => <em><strong>italic bold</strong></em>
+            </pre>
+              <hr>
+              <span class="cheatsheet_section"> <code>* + SPACE</code> for bulleted list</span> <br>
+<pre>
+<code>* item 1</code>
+<code>* item 2</code>
+<code>* item 3</code>
+</pre>
+gives us the following,
+<ul>
+  <li>item 1</li>
+  <li>item 2</li>
+  <li>item 3</li>
+</ul>
+              <hr>
+              <span class="cheatsheet_section"> number<code>[0-9] +</code> <code>.</code>(period) <code> + SPACE + list item </code> for numbered list</span><br>
+<pre>
+<code>1. item 1</code>
+<code>2. item 2</code>
+<code>4. item 3</code>
+</pre>
+that gives us this:
+<ol>
+  <li>item 1</li>
+  <li>item 2</li>
+  <li>item 3</li>
+</ol>
+              <hr>
+              <span class="cheatsheet_section">press <code>ENTER</code> twice to insert a new line</span> <br>
+              <h5><code>&#8629; &#8629;</code></h5>
+              <hr>
+
+          </div>
         </div><!-- END STUDENT INFO -->
         <div class="col-md-9 col-lg-9">
           <div class="container" id="action_form">
@@ -102,6 +155,7 @@
                             </div>
                             <textarea rows="6" name="ev" id="ev" class="form-control mdhtmlform-md" data-mdhtmlform-group="1" placeholder="He was now able to ..."></textarea>
                           </div>
+                          <small class="form-text text-muted"><a id="cheatsheet_button" href="javascript:void(0);">Click here</a> to see the cheatsheet</small>
                         </div>
                         <div class="col-12" id="preview">
                           <div id="ma_prev" class="mdhtmlform-html ta_prev" data-mdhtmlform-group="0"></div>
@@ -1420,6 +1474,12 @@
     <script type = "text/javascript" >
       $(document).ready(function() {
         get_student_detail();
+        $('#cheatsheet_button').on('click', function(){
+          $('#cheatsheet_box').toggle('fast');
+          $('#cheatsheet_close').on('click', function(){
+            $('#cheatsheet_box').fadeOut('slow');
+          });
+        });
         function get_student_detail(){
           var pin = "<?php echo $pin;?>";
           $.ajax({

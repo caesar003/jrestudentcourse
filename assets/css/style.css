@@ -1,3 +1,8 @@
+.cheatsheet_section {
+    background: linear-gradient(30deg, beige, aliceblue);
+    padding: 4px;
+    border-radius: 4px;
+}
 .ta_prev {
     display: none;
     background-color: ghostwhite;
