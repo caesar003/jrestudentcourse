@@ -103,6 +103,12 @@
                             <textarea rows="6" name="ev" id="ev" class="form-control mdhtmlform-md" data-mdhtmlform-group="1" placeholder="He was now able to ..."></textarea>
                           </div>
                         </div>
+                        <div class="col-12" id="preview">
+                          <div id="ma_prev" class="mdhtmlform-html ta_prev" data-mdhtmlform-group="0"></div>
+                          <textarea  style="display:none;" name="ma_html" id="ma_html" class="mdhtmlform-html" data-mdhtmlform-group="0"></textarea>
+                          <div id="ev_prev" class="mdhtmlform-html ta_prev" data-mdhtmlform-group="1"></div>
+                          <textarea style="display:none;" name="ev_html" id="ev_html" class="mdhtmlform-html" data-mdhtmlform-group="1"></textarea>
+                        </div>
                         <div class="form-group col">
                           <label for="wr">Writing </label>
                           <div class="input-group">
@@ -172,15 +178,8 @@
                       </div>
                     </div>
                   </div>
-                  <div class="row">
-                    <div class="col-3 test_check"><input type="checkbox" name="test" id="test"> <label for="test">  Test</label></div>
-                    <div class="col-9" id="preview">
-                      <div id="ma_prev" class="mdhtmlform-html ta_prev" data-mdhtmlform-group="0"></div>
-                      <textarea  style="display:none;" name="ma_html" id="ma_html" class="mdhtmlform-html" data-mdhtmlform-group="0"></textarea>
-
-                      <div id="ev_prev" class="mdhtmlform-html ta_prev" data-mdhtmlform-group="1"></div>
-                      <textarea style="display:none;" name="ev_html" id="ev_html" class="mdhtmlform-html" data-mdhtmlform-group="1"></textarea>
-                    </div>
+                  <div class="col test_check">
+                    <input type="checkbox" name="test" id="test"> <label for="test">  Test</label>
                   </div>
                 </div>
                 <div class="card-footer">
