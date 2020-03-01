@@ -23,11 +23,14 @@
               </div>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="<?php echo base_url('others/markdown.html');?>">Look at me</a>
+              <a class="nav-link" href="<?php echo base_url('others/markdown');?>">What's new?</a>
             </li>
             <?php if($this->session->userdata('level')==17):?>
             <li class="nav-item">
               <a href="<?php echo site_url('after_teaching');?>" class="nav-link">After Teaching </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="<?php echo base_url('others/teacher_note');?>"> Teacher note</a>
             </li>
             <?php endif;?>
           </ul>
