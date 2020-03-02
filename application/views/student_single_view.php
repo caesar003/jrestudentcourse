@@ -2050,9 +2050,13 @@ that gives us this:
             data : {pin:pin},
             dataType : "json",
             success : function(data){
-              var n = Number(data[0].meeting);
-              var n = n + 1;
-              $('#me').val(n);
+              if(data==''){
+                $('#me').val(1);
+              } else {
+                var n = Number(data[0].meeting);
+                var n = n + 1;
+                $('#me').val(n);
+              }
             }
           });
 
