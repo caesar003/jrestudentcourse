@@ -28,15 +28,33 @@ class Schedule_model extends CI_Model{
     return $query;
   }
   function update_schedule(){
-    $id = $this->input->post('id');
-    $col = $this->input->post('col');
-    $str = $this->input->post('str');
-    $d = $this->input->post('d');
+    $id             = $this->input->post('id');
+    $col            = $this->input->post('col');
+    $str            = $this->input->post('str');
+    $d              = $this->input->post('d');
     $schedule_table = "schd_".$d;
     $this->db->set($col,$str);
     $this->db->where('id', $id);
     $result = $this->db->update($schedule_table);
     return $result;
+  }
+  function set_nick_name(){
+    $col = $this->input->post('col');
+    $id = $this->input->post('id');
+    $nick_name = $this->input->post('nick_name');
+    $d = $this->input->post('d');
+    $schedule_table = "schd_".$d;
+    $this->db->set($col, $nick_name);
+    $this->db->where('id', $id);
+    $query = $this->db->update($schedule_table);
+    return $query;
+  }
+  function get_nick_name(){
+    $str = $this->input->post('str');
+    $this->db->where('pin', $str);
+    $this->db->select('nick_name');
+    $query = $this->db->get('students');
+    return $query->result();
   }
  function add_teacher(){
    $d = $this->input->post('d');
@@ -103,6 +121,11 @@ class Schedule_model extends CI_Model{
         'constraint' => '8',
         'default' => ''
       ),
+      '_9n' => array(
+        'type' => 'varchar',
+        'constraint' => '120',
+        'default' => ''
+      ),
       '_10' => array(
         'type' => 'varchar',
         'constraint' => '24',
@@ -116,6 +139,11 @@ class Schedule_model extends CI_Model{
       '_10p' => array(
         'type' => 'varchar',
         'constraint' => '8',
+        'default' => ''
+      ),
+      '_10n' => array(
+        'type' => 'varchar',
+        'constraint' => '120',
         'default' => ''
       ),
       '_11' => array(
@@ -133,6 +161,11 @@ class Schedule_model extends CI_Model{
         'constraint' => '8',
         'default' => ''
       ),
+      '_11n' => array(
+        'type' => 'varchar',
+        'constraint' => '120',
+        'default' => ''
+      ),
       '_12' => array(
         'type' => 'varchar',
         'constraint' => '24',
@@ -146,6 +179,11 @@ class Schedule_model extends CI_Model{
       '_12p' => array(
         'type' => 'varchar',
         'constraint' => '8',
+        'default' => ''
+      ),
+      '_12n' => array(
+        'type' => 'varchar',
+        'constraint' => '120',
         'default' => ''
       ),
       '_13' => array(
@@ -163,6 +201,11 @@ class Schedule_model extends CI_Model{
         'constraint' => '8',
         'default' => ''
       ),
+      '_13n' => array(
+        'type' => 'varchar',
+        'constraint' => '120',
+        'default' => ''
+      ),
       '_14' => array(
         'type' => 'varchar',
         'constraint' => '24',
@@ -176,6 +219,11 @@ class Schedule_model extends CI_Model{
       '_14p' => array(
         'type' => 'varchar',
         'constraint' => '8',
+        'default' => ''
+      ),
+      '_14n' => array(
+        'type' => 'varchar',
+        'constraint' => '120',
         'default' => ''
       ),
       '_15' => array(
@@ -193,6 +241,11 @@ class Schedule_model extends CI_Model{
         'constraint' => '8',
         'default' => ''
       ),
+      '_15n' => array(
+        'type' => 'varchar',
+        'constraint' => '120',
+        'default' => ''
+      ),
       '_16' => array(
         'type' => 'varchar',
         'constraint' => '24',
@@ -206,6 +259,11 @@ class Schedule_model extends CI_Model{
       '_16p' => array(
         'type' => 'varchar',
         'constraint' => '8',
+        'default' => ''
+      ),
+      '_16n' => array(
+        'type' => 'varchar',
+        'constraint' => '120',
         'default' => ''
       ),
       '_17' => array(
@@ -223,6 +281,11 @@ class Schedule_model extends CI_Model{
         'constraint' => '8',
         'default' => ''
       ),
+      '_17n' => array(
+        'type' => 'varchar',
+        'constraint' => '120',
+        'default' => ''
+      ),
       '_18' => array(
         'type' => 'varchar',
         'constraint' => '24',
@@ -236,6 +299,11 @@ class Schedule_model extends CI_Model{
       '_18p' => array(
         'type' => 'varchar',
         'constraint' => '8',
+        'default' => ''
+      ),
+      '_18n' => array(
+        'type' => 'varchar',
+        'constraint' => '120',
         'default' => ''
       ),
       '_19' => array(
@@ -253,6 +321,11 @@ class Schedule_model extends CI_Model{
         'constraint' => '8',
         'default' => ''
       ),
+      '_19n' => array(
+        'type' => 'varchar',
+        'constraint' => '120',
+        'default' => ''
+      ),
       '_20' => array(
         'type' => 'varchar',
         'constraint' => '24',
@@ -268,6 +341,11 @@ class Schedule_model extends CI_Model{
         'constraint' => '8',
         'default' => ''
       ),
+      '_20n' => array(
+        'type' => 'varchar',
+        'constraint' => '120',
+        'default' => ''
+      )
     );
     $this->dbforge->add_key('id', TRUE);
     $this->dbforge->add_field($fields);
@@ -277,8 +355,8 @@ class Schedule_model extends CI_Model{
   function insert_teachers(){
     $d = $this->input->post('d');
     $schedule_table = "schd_".$d;
-    $query = $this->db->query("INSERT INTO `$schedule_table` 
-    (`id`, `name`, `_9`, `_9r`, `_9p`, `_10`, `_10r`, `_10p`, `_11`, `_11r`, `_11p`, `_12`, `_12r`, `_12p`, `_13`, `_13r`, `_13p`, `_14`, `_14r`, `_14p`, `_15`, `_15r`, `_15p`, `_16`, `_16r`, `_16p`, `_17`, `_17r`, `_17p`, `_18`, `_18r`, `_18p`, `_19`, `_19r`, `_19p`, `_20`, `_20r`, `_20p`) 
+    $query = $this->db->query("INSERT INTO `$schedule_table`
+    (`id`, `name`, `_9`, `_9r`, `_9p`, `_10`, `_10r`, `_10p`, `_11`, `_11r`, `_11p`, `_12`, `_12r`, `_12p`, `_13`, `_13r`, `_13p`, `_14`, `_14r`, `_14p`, `_15`, `_15r`, `_15p`, `_16`, `_16r`, `_16p`, `_17`, `_17r`, `_17p`, `_18`, `_18r`, `_18p`, `_19`, `_19r`, `_19p`, `_20`, `_20r`, `_20p`)
     VALUES
     (1, 'Mr. Sugi', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', ''),
     (2, 'Ms. Herna', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', ''),

@@ -25,7 +25,16 @@ class Schedule extends CI_Controller{
     echo json_encode($data);
   }
   function update(){
+
     $data = $this->schedule_model->update_schedule();
+    echo json_encode($data);
+  }
+  function get_nick_name(){
+    $data = $this->schedule_model->get_nick_name();
+    echo json_encode($data);
+  }
+  function set_nick_name(){
+    $data = $this->schedule_model->set_nick_name();
     echo json_encode($data);
   }
   function add_teacher(){
@@ -46,7 +55,7 @@ class Schedule extends CI_Controller{
   }
   function add_schedule(){
    $data = $this->schedule_model->add_schedule();
-    echo json_encode($data);   
+    echo json_encode($data);
   }
   function create_schedule(){
     $data = $this->schedule_model->create_schedule();
