@@ -9,7 +9,7 @@ $(document).ready(function() {
   function get_student_detail(){
     $.ajax({
       type : 'post',
-      url : `${siteurl}/student_single/get_student_info`,
+      url : `${u}/student_single/get_student_info`,
       dataType : 'json',
       data : {pin:pin},
       success : function(data){
@@ -372,7 +372,7 @@ $(document).ready(function() {
   function update_student(pn, cn, nn, ad, pb, db, ph, grp, cn2, nn2, ad2, pb2, db2, ph2, cn3, nn3, ad3, pb3, db3, ph3, cn4, nn4, ad4, pb4, db4, ph4, pr, pd, sd, re, ta, di, bg, si, wp, ap, fsp) {
     $.ajax({
       type : "post",
-      url: `${siteurl}/student/update`,
+      url: `${u}/student/update`,
       dataType : "json",
       data : {pn:pn,cn:cn,nn:nn,ad:ad,pb:pb,db:db,ph:ph,grp,cn2:cn2,nn2:nn2,ad2:ad2,pb2:pb2,db2:db2,ph2:ph2,cn3:cn3,nn3:nn3,ad3:ad3,pb3:pb3,db3:db3,ph3:ph3,cn4:cn4,nn4:nn4,ad4:ad4,pb4:pb4,db4:db4,ph4:ph4,pr:pr,pd:pd,sd:sd,re:re,ta:ta,di:di,bg:bg,si:si,wp:wp,ap:ap,fsp:fsp},
       success : function(data){
@@ -386,7 +386,7 @@ $(document).ready(function() {
   $('#mycourse').DataTable({
     responsive : true,
     "ajax" :{
-      "url" : `${siteurl}/student_single/get_course?pin=${pin}`,
+      "url" : `${u}/student_single/get_course?pin=${pin}`,
       "dataSrc" :""
     },
     "columns": [
@@ -430,7 +430,7 @@ $(document).ready(function() {
   $('#my_tests').DataTable({
     responsive: true,
     "ajax" :{
-      "url": `${siteurl}/student_single/get_tests?pin=${pin}`,
+      "url": `${u}/student_single/get_tests?pin=${pin}`,
       "dataSrc" :""
     },
      "columns" :[
@@ -485,7 +485,7 @@ $(document).ready(function() {
   /* get fsp */
   function get_fsp(){
     $.ajax({
-      url : `${siteurl}/student_single/get_fsp`,
+      url : `${u}/student_single/get_fsp`,
       type : "post",
       dataType : "JSON",
       data :{pin:pin},
@@ -569,7 +569,7 @@ $(document).ready(function() {
    /* and reset the rest */
     $.ajax({
       type : "post",
-      url : `${siteurl}/student_single/get_meeting`,
+      url : `${u}/student_single/get_meeting`,
       data : {pin:pin},
       dataType : "json",
       success : function(data){
@@ -673,7 +673,7 @@ $(document).ready(function() {
             $.ajax({
               /* check meeting availability */
               type: "post",
-              url: `${siteurl}/student_single/meeting_avail`,
+              url: `${u}/student_single/meeting_avail`,
               data: {p: p, m: m},
               success: function (response){
                 if (response == 'true'){
@@ -697,7 +697,7 @@ $(document).ready(function() {
                           test = tnu+" "+tn;
                           $.ajax({
                             type: "post",
-                            url:`${siteurl}/student_single/test_avail`,
+                            url:`${u}/student_single/test_avail`,
                             data:{p :p, test: test},
                             success : function (response){
                               if(response=='true'){
@@ -724,7 +724,7 @@ $(document).ready(function() {
                               test = tnu+" "+tn+" of "+otn+" "+ot;
                               $.ajax({
                                 type : 'post',
-                                url : `${siteurl}/student_single/test_avail`,
+                                url : `${u}/student_single/test_avail`,
                                 data: {p: p, test : test},
                                 success : function(response){
                                   if(response == 'true'){
@@ -758,7 +758,7 @@ $(document).ready(function() {
   function submit_course(p, m, cd, tc, du, ma, co, ev, w, s, test, tnu, tn, otn, ot, after_teaching){
     $.ajax({
       type: "POST",
-      url: `${siteurl}/student_single/save_course`,
+      url: `${u}/student_single/save_course`,
       dataType: "JSON",
       data: {p : p, m: m, cd: cd, tc: tc,du: du, ma: ma,co:co, ev: ev,w: w,s: s,test: test, tnu: tnu,tn : tn,otn : otn, ot : ot},
       success: function(data) {
@@ -784,7 +784,7 @@ $(document).ready(function() {
   function create_test_table(a,b){
     $.ajax({
       type: "POST",
-      url : `${siteurl}/student_single/create_test`,
+      url : `${u}/student_single/create_test`,
       dataType : "JSON",
       data : {pin: a, meeting: b},
       success : function(data){
@@ -795,7 +795,7 @@ $(document).ready(function() {
   function set_aft(a,b){
     $.ajax({
       type: "POST",
-      url : `${siteurl}/student_single/set_aft`,
+      url : `${u}/student_single/set_aft`,
       dataType : "JSON",
       data : {pin: a, after_teaching: b},
       success : function(data){
@@ -1004,7 +1004,7 @@ $(document).ready(function() {
                   */
                   test = tnu+' '+tn;
                   $.ajax({
-                    url : `${siteurl}/student_single/test_edit_avail`,
+                    url : `${u}/student_single/test_edit_avail`,
                     type : "post",
                     dataType : "json",
                     data : {pin:p, test:test},
@@ -1046,7 +1046,7 @@ $(document).ready(function() {
                       test = tnu+' '+ tn+' of '+ otn+' '+ ot;
                       $.ajax({
                         type : "post",
-                        url : `${siteurl}/student_single/test_edit_avail`,
+                        url : `${u}/student_single/test_edit_avail`,
                         dataType : "json",
                         data : {pin:p, test:test},
                         success : function(data){
@@ -1078,7 +1078,7 @@ $(document).ready(function() {
   function update_course(p,m,cd,tc,du,ma,co, ev,w,s,test,tnu,tn,otn,ot){
     $.ajax({
       type:"POST",
-      url:`${siteurl}/student_single/update_course`,
+      url:`${u}/student_single/update_course`,
       dataType:"JSON",
       data:{p:p,m:m,cd:cd,tc:tc,du:du,ma:ma,co:co,ev:ev,w:w,s:s,test:test,tnu:tnu,tn:tn,otn:otn,ot:ot},
       success:function(data){
@@ -1113,7 +1113,7 @@ $(document).ready(function() {
   function delete_test(pin,m_d){
     $.ajax({
       type:"post",
-      url:`${siteurl}/student_single/delete_test`,
+      url:`${u}/student_single/delete_test`,
       dataType : "json",
       data: {pin:pin, m:m_d},
       success : function(data){
@@ -1124,7 +1124,7 @@ $(document).ready(function() {
   function delete_course(pin,m_d){
     $.ajax({
       type:"post",
-      url:`${siteurl}/student_single/delete_course`,
+      url:`${u}/student_single/delete_course`,
       dataType : "json",
       data: {pin:pin, m:m_d},
       success : function(data){
@@ -1147,7 +1147,7 @@ $(document).ready(function() {
     } else {
      $.ajax({
         type : "POST",
-        url : `${siteurl}/student_single/add_fsp`,
+        url : `${u}/student_single/add_fsp`,
         dataType : "JSON",
         data : {pin:pin, topic: topic, fsp_result : fsp_result, comment: comment},
         success : function(data){
@@ -1193,7 +1193,7 @@ $(document).ready(function() {
     } else {
       $.ajax({
         type : "POST",
-        url : `${siteurl}/student_single/update_fsp`,
+        url : `${u}/student_single/update_fsp`,
         dataType: "JSON",
         data : {
           pin: pin, id: id, topic: topic, fsp_result: fsp_result, comment: comment
