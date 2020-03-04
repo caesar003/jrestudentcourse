@@ -448,7 +448,7 @@ $(document).ready(function(){
     var bck = 'background-color',
         clr ='#fbe2e6';
     $.ajax({
-      url: `${site_url}/student/pin_availability`,
+      url: `${u}/student/pin_availability`,
       type: 'post',
       data:{pin:pn},
       success: function(response){
