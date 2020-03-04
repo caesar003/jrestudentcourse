@@ -182,16 +182,6 @@ $(document).ready(function(){
     $(this).on('focusout',function(){
       $(this).removeClass('editMode');
       var str2 = $(this).text();
-      /*
-      * first just see if string is changed, by comparing the one at the focusin
-      * and the one that left
-      * if it is changed, check whether it is a pin column or non pin column,
-      * if it is a pin column, assign the name,
-      * if it is not the pin column, there is no name,
-      * if the pin actually contain pin, take the name,
-      * if it is not pin, make it empty,
-      *
-      */
       if(str != str2){
         if(col.indexOf("p")==-1&&col.indexOf("r")==-1){
           name = col+"n";
@@ -230,6 +220,8 @@ $(document).ready(function(){
               }
             });
           }
+        } else {
+          update_schedule(id,col,str2,d);
         }
       }
     });
