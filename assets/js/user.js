@@ -1,103 +1,103 @@
 $(document).ready(function(){
   var today = $.format.date(new Date(), "yyyy-MM-dd");
-    $('#mystudents').dataTable({
-      "ajax" :{
-        "url": `${u}/student/student_data`,
-        "dataSrc":""
+    /* STUDENT LIST */
+  $('#mystudents').dataTable({
+    "ajax" :{
+      "url": `${u}/student/student_data`,
+      "dataSrc":""
+    },
+    "columns":[
+      {
+        "data" : {grp:"grp",pin: "pin", complete_name: "complete_name", nick_name:"nick_name", address: "address", place_of_birth: "place_of_birth", date_of_birth: "date_of_birth", phone: "phone",cnst2:"cnst2",nnst2:"nnst2",adrst2:"adrst2",pobst2:"pobst2",dobst2:"dobst2",phst2:"phst2",cnst3:"cnst3",nnst3:"nnst3",adrst3:"adrst3",pobst3:"pobst3",dobst3:"dobst3",phst3:"phst3",cnst4:"cnst4",nnst4:"nnst4",adrst4:"adrst4",pobst4:"pobst4",dobst4:"dobst4",phst4:"phst4",program: "program", program_duration: "program_duration", starting_date: "starting_date", reason: "reason", target: "target", difficulties: "difficulties", bground: "bground", self_introduction: "self_introduction", weakness_point: "weakness_point", action_plan: "action_plan", fsp: "fsp"},
+        "render" : function(data,meta,row){
+          return `<a style="color:black;text-decoration:none;" href="${u}/student_single?pin=${data.pin}">${data.pin}</a> <a title="Edit" href="javascript:void(0);" class="item_edit tooltip-bottom" data-grp="${data.grp}" data-pn="${data.pin}" data-cn="${data.complete_name}"data-nn="${data.nick_name}" data-ad="${data.address}" data-pb="${data.place_of_birth}"data-db="${($.format.date(data.date_of_birth, "yyyy-MM-dd"))}"data-ph="${data.phone}"data-cnst2="${data.cnst2}"data-nnst2="${data.nnst2}"data-adrst2="${data.adrst2}"data-pobst2="${data.pobst2}"data-dobst2="${($.format.date(data.dobst2, "yyyy-MM-dd"))}"data-phst2="${data.phst2}"data-cnst3="${data.cnst3}"data-nnst3="${data.nnst3}"data-adrst3="${data.adrst3}"data-pobst3="${data.pobst3}"data-dobst3="${($.format.date(data.dobst3, "yyyy-MM-dd"))}"data-phst3="${data.phst3}"data-cnst4="${data.cnst4}"data-nnst4="${data.nnst4}"data-adrst4="${data.adrst4}"data-pobst4="${data.pobst4}"data-dobst4="${($.format.date(data.dobst4, "yyyy-MM-dd"))}"data-phst4="${data.phst4}"data-pr="${data.program}"data-pd="${data.program_duration}"data-sd="${($.format.date(data.starting_date, "yyyy-MM-dd"))}" data-re="${data.reason}"data-ta="${data.target}"data-di="${data.difficulties}"data-bg="${data.bground}"data-si="${data.self_introduction}"data-wp="${data.weakness_point}"data-ap="${data.action_plan}"data-fsp="${data.fsp}"><i style="font-size:14px;" class="fas fa-user-edit fa-fw"></i></a>`;
+        }
       },
-      "columns":[
-        {
-          "data" : {grp:"grp",pin: "pin", complete_name: "complete_name", nick_name:"nick_name", address: "address", place_of_birth: "place_of_birth", date_of_birth: "date_of_birth", phone: "phone",cnst2:"cnst2",nnst2:"nnst2",adrst2:"adrst2",pobst2:"pobst2",dobst2:"dobst2",phst2:"phst2",cnst3:"cnst3",nnst3:"nnst3",adrst3:"adrst3",pobst3:"pobst3",dobst3:"dobst3",phst3:"phst3",cnst4:"cnst4",nnst4:"nnst4",adrst4:"adrst4",pobst4:"pobst4",dobst4:"dobst4",phst4:"phst4",program: "program", program_duration: "program_duration", starting_date: "starting_date", reason: "reason", target: "target", difficulties: "difficulties", bground: "bground", self_introduction: "self_introduction", weakness_point: "weakness_point", action_plan: "action_plan", fsp: "fsp"},
-          "render" : function(data,meta,row){
-            return `<a style="color:black;text-decoration:none;" href="${u}/student_single?pin=${data.pin}">${data.pin}</a> <a title="Edit" href="javascript:void(0);" class="item_edit tooltip-bottom" data-grp="${data.grp}" data-pn="${data.pin}" data-cn="${data.complete_name}"data-nn="${data.nick_name}" data-ad="${data.address}" data-pb="${data.place_of_birth}"data-db="${($.format.date(data.date_of_birth, "yyyy-MM-dd"))}"data-ph="${data.phone}"data-cnst2="${data.cnst2}"data-nnst2="${data.nnst2}"data-adrst2="${data.adrst2}"data-pobst2="${data.pobst2}"data-dobst2="${($.format.date(data.dobst2, "yyyy-MM-dd"))}"data-phst2="${data.phst2}"data-cnst3="${data.cnst3}"data-nnst3="${data.nnst3}"data-adrst3="${data.adrst3}"data-pobst3="${data.pobst3}"data-dobst3="${($.format.date(data.dobst3, "yyyy-MM-dd"))}"data-phst3="${data.phst3}"data-cnst4="${data.cnst4}"data-nnst4="${data.nnst4}"data-adrst4="${data.adrst4}"data-pobst4="${data.pobst4}"data-dobst4="${($.format.date(data.dobst4, "yyyy-MM-dd"))}"data-phst4="${data.phst4}"data-pr="${data.program}"data-pd="${data.program_duration}"data-sd="${($.format.date(data.starting_date, "yyyy-MM-dd"))}" data-re="${data.reason}"data-ta="${data.target}"data-di="${data.difficulties}"data-bg="${data.bground}"data-si="${data.self_introduction}"data-wp="${data.weakness_point}"data-ap="${data.action_plan}"data-fsp="${data.fsp}"><i style="font-size:14px;" class="fas fa-user-edit fa-fw"></i></a>`;
-          }
-        },
-        {
-          "data" : {pin:"pin", grp:"grp", complete_name:"complete_name", cnst2:"cnst2", cnst3:"cnst3", cnst4:"cnst4"},
-          "render":function(data,type,row){
-            if(data.grp!=''){
-             if(data.cnst2!=''&&data.cnst3!=''&&data.cnst4!=''){
-               return `<a href="${u}/student_single?pin=${data.pin}" class="tooltip-bottom" title="${data.complete_name} - ${data.cnst2} - ${data.cnst3} - ${data.cnst4}"> ${data.grp} </a>`;
-              } else if(data.cnst2!=''&&data.cnst3!=''){
-                return `<a href="${u}/student_single?pin=${data.pin}" class="tootip-bottom" title="${data.complete_name} - ${data.cnst2} - ${data.cnst3}"> ${data.grp} </a>`;
-
-              } else{
-                return `<a href="${u}/student_single?pin=${data.pin}" title="${data.complete_name} - ${data.cnst2}" class="tooltip-bottom"> ${data.grp} </a>`;
-              }
-            } else {
-              if(data.cnst2!=''){
-                if(data.cnst3!=''){
-                  if(data.cnst4!=''){
-                    return `<a href="${u}/student_single?pin=${data.pin}" title="${data.complete_name} - ${data.cnst2} - ${data.cnst3}-${data.cnst4}">${data.complete_name}</a>`;
-                  } else {
-                    return `<a href="${u}/student_single?pin=${data.pin}" title="${data.complete_name} - ${data.cnst2} - ${data.cnst3}">${data.complete_name}</a>`;
-                  }
-                } else{
-                  return `<a href="${u}/student_single?pin=${data.pin}" title="${data.complete_name} - ${data.cnst2}">${data.complete_name}</a>`;
-                }
-              } else {
-                return `<a href="${u}/student_single?pin=${data.pin}">${data.complete_name}</a>`;
-              }
-            }
-          }
-        },
-        {
-         "data" : {pin:"pin", complete_name:"complete_name", cnst2:"cnst4", cnst3:"cnst3", cnst4:"cnst4", nick_name:"nick_name", nnst2:"nnst2", nnst3:"nnst3", nnst4:"nnst4"},
-          "render" :function(data,type,row){
-            if(data.cnst2!=''){
-              if(data.cnst3!=''){
-                if(data.cnst4!=''){
-                  return `<a href="${u}/student_single?pin=${data.pin}"> ${data.nick_name} -${data.nick_name} - ${data.nnst2} - ${data.cnst3} - ${data.cnst4} </a>`;
-                } else {
-                  return `<a href="${u}/student_single?pin=${data.pin}"> ${data.nick_name} - ${data.nnst2}- ${data.nnst3} </a>`;
-                }
-              }else {
-                return `<a href="${u}/student_single?pin=${data.pin}"> ${data.nick_name} - ${data.nnst2} </a>`;
-              }
-            } else {
-              return `<a href="${u}/student_single?pin=${data.pin}">${data.nick_name}</a>`;
-            }
-          }
-        },
-        {
-          "data" : {pin:"pin",address:"address",adrst2:"adrst2",adrst3:"adrst3",adrst4:"adrst4"},
-          "render":function(data,type,row){
-            if(data.adrst2==''){
-              return `<a href="${u}/student_single?pin=${data.pin}">${data.address}</a>`;
-            } else{
-              if(data.adrst3==''){
-                return `<a href="${u}/student_single?pin=${data.pin}" title="${data.address} || ${data.adrst2}">${data.address.substr(0,15)}.....</a>`;
-              } else {
-                if (data.adrst4==''){
-                  return `<a href="${u}/student_single?pin=${data.pin}" title="${data.address} || ${data.adrst2} || ${data.adrst3}">${data.address.substr(0,15)}.....</a>`;
-                } else {
-                  return `<a href="${u}/student_single?pin=${data.pin}" title="${data.address} || ${data.adrst2} || ${ data.adrst3} || ${data.adrst4}">${data.address.substr(0,15)}.....</a>`;
-                }
-              }
-            }
-          }
-        },
-        {
-          "data" :{pin:"pin",cnst2:"cnst2",cnst3:"cnst3",cnst4:"cnst4",date_of_birth:"date_of_birth",dobst2:"dobst2",dobst3:"dobst3",dobst4:"dobst4",},
-          "render" : function (data, type, row){
-            if(data.cnst2==''){
-              return `<a href="${u}/student_single?pin=${data.pin}">${$.format.date(data.date_of_birth, "MMM/dd/yyyy")}`;
-            } else {
-              if(data.cnst3==''){
-                return `<a href="${u}/student_single?pin=${data.pin}">${$.format.date(data.date_of_birth, "MMM/dd/yyyy")} - ${$.format.date(data.dobst2, "MMM/dd/yyyy")}`;
-              } else {
-                if(data.cnst4==''){
-                  return `<a href="${u}/student_single?pin=${data.pin}">${$.format.date(data.date_of_birth, "MMM/dd/yyyy")} - ${$.format.date(data.dobst2, "MMM/dd/yyyy")} - ${$.format.date(data.dobst3, "MMM/dd/yyyy")}`;
-                } else {
-                  return `<a href="${u}/student_single?pin=${data.pin}">${$.format.date(data.date_of_birth, "MMM/dd/yyyy")} - ${$.format.date(data.dobst2, "MMM/dd/yyyy")} - ${$.format.date(data.dobst3, "MMM/dd/yyyy")} - ${$.format.date(data.dobst4, "MMM/dd/yyyy")}` ;
-                }
-              }
-            }
-          }
-        },
-        {
-          "data" : {pin:"pin",phone:"phone",phst2:"phst2",phst3:"phst3",phst4:"phst4"},
-          "render": function(data,type,row){
+      {
+        "data" : {pin:"pin", grp:"grp", complete_name:"complete_name", cnst2:"cnst2", cnst3:"cnst3", cnst4:"cnst4"},
+        "render":function(data,type,row){
+          if(data.grp!=''){
+           if(data.cnst2!=''&&data.cnst3!=''&&data.cnst4!=''){
+             return `<a href="${u}/student_single?pin=${data.pin}" class="tooltip-bottom" title="${data.complete_name} - ${data.cnst2} - ${data.cnst3} - ${data.cnst4}"> ${data.grp} </a>`;
+           } else if(data.cnst2!=''&&data.cnst3!=''){
+             return `<a href="${u}/student_single?pin=${data.pin}" class="tootip-bottom" title="${data.complete_name} - ${data.cnst2} - ${data.cnst3}"> ${data.grp} </a>`;
+           } else{
+             return `<a href="${u}/student_single?pin=${data.pin}" title="${data.complete_name} - ${data.cnst2}" class="tooltip-bottom"> ${data.grp} </a>`;
+           }
+         } else {
+           if(data.cnst2!=''){
+             if(data.cnst3!=''){
+               if(data.cnst4!=''){
+                 return `<a href="${u}/student_single?pin=${data.pin}" title="${data.complete_name} - ${data.cnst2} - ${data.cnst3}-${data.cnst4}">${data.complete_name}</a>`;
+               } else {
+                 return `<a href="${u}/student_single?pin=${data.pin}" title="${data.complete_name} - ${data.cnst2} - ${data.cnst3}">${data.complete_name}</a>`;
+               }
+             } else{
+               return `<a href="${u}/student_single?pin=${data.pin}" title="${data.complete_name} - ${data.cnst2}">${data.complete_name}</a>`;
+             }
+           } else {
+             return `<a href="${u}/student_single?pin=${data.pin}">${data.complete_name}</a>`;
+           }
+         }
+       }
+     },
+     {
+       "data" : {pin:"pin", complete_name:"complete_name", cnst2:"cnst4", cnst3:"cnst3", cnst4:"cnst4", nick_name:"nick_name", nnst2:"nnst2", nnst3:"nnst3", nnst4:"nnst4"},
+       "render" :function(data,type,row){
+         if(data.cnst2!=''){
+           if(data.cnst3!=''){
+             if(data.cnst4!=''){
+               return `<a href="${u}/student_single?pin=${data.pin}"> ${data.nick_name} -${data.nick_name} - ${data.nnst2} - ${data.cnst3} - ${data.cnst4} </a>`;
+             } else {
+               return `<a href="${u}/student_single?pin=${data.pin}"> ${data.nick_name} - ${data.nnst2}- ${data.nnst3} </a>`;
+             }
+           }else {
+             return `<a href="${u}/student_single?pin=${data.pin}"> ${data.nick_name} - ${data.nnst2} </a>`;
+           }
+         } else {
+           return `<a href="${u}/student_single?pin=${data.pin}">${data.nick_name}</a>`;
+         }
+       }
+     },
+     {
+       "data" : {pin:"pin",address:"address",adrst2:"adrst2",adrst3:"adrst3",adrst4:"adrst4"},
+       "render":function(data,type,row){
+         if(data.adrst2==''){
+           return `<a href="${u}/student_single?pin=${data.pin}">${data.address}</a>`;
+         } else{
+           if(data.adrst3==''){
+             return `<a href="${u}/student_single?pin=${data.pin}" title="${data.address} || ${data.adrst2}">${data.address.substr(0,15)}.....</a>`;
+           } else {
+             if (data.adrst4==''){
+               return `<a href="${u}/student_single?pin=${data.pin}" title="${data.address} || ${data.adrst2} || ${data.adrst3}">${data.address.substr(0,15)}.....</a>`;
+             } else {
+               return `<a href="${u}/student_single?pin=${data.pin}" title="${data.address} || ${data.adrst2} || ${ data.adrst3} || ${data.adrst4}">${data.address.substr(0,15)}.....</a>`;
+             }
+           }
+         }
+       }
+     },
+     {
+       "data" :{pin:"pin",cnst2:"cnst2",cnst3:"cnst3",cnst4:"cnst4",date_of_birth:"date_of_birth",dobst2:"dobst2",dobst3:"dobst3",dobst4:"dobst4",},
+       "render" : function (data, type, row){
+         if(data.cnst2==''){
+           return `<a href="${u}/student_single?pin=${data.pin}">${$.format.date(data.date_of_birth, "MMM/dd/yyyy")}`;
+         } else {
+           if(data.cnst3==''){
+             return `<a href="${u}/student_single?pin=${data.pin}">${$.format.date(data.date_of_birth, "MMM/dd/yyyy")} - ${$.format.date(data.dobst2, "MMM/dd/yyyy")}`;
+           } else {
+             if(data.cnst4==''){
+               return `<a href="${u}/student_single?pin=${data.pin}">${$.format.date(data.date_of_birth, "MMM/dd/yyyy")} - ${$.format.date(data.dobst2, "MMM/dd/yyyy")} - ${$.format.date(data.dobst3, "MMM/dd/yyyy")}`;
+             } else {
+               return `<a href="${u}/student_single?pin=${data.pin}">${$.format.date(data.date_of_birth, "MMM/dd/yyyy")} - ${$.format.date(data.dobst2, "MMM/dd/yyyy")} - ${$.format.date(data.dobst3, "MMM/dd/yyyy")} - ${$.format.date(data.dobst4, "MMM/dd/yyyy")}` ;
+             }
+           }
+         }
+       }
+     },
+     {
+       "data" : {pin:"pin",phone:"phone",phst2:"phst2",phst3:"phst3",phst4:"phst4"},
+        "render": function(data,type,row){
             if(data.phst2==''){
               return `<a href="${u}/student_single?pin=${data.pin}">${data.phone}`;
             } else{
@@ -142,14 +142,14 @@ $(document).ready(function(){
       "url" : `${u}/student/after_teaching_data`,
       "dataSrc" : ""
     },
-  "columns" :
-    [
-      {
-          "data" : "pin",
-          "render" : function(data, meta, row){
-            return `<a href="${u}/student_single?pin=${data}">${data}</a>`
-          }
-      },
+    "columns" :
+      [
+        {
+            "data" : "pin",
+            "render" : function(data, meta, row){
+              return `<a href="${u}/student_single?pin=${data}">${data}</a>`
+            }
+          },
 
       {
           "data" : {pin:"pin",grp:"grp",complete_name:"complete_name",cnst2:"cnst2",cnst3:"cnst3",cnst4:"cnst4"},

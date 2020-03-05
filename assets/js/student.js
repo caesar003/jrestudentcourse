@@ -27,7 +27,6 @@ $(document).ready(function() {
                         <span class="float-right" id="edit_student_span"></span>
                         </h2>
                       </div>
-
                       <div id="collapse_student" class="collapse show" aria-labelledby="heading_student" data-parent="#student_info">
                         <div class="card-body">`;
           if(data[i].grp!=''){

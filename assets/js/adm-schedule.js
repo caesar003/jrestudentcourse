@@ -11,9 +11,9 @@ $(document).ready(function(){
         var html = '',i;
         for(i=0;i<data.length;i++){
           if(data[i].table_name == d){
-            html += '<li class="list-group-item curr"><a class="schedule_list_item  curr_a" href="javascript:void(0);" data-d="'+data[i].table_name+'">'+data[i].table_name+'</a></li>'
+            html += `<li class="list-group-item curr"><a class="schedule_list_item  curr_a" href="javascript:void(0);" data-d="${data[i].table_name}">${data[i].table_name}</a></li>`;
           } else {
-            html += '<li class="list-group-item"><a class="schedule_list_item" href="javascript:void(0);" data-d="'+data[i].table_name+'">'+data[i].table_name+'</a></li>'
+            html += `<li class="list-group-item"><a class="schedule_list_item" href="javascript:void(0);" data-d="${data[i].table_name}">${data[i].table_name}</a></li>`;
           }
         }
         $('#schedule_list').html(html);
