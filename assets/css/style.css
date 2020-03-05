@@ -144,11 +144,11 @@ span.student_info_item {
     background-color: darkkhaki;
     color: whitesmoke;
 }
+#nsm label, #courseAndPers label{
+  float: right;
+}
 #group_name{
   display:none;
-}
-.pers_info{
-  float:right;
 }
 #student2,#student3,#student4{
   display:none;

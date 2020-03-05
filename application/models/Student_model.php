@@ -69,11 +69,12 @@ class Student_model extends CI_Model{
       'bground' 		 => $this->input->post('bg'),
       'self_introduction'=> $this->input->post('si'),
       'weakness_point'   => $this->input->post('we'),
-      'action_plan'      => $this->input->post('ap')
+      'action_plan'      => $this->input->post('ap'),
+      'note' => $this->input->post('note')
     );
     $result = $this->db->insert('students', $data);
     return $result;
-  }  
+  }
   function create_course_table(){
     $pin = $this->input->post('pn');
     $course_table = "s_".$pin;
@@ -194,8 +195,8 @@ class Student_model extends CI_Model{
   function insert_into_syllabus(){
     $pin 			= $this->input->post('pn');
     $syllabus_table = "syll_".$pin;
-    $query          = $this->db->query("INSERT INTO `$syllabus_table` 
-      (`id`, `section`, `topic`, `ind`, `status`, `assign`) 
+    $query          = $this->db->query("INSERT INTO `$syllabus_table`
+      (`id`, `section`, `topic`, `ind`, `status`, `assign`)
       VALUES
       (100, 1, 0, 0, '', 0),
       (110, 1, 1, 0, '', 0),
@@ -585,39 +586,39 @@ class Student_model extends CI_Model{
     $self_introduction = $this->input->post('self_introduction');
     $weakness_point    = $this->input->post('weakness_point');
     $action_plan       = $this->input->post('action_plan');
-   
+
     $pin             = $this->input->post('pn');
     $grp             = $this->input->post('grp');
     $complete_name   = $this->input->post('cn');
     $cnst2	         = $this->input->post('cn2');
     $cnst3	         = $this->input->post('cn3');
     $cnst4           = $this->input->post('cn4');
-   
+
     $nick_name	     = $this->input->post('nn');
-    $nnst2           = $this->input->post('nn2');	
+    $nnst2           = $this->input->post('nn2');
     $nnst3           = $this->input->post('nn3');
 	$nnst4	         = $this->input->post('nn4');
-    
+
 	$address	     = $this->input->post('ad');
 	$adrst2	         = $this->input->post('ad2');
 	$adrst3	         = $this->input->post('ad3');
 	$adrst4	         = $this->input->post('ad4');
-    
+
 	$place_of_birth	 = $this->input->post('pb');
 	$pobst2	         = $this->input->post('pb2');
 	$pobst3	         = $this->input->post('pb3');
 	$pobst4          = $this->input->post('pb4');
-    
+
 	$date_of_birth   = $this->input->post('db');
     $dobst2          = $this->input->post('db2');
     $dobst3          = $this->input->post('db3');
     $dobst4          = $this->input->post('db4');
-    
+
     $phone           = $this->input->post('ph');
     $phst2           = $this->input->post('ph2');
     $phst3           = $this->input->post('ph3');
     $phst4           = $this->input->post('ph4');
-    
+
     $program         = $this->input->post('pr');
     $program_duration= $this->input->post('pd');
     $starting_date   = $this->input->post('sd');
@@ -628,15 +629,16 @@ class Student_model extends CI_Model{
     $self_introduction	= $this->input->post('si');
     $weakness_point	 = $this->input->post('wp');
     $action_plan	 = $this->input->post('ap');
+    $note = $this->input->post('note');
     $fsp             = $this->input->post('fsp');
-    
+
     $this->db->set('complete_name', $complete_name);
     $this->db->set('grp', $grp);
     $this->db->set('cnst2',$cnst2);
     $this->db->set('cnst3',$cnst3);
     $this->db->set('cnst4',$cnst4);
     $this->db->set('nick_name', $nick_name);
-    $this->db->set('nnst2',$nnst2);	
+    $this->db->set('nnst2',$nnst2);
     $this->db->set('nnst3',$nnst3);
 	$this->db->set('nnst4',$nnst4);
     $this->db->set('address', $address);
@@ -665,6 +667,7 @@ class Student_model extends CI_Model{
     $this->db->set('self_introduction', $self_introduction);
     $this->db->set('weakness_point', $weakness_point);
     $this->db->set('action_plan', $action_plan);
+    $this->db->set('note', $note);
     $this->db->set('fsp',$fsp);
     $this->db->where('pin', $pin);
     $result=$this->db->update('students');
@@ -749,6 +752,6 @@ class Student_model extends CI_Model{
       $result = $this->dbforge->create_table($fsp_table, TRUE);
       return $result;
     }
-    
+
   }
 }

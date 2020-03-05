@@ -17,7 +17,7 @@ $(document).ready(function() {
             edit_student_button= '',
             i;
         for(i=0;i<data.length;i++){
-          edit_student_button += `<a title="Edit student and course detail" href="javascript:void(0);" class="btn btn-info btn-sm tooltip-bottom student_info_edit" data-grp="${data[i].grp}" data-pn="${data[i].pin}" data-cn="${data[i].complete_name}" data-nn="${data[i].nick_name}" data-ad="${data[i].address}" data-pb="${data[i].place_of_birth}" data-db="${$.format.date(data[i].date_of_birth, "yyyy-MM-dd")}" data-ph="${data[i].phone}" data-cnst2="${data[i].cnst2}" data-nnst2="${data[i].nnst2}" data-adrst2="${data[i].adrst2}" data-pobst2="${data[i].pobst2}" data-dobst2="${($.format.date(data[i].dobst2, "yyyy-MM-dd"))}" data-phst2="${data[i].phst2}" data-cnst3="${data[i].cnst3}" data-nnst3="${data[i].nnst3}" data-adrst3="${data[i].adrst3}" data-pobst3="${data[i].pobst3}" data-dobst3="${($.format.date(data[i].dobst3, "yyyy-MM-dd"))}" data-phst3="${data[i].phst3}" data-cnst4="${data[i].cnst4}" data-nnst4="${data[i].nnst4}" data-adrst4="${data[i].adrst4}" data-pobst4="${data[i].pobst4}" data-dobst4="${($.format.date(data[i].dobst4, "yyyy-MM-dd"))}" data-phst4="${data[i].phst4}" data-pr="${data[i].program}" data-pd="${data[i].program_duration}" data-sd="${($.format.date(data[i].starting_date, "yyyy-MM-dd"))}" data-re="${data[i].reason}" data-ta="${data[i].target}" data-di="${data[i].difficulties}" data-bg="${data[i].bground}" data-si="${data[i].self_introduction}" data-wp="${data[i].weakness_point}" data-ap="${data[i].action_plan}" data-fsp="${data[i].fsp}"><i class="fas fa-user-edit fa-fw"></i></a>`;
+          edit_student_button += `<a title="Edit student and course detail" href="javascript:void(0);" class="btn btn-info btn-sm tooltip-bottom student_info_edit" data-grp="${data[i].grp}" data-pn="${data[i].pin}" data-cn="${data[i].complete_name}" data-nn="${data[i].nick_name}" data-ad="${data[i].address}" data-pb="${data[i].place_of_birth}" data-db="${$.format.date(data[i].date_of_birth, "yyyy-MM-dd")}" data-ph="${data[i].phone}" data-cnst2="${data[i].cnst2}" data-nnst2="${data[i].nnst2}" data-adrst2="${data[i].adrst2}" data-pobst2="${data[i].pobst2}" data-dobst2="${($.format.date(data[i].dobst2, "yyyy-MM-dd"))}" data-phst2="${data[i].phst2}" data-cnst3="${data[i].cnst3}" data-nnst3="${data[i].nnst3}" data-adrst3="${data[i].adrst3}" data-pobst3="${data[i].pobst3}" data-dobst3="${($.format.date(data[i].dobst3, "yyyy-MM-dd"))}" data-phst3="${data[i].phst3}" data-cnst4="${data[i].cnst4}" data-nnst4="${data[i].nnst4}" data-adrst4="${data[i].adrst4}" data-pobst4="${data[i].pobst4}" data-dobst4="${($.format.date(data[i].dobst4, "yyyy-MM-dd"))}" data-phst4="${data[i].phst4}" data-pr="${data[i].program}" data-pd="${data[i].program_duration}" data-sd="${($.format.date(data[i].starting_date, "yyyy-MM-dd"))}" data-re="${data[i].reason}" data-ta="${data[i].target}" data-di="${data[i].difficulties}" data-bg="${data[i].bground}" data-si="${data[i].self_introduction}" data-wp="${data[i].weakness_point}" data-ap="${data[i].action_plan}" data-note="${data[i].note}" data-fsp="${data[i].fsp}"><i class="fas fa-user-edit fa-fw"></i></a>`;
          html += `  <div class="card">
                       <div class="card-header" id="heading_student">
                         <h2 class="mb-0">
@@ -107,28 +107,41 @@ $(document).ready(function() {
                           </button>
                         </h2>
                       </div>
-
                       <div id="collapse_course_detail" class="collapse" aria-labelledby="heading_course_detail" data-parent="#student_info">
                         <div class="card-body">
-                    <span class="student_info_item"> Program:</span>${data[i].program}<br>
-                    <span class="student_info_item"> Program duration: </span>${data[i].program_duration}<br>
-                    <span class="student_info_item"> Started on:</span>${($.format.date(data[i].starting_date, "MMM,dd yyyy"))} <br>
-                    <span class="student_info_item"> Reason:</span> ${data[i].reason}<br>
-                    <span class="student_info_item"> Target:</span> ${data[i].target}<br>
-                    <span class="student_info_item"> Difficulties:</span> ${data[i].difficulties}<br>
-                    <span class="student_info_item"> Background:</span> ${data[i].bground}<br>
-                    <span class="student_info_item"> Self Introduction:</span> ${data[i].self_introduction}<br>
-                    <span class="student_info_item"> Weakness points: </span>  ${data[i].action_plan}<br>
-                    <span class="student_info_item"> Action Plan: </span> ${data[i].action_plan}
-
+                          <span class="student_info_item"> Program:</span>${data[i].program}<br>
+                          <span class="student_info_item"> Program duration: </span>${data[i].program_duration}<br>
+                          <span class="student_info_item"> Started on:</span>${($.format.date(data[i].starting_date, "MMM,dd yyyy"))} <br>
+                          <span class="student_info_item"> Reason:</span> ${data[i].reason}<br>
+                          <span class="student_info_item"> Target:</span> ${data[i].target}<br>
+                          <span class="student_info_item"> Difficulties:</span> ${data[i].difficulties}<br>
+                          <span class="student_info_item"> Background:</span> ${data[i].bground}<br>
+                          <span class="student_info_item"> Self Introduction:</span> ${data[i].self_introduction}<br>
+                          <span class="student_info_item"> Weakness points: </span>  ${data[i].action_plan}<br>
+                          <span class="student_info_item"> Action Plan: </span> ${data[i].action_plan}
                         </div>
                       </div>
                     </div>`;
+              if(data[i].note !=''){
+                     html += `<div class="card">
+                           <div class="card-header" id="heading_note">
+                             <h2 class="mb-0">
+                               <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapse_note" aria-expanded="true" aria-controls="collapse_note">
+                               SPECIAL REQUEST
+                               </button>
+                             </h2>
+                           </div>
+                           <div id="collapse_note" class="collapse" aria-labelledby="heading_note" data-parent="#student_info">
+                             <div class="card-body">
+                               ${data[i].note}
+                             </div>
+                           </div>
+                         </div>`;
+                   }
 
           if (data[i].fsp == 'yes'){
             $('#fsp_tab').css('display','block');
             get_fsp();
-
           }
         }
         $('#student_info').html(html);
@@ -173,6 +186,7 @@ $(document).ready(function() {
         si=$(this).data('si'),
         wp=$(this).data('wp'),
         ap=$(this).data('ap'),
+        note = $(this).data('note'),
         fsp = $(this).data('fsp'),
         fsp_button = '<input type="checkbox" name="fsp" id="fsp"' ;
 
@@ -213,6 +227,7 @@ $(document).ready(function() {
     $('[name="si2"]').val(si);
     $('[name="wp2"]').val(wp);
     $('[name="ap2"]').val(ap);
+    $('[name="sr2"]').val(note);
     if(cnst2==''){
       $('#group_name_e, #student2_e, #student3_e, #student4_e').css('display', 'none');
     } else {
@@ -257,7 +272,7 @@ $(document).ready(function() {
     $('#fsp_button').html(fsp_button);
   });
   $('#update_student_btn').on('click', function(){
-    var bck = 'background-color', clr = '#fbe2e6', pn=$('#pn_e').val(), cn=$('#cn_e').val(), nn=$('#nn_e').val(), ad=$('#ad_e').val(), pb=$('#pb_e').val(), db=$('#db_e').val(), ph=$('#ph_e').val(), grp=$('#grp_e').val(), cn2=$('#cnst2_e').val(), nn2=$('#nnst2_e').val(), ad2=$('#adrst2_e').val(), pb2=$('#pbst2_e').val(), db2=$('#dbst2_e').val(), ph2=$('#phst2_e').val(), cn3=$('#cnst3_e').val(), nn3=$('#nnst3_e').val(), ad3=$('#adrst3_e').val(), pb3=$('#pbst3_e').val(), db3=$('#dbst3_e').val(), ph3=$('#phst3_e').val(), cn4=$('#cnst4_e').val(), nn4=$('#nnst4_e').val(), ad4=$('#adrst4_e').val(), pb4=$('#pbst4_e').val(), db4=$('#dbst4_e').val(), ph4=$('#phst4_e').val(), pr=$('#pr2').val(), pd=$('#pd2').val(), sd=$('#sd2').val(), re=$('#re2').val(), ta=$('#ta2').val(), di=$('#di2').val(), bg=$('#bg2').val(), si=$('#si2').val(), wp=$('#wp2').val(), ap=$('#ap2').val(), fsp='';
+    var bck = 'background-color', clr = '#fbe2e6', pn=$('#pn_e').val(), cn=$('#cn_e').val(), nn=$('#nn_e').val(), ad=$('#ad_e').val(), pb=$('#pb_e').val(), db=$('#db_e').val(), ph=$('#ph_e').val(), grp=$('#grp_e').val(), cn2=$('#cnst2_e').val(), nn2=$('#nnst2_e').val(), ad2=$('#adrst2_e').val(), pb2=$('#pbst2_e').val(), db2=$('#dbst2_e').val(), ph2=$('#phst2_e').val(), cn3=$('#cnst3_e').val(), nn3=$('#nnst3_e').val(), ad3=$('#adrst3_e').val(), pb3=$('#pbst3_e').val(), db3=$('#dbst3_e').val(), ph3=$('#phst3_e').val(), cn4=$('#cnst4_e').val(), nn4=$('#nnst4_e').val(), ad4=$('#adrst4_e').val(), pb4=$('#pbst4_e').val(), db4=$('#dbst4_e').val(), ph4=$('#phst4_e').val(), pr=$('#pr2').val(), pd=$('#pd2').val(), sd=$('#sd2').val(), re=$('#re2').val(), ta=$('#ta2').val(), di=$('#di2').val(), bg=$('#bg2').val(), si=$('#si2').val(), wp=$('#wp2').val(), ap=$('#ap2').val(), note=$('#sr2').val(), fsp='';
     if ($('#fsp').is(':checked')){fsp='yes';}else{fsp='';}
     if(cn==''|| ad==''|| db==''|| ph==''|| pr==''|| pd==''){
       $('#esf').addClass('alert alert-danger');
@@ -345,35 +360,35 @@ $(document).ready(function() {
                             $('#esf').html('Phone must only be number!');
                             $('#phst4_e').css(bck,clr);
                           } else {
-                            update_student(pn, cn, nn, ad, pb, db, ph, grp, cn2, nn2, ad2, pb2, db2, ph2, cn3, nn3, ad3, pb3, db3, ph3, cn4, nn4, ad4, pb4, db4, ph4, pr, pd, sd, re, ta, di, bg, si, wp, ap, fsp);
+                            update_student(pn, cn, nn, ad, pb, db, ph, grp, cn2, nn2, ad2, pb2, db2, ph2, cn3, nn3, ad3, pb3, db3, ph3, cn4, nn4, ad4, pb4, db4, ph4, pr, pd, sd, re, ta, di, bg, si, wp, ap,note, fsp);
                           }
                         }
                       } else {
                         cn4 = nn4 = pb4 = ad4 = ph4 = db4 = '';
-                       update_student(pn, cn, nn, ad, pb, db, ph, grp, cn2, nn2, ad2, pb2, db2, ph2, cn3, nn3, ad3, pb3, db3, ph3, cn4, nn4, ad4, pb4, db4, ph4, pr, pd, sd, re, ta, di, bg, si, wp, ap, fsp);
+                       update_student(pn, cn, nn, ad, pb, db, ph, grp, cn2, nn2, ad2, pb2, db2, ph2, cn3, nn3, ad3, pb3, db3, ph3, cn4, nn4, ad4, pb4, db4, ph4, pr, pd, sd, re, ta, di, bg, si, wp, ap, note, fsp);
                       }
                     }
                   }
                 } else {
                   cn3=nn3=pb3=ad3=ph3=db3=cn4=nn4=pb4=ad4=ph4=db4='';
-                 update_student(pn, cn, nn, ad,pb, db, ph, grp, cn2, nn2, ad2, pb2, db2, ph2, cn3, nn3, ad3, pb3, db3, ph3, cn4, nn4, ad4, pb4, db4, ph4, pr, pd, sd, re, ta, di, bg, si, wp, ap, fsp);
+                 update_student(pn, cn, nn, ad,pb, db, ph, grp, cn2, nn2, ad2, pb2, db2, ph2, cn3, nn3, ad3, pb3, db3, ph3, cn4, nn4, ad4, pb4, db4, ph4, pr, pd, sd, re, ta, di, bg, si, wp, ap,note, fsp);
                 }
               }
             }
           } else {
             cn2 = nn2 = pb2 = ad2 = ph2 = db2 = cn3 = nn3 = pb3 = ad3 = ph3 = db3 = cn4 = nn4 = pb4 = ad4= ph4= db4='';
-           update_student(pn, cn, nn, ad, pb, db, ph, grp, cn2, nn2, ad2, pb2, db2, ph2, cn3, nn3, ad3, pb3, db3, ph3, cn4, nn4, ad4, pb4, db4, ph4, pr, pd, sd,re, ta, di, bg, si, wp, ap, fsp);
+           update_student(pn, cn, nn, ad, pb, db, ph, grp, cn2, nn2, ad2, pb2, db2, ph2, cn3, nn3, ad3, pb3, db3, ph3, cn4, nn4, ad4, pb4, db4, ph4, pr, pd, sd,re, ta, di, bg, si, wp, ap,note, fsp);
           }
         }
       }
     }
   });
-  function update_student(pn, cn, nn, ad, pb, db, ph, grp, cn2, nn2, ad2, pb2, db2, ph2, cn3, nn3, ad3, pb3, db3, ph3, cn4, nn4, ad4, pb4, db4, ph4, pr, pd, sd, re, ta, di, bg, si, wp, ap, fsp) {
+  function update_student(pn, cn, nn, ad, pb, db, ph, grp, cn2, nn2, ad2, pb2, db2, ph2, cn3, nn3, ad3, pb3, db3, ph3, cn4, nn4, ad4, pb4, db4, ph4, pr, pd, sd, re, ta, di, bg, si, wp, ap,note, fsp) {
     $.ajax({
       type : "post",
       url: `${u}/student/update`,
       dataType : "json",
-      data : {pn:pn,cn:cn,nn:nn,ad:ad,pb:pb,db:db,ph:ph,grp,cn2:cn2,nn2:nn2,ad2:ad2,pb2:pb2,db2:db2,ph2:ph2,cn3:cn3,nn3:nn3,ad3:ad3,pb3:pb3,db3:db3,ph3:ph3,cn4:cn4,nn4:nn4,ad4:ad4,pb4:pb4,db4:db4,ph4:ph4,pr:pr,pd:pd,sd:sd,re:re,ta:ta,di:di,bg:bg,si:si,wp:wp,ap:ap,fsp:fsp},
+      data : {pn:pn,cn:cn,nn:nn,ad:ad,pb:pb,db:db,ph:ph,grp,cn2:cn2,nn2:nn2,ad2:ad2,pb2:pb2,db2:db2,ph2:ph2,cn3:cn3,nn3:nn3,ad3:ad3,pb3:pb3,db3:db3,ph3:ph3,cn4:cn4,nn4:nn4,ad4:ad4,pb4:pb4,db4:db4,ph4:ph4,pr:pr,pd:pd,sd:sd,re:re,ta:ta,di:di,bg:bg,si:si,wp:wp,ap:ap,note:note,fsp:fsp},
       success : function(data){
         $('#esm').modal('hide');
         $('#mystudents').DataTable().ajax.reload();
