@@ -113,12 +113,12 @@ class Schedule_model extends CI_Model{
       ),
       '_9r' => array(
         'type' => 'varchar',
-        'constraint' => '8',
+        'constraint' => '24',
         'default' => ''
       ),
       '_9p' => array(
         'type' => 'varchar',
-        'constraint' => '8',
+        'constraint' => '4',
         'default' => ''
       ),
       '_9n' => array(
@@ -133,12 +133,12 @@ class Schedule_model extends CI_Model{
       ),
       '_10r' => array(
         'type' => 'varchar',
-        'constraint' => '8',
+        'constraint' => '24',
         'default' => ''
       ),
       '_10p' => array(
         'type' => 'varchar',
-        'constraint' => '8',
+        'constraint' => '4',
         'default' => ''
       ),
       '_10n' => array(
@@ -153,12 +153,12 @@ class Schedule_model extends CI_Model{
       ),
       '_11r' => array(
         'type' => 'varchar',
-        'constraint' => '8',
+        'constraint' => '24',
         'default' => ''
       ),
       '_11p' => array(
         'type' => 'varchar',
-        'constraint' => '8',
+        'constraint' => '4',
         'default' => ''
       ),
       '_11n' => array(
@@ -173,12 +173,12 @@ class Schedule_model extends CI_Model{
       ),
       '_12r' => array(
         'type' => 'varchar',
-        'constraint' => '8',
+        'constraint' => '24',
         'default' => ''
       ),
       '_12p' => array(
         'type' => 'varchar',
-        'constraint' => '8',
+        'constraint' => '4',
         'default' => ''
       ),
       '_12n' => array(
@@ -193,12 +193,12 @@ class Schedule_model extends CI_Model{
       ),
       '_13r' => array(
         'type' => 'varchar',
-        'constraint' => '8',
+        'constraint' => '24',
         'default' => ''
       ),
       '_13p' => array(
         'type' => 'varchar',
-        'constraint' => '8',
+        'constraint' => '4',
         'default' => ''
       ),
       '_13n' => array(
@@ -213,12 +213,12 @@ class Schedule_model extends CI_Model{
       ),
       '_14r' => array(
         'type' => 'varchar',
-        'constraint' => '8',
+        'constraint' => '24',
         'default' => ''
       ),
       '_14p' => array(
         'type' => 'varchar',
-        'constraint' => '8',
+        'constraint' => '4',
         'default' => ''
       ),
       '_14n' => array(
@@ -233,12 +233,12 @@ class Schedule_model extends CI_Model{
       ),
       '_15r' => array(
         'type' => 'varchar',
-        'constraint' => '8',
+        'constraint' => '24',
         'default' => ''
       ),
       '_15p' => array(
         'type' => 'varchar',
-        'constraint' => '8',
+        'constraint' => '4',
         'default' => ''
       ),
       '_15n' => array(
@@ -253,12 +253,12 @@ class Schedule_model extends CI_Model{
       ),
       '_16r' => array(
         'type' => 'varchar',
-        'constraint' => '8',
+        'constraint' => '24',
         'default' => ''
       ),
       '_16p' => array(
         'type' => 'varchar',
-        'constraint' => '8',
+        'constraint' => '4',
         'default' => ''
       ),
       '_16n' => array(
@@ -268,17 +268,17 @@ class Schedule_model extends CI_Model{
       ),
       '_17' => array(
         'type' => 'varchar',
-        'constraint' => '8',
+        'constraint' => '4',
         'default' => ''
       ),
       '_17r' => array(
         'type' => 'varchar',
-        'constraint' => '8',
+        'constraint' => '24',
         'default' => ''
       ),
       '_17p' => array(
         'type' => 'varchar',
-        'constraint' => '8',
+        'constraint' => '4',
         'default' => ''
       ),
       '_17n' => array(
@@ -293,12 +293,12 @@ class Schedule_model extends CI_Model{
       ),
       '_18r' => array(
         'type' => 'varchar',
-        'constraint' => '8',
+        'constraint' => '24',
         'default' => ''
       ),
       '_18p' => array(
         'type' => 'varchar',
-        'constraint' => '8',
+        'constraint' => '4',
         'default' => ''
       ),
       '_18n' => array(
@@ -313,12 +313,12 @@ class Schedule_model extends CI_Model{
       ),
       '_19r' => array(
         'type' => 'varchar',
-        'constraint' => '8',
+        'constraint' => '24',
         'default' => ''
       ),
       '_19p' => array(
         'type' => 'varchar',
-        'constraint' => '8',
+        'constraint' => '4',
         'default' => ''
       ),
       '_19n' => array(
@@ -333,12 +333,12 @@ class Schedule_model extends CI_Model{
       ),
       '_20r' => array(
         'type' => 'varchar',
-        'constraint' => '8',
+        'constraint' => '24',
         'default' => ''
       ),
       '_20p' => array(
         'type' => 'varchar',
-        'constraint' => '8',
+        'constraint' => '4',
         'default' => ''
       ),
       '_20n' => array(
