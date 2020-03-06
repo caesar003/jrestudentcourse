@@ -624,7 +624,7 @@
                         </div>
                         <div class="input-group col">
                           <div class="input-group-prepend">
-                            <span class="input-group-text"><i style="color:rgb(0,120,80);" class="fa fa-wrench fa-fw"></i> </span>
+                            <span class="input-group-text"><i style="color:rgb(120, 78,80);" class="fa fa-sticky-note fa-fw"></i> </span>
                           </div>
                           <textarea class="form-control" name="sr" id="sr" placeholder="Special request from student's parents etc."></textarea>
                         </div>
@@ -1099,7 +1099,7 @@
                         </div>
                         <div class="input-group col">
                           <div class="input-group-prepend">
-                            <span class="input-group-text"><i style="color:rgb(0,120,80);" class="fa fa-wrench fa-fw"></i> </span>
+                            <span class="input-group-text"><i style="color:rgb(120, 78,80);" class="fa fa-sticky-note fa-fw"></i> </span>
                           </div>
                           <textarea class="form-control" name="sr2" id="sr2" placeholder="Special request from student's parents etc."></textarea>
                         </div>
@@ -1205,9 +1205,9 @@
     <script type="text/javascript" src="<?php echo base_url('assets/js/usr-schedule.js')?>"></script>
     <?php endif;?>
     <?php if($this->session->userdata('level') == '17'):?>
-    <script type="text/javascript" src="<?php echo base_url('assets/js/spv.js');?>"></script>
+    <script type="text/javascript" src="<?php echo base_url('assets/js/spv.js?v=1.0');?>"></script>
     <?php else: ?>
-    <script type="text/javascript" src="<?php echo base_url('assets/js/user.js')?>"></script>
+    <script type="text/javascript" src="<?php echo base_url('assets/js/user.js?v=1.0')?>"></script>
     <?php endif;?>
     <script src="<?php echo base_url('assets/js/chat.js')?>"></script>
     <script>

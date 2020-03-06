@@ -944,7 +944,7 @@ that gives us this:
                          </div>
                          <div class="input-group col">
                            <div class="input-group-prepend">
-                             <span class="input-group-text"><i style="color:rgb(0,120,80);" class="fa fa-wrench fa-fw"></i> </span>
+                             <span class="input-group-text"><i style="color:rgb(120, 78,80);" class="fa fa-sticky-note fa-fw"></i> </span>
                            </div>
                            <textarea class="form-control" name="sr2" id="sr2" placeholder="Special request from student's parents etc."></textarea>
                          </div>
@@ -1000,7 +1000,7 @@ that gives us this:
     </script>
     <!-- script syllabus -->
     <script type="text/javascript" src="<?php echo base_url('assets/js/syllabus.js')?>"></script>
-    <script type="text/javascript" src="<?php echo base_url('assets/js/student.js');?>"></script>
+    <script type="text/javascript" src="<?php echo base_url('assets/js/student.js?v=1.0');?>"></script>
     <script src="<?php echo base_url('assets/js/chat.js');?>"></script>
   </body>
 </html>

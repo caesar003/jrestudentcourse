@@ -13,5 +13,5 @@
       <link rel="stylesheet" href="<?php echo base_url('assets/css/dataTables.bootstrap4.min.css');?>">
       <!--link rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css"-->
 
-      <link rel="stylesheet" type="text/css" href="<?php echo base_url().'assets/css/style.css?v=1.1'?>">
+      <link rel="stylesheet" type="text/css" href="<?php echo base_url().'assets/css/style.css?v=1.2'?>">
       <link rel="shortcut icon" type="image/x-icon" href="<?php echo base_url().'favicon.ico'?>">

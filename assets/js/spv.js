@@ -7,9 +7,9 @@ $(document).ready(function(){
       },
       "columns":[
         {
-          "data" : {grp:"grp",pin: "pin", complete_name: "complete_name", nick_name:"nick_name", address: "address", place_of_birth: "place_of_birth", date_of_birth: "date_of_birth", phone: "phone",cnst2:"cnst2",nnst2:"nnst2",adrst2:"adrst2",pobst2:"pobst2",dobst2:"dobst2",phst2:"phst2",cnst3:"cnst3",nnst3:"nnst3",adrst3:"adrst3",pobst3:"pobst3",dobst3:"dobst3",phst3:"phst3",cnst4:"cnst4",nnst4:"nnst4",adrst4:"adrst4",pobst4:"pobst4",dobst4:"dobst4",phst4:"phst4",program: "program", program_duration: "program_duration", starting_date: "starting_date", reason: "reason", target: "target", difficulties: "difficulties", bground: "bground", self_introduction: "self_introduction", weakness_point: "weakness_point", action_plan: "action_plan", fsp: "fsp"},
+          "data" : {grp:"grp",pin: "pin", complete_name: "complete_name", nick_name:"nick_name", address: "address", place_of_birth: "place_of_birth", date_of_birth: "date_of_birth", phone: "phone",cnst2:"cnst2",nnst2:"nnst2",adrst2:"adrst2",pobst2:"pobst2",dobst2:"dobst2",phst2:"phst2",cnst3:"cnst3",nnst3:"nnst3",adrst3:"adrst3",pobst3:"pobst3",dobst3:"dobst3",phst3:"phst3",cnst4:"cnst4",nnst4:"nnst4",adrst4:"adrst4",pobst4:"pobst4",dobst4:"dobst4",phst4:"phst4",program: "program", program_duration: "program_duration", starting_date: "starting_date", reason: "reason", target: "target", difficulties: "difficulties", bground: "bground", self_introduction: "self_introduction", weakness_point: "weakness_point", action_plan: "action_plan", note:"note", fsp: "fsp"},
           "render" : function(data,meta,row){
-            return `<a style="color:black;text-decoration:none;" href="${u}/student_single?pin=${data.pin}">${data.pin}</a> <a title="Edit" href="javascript:void(0);" class="item_edit tooltip-bottom" data-grp="${data.grp}" data-pn="${data.pin}" data-cn="${data.complete_name}"data-nn="${data.nick_name}" data-ad="${data.address}" data-pb="${data.place_of_birth}"data-db="${($.format.date(data.date_of_birth, "yyyy-MM-dd"))}"data-ph="${data.phone}"data-cnst2="${data.cnst2}"data-nnst2="${data.nnst2}"data-adrst2="${data.adrst2}"data-pobst2="${data.pobst2}"data-dobst2="${($.format.date(data.dobst2, "yyyy-MM-dd"))}"data-phst2="${data.phst2}"data-cnst3="${data.cnst3}"data-nnst3="${data.nnst3}"data-adrst3="${data.adrst3}"data-pobst3="${data.pobst3}"data-dobst3="${($.format.date(data.dobst3, "yyyy-MM-dd"))}"data-phst3="${data.phst3}"data-cnst4="${data.cnst4}"data-nnst4="${data.nnst4}"data-adrst4="${data.adrst4}"data-pobst4="${data.pobst4}"data-dobst4="${($.format.date(data.dobst4, "yyyy-MM-dd"))}"data-phst4="${data.phst4}"data-pr="${data.program}"data-pd="${data.program_duration}"data-sd="${($.format.date(data.starting_date, "yyyy-MM-dd"))}" data-re="${data.reason}"data-ta="${data.target}"data-di="${data.difficulties}"data-bg="${data.bground}"data-si="${data.self_introduction}"data-wp="${data.weakness_point}"data-ap="${data.action_plan}"data-fsp="${data.fsp}"><i style="font-size:14px;" class="fas fa-user-edit fa-fw"></i></a> <a href="javascript:void(0);" data-pin="${data.pin}" class="item_delete"><i style="color:red;" class="fas fa-trash fa-fw"></i> </a>`;
+            return `<a style="color:black;text-decoration:none;" href="${u}/student_single?pin=${data.pin}">${data.pin}</a> <a title="Edit" href="javascript:void(0);" class="item_edit tooltip-bottom" data-grp="${data.grp}" data-pn="${data.pin}" data-cn="${data.complete_name}"data-nn="${data.nick_name}" data-ad="${data.address}" data-pb="${data.place_of_birth}"data-db="${($.format.date(data.date_of_birth, "yyyy-MM-dd"))}"data-ph="${data.phone}"data-cnst2="${data.cnst2}"data-nnst2="${data.nnst2}"data-adrst2="${data.adrst2}"data-pobst2="${data.pobst2}"data-dobst2="${($.format.date(data.dobst2, "yyyy-MM-dd"))}"data-phst2="${data.phst2}"data-cnst3="${data.cnst3}"data-nnst3="${data.nnst3}"data-adrst3="${data.adrst3}"data-pobst3="${data.pobst3}"data-dobst3="${($.format.date(data.dobst3, "yyyy-MM-dd"))}"data-phst3="${data.phst3}"data-cnst4="${data.cnst4}"data-nnst4="${data.nnst4}"data-adrst4="${data.adrst4}"data-pobst4="${data.pobst4}"data-dobst4="${($.format.date(data.dobst4, "yyyy-MM-dd"))}"data-phst4="${data.phst4}"data-pr="${data.program}"data-pd="${data.program_duration}"data-sd="${($.format.date(data.starting_date, "yyyy-MM-dd"))}" data-re="${data.reason}"data-ta="${data.target}"data-di="${data.difficulties}"data-bg="${data.bground}"data-si="${data.self_introduction}"data-wp="${data.weakness_point}"data-ap="${data.action_plan}" data-note="${data.note}" data-fsp="${data.fsp}"><i style="font-size:14px;" class="fas fa-user-edit fa-fw"></i></a> <a href="javascript:void(0);" data-pin="${data.pin}" class="item_delete"><i style="color:red;" class="fas fa-trash fa-fw"></i> </a>`;
           }
         },
         {
@@ -366,7 +366,8 @@ $(document).ready(function(){
         bg=$('#bg').val(),
         si=$('#si').val(),
         wp=$('#wp').val(),
-        ap=$('#ap').val();
+        ap=$('#ap').val(),
+        note = $('#sr').val();
     if (pn==''|| cn==''||ad==''||db==''||ph==''||pr==''||pd==''){
       $('#nsf').addClass('alert alert-danger');
       $('#nsf').html('Please fill out all required fields');
@@ -437,24 +438,24 @@ $(document).ready(function(){
                               $('#nsf').html('Phone must only be numbers');
                               $('#phst4').css(bck,clr);
                             } else{
-                              check_pin(grp,pn,cn,nn,ad,pb,db,ph,cn2,nn2,ad2,pb2,db2,ph2,cn3,nn3,ad3,pb3,db3,ph3,cn4,nn4,ad4,pb4,db4,ph4,pr,pd,sd,re,ta,di,bg,si,wp,ap);
+                              check_pin(grp,pn,cn,nn,ad,pb,db,ph,cn2,nn2,ad2,pb2,db2,ph2,cn3,nn3,ad3,pb3,db3,ph3,cn4,nn4,ad4,pb4,db4,ph4,pr,pd,sd,re,ta,di,bg,si,wp,ap), note;
                               }
                           }
                         } else {
                           cn4=nn4=ad4=pb4=db4=ph4='';
-                          check_pin(grp,pn,cn,nn,ad,pb,db,ph,cn2,nn2,ad2,pb2,db2,ph2,cn3,nn3,ad3,pb3,db3,ph3,cn4,nn4,ad4,pb4,db4,ph4,pr,pd,sd,re,ta,di,bg,si,wp,ap);
+                          check_pin(grp,pn,cn,nn,ad,pb,db,ph,cn2,nn2,ad2,pb2,db2,ph2,cn3,nn3,ad3,pb3,db3,ph3,cn4,nn4,ad4,pb4,db4,ph4,pr,pd,sd,re,ta,di,bg,si,wp,ap, note);
                         }
                       }
                     }
                   } else{
                     cn3=nn3=ad3=pb3=db3=ph3=cn4=nn4=ad4=pb4=db4=ph4='';
-                    check_pin(grp,pn,cn,nn,ad,pb,db,ph,cn2,nn2,ad2,pb2,db2,ph2,cn3,nn3,ad3,pb3,db3,ph3,cn4,nn4,ad4,pb4,db4,ph4,pr,pd,sd,re,ta,di,bg,si,wp,ap);
+                    check_pin(grp,pn,cn,nn,ad,pb,db,ph,cn2,nn2,ad2,pb2,db2,ph2,cn3,nn3,ad3,pb3,db3,ph3,cn4,nn4,ad4,pb4,db4,ph4,pr,pd,sd,re,ta,di,bg,si,wp,ap, note);
                   }
                 }
               }
             } else{
               cn2=nn2=ad2=pb2=db2=ph2=cn3=nn3=ad3=pb3=db3=ph3=cn4=nn4=ad4=pb4=db4=ph4='';
-              check_pin(grp,pn,cn,nn,ad,pb,db,ph,cn2,nn2,ad2,pb2,db2,ph2,cn3,nn3,ad3,pb3,db3,ph3,cn4,nn4,ad4,pb4,db4,ph4,pr,pd,sd,re,ta,di,bg,si,wp,ap);
+              check_pin(grp,pn,cn,nn,ad,pb,db,ph,cn2,nn2,ad2,pb2,db2,ph2,cn3,nn3,ad3,pb3,db3,ph3,cn4,nn4,ad4,pb4,db4,ph4,pr,pd,sd,re,ta,di,bg,si,wp,ap, note);
             }
           }
         }
@@ -462,7 +463,7 @@ $(document).ready(function(){
     }
     return false;
   });
-  function check_pin(grp,pn,cn,nn,ad,pb,db,ph,cn2,nn2,ad2,pb2,db2,ph2,cn3,nn3,ad3,pb3,db3,ph3,cn4,nn4,ad4,pb4,db4,ph4,pr,pd,sd,re,ta,di,bg,si,wp,ap){
+  function check_pin(grp,pn,cn,nn,ad,pb,db,ph,cn2,nn2,ad2,pb2,db2,ph2,cn3,nn3,ad3,pb3,db3,ph3,cn4,nn4,ad4,pb4,db4,ph4,pr,pd,sd,re,ta,di,bg,si,wp,ap, note){
     var bck = 'background-color',
         clr ='#fbe2e6';
     $.ajax({
@@ -475,17 +476,17 @@ $(document).ready(function(){
           $('#nsf').html('pin is already used');
           $('#pn').css(bck, clr);
         }else{
-         submit_student(grp,pn,cn,nn,ad,pb,db,ph,cn2,nn2,ad2,pb2,db2,ph2,cn3,nn3,ad3,pb3,db3,ph3,cn4,nn4,ad4,pb4,db4,ph4,pr,pd,sd,re,ta,di,bg,si,wp,ap);
+         submit_student(grp,pn,cn,nn,ad,pb,db,ph,cn2,nn2,ad2,pb2,db2,ph2,cn3,nn3,ad3,pb3,db3,ph3,cn4,nn4,ad4,pb4,db4,ph4,pr,pd,sd,re,ta,di,bg,si,wp,ap, note);
         }
       }
     });
   }
-  function submit_student(grp,pn,cn,nn,ad,pb,db,ph,cn2,nn2,ad2,pb2,db2,ph2,cn3,nn3,ad3,pb3,db3,ph3,cn4,nn4,ad4,pb4,db4,ph4,pr,pd,sd,re,ta,di,bg,si,wp,ap){
+  function submit_student(grp,pn,cn,nn,ad,pb,db,ph,cn2,nn2,ad2,pb2,db2,ph2,cn3,nn3,ad3,pb3,db3,ph3,cn4,nn4,ad4,pb4,db4,ph4,pr,pd,sd,re,ta,di,bg,si,wp,ap, note){
     $.ajax({
       type : "POST",
       url : `${u}/student/save`,
       dataType : "JSON",
-      data:{grp:grp,pn:pn,cn:cn,nn:nn,ad:ad,pb:pb,db:db,ph:ph,cn2:cn2,nn2:nn2,ad2:ad2,pb2:pb2,db2:db2,ph2:ph2,cn3:cn3,nn3:nn3,ad3:ad3,pb3:pb3,db3:db3,ph3:ph3,cn4:cn4,nn4:nn4,ad4:ad4,pb4:pb4,db4:db4,ph4:ph4,pr:pr,pd:pd,sd:sd,re:re,ta:ta,di:di,bg:bg,si:si,we:wp,ap:ap},
+      data:{grp:grp,pn:pn,cn:cn,nn:nn,ad:ad,pb:pb,db:db,ph:ph,cn2:cn2,nn2:nn2,ad2:ad2,pb2:pb2,db2:db2,ph2:ph2,cn3:cn3,nn3:nn3,ad3:ad3,pb3:pb3,db3:db3,ph3:ph3,cn4:cn4,nn4:nn4,ad4:ad4,pb4:pb4,db4:db4,ph4:ph4,pr:pr,pd:pd,sd:sd,re:re,ta:ta,di:di,bg:bg,si:si,we:wp,ap:ap, note:note},
       success: function(data){
         $('[name="pn"]').val("");
         $('[name="cn"]').val("");
@@ -546,6 +547,7 @@ $(document).ready(function(){
         si=$(this).data('si'),
         wp=$(this).data('wp'),
         ap=$(this).data('ap'),
+        note= $(this).data('note'),
         fsp = $(this).data('fsp'),
         fsp_button = '<input type="checkbox" name="fsp" id="fsp"' ;
     $('#esm').modal('show');
@@ -585,6 +587,7 @@ $(document).ready(function(){
     $('[name="si2"]').val(si);
     $('[name="wp2"]').val(wp);
     $('[name="ap2"]').val(ap);
+    $('[name="sr2"]').val(note);
     if(cnst2==''){
       $('#group_name_e,#student2_e,#student3_e,#student4_e').css('display', 'none');
     } else {
@@ -645,7 +648,7 @@ $(document).ready(function(){
     sd=$('#sd2').val(),re=$('#re2').val(),
     ta=$('#ta2').val(),di=$('#di2').val(),
     bg=$('#bg2').val(),si=$('#si2').val(),
-    wp=$('#wp2').val(),ap=$('#ap2').val(),
+    wp=$('#wp2').val(),ap=$('#ap2').val(), note=$('#sr2').val(),
       fsp='';
   if ($('#fsp').is(':checked')){fsp='yes';}else{fsp='';}
   if(cn==''|| ad==''|| db==''|| ph==''|| pr==''|| pd==''){
@@ -734,35 +737,35 @@ $(document).ready(function(){
                           $('#esf').html('Phone must only be number!');
                           $('#phst4_e').css(bck,clr);
                         } else {
-                          update_student(pn,cn,nn,ad,pb,db,ph,grp,cn2,nn2,ad2,pb2,db2,ph2,cn3,nn3,ad3,pb3,db3,ph3,cn4,nn4,ad4,pb4,db4,ph4,pr,pd,sd,re,ta,di,bg,si,wp,ap,fsp);
+                          update_student(pn,cn,nn,ad,pb,db,ph,grp,cn2,nn2,ad2,pb2,db2,ph2,cn3,nn3,ad3,pb3,db3,ph3,cn4,nn4,ad4,pb4,db4,ph4,pr,pd,sd,re,ta,di,bg,si,wp,ap,note, fsp);
                         }
                       }
                     } else {
                       cn4 = nn4 = pb4 = ad4 = ph4 = db4 = '';
-                     update_student(pn,cn,nn,ad,pb,db,ph,grp,cn2,nn2,ad2,pb2,db2,ph2,cn3,nn3,ad3,pb3,db3,ph3,cn4,nn4,ad4,pb4,db4,ph4,pr,pd,sd,re,ta,di,bg,si,wp,ap,fsp);
+                     update_student(pn,cn,nn,ad,pb,db,ph,grp,cn2,nn2,ad2,pb2,db2,ph2,cn3,nn3,ad3,pb3,db3,ph3,cn4,nn4,ad4,pb4,db4,ph4,pr,pd,sd,re,ta,di,bg,si,wp,ap,note, fsp);
                     }
                   }
                 }
               } else {
                 cn3=nn3=pb3=ad3=ph3=db3=cn4=nn4=pb4=ad4=ph4=db4='';
-               update_student(pn,cn,nn,ad,pb,db,ph,grp,cn2,nn2,ad2,pb2,db2,ph2,cn3,nn3,ad3,pb3,db3,ph3,cn4,nn4,ad4,pb4,db4,ph4,pr,pd,sd,re,ta,di,bg,si,wp,ap,fsp);
+               update_student(pn,cn,nn,ad,pb,db,ph,grp,cn2,nn2,ad2,pb2,db2,ph2,cn3,nn3,ad3,pb3,db3,ph3,cn4,nn4,ad4,pb4,db4,ph4,pr,pd,sd,re,ta,di,bg,si,wp,ap,note, fsp);
               }
             }
           }
         } else {
           cn2=nn2=pb2=ad2=ph2=db2=cn3=nn3=pb3=ad3=ph3=db3=cn4=nn4=pb4=ad4=ph4=db4='';
-         update_student(pn,cn,nn,ad,pb,db,ph,grp,cn2,nn2,ad2,pb2,db2,ph2,cn3,nn3,ad3,pb3,db3,ph3,cn4,nn4,ad4,pb4,db4,ph4,pr,pd,sd,re,ta,di,bg,si,wp,ap,fsp);
+         update_student(pn,cn,nn,ad,pb,db,ph,grp,cn2,nn2,ad2,pb2,db2,ph2,cn3,nn3,ad3,pb3,db3,ph3,cn4,nn4,ad4,pb4,db4,ph4,pr,pd,sd,re,ta,di,bg,si,wp,ap,note, fsp);
         }
       }
     }
   }
 });
-  function update_student(pn, cn, nn, ad, pb, db, ph, grp,cn2,nn2,ad2,pb2,db2,ph2, cn3, nn3, ad3, pb3, db3, ph3, cn4, nn4, ad4, pb4, db4, ph4, pr, pd, sd,re,ta,di,bg,si,wp,ap,fsp) {
+  function update_student(pn, cn, nn, ad, pb, db, ph, grp,cn2,nn2,ad2,pb2,db2,ph2, cn3, nn3, ad3, pb3, db3, ph3, cn4, nn4, ad4, pb4, db4, ph4, pr, pd, sd,re,ta,di,bg,si,wp,ap,note, fsp) {
     $.ajax({
       type : "post",
       url: `${u}/student/update`,
       dataType : "json",
-      data : {pn:pn,cn:cn,nn:nn,ad:ad,pb:pb,db:db,ph:ph,grp,cn2:cn2,nn2:nn2,ad2:ad2,pb2:pb2,db2:db2,ph2:ph2,cn3:cn3,nn3:nn3,ad3:ad3,pb3:pb3,db3:db3,ph3:ph3,cn4:cn4,nn4:nn4,ad4:ad4,pb4:pb4,db4:db4,ph4:ph4,pr:pr,pd:pd,sd:sd,re:re,ta:ta,di:di,bg:bg,si:si,wp:wp,ap:ap,fsp:fsp},
+      data : {pn:pn,cn:cn,nn:nn,ad:ad,pb:pb,db:db,ph:ph,grp,cn2:cn2,nn2:nn2,ad2:ad2,pb2:pb2,db2:db2,ph2:ph2,cn3:cn3,nn3:nn3,ad3:ad3,pb3:pb3,db3:db3,ph3:ph3,cn4:cn4,nn4:nn4,ad4:ad4,pb4:pb4,db4:db4,ph4:ph4,pr:pr,pd:pd,sd:sd,re:re,ta:ta,di:di,bg:bg,si:si,wp:wp,ap:ap,note:note, fsp:fsp},
       success : function(data){
         $('#esm').modal('hide');
         $('#mystudents').DataTable().ajax.reload();
