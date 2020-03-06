@@ -20,6 +20,19 @@ $(document).ready(function(){
       }
     });
   }
+  $('#switch-user').on('click', function(){
+    $(this).hide();
+    $('#switch-admin').show();
+    $('#myschedule').fadeOut('fast');
+    $('#usr_view').fadeIn('slow');
+    show_schedule();
+  });
+  $('#switch-admin').on('click', function(){
+    $(this).hide();
+    $('#switch-user').show();
+    $('#usr_view').fadeOut('slow');
+    $('#myschedule').fadeIn('fast');
+  });
   $('#add_schedule').on('click', function(){
     var d = $('#schedule_date').val();
     if(d==''){
@@ -80,6 +93,7 @@ $(document).ready(function(){
   $('#schedule_list').on('click','.schedule_list_item', function(){
     var d = $(this).data('d');
     get_schedule(d);
+    show_schedule(d);
     $('#schedule_date').val(d);
   });
   function get_schedule(d = $('#schedule_date').val()){
@@ -96,7 +110,7 @@ $(document).ready(function(){
         for (i=0;i<data.length;i++){
           c = c+1;
           html += `<tr>
-                      <td rowspan="2" style="text-align:right;"><div>${c}</div></td>
+                      <td rowspan="2" style="text-align:right;"><div>${c} <a title="Delete ${data[i].name}" data-id="${data[i].id}" class="btn-sm teacher_delete tooltip-bottom" href="javascript:void(0);"><i style="color:red;" class="fas fa-trash"></i></a></div></td>
                       <td rowspan="2" style="text-align:left;"><div contentEditable="true" class="edit" data-id="${data[i].id}" data-col="name">${data[i].name}</div></td>
                       <td><div contentEditable="true" class="edit" data-id="${data[i].id}" data-col="_9">${data[i]._9}</div></td>
                       <td><div contentEditable="true" class="edit" data-id="${data[i].id}" data-col="_9r">${data[i]._9r}</div></td>
@@ -134,7 +148,6 @@ $(document).ready(function(){
                       <td><div contentEditable="true" class="edit"  data-id="${data[i].id}" data-col="_20">${data[i]._20}</div></td>
                       <td><div contentEditable="true" class="edit" data-id="${data[i].id}" data-col="_20r">${data[i]._20r}</div></td>
                       <td><div contentEditable="true" class="edit" data-id="${data[i].id}" data-col="_20p">${data[i]._20p}</div></td>
-                      <td><a data-id="${data[i].id}" class="btn-sm teacher_delete" href="javascript:void(0);"><i style="color:red;" class="fas fa-trash"></i></a></td>
                       </tr><tr>
                         <td colspan="3">${data[i]._9n}</td>
                         <td colspan="3">${data[i]._10n}</td>
@@ -167,6 +180,155 @@ $(document).ready(function(){
             $('#note').html(html);
           }
         });
+      }
+    });
+  }
+  function show_schedule(d = $('#schedule_date').val()){
+    var dtf = d + " 00:00:00";
+    $.ajax({
+      type: "ajax",
+      url: `${u}/schedule/get_schedule?d=${d}`,
+      dataType : "JSON",
+      success : function(data){
+        var html = ``,
+            schd_head = `<small>Schedule for</small> ${$.format.date(dtf, "ddd, MMM D, yyyy")}`,
+            stl = `${u}/student_single?pin=`,
+            i,
+            c=0;
+        for (i=0;i<data.length;i++){
+          c = c+1;
+          html += `<tr>
+                      <td rowspan="2" style="text-align:right;">${c}</td>
+                      <td rowspan="2" style="text-align:left;">${data[i].name}</td>`;
+
+          if(isNaN(data[i]._9)){
+              html += `<td class="tc_break">${data[i]._9}</td>`;
+
+          } else if(data[i]._9p == `a`){
+            html += `<td class="abs""><a href="${stl+data[i]._9}">${data[i]._9} <span class="req">${data[i]._9r}</span></a></td>`;
+
+          } else if(data[i]._9p == `p`){
+            html += `<td class="prst"><a href="${stl+data[i]._9}">${data[i]._9} <span class="req">${data[i]._9r}</span></a></td>`;
+
+          } else {
+            html += `<td><a href="${stl+data[i]._9}">${data[i]._9} <span class="req">${data[i]._9r}</span></a></td>`;
+          }
+
+          if(isNaN(data[i]._10)){
+               html += `<td class="tc_break">${data[i]._10}</td>`;
+          } else if(data[i]._10p == `a`){
+            html += `<td class="abs""><a href="${stl+data[i]._10}">${data[i]._10} <span class="req">${data[i]._10r}</span></a></td>`;
+          } else if(data[i]._10p == `p`){
+            html += `<td class="prst"><a href="${stl+data[i]._10}">${data[i]._10} <span class="req">${data[i]._10r}</span></a></td>`;
+          } else {
+            html += `<td><a href="${stl+data[i]._10}">${data[i]._10} <small><stronsg>${data[i]._10r}</span></a></td>`;
+          }
+
+          if(isNaN(data[i]._11)){
+               html += `<td class="tc_break">${data[i]._11}</td>`;
+          } else if(data[i]._11p == `a`){
+            html += `<td class="abs""><a href="${stl+data[i]._11}">${data[i]._11} <span class="req">${data[i]._11r}</span></a></td>`;
+          } else if(data[i]._11p == `p`){
+            html += `<td class="prst"><a href="${stl+data[i]._11}">${data[i]._11} <span class="req">${data[i]._11r}</span></a></td>`;
+          } else {
+            html += `<td><a href="${stl+data[i]._11}">${data[i]._11} <span class="req">${data[i]._11r}</span></a></td>`;
+          }
+         if(isNaN(data[i]._12)){
+               html += `<td class="tc_break">${data[i]._12}</td>`;
+          } else if(data[i]._12p == `a`){
+            html += `<td class="abs""><a href="${stl+data[i]._12}">${data[i]._12} <span class="req">${data[i]._12r}</span></a></td>`;
+          } else if(data[i]._12p == `p`){
+            html += `<td class="prst"><a href="${stl+data[i]._12}">${data[i]._12} <span class="req">${data[i]._12r}</span></a></td>`;
+          } else {
+            html += `<td><a href="${stl+data[i]._12}">${data[i]._12} <span class="req">${data[i]._12r}</span></a></td>`;
+          }
+          if(isNaN(data[i]._13)){
+               html += `<td class="tc_break">${data[i]._13}</td>`;
+          } else if(data[i]._13p == `a`){
+            html += `<td class="abs""><a href="${stl+data[i]._13}">${data[i]._13} <span class="req">${data[i]._13r}</span></a></td>`;
+          } else if(data[i]._13p == `p`){
+            html += `<td class="prst"><a href="${stl+data[i]._13}">${data[i]._13} <span class="req">${data[i]._13r}</span></a></td>`;
+          } else {
+            html += `<td><a href="${stl+data[i]._13}">${data[i]._13} <span class="req">${data[i]._13r}</span></a></td>`;
+          }
+          if(isNaN(data[i]._14)){
+               html += `<td class="tc_break">${data[i]._14}</td>`;
+          } else if(data[i]._14p == `a`){
+            html += `<td class="abs""><a href="${stl+data[i]._14}">${data[i]._14} <span class="req">${data[i]._14r}</span></a></td>`;
+          } else if(data[i]._14p == `p`){
+            html += `<td class="prst"><a href="${stl+data[i]._14}">${data[i]._14} <span class="req">${data[i]._14r}</span></a></td>`;
+          } else {
+            html += `<td><a href="${stl+data[i]._14}">${data[i]._14} <span class="req">${data[i]._14r}</span></a></td>`;
+          }
+          if(isNaN(data[i]._15)){
+               html += `<td class="tc_break">${data[i]._15}</td>`;
+          } else if(data[i]._15p == `a`){
+            html += `<td class="abs""><a href="${stl+data[i]._15}">${data[i]._15} <span class="req">${data[i]._15r}</span></a></td>`;
+          } else if(data[i]._15p == `p`){
+            html += `<td class="prst"><a href="${stl+data[i]._15}">${data[i]._15} <span class="req">${data[i]._15r}</span></a></td>`;
+          } else {
+            html += `<td><a href="${stl+data[i]._15}">${data[i]._15} <span class="req">${data[i]._15r}</span></a></td>`;
+          }
+          if(isNaN(data[i]._16)){
+               html += `<td class="tc_break">${data[i]._16}</td>`;
+          } else if(data[i]._16p == `a`){
+            html += `<td class="abs""><a href="${stl+data[i]._16}">${data[i]._16} <span class="req">${data[i]._16r}</span></a></td>`;
+          } else if(data[i]._16p == `p`){
+            html += `<td class="prst"><a href="${stl+data[i]._16}">${data[i]._16} <span class="req">${data[i]._16r}</span></a></td>`;
+          } else {
+            html += `<td><a href="${stl+data[i]._16}">${data[i]._16} <span class="req">${data[i]._16r}</span></a></td>`;
+          }
+          if(isNaN(data[i]._17)){
+               html += `<td class="tc_break">${data[i]._17}</td>`;
+          } else if(data[i]._17p == `a`){
+            html += `<td class="abs""><a href="${stl+data[i]._17}">${data[i]._17} <span class="req">${data[i]._17r}</span></a></td>`;
+          } else if(data[i]._17p == `p`){
+            html += `<td class="prst"><a href="${stl+data[i]._17}">${data[i]._17} <span class="req">${data[i]._17r}</span></a></td>`;
+          } else {
+            html += `<td><a href="${stl+data[i]._17}">${data[i]._17} <span class="req">${data[i]._17r}</span></a></td>`;
+          }
+          if(isNaN(data[i]._18)){
+               html += `<td class="tc_break">${data[i]._18}</td>`;
+          } else if(data[i]._18p == `a`){
+            html += `<td class="abs""><a href="${stl+data[i]._18}">${data[i]._18} <span class="req">${data[i]._18r}</span></a></td>`;
+          } else if(data[i]._18p == `p`){
+            html += `<td class="prst"><a href="${stl+data[i]._18}">${data[i]._18} <span class="req">${data[i]._18r}</span></a></td>`;
+          } else {
+            html += `<td><a href="${stl+data[i]._18}">${data[i]._18} <span class="req">${data[i]._18r}</span></a></td>`;
+          }
+          if(isNaN(data[i]._19)){
+               html += `<td class="tc_break">${data[i]._19}</td>`;
+          } else if(data[i]._19p == `a`){
+            html += `<td class="abs""><a href="${stl+data[i]._19}">${data[i]._19} <span class="req">${data[i]._19r}</span></a></td>`;
+          } else if(data[i]._19p == `p`){
+            html += `<td class="prst"><a href="${stl+data[i]._19}">${data[i]._19} <span class="req">${data[i]._19r}</span></a></td>`;
+          } else {
+            html += `<td><a href="${stl+data[i]._19}">${data[i]._19} <span class="req">${data[i]._19r}</span></a></td>`;
+          }
+          if(isNaN(data[i]._20)){
+               html += `<td class="tc_break">${data[i]._20}</td>`;
+          } else if(data[i]._20p == `a`){
+            html += `<td class="abs""><a href="${stl+data[i]._20}">${data[i]._20} <span class="req">${data[i]._20r}</span></a></td>`;
+          } else if(data[i]._20p == `p`){
+            html += `<td class="prst"><a href="${stl+data[i]._20}">${data[i]._20} <span class="req">${data[i]._20r}</span></a></td>`;
+          } else {
+            html += `<td><a href="${stl+data[i]._20}">${data[i]._20} <span class="req">${data[i]._20r}</span></a></td>`;
+          }
+          html += `</tr><tr>
+            <td>${data[i]._9n}</td>
+            <td>${data[i]._10n}</td>
+            <td>${data[i]._11n}</td>
+            <td>${data[i]._12n}</td>
+            <td>${data[i]._13n}</td>
+            <td>${data[i]._14n}</td>
+            <td>${data[i]._15n}</td>
+            <td>${data[i]._16n}</td>
+            <td>${data[i]._17n}</td>
+            <td>${data[i]._18n}</td>
+            <td>${data[i]._19n}</td>
+            <td>${data[i]._20n}</td>`;
+        }
+        $('#adm_user_view').html(html);
       }
     });
   }

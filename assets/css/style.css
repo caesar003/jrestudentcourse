@@ -191,12 +191,12 @@ span.req {
     font-size: xx-small;
     font-weight: 800;
 }
-#myschedule a:hover {
+#myschedule a:hover, #usr_view a:hover {
     text-decoration: none;
   color:white;
   background-color: darkslategrey;
 }
-#myschedule a {
+#myschedule a, #usr_view a {
     color: black;
     text-decoration: none;
 }

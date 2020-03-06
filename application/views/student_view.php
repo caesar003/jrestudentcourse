@@ -5,7 +5,9 @@
         <span id="schedule_header">Schedule for today</span>
         <?php if($this->session->userdata('level')== '21'):?>
         <div class="float-right">
-          <a title="Add new student" href="javascript:void(0);" class="btn btn-primary tooltip-bottom" id="new_teacher_button"> <span class="fa fa-user-plus"></span> New Teacher </a>
+          <a title="Switch to user view" href="javascript:void(0);" class="btn btn-secondary tooltip-bottom" id="switch-user"><i class="fas fa-user"></i> Switch View</a>
+          <a style="display:none;" title="Switch to admin view" href="javascript:void(0);" class="btn btn-success tooltip-bottom" id="switch-admin"><i class="fas fa-user-shield"></i> Switch View</a>
+          <a title="Add new teacher" href="javascript:void(0);" class="btn btn-primary tooltip-bottom" id="new_teacher_button"> <span class="fa fa-user-plus"></span> New Teacher </a>
         </div><?php endif;?>
       </h2>
       <br>
@@ -30,6 +32,28 @@
           </tr>
         </thead>
         <tbody id="my_schedule">
+        </tbody>
+      </table>
+      <table class="table table-sm table-bordered table-striped" id="usr_view" style="display:none;">
+        <thead>
+           <tr>
+            <th>#</th>
+            <th>Teacher</th>
+            <th>9</th>
+            <th>10</th>
+            <th>11</th>
+            <th>12</th>
+            <th>13</th>
+            <th>14</th>
+            <th>15</th>
+            <th>16</th>
+            <th>17</th>
+            <th>18</th>
+            <th>19</th>
+            <th>20</th>
+          </tr>
+        </thead>
+        <tbody id="adm_user_view">
         </tbody>
       </table>
             <?php else:?>
@@ -1200,7 +1224,7 @@
           sender = "<?php echo $this->session->userdata('id');?>";
     </script>
     <?php if($this->session->userdata('level') == '21'):?>
-    <script type="text/javascript" src="<?php echo base_url('assets/js/adm-schedule.js');?>"></script>
+    <script type="text/javascript" src="<?php echo base_url('assets/js/adm-schedule.js?v=1.0');?>"></script>
     <?php else: ?>
     <script type="text/javascript" src="<?php echo base_url('assets/js/usr-schedule.js')?>"></script>
     <?php endif;?>
