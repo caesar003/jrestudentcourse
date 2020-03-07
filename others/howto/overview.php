@@ -9,3 +9,5 @@
 <p>Once we submit new session of a student into the databse, their names would automatically appear on this list. Thus we can track the most recent updates of student progress. Furthermore we can decide further actions to the student (conduct the test, give a new topic etc).</p>
 <h2>Student page</h2>
 <p>This page shows all information about particular student such as personal information, course detail, sessions, progress, as well as syllabus and recorded tests.  </p>
+<h3>Personal Information</h3>
+<p>It displays all student basic information including complete name, date of birth, age, phone, and so on. Along with course detail, what program does the student take, how long, when did it start, with the as well as introductory skill needed. </p>
