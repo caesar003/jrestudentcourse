@@ -1,7 +1,7 @@
 .tpc-score {
-    background-color: black;
-    color: lightgray;
-    border-radius: 4px;
+    background-color: silver;
+    color: black;
+    border-radius: 50%;
 }
 .cheatsheet_section {
     background: linear-gradient(30deg, beige, aliceblue);

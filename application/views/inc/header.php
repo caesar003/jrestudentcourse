@@ -7,7 +7,7 @@
     </head>
     <body>
       <nav class="navbar navbar-expand-md navbar-dark bg-primary">
-        <a class="navbar-brand" href="student">
+        <a class="navbar-brand" href="<?php echo base_url();?>">
           <img height="35" width="35" class="rounded-circle" src="<?php echo base_url().'icon.jpg'?>"> <strong>Jolly Roger</strong>
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample04" aria-controls="navbarsExample04" aria-expanded="false" aria-label="Toggle navigation">
@@ -21,9 +21,6 @@
                 <a class="dropdown-item" href="<?php echo site_url('login/logout');?>"><i class="fas fa-sign-out-alt"></i> Sign Out</a>
                 <a class="dropdown-item" href="<?php echo site_url('reset_password');?>"><i class="fas fa-key"></i> Reset Password</a>
               </div>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="<?php echo base_url('others/markdown');?>">What's new?</a>
             </li>
             <?php if($this->session->userdata('level')==17):?>
             <li class="nav-item">

@@ -19,9 +19,9 @@ $(document).ready(function(){
         var html = '', i, a, header = '',
             description = `<p class="lead">Here you can do the following: </p>
             <ul style="list-style-type: square;">
-              <li>Click on any topic or indicator (with either new session or edit session opened) to automatically insert it to the field, </li>
               <li>Tick the black square on right side of every indicator (or topic) to indicate discussed topics, or </li>
               <li>Hit the purple pencil button on the top right to change topics for this student.</li>
+              <li>Click on the pair or ovals at the end of every topics to put their test score. (left = written, right = spoken).</li>
             </ul>`;
         if(prg == 1){
           a = "English for Kids";
