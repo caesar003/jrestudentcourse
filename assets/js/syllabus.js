@@ -45,39 +45,68 @@ $(document).ready(function(){
               html += `<div class="col-2 syll_topic syll_item" data-ind="${data[i].indicator}">
                          <span class="topic_discussed">${data[i].section}.${data[i].topic}</span>
                        </div>
-                       <div class="col-8 syll_topic syll_item" data-ind="${data[i].indicator}">
+                       <div class="col-7 syll_topic syll_item" data-ind="${data[i].indicator}">
                          <span class="topic_discussed">${data[i].indicator}</span>
                        </div>
-                       <div class="col-2 syll_topic">
-                         <a href="javascript:void(0);" data-stat="0" data-id="${data[i].id}" data-section="${data[i].section}" data-topic="${data[i].topic}" data-ind="${data[i].ind}" class="btn btn-default btn-sm topic_check">
+                       <div style="padding-right:0px;" class="col-3 syll_topic row">
+                        <div data-col="wr" data-id="${data[i].id}" class="col-4 tpc-score" title="written" contentEditable="true">`;
+                if(data[i].wr!=0&&data[i].wr!=null){
+                  html += `${data[i].wr}`;
+                } else {
+                  html += ``;
+                }
+                html += `</div>
+                        <div data-col="sp" data-id="${data[i].id}" class="col-4 tpc-score" title="spoken" contentEditable="true">`;
+                if(data[i].sp!=0&&data[i].sp!=null){
+                  html += `${data[i].sp}`;
+                } else {
+                  html += ``;
+                }
+                html += `</div>
+                          <div class="col-4"><a href="javascript:void(0);" data-stat="0" data-id="${data[i].id}" data-section="${data[i].section}" data-topic="${data[i].topic}" data-ind="${data[i].ind}" class="btn btn-default btn-sm topic_check">
                            <i class="fa fa-check-square fa-2x"></i>
-                         </a>
+                         </a></div>
                        </div>`;
             } else {
               html += `<div class="col-2 syll_topic syll_item" data-ind="${data[i].indicator}">
                           ${data[i].section}.${data[i].topic}</div>
-                      <div class="col-8 syll_topic syll_item" data-ind="${data[i].indicator}">${data[i].indicator}</div>
-                      <div class="col-2 syll_topic">
-                        <a href="javascript:void(0);" data-stat="1" data-id="${data[i].id}" data-section="${data[i].section}" data-topic="${data[i].topic}" data-ind="${data[i].ind}" class="btn btn-default btn-sm topic_check"><i class="fa fa-square fa-2x"></i></a>
+                      <div class="col-7 syll_topic syll_item" data-ind="${data[i].indicator}">${data[i].indicator}
+                      </div>
+                      <div style="padding-right:0px;" class="col-3 syll_topic row">
+                        <div data-col="wr" data-id="${data[i].id}" class="col-4 tpc-score" title="written" contentEditable="true">`;
+               if(data[i].wr!=0&&data[i].wr!=null){
+                 html += `${data[i].wr}`;
+               } else {
+                 html += ``;
+               }
+               html += `</div>
+               <div data-col="sp" data-id="${data[i].id}" class="col-4 tpc-score" title="spoken" contentEditable="true">`;
+               if(data[i].sp!=0&&data[i].sp!=null){
+                 html += `${data[i].sp}`;
+               } else {
+                 html += ``;
+               }
+
+               html += `</div><div class="col-4"><a href="javascript:void(0);" data-stat="1" data-id="${data[i].id}" data-section="${data[i].section}" data-topic="${data[i].topic}" data-ind="${data[i].ind}" class="btn btn-default btn-sm topic_check"><i class="fa fa-square fa-2x"></i></a></div>
                       </div>`;
             }
-          } else { /* indicaor */
+          } else { /* indicator */
             if (data[i].status == 1) {
               html += `<div class="col-2 syll_ind syll_item" data-ind="(${data[i].section}.${data[i].topic}.${data[i].ind})">
                          <span class="topic_discussed">${data[i].section}.${data[i].topic}.${data[i].ind}</span>
                        </div>
-                       <div class="col-8 syll_ind syll_item" data-ind="(${data[i].section}.${data[i].topic}.${data[i].ind})">
+                       <div class="col-9 syll_ind syll_item" data-ind="(${data[i].section}.${data[i].topic}.${data[i].ind})">
                          <span class="topic_discussed">${data[i].indicator}</span>
                        </div>
-                       <div class="col-2 syll_ind">
+                       <div class="col-1 syll_ind">
                         <a href="javascript:void(0);" data-stat="0" data-id="${data[i].id}" data-section="${data[i].section}" data-topic="${data[i].topic}" data-ind="${data[i].ind}" class="btn btn-default btn-sm topic_check"><i class="fa fa-check-square fa-2x"></i></a>
                        </div>`;
             } else {
               html += `<div class="col-2 syll_ind syll_item" data-ind="(${data[i].section}.${data[i].topic}.${data[i].ind})">
                             ${data[i].section}.${data[i].topic}.${data[i].ind}
                       </div>
-                       <div class="col-8 syll_ind syll_item" data-ind="(${data[i].section}.${data[i].topic}.${data[i].ind})"> ${data[i].indicator} </div>
-                        <div class="col-2 syll_ind">
+                       <div class="col-9 syll_ind syll_item" data-ind="(${data[i].section}.${data[i].topic}.${data[i].ind})"> ${data[i].indicator} </div>
+                        <div class="col-1 syll_ind">
                           <a href="javascript:void(0);" data-stat="1" data-id="${data[i].id}" data-section="${data[i].section}" data-topic="${data[i].topic}" data-ind="${data[i].ind}" class="btn btn-default btn-sm topic_check">
                             <i class="fa fa-square fa-2x"></i>
                           </a>
@@ -93,6 +122,25 @@ $(document).ready(function(){
       }
     });
   }
+  $('#show_syllabus').on('focusin', '.tpc-score', function(){
+    var col = $(this).data('col'),
+        id= $(this).data('id'),
+        score = $(this).text();
+    $(this).on('focusout', function(){
+      score2 = $(this).text();
+      if(score!=score2){
+        $.ajax({
+          url : `${u}/syllabus/update_score`,
+          type : "post",
+          dataType : "json",
+          data : {pin:pin, col:col, id:id, score: score2},
+          success : function(data){
+            show_syllabus(pin,prg);
+          }
+        });
+      }
+    });
+  });
   $('#show_syllabus').on('click', '.syll_item', function(){
     var ind = $(this).data('ind');
     if($('#course_form').css('display')== 'block'){

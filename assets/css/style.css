@@ -1,3 +1,8 @@
+.tpc-score {
+    background-color: black;
+    color: lightgray;
+    border-radius: 4px;
+}
 .cheatsheet_section {
     background: linear-gradient(30deg, beige, aliceblue);
     padding: 4px;

@@ -38,6 +38,18 @@ class Syllabus_model extends CI_Model{
     $result = $this->db->get();
     return $result->result();
   }
+  function update_score(){
+    $pin = $this->input->post('pin');
+    $col = $this->input->post('col');
+    $id = $this->input->post('id');
+    $score = $this->input->post('score');
+    $syllabus_table = "sl_".$pin;
+
+    $this->db->where('id', $id);
+    $this->db->set($col, $score);
+    $query = $this->db->update($syllabus_table);
+    return $query;
+  }
   function get_sections(){
    $id= $this->input->post('level');
     //$section = $this->input->post('section')
@@ -171,6 +183,14 @@ class Syllabus_model extends CI_Model{
       ),
       'ind' => array(
         'type' => 'INT',
+        'constraint' => 11
+      ),
+      'wr' => array(
+        'type' => 'int',
+        'constraint' => 11
+      ),
+      'sp' => array(
+        'type' => 'int',
         'constraint' => 11
       ),
       'status' => array(

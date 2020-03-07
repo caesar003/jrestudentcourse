@@ -13,13 +13,17 @@ class Syllabus extends CI_Controller{
     $data = $this->syllabus_model->get_syllabus();
     echo json_encode($data);
   }
-  
+
   function check_topic(){
     $data=$this->syllabus_model->check_topic();
     echo json_encode($data);
   }
   function check_ind(){
     $data=$this->syllabus_model->check_ind();
+    echo json_encode($data);
+  }
+  function update_score(){
+    $data = $this->syllabus_model->update_score();
     echo json_encode($data);
   }
   /*function get_this_topic(){
