@@ -5,6 +5,14 @@ class Student_single_model extends CI_Model{
     $result = $this->db->get('students', 1);
     return $result;
   }
+  function get_nick_name($pin){
+    $this->db->where('pin', $pin);
+    $query = $this->db->get('students');
+    foreach ($query->result() as $row){
+      $name=$row->nick_name;
+    }
+    return $name;
+  }
   function get_student2(){
     $pin = $this->input->post('pin');
     $this->db->where('pin', $pin);
