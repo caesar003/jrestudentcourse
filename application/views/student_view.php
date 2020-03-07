@@ -7,7 +7,7 @@
         <div class="float-right">
           <a title="Switch to user view" href="javascript:void(0);" class="btn btn-secondary tooltip-bottom" id="switch-user"><i class="fas fa-user"></i> Switch View</a>
           <a style="display:none;" title="Switch to admin view" href="javascript:void(0);" class="btn btn-success tooltip-bottom" id="switch-admin"><i class="fas fa-user-shield"></i> Switch View</a>
-          <a title="Add new teacher" href="javascript:void(0);" class="btn btn-primary tooltip-bottom" id="new_teacher_button"> <span class="fa fa-user-plus"></span> New Teacher </a>
+          <a title="Add new teacher" href="javascript:void(0);" class="btn btn-primary tooltip-bottom" id="new_teacher_button"> <span class="fas fa-user-plus"></span> New Teacher </a>
         </div><?php endif;?>
       </h2>
       <br>
@@ -98,7 +98,7 @@
             </div>
             <input id="schedule_date" name="schedule_date" class="form-control" type="date" aria-label="add schedule date" value="<?php echo Date("Y-m-d"); ?>">
             <div class="input-group-append">
-              <button title="Add" id="add_schedule" class="input-group-text btn btn-primary"><i class="fa fa-calendar-plus"></i></button>
+              <button title="Add" id="add_schedule" class="input-group-text btn btn-primary"><i class="fas fa-calendar-plus"></i></button>
             </div>
           </div>
           <div id="nscf"></div>
@@ -144,7 +144,7 @@
             <h1 class="page-header">Student <small>List</small>
               <div class="float-right">
                 <a title="Add new student" href="javascript:void(0);" class="btn btn-secondary tooltip-bottom" id="new_student_button">
-                  <span class="fa fa-user-plus"></span> New Student
+                  <span class="fas fa-user-plus"></span> New Student
                 </a>
               </div>
             </h1>
@@ -206,12 +206,12 @@
             </div>
             <div class="modal-body">
               <div class="row">
-                <div class="col-lg-5">
+                <div class="col-lg-6">
                   <fieldset>
                     <legend>Personal Information <a title="click for group study" id="add_one" href="javascript:void(0);"><i class="fas fa-plus-circle fa-fw"></i></a></legend>
                     <div class="form-row">
                       <div class="form-group col-12 row">
-                        <div class="col-4"><label for="pn">PIN<sup>&lowast;</sup></label>
+                        <div class="col-3"><label for="pn">PIN<sup>&lowast;</sup></label>
                         </div>
                         <div class="input-group col">
                           <div class="input-group-prepend">
@@ -221,18 +221,18 @@
                         </div>
                       </div>
                       <div class="form-group col-12 row">
-                        <div class="col-4">
+                        <div class="col-3">
                           <label for="cn">Name<sup>&lowast;</sup></label>
                         </div>
                         <div class="input-group col">
                           <div class="input-group-prepend">
-                            <span class="input-group-text"><i  style="color:red;" class="fa fa-user-circle fa-fw"></i></span>
+                            <span class="input-group-text"><i  style="color:red;" class="fas fa-user-circle fa-fw"></i></span>
                           </div>
                           <input type="text" class="form-control" name="cn" id="cn" placeholder="Name">
                         </div>
                       </div>
                       <div class="form-group col-12 row">
-                        <div class="col-4">
+                        <div class="col-3">
                           <label for="nn">Nick name</label>
                         </div>
                         <div class="input-group col">
@@ -243,44 +243,37 @@
                         </div>
                       </div>
                       <div class="form-group col-12 row">
-                        <div class="col-4">
+                        <div class="col-3">
                           <label for="ad">Address<sup>&lowast;</sup></label>
                         </div>
                         <div class="input-group col">
-                          <div class="input-group-prepend"> <span class="input-group-text"><i style="color:blue;"  class="fa fa-home fa-fw"></i></span>
+                          <div class="input-group-prepend"> <span class="input-group-text"><i style="color:blue;"  class="fas fa-home fa-fw"></i></span>
                           </div>
                           <input type="text" class="form-control" name="ad" id="ad" placeholder="Adress" required>
                         </div>
                       </div>
                       <div class="form-group col-12 row">
-                        <div class="col-4">
-                          <label for="pb">Place of Birth</label>
+                        <div class="col-3">
+                          <label for="pb">PDoB</label>
                         </div>
                         <div class="input-group col">
                           <div class="input-group-prepend">
-                            <span class="input-group-text"><i style="color:grey;" class="fa fa-map-marker fa-fw"></i></span>
+                            <span class="input-group-text"><i style="color:grey;" class="fas fa-map-marker fa-fw"></i></span>
                           </div>
                           <input type="text" class="form-control" name="pb" id="pb" placeholder="Place of Birth">
-                        </div>
-                      </div>
-                      <div class="form-group col-12 row ">
-                        <div class="col-4">
-                          <label for="db">Date of Birth<sup>&lowast;</sup></label>
-                        </div>
-                        <div class="input-group col">
-                          <div class="input-group-prepend">
+                          <input type="date" class="form-control" name="db" id="db" required>
+                          <div class="input-group-append">
                             <span class="input-group-text"><i style="color:rgb(120,50,255);" class="fas fa-birthday-cake fa-fw"></i></span>
                           </div>
-                          <input type="date" class="form-control" name="db" id="db" required>
                         </div>
                       </div>
                       <div class="form-group col-12 row">
-                        <div class="col-4">
+                        <div class="col-3">
                           <label for="ph">Phone <sup>&lowast;</sup></label>
                         </div>
                         <div class="input-group col">
                           <div class="input-group-prepend">
-                            <span class="input-group-text"><i style="color:navy;" class="fa fa-phone-square fa-fw"></i></span>
+                            <span class="input-group-text"><i style="color:navy;" class="fas fa-phone-square fa-fw"></i></span>
                           </div>
                           <input type="text" class="form-control" name="ph" id="ph" placeholder="62877" value="62">
                         </div>
@@ -301,18 +294,18 @@
                     <div class="form-row" id="student2">
                       <h4>Student 2 <a id="add_two" href="javascript:void(0);"><i class="fas fa-plus-circle fa-fw"></i></a> <a href="javascript:void(0);" id="remove_three"><i style="color:rgb(255,0,0);" class="fas fa-times-circle fa-fw"></i></a></h4>
                       <div class="form-group col-12 row">
-                        <div class="col-4">
+                        <div class="col-3">
                           <label for="cnst2">Name<sup>&lowast;</sup></label>
                         </div>
                         <div class="input-group col">
                           <div class="input-group-prepend">
-                            <span class="input-group-text"><i  style="color:red;" class="fa fa-user-circle fa-fw"></i></span>
+                            <span class="input-group-text"><i  style="color:red;" class="fas fa-user-circle fa-fw"></i></span>
                           </div>
                           <input type="text" class="form-control" name="cnst2" id="cnst2" placeholder="Name">
                         </div>
                       </div>
                       <div class="form-group col-12 row">
-                        <div class="col-4">
+                        <div class="col-3">
                           <label for="nnst2">Nick name</label>
                         </div>
                         <div class="input-group col">
@@ -323,44 +316,37 @@
                         </div>
                       </div>
                       <div class="form-group col-12 row">
-                        <div class="col-4">
+                        <div class="col-3">
                           <label for="adrst2">Address<sup>&lowast;</sup></label>
                         </div>
                         <div class="input-group col">
-                          <div class="input-group-prepend"> <span class="input-group-text"><i style="color:blue;"  class="fa fa-home fa-fw"></i></span>
+                          <div class="input-group-prepend"> <span class="input-group-text"><i style="color:blue;"  class="fas fa-home fa-fw"></i></span>
                           </div>
                           <input type="text" class="form-control" name="adrst2" id="adrst2" placeholder="Adress" required>
                         </div>
                       </div>
                       <div class="form-group col-12 row">
-                        <div class="col-4">
-                          <label for="pbst2">Place of Birth</label>
+                        <div class="col-3">
+                          <label for="pbst2">PDoB</label>
                         </div>
                         <div class="input-group col">
                           <div class="input-group-prepend">
-                            <span class="input-group-text"><i style="color:grey;" class="fa fa-map-marker fa-fw"></i></span>
+                            <span class="input-group-text"><i style="color:grey;" class="fas fa-map-marker fa-fw"></i></span>
                           </div>
                           <input type="text" class="form-control" name="pbst2" id="pbst2" placeholder="Place of Birth">
-                        </div>
-                      </div>
-                      <div class="form-group col-12 row ">
-                        <div class="col-4">
-                          <label for="dbst2">Date of Birth<sup>&lowast;</sup></label>
-                        </div>
-                        <div class="input-group col">
-                          <div class="input-group-prepend">
+                          <input type="date" class="form-control" name="dbst2" id="dbst2" required>
+                          <div class="input-group-append">
                             <span class="input-group-text"><i style="color:rgb(120,50,255);" class="fas fa-birthday-cake fa-fw"></i></span>
                           </div>
-                          <input type="date" class="form-control" name="dbst2" id="dbst2" required>
                         </div>
                       </div>
                       <div class="form-group col-12 row">
-                        <div class="col-4">
+                        <div class="col-3">
                           <label for="phst2">Phone <sup>&lowast;</sup></label>
                         </div>
                         <div class="input-group col">
                           <div class="input-group-prepend">
-                            <span class="input-group-text"><i style="color:navy;" class="fa fa-phone-square fa-fw"></i></span>
+                            <span class="input-group-text"><i style="color:navy;" class="fas fa-phone-square fa-fw"></i></span>
                           </div>
                           <input type="text" class="form-control" name="phst2" id="phst2" placeholder="62877" value="62">
                         </div>
@@ -370,18 +356,18 @@
                     <div class="form-row" id="student3">
                       <h4>Student 3 <a id="add_three" href="javascript:void(0);"><i class="fas fa-plus-circle fa-fw"></i></a> <a href="javascript:void(0);" id="remove_two"><i style="color:rgb(255,0,0);" class="fas fa-times-circle fa-fw"></i></a></h4>
                       <div class="form-group col-12 row">
-                        <div class="col-4">
+                        <div class="col-3">
                           <label for="cnst3">Name<sup>&lowast;</sup></label>
                         </div>
                         <div class="input-group col">
                           <div class="input-group-prepend">
-                            <span class="input-group-text"><i  style="color:red;" class="fa fa-user-circle fa-fw"></i></span>
+                            <span class="input-group-text"><i  style="color:red;" class="fas fa-user-circle fa-fw"></i></span>
                           </div>
                           <input type="text" class="form-control" name="cnst3" id="cnst3" placeholder="Name">
                         </div>
                       </div>
                       <div class="form-group col-12 row">
-                        <div class="col-4">
+                        <div class="col-3">
                           <label for="nnst3">Nick name</label>
                         </div>
                         <div class="input-group col">
@@ -392,44 +378,37 @@
                         </div>
                       </div>
                       <div class="form-group col-12 row">
-                        <div class="col-4">
+                        <div class="col-3">
                           <label for="adrst3">Address<sup>&lowast;</sup></label>
                         </div>
                         <div class="input-group col">
-                          <div class="input-group-prepend"> <span class="input-group-text"><i style="color:blue;"  class="fa fa-home fa-fw"></i></span>
+                          <div class="input-group-prepend"> <span class="input-group-text"><i style="color:blue;"  class="fas fa-home fa-fw"></i></span>
                           </div>
                           <input type="text" class="form-control" name="adrst3" id="adrst3" placeholder="Adress" required>
                         </div>
                       </div>
                       <div class="form-group col-12 row">
-                        <div class="col-4">
-                          <label for="pbst3">Place of Birth</label>
+                        <div class="col-3">
+                          <label for="pbst3">PDoB</label>
                         </div>
                         <div class="input-group col">
                           <div class="input-group-prepend">
-                            <span class="input-group-text"><i style="color:grey;" class="fa fa-map-marker fa-fw"></i></span>
+                            <span class="input-group-text"><i style="color:grey;" class="fas fa-map-marker fa-fw"></i></span>
                           </div>
                           <input type="text" class="form-control" name="pbst3" id="pbst3" placeholder="Place of Birth">
-                        </div>
-                      </div>
-                      <div class="form-group col-12 row ">
-                        <div class="col-4">
-                          <label for="dbst3">Date of Birth<sup>&lowast;</sup></label>
-                        </div>
-                        <div class="input-group col">
-                          <div class="input-group-prepend">
+                          <input type="date" class="form-control" name="dbst3" id="dbst3" required>
+                          <div class="input-group-append">
                             <span class="input-group-text"><i style="color:rgb(120,50,255);" class="fas fa-birthday-cake fa-fw"></i></span>
                           </div>
-                          <input type="date" class="form-control" name="dbst3" id="dbst3" required>
                         </div>
                       </div>
                       <div class="form-group col-12 row">
-                        <div class="col-4">
+                        <div class="col-3">
                           <label for="phst3">Phone <sup>&lowast;</sup></label>
                         </div>
                         <div class="input-group col">
                           <div class="input-group-prepend">
-                            <span class="input-group-text"><i style="color:navy;" class="fa fa-phone-square fa-fw"></i></span>
+                            <span class="input-group-text"><i style="color:navy;" class="fas fa-phone-square fa-fw"></i></span>
                           </div>
                           <input type="text" class="form-control" name="phst3" id="phst3" placeholder="62877" value="62">
                         </div>
@@ -439,18 +418,18 @@
                     <div class="form-row" id="student4">
                       <h4>Student 4 <a href="javascript:void(0);" id="remove_one"><i style="color:rgb(255,0,0);" class="fas fa-times-circle fa-fw"></i></a></h4>
                       <div class="form-group col-12 row">
-                        <div class="col-4">
+                        <div class="col-3">
                           <label for="cnst4">Name<sup>&lowast;</sup></label>
                         </div>
                         <div class="input-group col">
                           <div class="input-group-prepend">
-                            <span class="input-group-text"><i  style="color:red;" class="fa fa-user-circle fa-fw"></i></span>
+                            <span class="input-group-text"><i  style="color:red;" class="fas fa-user-circle fa-fw"></i></span>
                           </div>
                           <input type="text" class="form-control" name="cnst4" id="cnst4" placeholder="Name">
                         </div>
                       </div>
                       <div class="form-group col-12 row">
-                        <div class="col-4">
+                        <div class="col-3">
                           <label for="nnst4">Nick name</label>
                         </div>
                         <div class="input-group col">
@@ -461,44 +440,37 @@
                         </div>
                       </div>
                       <div class="form-group col-12 row">
-                        <div class="col-4">
+                        <div class="col-3">
                           <label for="adrst4">Address<sup>&lowast;</sup></label>
                         </div>
                         <div class="input-group col">
-                          <div class="input-group-prepend"> <span class="input-group-text"><i style="color:blue;"  class="fa fa-home fa-fw"></i></span>
+                          <div class="input-group-prepend"> <span class="input-group-text"><i style="color:blue;"  class="fas fa-home fa-fw"></i></span>
                           </div>
                           <input type="text" class="form-control" name="adrst4" id="adrst4" placeholder="Adress" required>
                         </div>
                       </div>
                       <div class="form-group col-12 row">
-                        <div class="col-4">
-                          <label for="pbst4">Place of Birth</label>
+                        <div class="col-3">
+                          <label for="pbst4">PDoB</label>
                         </div>
                         <div class="input-group col">
                           <div class="input-group-prepend">
-                            <span class="input-group-text"><i style="color:grey;" class="fa fa-map-marker fa-fw"></i></span>
+                            <span class="input-group-text"><i style="color:grey;" class="fas fa-map-marker fa-fw"></i></span>
                           </div>
                           <input type="text" class="form-control" name="pbst4" id="pbst4" placeholder="Place of Birth">
-                        </div>
-                      </div>
-                      <div class="form-group col-12 row ">
-                        <div class="col-4">
-                          <label for="dbst4">Date of Birth<sup>&lowast;</sup></label>
-                        </div>
-                        <div class="input-group col">
-                          <div class="input-group-prepend">
+                          <input type="date" class="form-control" name="dbst4" id="dbst4" required>
+                          <div class="input-group-append">
                             <span class="input-group-text"><i style="color:rgb(120,50,255);" class="fas fa-birthday-cake fa-fw"></i></span>
                           </div>
-                          <input type="date" class="form-control" name="dbst4" id="dbst4" required>
                         </div>
                       </div>
                       <div class="form-group col-12 row">
-                        <div class="col-4">
+                        <div class="col-3">
                           <label for="phst4">Phone <sup>&lowast;</sup></label>
                         </div>
                         <div class="input-group col">
                           <div class="input-group-prepend">
-                            <span class="input-group-text"><i style="color:navy;" class="fa fa-phone-square fa-fw"></i></span>
+                            <span class="input-group-text"><i style="color:navy;" class="fas fa-phone-square fa-fw"></i></span>
                           </div>
                           <input type="text" class="form-control" name="phst4" id="phst4" placeholder="62877" value="62">
                         </div>
@@ -506,7 +478,7 @@
                     </div><!-- END STUDENT 4 -->
                   </fieldset>
                 </div>
-                <div class="col-lg-7">
+                <div class="col-lg-6">
                   <fieldset>
                     <legend>Course Detail</legend>
                     <div class="form-row">
@@ -516,7 +488,7 @@
                         </div>
                         <div class="input-group col">
                           <div class="input-group-prepend">
-                            <span  style="color:rgb(200,100,255);" class="input-group-text"><i class="fa fa-list-ul fa-fw"></i></span>
+                            <span  style="color:rgb(200,100,255);" class="input-group-text"><i class="fas fa-list-ul fa-fw"></i></span>
                           </div>
                           <select class="form-control" name="pr" id="pr" required>
                             <option value="">Choose Program</option>
@@ -540,7 +512,7 @@
                         </div>
                         <div class="input-group col">
                           <div class="input-group-prepend">
-                            <span class="input-group-text"><i style="color:rgb(80,83,210);" class="fa fa-hourglass-end fa-fw"></i></span>
+                            <span class="input-group-text"><i style="color:rgb(80,83,210);" class="fas fa-hourglass-end fa-fw"></i></span>
                           </div>
                           <input type="text" class="form-control" name="pd" placeholder="Duration" id="pd">
                         </div>
@@ -550,7 +522,7 @@
                           <label for="sd">Starting Date</label>
                         </div>
                         <div class="input-group col">
-                          <div class="input-group-prepend"> <span class="input-group-text"><i style="color:rgb(80,170,243);" class="fa fa-flag fa-fw"></i></span>
+                          <div class="input-group-prepend"> <span class="input-group-text"><i style="color:rgb(80,170,243);" class="fas fa-flag fa-fw"></i></span>
                           </div>
                           <input type="date" class="form-control" name="sd" id="sd">
                         </div>
@@ -561,7 +533,7 @@
                         </div>
                         <div class="input-group col">
                           <div class="input-group-prepend">
-                            <span class="input-group-text"><i style="color:rgb(80,255,20);" class="fa fa-question-circle fa-fw"></i></span>
+                            <span class="input-group-text"><i style="color:rgb(80,255,20);" class="fas fa-question-circle fa-fw"></i></span>
                           </div>
                           <textarea class="form-control" name="re" id="re" placeholder="Reason for studying"></textarea>
                         </div>
@@ -572,7 +544,7 @@
                         </div>
                         <div class="input-group col">
                           <div class="input-group-prepend">
-                            <span class="input-group-text"><i style="color: rgb(190,110,27);" class="fa fa-crosshairs fa-fw"></i></span>
+                            <span class="input-group-text"><i style="color: rgb(190,110,27);" class="fas fa-crosshairs fa-fw"></i></span>
                           </div>
                           <textarea class="form-control" name="ta" id="ta" placeholder="Target"></textarea>
                         </div>
@@ -583,7 +555,7 @@
                         </div>
                         <div class="input-group col">
                           <div class="input-group-prepend">
-                            <span class="input-group-text"><i style="color:rgb(100,120,190);" class="fa fa-graduation-cap fa-fw"></i></span>
+                            <span class="input-group-text"><i style="color:rgb(100,120,190);" class="fas fa-graduation-cap fa-fw"></i></span>
                           </div>
                           <textarea class="form-control" name="bg" id="bg" placeholder="Background"></textarea>
                         </div>
@@ -595,7 +567,7 @@
                         <div class="input-group col">
                           <div class="input-group-prepend">
                             <span class="input-group-text">
-                              <i style="color:rgb(255,0,255);" class="fa fa-thumbs-down fa-fw"></i></span>
+                              <i style="color:rgb(255,0,255);" class="fas fa-thumbs-down fa-fw"></i></span>
                           </div>
                           <input type="text" class="form-control" name="di" id="di" placeholder="Difficulties">
                         </div>
@@ -606,7 +578,7 @@
                         </div>
                         <div class="input-group col">
                           <div class="input-group-prepend">
-                            <span class="input-group-text"><i style="color:rgb(70,210,155);" class="fa fa-info-circle fa-fw"></i></span>
+                            <span class="input-group-text"><i style="color:rgb(70,210,155);" class="fas fa-info-circle fa-fw"></i></span>
                           </div>
                           <select class="form-control" name="si" id="si">
                             <option value="">Choose one</option>
@@ -637,7 +609,7 @@
                         </div>
                         <div class="input-group col">
                           <div class="input-group-prepend">
-                            <span class="input-group-text"><i style="color:rgb(0,120,80);" class="fa fa-wrench fa-fw"></i> </span>
+                            <span class="input-group-text"><i style="color:rgb(0,120,80);" class="fas fa-wrench fa-fw"></i> </span>
                           </div>
                           <textarea class="form-control" name="ap" id="ap" placeholder="Suggestions and recommendation"></textarea>
                         </div>
@@ -648,7 +620,7 @@
                         </div>
                         <div class="input-group col">
                           <div class="input-group-prepend">
-                            <span class="input-group-text"><i style="color:rgb(120, 78,80);" class="fa fa-sticky-note fa-fw"></i> </span>
+                            <span class="input-group-text"><i style="color:rgb(120, 78,80);" class="fas fa-sticky-note fa-fw"></i> </span>
                           </div>
                           <textarea class="form-control" name="sr" id="sr" placeholder="Special request from student's parents etc."></textarea>
                         </div>
@@ -660,8 +632,8 @@
             </div>
             <div class="modal-footer row">
               <span class="ffb" id="nsf"></span>
-              <button type="button" class="btn-close btn btn-secondary" data-dismiss="modal"><i class="fa fa-times"></i> Close</button>
-              <button type="button" type="submit" id="save_student_btn" class="btn-submit btn btn-primary"><i class="fa fa-check"></i> Save</button>
+              <button type="button" class="btn-close btn btn-secondary" data-dismiss="modal"><i class="fas fa-times"></i> Close</button>
+              <button type="button" type="submit" id="save_student_btn" class="btn-submit btn btn-primary"><i class="fas fa-check"></i> Save</button>
             </div>
           </div>
         </div>
@@ -678,12 +650,12 @@
             </div>
             <div class="modal-body">
               <div class="row" id="courseAndPers">
-                <div class="col-lg-5">
+                <div class="col-lg-6">
                   <fieldset>
                     <legend>Personal Information <a title="click for group study" id="add_one_e" href="javascript:void(0);"><i class="fas fa-plus-circle fa-fw"></i></a></legend>
                     <div class="form-row">
                       <div class="form-group col-12 row">
-                        <div class="col-4"><label for="pn_e">PIN<sup>&lowast;</sup></label>
+                        <div class="col-3"><label for="pn_e">PIN<sup>&lowast;</sup></label>
                         </div>
                         <div class="input-group col">
                           <div class="input-group-prepend">
@@ -693,18 +665,18 @@
                         </div>
                       </div>
                       <div class="form-group col-12 row">
-                        <div class="col-4">
+                        <div class="col-3">
                           <label for="cn_e">Name<sup>&lowast;</sup></label>
                         </div>
                         <div class="input-group col">
                           <div class="input-group-prepend">
-                            <span class="input-group-text"><i  style="color:red;" class="fa fa-user-circle fa-fw"></i></span>
+                            <span class="input-group-text"><i  style="color:red;" class="fas fa-user-circle fa-fw"></i></span>
                           </div>
                           <input type="text" class="form-control" name="cn_e" id="cn_e" placeholder="Name">
                         </div>
                       </div>
                       <div class="form-group col-12 row">
-                        <div class="col-4">
+                        <div class="col-3">
                           <label for="nn_e">Nick name</label>
                         </div>
                         <div class="input-group col">
@@ -715,47 +687,40 @@
                         </div>
                       </div>
                       <div class="form-group col-12 row">
-                        <div class="col-4">
+                        <div class="col-3">
                           <label for="ad_e">Address<sup>&lowast;</sup></label>
                         </div>
                         <div class="input-group col">
                           <div class="input-group-prepend">
                             <span class="input-group-text">
-                            <i style="color:blue;"  class="fa fa-home fa-fw"></i>
+                            <i style="color:blue;"  class="fas fa-home fa-fw"></i>
                             </span>
                           </div>
                           <input type="text" class="form-control" name="ad_e" id="ad_e" placeholder="Adress" required>
                         </div>
                       </div>
                       <div class="form-group col-12 row">
-                        <div class="col-4">
-                          <label for="pb_e">Place of Birth</label>
+                        <div class="col-3">
+                          <label for="pb_e">PDoB</label>
                         </div>
                         <div class="input-group col">
                           <div class="input-group-prepend">
-                            <span class="input-group-text"><i style="color:grey;" class="fa fa-map-marker fa-fw"></i></span>
+                            <span class="input-group-text"><i style="color:grey;" class="fas fa-map-marker fa-fw"></i></span>
                           </div>
                           <input type="text" class="form-control" name="pb_e" id="pb_e" placeholder="Place of Birth">
-                        </div>
-                      </div>
-                      <div class="form-group col-12 row ">
-                        <div class="col-4">
-                          <label for="db_e">Date of Birth<sup>&lowast;</sup></label>
-                        </div>
-                        <div class="input-group col">
-                          <div class="input-group-prepend">
+                          <input type="date" class="form-control" name="db_e" id="db_e" required>
+                          <div class="input-group-append">
                             <span class="input-group-text"><i style="color:rgb(120,50,255);" class="fas fa-birthday-cake fa-fw"></i></span>
                           </div>
-                          <input type="date" class="form-control" name="db_e" id="db_e" required>
                         </div>
                       </div>
                       <div class="form-group col-12 row">
-                        <div class="col-4">
+                        <div class="col-3">
                           <label for="ph_e">Phone <sup>&lowast;</sup></label>
                         </div>
                         <div class="input-group col">
                           <div class="input-group-prepend">
-                            <span class="input-group-text"><i style="color:navy;" class="fa fa-phone-square fa-fw"></i></span>
+                            <span class="input-group-text"><i style="color:navy;" class="fas fa-phone-square fa-fw"></i></span>
                           </div>
                           <input type="text" class="form-control" name="ph_e" id="ph_e" placeholder="62877" value="62">
                         </div>
@@ -776,18 +741,18 @@
                     <div class="form-row" id="student2_e">
                       <h4>Student 2 <a id="add_two_e" href="javascript:void(0);"><i class="fas fa-plus-circle fa-fw"></i></a> <a href="javascript:void(0);" id="remove_three_e"><i style="color:rgb(255,0,0);" class="fas fa-times-circle fa-fw"></i></a></h4>
                       <div class="form-group col-12 row">
-                        <div class="col-4">
+                        <div class="col-3">
                           <label for="cnst2_e">Name<sup>&lowast;</sup></label>
                         </div>
                         <div class="input-group col">
                           <div class="input-group-prepend">
-                            <span class="input-group-text"><i  style="color:red;" class="fa fa-user-circle fa-fw"></i></span>
+                            <span class="input-group-text"><i  style="color:red;" class="fas fa-user-circle fa-fw"></i></span>
                           </div>
                           <input type="text" class="form-control" name="cnst2_e" id="cnst2_e" placeholder="Name">
                         </div>
                       </div>
                       <div class="form-group col-12 row">
-                        <div class="col-4">
+                        <div class="col-3">
                           <label for="nnst2_e">Nick name</label>
                         </div>
                         <div class="input-group col">
@@ -798,44 +763,37 @@
                         </div>
                       </div>
                       <div class="form-group col-12 row">
-                        <div class="col-4">
+                        <div class="col-3">
                           <label for="adrst2_e">Address<sup>&lowast;</sup></label>
                         </div>
                         <div class="input-group col">
-                          <div class="input-group-prepend"> <span class="input-group-text"><i style="color:blue;"  class="fa fa-home fa-fw"></i></span>
+                          <div class="input-group-prepend"> <span class="input-group-text"><i style="color:blue;"  class="fas fa-home fa-fw"></i></span>
                           </div>
                           <input type="text" class="form-control" name="adrst2_e" id="adrst2_e" placeholder="Adress" required>
                         </div>
                       </div>
                       <div class="form-group col-12 row">
-                        <div class="col-4">
-                          <label for="pbst2_e">Place of Birth</label>
+                        <div class="col-3">
+                          <label for="pbst2_e">PDoB</label>
                         </div>
                         <div class="input-group col">
                           <div class="input-group-prepend">
-                            <span class="input-group-text"><i style="color:grey;" class="fa fa-map-marker fa-fw"></i></span>
+                            <span class="input-group-text"><i style="color:grey;" class="fas fa-map-marker fa-fw"></i></span>
                           </div>
                           <input type="text" class="form-control" name="pbst2_e" id="pbst2_e" placeholder="Place of Birth">
-                        </div>
-                      </div>
-                      <div class="form-group col-12 row ">
-                        <div class="col-4">
-                          <label for="dbst2_e">Date of Birth<sup>&lowast;</sup></label>
-                        </div>
-                        <div class="input-group col">
-                          <div class="input-group-prepend">
+                          <input type="date" class="form-control" name="dbst2_e" id="dbst2_e" required>
+                          <div class="input-group-append">
                             <span class="input-group-text"><i style="color:rgb(120,50,255);" class="fas fa-birthday-cake fa-fw"></i></span>
                           </div>
-                          <input type="date" class="form-control" name="dbst2_e" id="dbst2_e" required>
                         </div>
                       </div>
                       <div class="form-group col-12 row">
-                        <div class="col-4">
+                        <div class="col-3">
                           <label for="phst2_e">Phone <sup>&lowast;</sup></label>
                         </div>
                         <div class="input-group col">
                           <div class="input-group-prepend">
-                            <span class="input-group-text"><i style="color:navy;" class="fa fa-phone-square fa-fw"></i></span>
+                            <span class="input-group-text"><i style="color:navy;" class="fas fa-phone-square fa-fw"></i></span>
                           </div>
                           <input type="text" class="form-control" name="phst2_e" id="phst2_e" placeholder="62877" value="62">
                         </div>
@@ -845,18 +803,18 @@
                     <div class="form-row" id="student3_e">
                       <h4>Student 3 <a id="add_three_e" href="javascript:void(0);"><i class="fas fa-plus-circle fa-fw"></i></a> <a href="javascript:void(0);" id="remove_two_e"><i style="color:rgb(255,0,0);" class="fas fa-times-circle fa-fw"></i></a></h4>
                       <div class="form-group col-12 row">
-                        <div class="col-4">
+                        <div class="col-3">
                           <label for="cnst3_e">Name<sup>&lowast;</sup></label>
                         </div>
                         <div class="input-group col">
                           <div class="input-group-prepend">
-                            <span class="input-group-text"><i  style="color:red;" class="fa fa-user-circle fa-fw"></i></span>
+                            <span class="input-group-text"><i  style="color:red;" class="fas fa-user-circle fa-fw"></i></span>
                           </div>
                           <input type="text" class="form-control" name="cnst3_e" id="cnst3_e" placeholder="Name">
                         </div>
                       </div>
                       <div class="form-group col-12 row">
-                        <div class="col-4">
+                        <div class="col-3">
                           <label for="nnst3_e">Nick name</label>
                         </div>
                         <div class="input-group col">
@@ -867,44 +825,37 @@
                         </div>
                       </div>
                       <div class="form-group col-12 row">
-                        <div class="col-4">
+                        <div class="col-3">
                           <label for="adrst3_e">Address<sup>&lowast;</sup></label>
                         </div>
                         <div class="input-group col">
-                          <div class="input-group-prepend"> <span class="input-group-text"><i style="color:blue;"  class="fa fa-home fa-fw"></i></span>
+                          <div class="input-group-prepend"> <span class="input-group-text"><i style="color:blue;"  class="fas fa-home fa-fw"></i></span>
                           </div>
                           <input type="text" class="form-control" name="adrst3_e" id="adrst3_e" placeholder="Adress" required>
                         </div>
                       </div>
                       <div class="form-group col-12 row">
-                        <div class="col-4">
-                          <label for="pbst3_e">Place of Birth</label>
+                        <div class="col-3">
+                          <label for="pbst3_e">PDoB</label>
                         </div>
                         <div class="input-group col">
                           <div class="input-group-prepend">
-                            <span class="input-group-text"><i style="color:grey;" class="fa fa-map-marker fa-fw"></i></span>
+                            <span class="input-group-text"><i style="color:grey;" class="fas fa-map-marker fa-fw"></i></span>
                           </div>
                           <input type="text" class="form-control" name="pbst3_e" id="pbst3_e" placeholder="Place of Birth">
-                        </div>
-                      </div>
-                      <div class="form-group col-12 row ">
-                        <div class="col-4">
-                          <label for="dbst3_e">Date of Birth<sup>&lowast;</sup></label>
-                        </div>
-                        <div class="input-group col">
-                          <div class="input-group-prepend">
+                          <input type="date" class="form-control" name="dbst3_e" id="dbst3_e" required>
+                          <div class="input-group-append">
                             <span class="input-group-text"><i style="color:rgb(120,50,255);" class="fas fa-birthday-cake fa-fw"></i></span>
                           </div>
-                          <input type="date" class="form-control" name="dbst3_e" id="dbst3_e" required>
                         </div>
                       </div>
                       <div class="form-group col-12 row">
-                        <div class="col-4">
+                        <div class="col-3">
                           <label for="phst3_e">Phone <sup>&lowast;</sup></label>
                         </div>
                         <div class="input-group col">
                           <div class="input-group-prepend">
-                            <span class="input-group-text"><i style="color:navy;" class="fa fa-phone-square fa-fw"></i></span>
+                            <span class="input-group-text"><i style="color:navy;" class="fas fa-phone-square fa-fw"></i></span>
                           </div>
                           <input type="text" class="form-control" name="phst3_e" id="phst3_e" placeholder="62877" value="62">
                         </div>
@@ -914,18 +865,18 @@
                     <div class="form-row" id="student4_e">
                       <h4>Student 4 <a href="javascript:void(0);" id="remove_one_e"><i style="color:rgb(255,0,0);" class="fas fa-times-circle fa-fw"></i></a></h4>
                       <div class="form-group col-12 row">
-                        <div class="col-4">
+                        <div class="col-3">
                           <label for="cnst4_e">Name<sup>&lowast;</sup></label>
                         </div>
                         <div class="input-group col">
                           <div class="input-group-prepend">
-                            <span class="input-group-text"><i  style="color:red;" class="fa fa-user-circle fa-fw"></i></span>
+                            <span class="input-group-text"><i  style="color:red;" class="fas fa-user-circle fa-fw"></i></span>
                           </div>
                           <input type="text" class="form-control" name="cnst4_e" id="cnst4_e" placeholder="Name">
                         </div>
                       </div>
                       <div class="form-group col-12 row">
-                        <div class="col-4">
+                        <div class="col-3">
                           <label for="nnst4_e">Nick name</label>
                         </div>
                         <div class="input-group col">
@@ -936,44 +887,37 @@
                         </div>
                       </div>
                       <div class="form-group col-12 row">
-                        <div class="col-4">
+                        <div class="col-3">
                           <label for="adrst4_e">Address<sup>&lowast;</sup></label>
                         </div>
                         <div class="input-group col">
-                          <div class="input-group-prepend"> <span class="input-group-text"><i style="color:blue;"  class="fa fa-home fa-fw"></i></span>
+                          <div class="input-group-prepend"> <span class="input-group-text"><i style="color:blue;"  class="fas fa-home fa-fw"></i></span>
                           </div>
                           <input type="text" class="form-control" name="adrst4_e" id="adrst4_e" placeholder="Address" required>
                         </div>
                       </div>
                       <div class="form-group col-12 row">
-                        <div class="col-4">
-                          <label for="pbst4_e">Place of Birth</label>
+                        <div class="col-3">
+                          <label for="pbst4_e">PDoB</label>
                         </div>
                         <div class="input-group col">
                           <div class="input-group-prepend">
-                            <span class="input-group-text"><i style="color:grey;" class="fa fa-map-marker fa-fw"></i></span>
+                            <span class="input-group-text"><i style="color:grey;" class="fas fa-map-marker fa-fw"></i></span>
                           </div>
                           <input type="text" class="form-control" name="pbst4_e" id="pbst4_e" placeholder="Place of Birth">
-                        </div>
-                      </div>
-                      <div class="form-group col-12 row ">
-                        <div class="col-4">
-                          <label for="dbst4_e">Date of Birth<sup>&lowast;</sup></label>
-                        </div>
-                        <div class="input-group col">
-                          <div class="input-group-prepend">
+                          <input type="date" class="form-control" name="dbst4_e" id="dbst4_e" required>
+                          <div class="input-group-append">
                             <span class="input-group-text"><i style="color:rgb(120,50,255);" class="fas fa-birthday-cake fa-fw"></i></span>
                           </div>
-                          <input type="date" class="form-control" name="dbst4_e" id="dbst4_e" required>
                         </div>
                       </div>
                       <div class="form-group col-12 row">
-                        <div class="col-4">
+                        <div class="col-3">
                           <label for="phst4_e">Phone <sup>&lowast;</sup></label>
                         </div>
                         <div class="input-group col">
                           <div class="input-group-prepend">
-                            <span class="input-group-text"><i style="color:navy;" class="fa fa-phone-square fa-fw"></i></span>
+                            <span class="input-group-text"><i style="color:navy;" class="fas fa-phone-square fa-fw"></i></span>
                           </div>
                           <input type="text" class="form-control" name="phst4_e" id="phst4_e" placeholder="62877" value="62">
                         </div>
@@ -981,7 +925,7 @@
                     </div><!-- END STUDENT 4 -->
                   </fieldset>
                 </div>
-                <div class="col-lg-7">
+                <div class="col-lg-6">
                   <fieldset>
                     <legend>Course Detail</legend>
                     <div class="form-row">
@@ -991,7 +935,7 @@
                         </div>
                         <div class="input-group col">
                           <div class="input-group-prepend">
-                            <span  style="color:rgb(200,100,255);" class="input-group-text"><i class="fa fa-list-ul fa-fw"></i></span>
+                            <span  style="color:rgb(200,100,255);" class="input-group-text"><i class="fas fa-list-ul fa-fw"></i></span>
                           </div>
                           <select class="form-control" name="pr2" id="pr2">
                             <option value="">Choose Program</option>
@@ -1016,7 +960,7 @@
                         </div>
                         <div class="input-group col">
                           <div class="input-group-prepend">
-                           <span class="input-group-text"><i style="color:rgb(80,83,210);" class="fa fa-hourglass-end fa-fw"></i></span>
+                           <span class="input-group-text"><i style="color:rgb(80,83,210);" class="fas fa-hourglass-end fa-fw"></i></span>
                           </div>
                           <input type="text" class="form-control" name="pd2" id="pd2" placeholder="Duration">
                         </div>
@@ -1027,7 +971,7 @@
                         </div>
                         <div class="input-group col">
                           <div class="input-group-prepend">
-                             <span class="input-group-text"><i style="color:rgb(80,170,243);" class="fa fa-flag fa-fw"></i></span>
+                             <span class="input-group-text"><i style="color:rgb(80,170,243);" class="fas fa-flag fa-fw"></i></span>
                           </div>
                           <input type="date" class="form-control" name="sd2" id="sd2">
                         </div>
@@ -1038,7 +982,7 @@
                         </div>
                         <div class="input-group col">
                           <div class="input-group-prepend">
-                            <span class="input-group-text"><i style="color:rgb(80,255,20);" class="fa fa-question-circle fa-fw"></i></span>
+                            <span class="input-group-text"><i style="color:rgb(80,255,20);" class="fas fa-question-circle fa-fw"></i></span>
                           </div>
                           <textarea class="form-control" name="re2" id="re2" placeholder="Reason for studying"></textarea>
                         </div>
@@ -1049,7 +993,7 @@
                         </div>
                         <div class="input-group col">
                           <div class="input-group-prepend">
-                             <span class="input-group-text"><i style="color: rgb(190,110,27);" class="fa fa-crosshairs fa-fw"></i></span>
+                             <span class="input-group-text"><i style="color: rgb(190,110,27);" class="fas fa-crosshairs fa-fw"></i></span>
                           </div>
                           <textarea class="form-control" name="ta2" id="ta2" placeholder="Target after completion"></textarea>
                         </div>
@@ -1060,7 +1004,7 @@
                         </div>
                         <div class="input-group col">
                           <div class="input-group-prepend">
-                            <span class="input-group-text"><i style="color:rgb(100,120,190);" class="fa fa-graduation-cap fa-fw"></i></span>
+                            <span class="input-group-text"><i style="color:rgb(100,120,190);" class="fas fa-graduation-cap fa-fw"></i></span>
                           </div>
                           <textarea class="form-control" name="bg2" id="bg2" placeholder="Background"></textarea>
                         </div>
@@ -1072,7 +1016,7 @@
                         <div class="input-group col">
                           <div class="input-group-prepend">
                             <span class="input-group-text">
-                              <i style="color:rgb(255,0,255);" class="fa fa-thumbs-down fa-fw"></i></span>
+                              <i style="color:rgb(255,0,255);" class="fas fa-thumbs-down fa-fw"></i></span>
                           </div>
                           <input type="text" class="form-control" name="di2" id="di2" placeholder="Difficulties">
                         </div>
@@ -1083,7 +1027,7 @@
                         </div>
                         <div class="input-group col">
                           <div class="input-group-prepend">
-                            <span class="input-group-text"><i style="color:rgb(70,210,155);" class="fa fa-info-circle fa-fw"></i></span>
+                            <span class="input-group-text"><i style="color:rgb(70,210,155);" class="fas fa-info-circle fa-fw"></i></span>
                           </div>
                           <select class="form-control" name="si2" id="si2">
                             <option value="">Choose one</option>
@@ -1112,7 +1056,7 @@
                         </div>
                         <div class="input-group col">
                           <div class="input-group-prepend">
-                          <span class="input-group-text"><i style="color:rgb(0,120,80);" class="fa fa-wrench fa-fw"></i> </span>
+                          <span class="input-group-text"><i style="color:rgb(0,120,80);" class="fas fa-wrench fa-fw"></i> </span>
                           </div>
                           <textarea class="form-control" name="ap2" id="ap2" placeholder="Suggestions and recommendations"></textarea>
                         </div>
@@ -1123,7 +1067,7 @@
                         </div>
                         <div class="input-group col">
                           <div class="input-group-prepend">
-                            <span class="input-group-text"><i style="color:rgb(120, 78,80);" class="fa fa-sticky-note fa-fw"></i> </span>
+                            <span class="input-group-text"><i style="color:rgb(120, 78,80);" class="fas fa-sticky-note fa-fw"></i> </span>
                           </div>
                           <textarea class="form-control" name="sr2" id="sr2" placeholder="Special request from student's parents etc."></textarea>
                         </div>
@@ -1136,8 +1080,8 @@
             </div>
             <div class="modal-footer">
               <span class="ffb" id="esf"></span>
-              <button type="button" class="btn btn-secondary" data-dismiss="modal"> <i class="fa fa-times"></i> Close </button>
-              <button type="button" type="submit" id="update_student_btn" class="btn btn-primary"> <i class="fa fa-check"></i> Update</button>
+              <button type="button" class="btn btn-secondary" data-dismiss="modal"> <i class="fas fa-times"></i> Close </button>
+              <button type="button" type="submit" id="update_student_btn" class="btn btn-primary"> <i class="fas fa-check"></i> Update</button>
             </div>
           </div>
         </div>
@@ -1159,7 +1103,7 @@
             <div class="modal-footer">
               <input type="hidden" name="pin_delete" id="pin_delete">
               <button type="button" class="btn btn-primary" data-dismiss="modal"><i class="fas fa-times"></i> Close</button>
-              <button type="button" id="btn_delete_student" class="btn btn-danger"><i class="fa fa-trash"></i> Delete</button>
+              <button type="button" id="btn_delete_student" class="btn btn-danger"><i class="fas fa-trash"></i> Delete</button>
             </div>
           </div>
         </div>
@@ -1186,7 +1130,7 @@
             <div class="modal-footer">
               <span class="ffb" id="ntf"></span>
               <button type="button" class="btn btn-secondary" data-dismiss="modal"><i class="fas fa-times"></i> Close</button>
-              <button type="submit" id="btn_save_teacher" class="btn btn-primary"><i class="fa fa-check"></i> Save</button>
+              <button type="submit" id="btn_save_teacher" class="btn btn-primary"><i class="fas fa-check"></i> Save</button>
             </div>
           </div>
         </div>
@@ -1207,7 +1151,7 @@
             <div class="modal-footer">
               <input type="hidden" name="id" id="id">
               <button type="button" class="btn btn-primary" data-dismiss="modal"><i class="fas fa-times"></i> Close</button>
-              <button type="button" id="btn_delete_teacher" class="btn btn-danger"><i class="fa fa-trash"></i> Delete</button>
+              <button type="button" id="btn_delete_teacher" class="btn btn-danger"><i class="fas fa-trash"></i> Delete</button>
             </div>
           </div>
         </div>

@@ -13,7 +13,7 @@
 <script src="<?php echo base_url().'assets/js/dataTables.bootstrap4.min.js'?>"></script>
 <script src="<?php echo base_url().'assets/js/tooltip-viewport.js'?>"></script>
 <script src="<?php echo base_url().'assets/js/jquery.form.min.js'?>"></script>
-<script src="<?php echo base_url('assets/js/mdhtml/vendor/modernizr-2.6.2.min.js') ;?>"></script>
+<!--script src="<?php echo base_url('assets/js/mdhtml/vendor/modernizr-2.6.2.min.js') ;?>"></script>
 <script src="<?php echo base_url('assets/js/mdhtml/plugins.js');?>"></script>
 <script src="<?php echo base_url('assets/js/mdhtml/vendor/showdown.js');?>"></script>
-<script src="<?php echo base_url('assets/js/mdhtml/mdhtmlform.js');?>"></script>
+<script src="<?php echo base_url('assets/js/mdhtml/mdhtmlform.js');?>"></script-->

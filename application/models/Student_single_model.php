@@ -8,9 +8,14 @@ class Student_single_model extends CI_Model{
   function get_nick_name($pin){
     $this->db->where('pin', $pin);
     $query = $this->db->get('students');
-    foreach ($query->result() as $row){
-      $name=$row->nick_name;
-    }
+      if($query->num_rows()>0){
+        foreach ($query->result() as $row){
+          $name=$row->nick_name;
+        }
+      } else {
+        $name = '';
+      }
+
     return $name;
   }
   function get_student2(){

@@ -13,7 +13,7 @@ class Student_single extends CI_Controller{
     $pin = $this->input->get('pin',TRUE);
     $nick_name = $this->student_single_model->get_nick_name($pin);
     if($this->student_model->pin_availability($pin)){
-        $data['title'] = $nick_name." - ".$pin;
+        $data['title'] = $nick_name." - ".$pin." || Jolly Roger Education Online Student Course";
         $data['students'] = $this->student_single_model->get_student($pin);
         $this->load->view('student_single_view', $data);
     } else {
