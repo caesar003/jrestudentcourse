@@ -5,8 +5,58 @@ There are actually two main focus of this application, the first one is student 
 
 ## Student management
 ### View Student
+`application/controllers/Student.php`
+
+```
+  function get_student(){
+    $data = $this->student_single_model->get_student();
+    echo json_encode($data);
+  }
+```
+
+`application/models/Student_model.php`
+```
+  function get_student(){
+    $query = $this->db->get('students');
+    return $query->result();
+  }
+```
+Utilizing datatable jquery plugin,
+``` student table
+  $('#someId').DataTable({
+
+  });
+```
 ### After Teaching List
+It is exactly the same as above function, the difference is at the controller and model.
+
+```
+
+```
 ### New Student
+The function resides on the `application/controllers/Student.php`
+
+The jquery part seems a little scary, but in fact it just nested conditional which just takes care one thing at once.
+``` user.js or spv.js
+  $('#save_student_btn').on('click', function(){
+    var group = $('#grp').val(),
+        // continue
+        action_plan = $('#ap').val();
+
+    // Check for required fields
+    if(required_fields_are_empty){
+      // send error to the user.
+    } else { // all fields required are, check their validity
+      if(phone_number_isnot_number){
+
+      } else {
+        if(program_duration_is_not_number){
+
+        }
+      }
+    }
+  });
+```
 ### Update Student
 ### Delete Student
 Similar with after teaching list, it is only accessible for some users as it has potential damage to the system regarding data loss.

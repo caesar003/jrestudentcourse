@@ -32,6 +32,7 @@ $(document).ready(function(){
     $('#switch-user').show();
     $('#usr_view').fadeOut('slow');
     $('#myschedule').fadeIn('fast');
+    get_schedule();
   });
   $('#add_schedule').on('click', function(){
     var d = $('#schedule_date').val();
@@ -333,6 +334,10 @@ $(document).ready(function(){
     });
   }
 
+  /*
+  * This function fires when the field has focus. all itdetermine all properties based on data assigned,
+  *
+  */
   $('#my_schedule').on('focusin','.edit', function(){
     $(this).addClass('editMode');
     var id= $(this).data('id'),

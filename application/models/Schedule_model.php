@@ -268,7 +268,7 @@ class Schedule_model extends CI_Model{
       ),
       '_17' => array(
         'type' => 'varchar',
-        'constraint' => '4',
+        'constraint' => '24',
         'default' => ''
       ),
       '_17r' => array(
