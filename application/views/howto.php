@@ -29,6 +29,7 @@
             <li id="overview" class="list-group-item toc-item" data-content="overview">Overview</li>
             <li class="list-group-item toc-item" data-content="new-student">New Student</li>
             <li class="list-group-item toc-item" data-content="edit-student">Edit Student</li>
+            <li class="list-group-item toc-item" data-content="course-list">Course</li>
             <li class="list-group-item toc-item" data-content="new-session">New Session</li>
             <li class="list-group-item toc-item" data-content="edit-session">Edit session</li>
             <li class="list-group-item toc-item" data-content="syllabus">Syllabus</li>
