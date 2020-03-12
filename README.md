@@ -73,8 +73,59 @@ The form utilize bootstrap grid form.
 Basically works the same as new session above
 ### Delete Session
 Nothing fancy here, just send a request to remove the selected record to the database.
+``` javascript
+  $.ajax({
+    type : "post",
+    url : "<?php echo site_url('student_single/delete_session');?>",
+    dataType : "json",
+    data : {pin:pin, meeting: meeting},
+    success : function(data){
+      console.log('session deleted');
+      $('#my_course').DataTable().ajax.reload();
+    }
+  });
+```
+Controller,
+
+```php
+  function delete_session(){
+    $data = $this->student_single_model->delete_session();
+    echo json_encode($data);
+  }
+```
+
+Model,
+```
+  function delete_session(){
+    $pin = $this->input->post('pin');
+    $meeting = $this->input->post('meeting');
+    $student_table = "s_".$pin;
+    
+    $this->db->where('pin', $pin);
+    $query = $this->db->delete($student_table);
+    return $query;
+  }
+```
 ### Syllabus
 The data structure of this is quite complex.
+
+This is how the table arranged
+
+syllabus master
+
+|id| sections | topics | inds | indicator |
+------|------
+|1|1|0|0|INTRODUCTION|
+
+It took me quite loong to finally figure out how to arrange them easily,
+my main purpose was something easy to write and easy to operate for the user,
+besides, it also must be easy if we need to make some changes. 
+
+This is how it is delivered to the client,
+
+1. it matches the program_id on the student table, 
+i don't really know what to say here. all looked blur. 
+if we actually can say 
 #### No syllabus function
 ##### Get Level
 By default, program_id column on the student table is set to null, which would fire this function, it gives the user options to choose the appropriate topic for the student. It shows teachers five possible options of levels they are Elementary Kids, Elementary, Junior Student, Senior Student and General English. It shows us something like this.

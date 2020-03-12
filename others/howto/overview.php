@@ -13,10 +13,14 @@
 <h2>Student page</h2>
 <p>This page shows all information about particular student such as personal information, course detail, sessions, progress, as well as syllabus and recorded tests.  </p>
 <h3>Personal Information</h3>
+<p>It is where we display student personal detail (complete name, phone number, address) along with course information such as program chosen, duration, and so on. At the corner of it, there is little button which enables us to edit all their information like the one we have on the home page. </p>
 <h3>Course</h3>
+<p>Another table containing recorded sessions </p>
 <h3>Syllabus</h3>
+<p></P>
 <h3>Test</h3>
 <p>There is a small checkbox on the new course or edit course form </p>
 <h3>Final Speaking Performance</h3>
 <p>After finishing their final spoken test, students in primary and secondary level would have this program. </p>
 <h3>Final Review and Request</h3>
+<p>Another program before completion, the student may have some more extended session</p>
